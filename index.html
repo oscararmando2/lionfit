@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lion Fitness | Gimnasio Premium en Zitácuaro</title>
+  <meta name="description" content="Lion Fitness: el gimnasio que ruge con fuerza. Entrena en instalaciones premium con tecnología de punta, clases exclusivas y energía neon." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Clash+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <meta property="og:title" content="Lion Fitness" />
+  <meta property="og:description" content="El gimnasio que ruge con fuerza en Zitácuaro." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lionfitness.mx" />
+  <meta property="og:image" content="https://lionfitness.mx/lionlogo.png" />
+  <meta name="theme-color" content="#FFFFFF" />
+  <link rel="icon" type="image/png" href="./lionlogo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Space Grotesk', 'Neue Haas Grotesk', 'Satoshi', 'system-ui'],
+            display: ['Clash Display', 'Space Grotesk', 'system-ui']
+          },
+          colors: {
+            neonCyan: '#00FFFF',
+            neonMagenta: '#FF00FF',
+            neonLime: '#39FF14'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      color-scheme: only light;
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background-color: #FFFFFF;
+      color: #0F0F13;
+      overflow-x: hidden;
+    }
+
+    /* // LUXURY EFFECT: Global smooth texture */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"%3E%3Cfilter id="n"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23n)" opacity="0.06"/%3E%3C/svg%3E');
+      background-size: cover;
+      pointer-events: none;
+    }
+
+    /* // LUXURY EFFECT: Dynamic neon gradient haze */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: -20% 0;
+      z-index: -3;
+      background: radial-gradient(circle at var(--grad-x, 50%) var(--grad-y, 20%), rgba(0, 255, 255, 0.25), rgba(255, 0, 255, 0.12) 30%, rgba(57, 255, 20, 0.08) 45%, transparent 60%);
+      transition: transform 1.2s ease, opacity 1.2s ease;
+      opacity: 0.75;
+      filter: blur(70px);
+      pointer-events: none;
+    }
+
+    /* // LUXURY EFFECT: Custom neon cursor */
+    .cursor-halo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 9999px;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      background: radial-gradient(circle, rgba(0, 255, 255, 0.65) 0%, rgba(255, 0, 255, 0.35) 45%, transparent 65%);
+      box-shadow: 0 0 24px rgba(0, 255, 255, 0.75);
+      z-index: 1000;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s ease, height 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .cursor-halo.is-card {
+      width: 60px;
+      height: 60px;
+      box-shadow: 0 0 40px rgba(57, 255, 20, 0.8);
+      background: radial-gradient(circle, rgba(57, 255, 20, 0.7) 0%, rgba(0, 255, 255, 0.25) 60%, transparent 80%);
+    }
+
+    .cursor-halo.is-cta {
+      width: 80px;
+      height: 80px;
+      box-shadow: 0 0 55px rgba(255, 0, 255, 0.75);
+      background: radial-gradient(circle, rgba(255, 0, 255, 0.8) 0%, rgba(0, 255, 255, 0.45) 55%, transparent 85%);
+    }
+
+    /* // LUXURY EFFECT: Neon pulsating buttons */
+    .neon-btn {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      transition: transform 0.4s ease;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.25);
+    }
+
+    .neon-btn::before {
+      content: "";
+      position: absolute;
+      inset: -120%;
+      background: conic-gradient(from 90deg, rgba(0, 255, 255, 0.6), rgba(255, 0, 255, 0.6), rgba(57, 255, 20, 0.6), rgba(0, 255, 255, 0.6));
+      transition: transform 0.6s ease;
+      transform: rotate(0deg);
+      animation: neonRotate 5s linear infinite;
+      opacity: 0.7;
+    }
+
+    .neon-btn span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .neon-btn:hover {
+      transform: translateY(-4px) scale(1.02);
+    }
+
+    .neon-btn:hover::before {
+      transform: rotate(180deg) scale(1.2);
+      opacity: 1;
+    }
+
+    @keyframes neonRotate {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .neon-btn::after {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: inherit;
+      z-index: 0;
+    }
+
+    /* // LUXURY EFFECT: Glassmorphism cards */
+    .lux-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 24px;
+      backdrop-filter: blur(22px);
+      transition: transform 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+      box-shadow: 0 12px 40px rgba(15, 15, 19, 0.08);
+      overflow: hidden;
+    }
+
+    .lux-card::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      border: 1px solid transparent;
+      background: linear-gradient(120deg, rgba(0, 255, 255, 0.7), rgba(255, 0, 255, 0.4), rgba(57, 255, 20, 0.6));
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      filter: blur(0px);
+      z-index: 0;
+    }
+
+    .lux-card:hover::before {
+      opacity: 1;
+    }
+
+    .lux-card:hover {
+      transform: translateY(-12px) scale(1.01);
+      box-shadow: 0 20px 60px rgba(0, 255, 255, 0.18);
+      border-color: rgba(255, 0, 255, 0.35);
+    }
+
+    .lux-card .content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .lux-card .micro-particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: radial-gradient(circle at 20% 30%, rgba(0, 255, 255, 0.45) 0, transparent 55%),
+        radial-gradient(circle at 80% 40%, rgba(255, 0, 255, 0.45) 0, transparent 60%),
+        radial-gradient(circle at 50% 85%, rgba(57, 255, 20, 0.45) 0, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .lux-card:hover .micro-particles {
+      opacity: 0.5;
+    }
+
+    /* // LUXURY EFFECT: Hero video overlay */
+    .hero-video::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.75) 35%, rgba(255, 255, 255, 0.6) 55%, rgba(255, 255, 255, 0.85) 100%);
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    /* // LUXURY EFFECT: Neon focus ring */
+    .focus-neon:focus {
+      outline: 3px solid rgba(0, 255, 255, 0.7);
+      outline-offset: 4px;
+      box-shadow: 0 0 0 6px rgba(255, 0, 255, 0.18);
+    }
+
+    /* // LUXURY EFFECT: 3D logo glow */
+    .logo-glow {
+      filter: drop-shadow(0 0 14px rgba(0, 255, 255, 0.65)) drop-shadow(0 0 30px rgba(255, 0, 255, 0.45));
+      animation: pulseGlow 4s ease-in-out infinite;
+      transform: perspective(800px) rotateX(6deg) rotateY(-6deg);
+      transition: transform 0.6s ease;
+    }
+
+    .logo-glow:hover {
+      transform: perspective(800px) rotateX(0deg) rotateY(0deg) scale(1.03);
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        filter: drop-shadow(0 0 14px rgba(0, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(255, 0, 255, 0.35));
+      }
+      50% {
+        filter: drop-shadow(0 0 24px rgba(0, 255, 255, 0.85)) drop-shadow(0 0 60px rgba(57, 255, 20, 0.55));
+      }
+    }
+
+    /* // LUXURY EFFECT: 3D product carousel */
+    .carousel {
+      position: relative;
+      width: min(420px, 90vw);
+      height: 300px;
+      perspective: 1200px;
+      margin: 0 auto;
+    }
+
+    .carousel-track {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transform-style: preserve-3d;
+      transition: transform 1s ease;
+    }
+
+    .carousel-item {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 220px;
+      height: 120px;
+      border-radius: 20px;
+      transform: translate(-50%, -50%);
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 14px 45px rgba(15, 15, 19, 0.12);
+      border: 1px solid rgba(0, 255, 255, 0.35);
+      overflow: hidden;
+    }
+
+    .carousel-item img {
+      width: 60%;
+      height: auto;
+    }
+
+    .carousel-nav {
+      position: absolute;
+      inset: auto 0 -55px 0;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .carousel-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .carousel-dot.active {
+      background: #00FFFF;
+      transform: scale(1.4);
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+    }
+
+    /* // LUXURY EFFECT: Map marker glow */
+    .map-container {
+      position: relative;
+      border-radius: 32px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 255, 255, 0.25);
+      box-shadow: 0 25px 60px rgba(15, 15, 19, 0.15);
+    }
+
+    .map-marker {
+      position: absolute;
+      top: 45%;
+      left: 52%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      text-align: center;
+    }
+
+    .map-marker img {
+      width: 70px;
+      filter: drop-shadow(0 0 18px rgba(0, 255, 255, 0.75));
+      animation: pulseGlow 3s ease-in-out infinite;
+    }
+
+    .map-popup {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 18px;
+      padding: 10px 18px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+      border: 1px solid rgba(255, 0, 255, 0.25);
+      font-size: 0.85rem;
+      min-width: 180px;
+    }
+
+    footer a {
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #00FFFF;
+      text-shadow: 0 0 18px rgba(0, 255, 255, 0.7);
+    }
+
+    .hero-title {
+      font-family: 'Clash Display', sans-serif;
+      letter-spacing: 0.08em;
+    }
+
+    .section-title {
+      font-family: 'Clash Display', sans-serif;
+    }
+
+    .noise-mask {
+      mask-image: radial-gradient(circle at top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0));
+    }
+
+    @media (max-width: 768px) {
+      .map-marker {
+        top: 50%;
+        left: 50%;
+      }
+
+      .carousel {
+        height: 240px;
+      }
+
+      .carousel-item {
+        width: 180px;
+        height: 100px;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "Lion Fitness",
+      "description": "Gimnasio premium con máquinas de última generación y clases exclusivas.",
+      "image": "https://lionfitness.mx/lionlogo.png",
+      "logo": "https://lionfitness.mx/lionlogo.png",
+      "url": "https://lionfitness.mx",
+      "telephone": "+52 715 123 4567",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Carretera Zitácuaro-Huetamo Km 1",
+        "addressLocality": "Zitácuaro",
+        "addressRegion": "Michoacán",
+        "postalCode": "61500",
+        "addressCountry": "MX"
+      },
+      "openingHours": "Mo-Su 06:00-22:00",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 19.436119,
+        "longitude": -100.358355
+      }
+    }
+  </script>
+</head>
+<body class="relative">
+  <div class="cursor-halo" aria-hidden="true"></div>
+  <div class="hero-video absolute inset-0 -z-10 overflow-hidden noise-mask">
+    <video class="w-full h-full object-cover" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=80">
+      <source src="https://cdn.coverr.co/videos/coverr-boxing-training-5588/1080p.mp4" type="video/mp4" />
+      Tu navegador no soporta video.
+    </video>
+  </div>
+
+  <header class="min-h-screen flex flex-col justify-between">
+    <nav class="flex items-center justify-between px-6 sm:px-12 py-8">
+      <!-- // LOGO: lionlogo.png -->
+      <a href="#hero" class="focus-neon inline-flex items-center gap-3">
+        <img src="./lionlogo.png" alt="Logo Lion Fitness" class="w-16 h-16 object-contain logo-glow" loading="lazy" />
+        <span class="uppercase tracking-[0.35em] text-xs sm:text-sm">Lion Fitness</span>
+      </a>
+      <div class="hidden sm:flex items-center gap-8 text-xs tracking-[0.4em] uppercase">
+        <a href="#experiencias" class="focus-neon">Experiencias</a>
+        <a href="#suplementos" class="focus-neon">Suplementos</a>
+        <a href="#ubicacion" class="focus-neon">Ubicación</a>
+      </div>
+      <button class="neon-btn focus-neon rounded-full px-5 py-2 text-xs uppercase tracking-[0.5em]" type="button">
+        <span>Agenda VIP</span>
+      </button>
+    </nav>
+
+    <section id="hero" class="flex flex-col items-center justify-center text-center px-6 sm:px-12 pb-24 pt-12">
+      <!-- // LOGO: lionlogo.png -->
+      <img src="./lionlogo.png" alt="Logo Lion Fitness" class="w-40 sm:w-52 mb-10 logo-glow" loading="lazy" />
+      <h1 class="hero-title text-4xl sm:text-6xl lg:text-7xl font-semibold mb-6 uppercase tracking-[0.2em]">El gimnasio que ruge con fuerza</h1>
+      <p class="max-w-2xl text-sm sm:text-base text-neutral-700 tracking-[0.15em] uppercase">Tecnología, lujo y energía neon para transformar tu entrenamiento diario en una experiencia sensorial inolvidable.</p>
+      <div class="mt-12 flex flex-col sm:flex-row items-center gap-6">
+        <a href="#experiencias" class="neon-btn focus-neon rounded-full px-10 py-4 uppercase tracking-[0.65em] text-xs sm:text-sm">
+          <span>Entrenar ahora</span>
+        </a>
+        <a href="#suplementos" class="text-xs sm:text-sm uppercase tracking-[0.4em] underline-offset-8 hover:underline">Descubre más</a>
+      </div>
+    </section>
+  </header>
+
+  <main class="space-y-32 sm:space-y-40 pb-32">
+    <section id="experiencias" class="px-6 sm:px-12">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-10">
+        <h2 class="section-title text-3xl sm:text-5xl uppercase tracking-[0.3em]">Experiencias flotantes</h2>
+        <p class="max-w-xl text-sm sm:text-base text-neutral-600">Descubre ambientes con equipamiento de última generación, aromas revitalizantes y coaches expertos que guían cada sesión con precisión quirúrgica.</p>
+      </div>
+      <div class="mt-16 grid gap-8 sm:grid-cols-2 xl:grid-cols-3" id="cards-grid">
+        <article class="lux-card p-8" data-color="cyan">
+          <div class="micro-particles"></div>
+          <div class="content space-y-4">
+            <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Máquinas de última generación</h3>
+            <p class="text-neutral-600 text-sm">Circuitos inteligentes, resistencia adaptativa y pantallas biométricas que registran cada micro progreso.</p>
+          </div>
+        </article>
+        <article class="lux-card p-8" id="suplementos" data-color="magenta">
+          <div class="micro-particles"></div>
+          <div class="content space-y-6">
+            <div class="flex items-center justify-between">
+              <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Suplementos premium</h3>
+              <span class="text-[0.65rem] uppercase tracking-[0.4em]">3D</span>
+            </div>
+            <div class="carousel" aria-label="Carrusel de suplementos">
+              <div class="carousel-track"></div>
+              <div class="carousel-nav"></div>
+            </div>
+          </div>
+        </article>
+        <article class="lux-card p-8" data-color="lime">
+          <div class="micro-particles"></div>
+          <div class="content space-y-4">
+            <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Área de cardio</h3>
+            <p class="text-neutral-600 text-sm">Cintas con simulación de rutas reales, control climático y música inmersiva en 360°.</p>
+          </div>
+        </article>
+        <article class="lux-card p-8" data-color="magenta">
+          <div class="micro-particles"></div>
+          <div class="content space-y-4">
+            <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Indoor Cycling</h3>
+            <p class="text-neutral-600 text-sm">Pelotón sincronizado con mapping de luz neon y métricas proyectadas en tiempo real.</p>
+          </div>
+        </article>
+        <article class="lux-card p-8" data-color="cyan">
+          <div class="micro-particles"></div>
+          <div class="content space-y-4">
+            <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Clases de Zumba</h3>
+            <p class="text-neutral-600 text-sm">Coreografías de alto impacto con beats tropicales y efectos lumínicos responsivos.</p>
+          </div>
+        </article>
+        <article class="lux-card p-8" data-color="lime">
+          <div class="micro-particles"></div>
+          <div class="content space-y-4">
+            <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Cafetería &amp; comedor saludable</h3>
+            <p class="text-neutral-600 text-sm">Menú adaptogénico, smoothies funcionales y chefs dedicados a tu recuperación.</p>
+          </div>
+        </article>
+        <article class="lux-card p-8 sm:col-span-2 xl:col-span-3" data-color="magenta">
+          <div class="micro-particles"></div>
+          <div class="content space-y-4">
+            <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Baños + regaderas con diseño spa</h3>
+            <p class="text-neutral-600 text-sm max-w-3xl">Sensores aromáticos, cromoterapia y toallas de microfibra calentadas con precisión para finalizar tu ritual de entrenamiento con un estallido de lujo.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="ubicacion" class="px-6 sm:px-12">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-10 mb-12">
+        <h2 class="section-title text-3xl sm:text-5xl uppercase tracking-[0.3em]">Ubicación que ruge</h2>
+        <p class="max-w-xl text-sm sm:text-base text-neutral-600">Carretera Zitácuaro-Huetamo Km 1 (Curva La Mangana). A un salto del lujo físico que redefine tu rutina.</p>
+      </div>
+      <div class="map-container">
+        <iframe title="Mapa Lion Fitness" width="100%" height="420" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.94452966147!2d-100.36054308462729!3d19.436119045813845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI2JzA5LjMiTiAxMDDCsDIxJzMxLjAiVw!5e0!3m2!1ses!2smx!4v1700000000000"></iframe>
+        <div class="map-marker">
+          <!-- // LOGO: lionlogo.png -->
+          <img src="./lionlogo.png" alt="Logo Lion Fitness" loading="lazy" />
+          <div class="map-popup">
+            <p class="font-semibold uppercase tracking-[0.35em] text-xs">Horarios</p>
+            <p class="text-[0.75rem] text-neutral-700">Lunes a Domingo · 06:00 a 22:00</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="px-6 sm:px-12 py-12 border-t border-neutral-200 bg-white/90 backdrop-blur">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8">
+      <div class="flex items-center gap-4">
+        <!-- // LOGO: lionlogo.png -->
+        <img src="./lionlogo.png" alt="Logo Lion Fitness" class="w-12 h-12 object-contain" loading="lazy" />
+        <div>
+          <p class="uppercase text-xs tracking-[0.35em]">Carretera Zitácuaro-Huetamo Km 1</p>
+          <p class="uppercase text-xs tracking-[0.35em]">Curva La Mangana · Zitácuaro, Mich.</p>
+        </div>
+      </div>
+      <div class="flex gap-6 text-sm uppercase tracking-[0.4em]">
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="focus-neon">IG</a>
+        <a href="https://facebook.com" target="_blank" rel="noopener" class="focus-neon">FB</a>
+        <a href="https://tiktok.com" target="_blank" rel="noopener" class="focus-neon">TT</a>
+      </div>
+    </div>
+    <p class="mt-10 text-[0.7rem] uppercase tracking-[0.5em] text-neutral-500">&copy; <span id="year"></span> Lion Fitness. Todos los rugidos reservados.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.6/bundled/lenis.min.js" defer></script>
+  <script defer>
+    window.addEventListener('DOMContentLoaded', () => {
+      const yearEl = document.getElementById('year');
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+
+      const halo = document.querySelector('.cursor-halo');
+      const cards = document.querySelectorAll('.lux-card');
+      const ctas = document.querySelectorAll('.neon-btn');
+      const body = document.body;
+
+      // // LUXURY EFFECT: Cursor halo follow
+      document.addEventListener('pointermove', (e) => {
+        halo.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+        document.documentElement.style.setProperty('--grad-x', `${e.clientX / window.innerWidth * 100}%`);
+        document.documentElement.style.setProperty('--grad-y', `${e.clientY / window.innerHeight * 100}%`);
+      });
+
+      cards.forEach((card) => {
+        card.addEventListener('mouseenter', () => halo.classList.add('is-card'));
+        card.addEventListener('mouseleave', () => halo.classList.remove('is-card'));
+      });
+
+      ctas.forEach((cta) => {
+        cta.addEventListener('mouseenter', () => halo.classList.add('is-cta'));
+        cta.addEventListener('mouseleave', () => halo.classList.remove('is-cta'));
+      });
+
+      // // LUXURY EFFECT: Lenis smooth scroll
+      const lenis = new Lenis({
+        duration: 1.2,
+        smoothWheel: true,
+        smoothTouch: false
+      });
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+
+      const scrollToLinks = document.querySelectorAll('a[href^="#"]');
+      scrollToLinks.forEach((link) => {
+        link.addEventListener('click', (e) => {
+          const targetId = link.getAttribute('href');
+          if (targetId.length > 1) {
+            e.preventDefault();
+            const targetEl = document.querySelector(targetId);
+            if (targetEl) {
+              lenis.scrollTo(targetEl, { offset: -80 });
+            }
+          }
+        });
+      });
+
+      // // LUXURY EFFECT: GSAP entrance animations
+      const gsapInit = () => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from('.hero-title', {
+          opacity: 0,
+          y: 40,
+          duration: 1.4,
+          ease: 'power3.out'
+        });
+
+        gsap.from('#hero p', {
+          opacity: 0,
+          y: 50,
+          duration: 1.4,
+          delay: 0.3,
+          ease: 'power3.out'
+        });
+
+        gsap.utils.toArray('.lux-card').forEach((card, index) => {
+          const color = card.dataset.color || 'cyan';
+          const glow = {
+            cyan: '0 0 35px rgba(0,255,255,0.6)',
+            magenta: '0 0 35px rgba(255,0,255,0.6)',
+            lime: '0 0 35px rgba(57,255,20,0.6)'
+          }[color];
+
+          // // LUXURY EFFECT: Card materialization
+          gsap.fromTo(card, {
+            opacity: 0,
+            y: 60,
+            filter: 'blur(10px)'
+          }, {
+            opacity: 1,
+            y: 0,
+            filter: 'blur(0px)',
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse'
+            },
+            onUpdate: (anim) => {
+              const progress = anim.progress();
+              card.style.boxShadow = progress > 0.4 ? `0 20px 60px ${glow}` : '';
+            }
+          });
+        });
+
+        // // LUXURY EFFECT: Hero video parallax
+        gsap.to('.hero-video video', {
+          scale: 1.08,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '#hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true
+          }
+        });
+      };
+
+      if (window.gsap) {
+        gsapInit();
+      } else {
+        window.addEventListener('load', gsapInit);
+      }
+
+      // // LUXURY EFFECT: 3D carousel setup
+      const carouselTrack = document.querySelector('.carousel-track');
+      const carouselNav = document.querySelector('.carousel-nav');
+      const products = [
+        { name: 'Protein XR', color: '#00FFFF' },
+        { name: 'Neon BCAA', color: '#FF00FF' },
+        { name: 'Recovery Glow', color: '#39FF14' },
+        { name: 'Focus Lion', color: '#00FFFF' }
+      ];
+
+      const total = products.length;
+      products.forEach((product, i) => {
+        const angle = (360 / total) * i;
+        const item = document.createElement('div');
+        item.className = 'carousel-item';
+        item.style.transform += ` rotateY(${angle}deg) translateZ(240px)`;
+        item.innerHTML = `<span class="text-sm uppercase tracking-[0.4em]" style="color:${product.color}">${product.name}</span>`;
+        carouselTrack.appendChild(item);
+
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot focus-neon';
+        dot.type = 'button';
+        dot.setAttribute('aria-label', product.name);
+        dot.addEventListener('click', () => rotateTo(i));
+        carouselNav.appendChild(dot);
+      });
+
+      const dots = Array.from(document.querySelectorAll('.carousel-dot'));
+      let currentIndex = 0;
+
+      const rotateTo = (index) => {
+        currentIndex = index;
+        const rotation = (360 / total) * index * -1;
+        carouselTrack.style.transform = `rotateY(${rotation}deg)`;
+        dots.forEach((dot, idx) => dot.classList.toggle('active', idx === index));
+      };
+
+      rotateTo(0);
+      setInterval(() => rotateTo((currentIndex + 1) % total), 5000);
+
+      // // LUXURY EFFECT: Dynamic background pulse on scroll
+      window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        const intensity = Math.min(1, scrollY / 600);
+        body.style.setProperty('--bg-opacity', intensity);
+      });
+    });
+  </script>
+</body>
+</html>
