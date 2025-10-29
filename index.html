@@ -7,7 +7,7 @@
   <meta name="description" content="Lion Fitness: el gimnasio que ruge con fuerza. Entrena en instalaciones premium con tecnología de punta, clases exclusivas y energía neon." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Clash+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&family=Clash+Display:wght@600;700&display=swap" rel="stylesheet" />
   <meta property="og:title" content="Lion Fitness" />
   <meta property="og:description" content="El gimnasio que ruge con fuerza en Zitácuaro." />
   <meta property="og:type" content="website" />
@@ -204,14 +204,260 @@
       opacity: 0.5;
     }
 
+    .page-backdrop {
+      filter: saturate(1.2);
+    }
+
     /* // LUXURY EFFECT: Hero video overlay */
-    .hero-video::after {
+    .page-backdrop.hero-video::after {
       content: "";
       position: absolute;
       inset: 0;
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.75) 35%, rgba(255, 255, 255, 0.6) 55%, rgba(255, 255, 255, 0.85) 100%);
       mix-blend-mode: screen;
       pointer-events: none;
+    }
+
+    .header-gradient {
+      position: absolute;
+      inset: -25% -30% 40% -30%;
+      background:
+        radial-gradient(circle at 20% 35%, rgba(0, 255, 255, 0.35), transparent 60%),
+        radial-gradient(circle at 80% 20%, rgba(255, 0, 255, 0.25), transparent 60%),
+        radial-gradient(circle at 55% 75%, rgba(57, 255, 20, 0.3), transparent 65%);
+      filter: blur(140px);
+      opacity: 0.8;
+      z-index: -1;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.8);
+      text-transform: uppercase;
+      letter-spacing: 0.55em;
+      font-size: 0.72rem;
+      box-shadow: 0 18px 40px rgba(0, 255, 255, 0.25);
+    }
+
+    .hero-eyebrow::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00ffff, #ff00ff);
+      box-shadow: 0 0 16px rgba(255, 0, 255, 0.6);
+    }
+
+    .stat-number {
+      font-family: 'Clash Display', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: 0.08em;
+      background: linear-gradient(120deg, #0f172a, #00ffff);
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .stat-label {
+      text-transform: uppercase;
+      letter-spacing: 0.45em;
+      font-size: 0.65rem;
+      color: rgba(15, 15, 19, 0.65);
+    }
+
+    .hero-showcase {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      box-shadow: 0 32px 70px rgba(15, 15, 19, 0.25);
+      background: radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.25), transparent 65%),
+        radial-gradient(circle at 80% 60%, rgba(255, 0, 255, 0.25), transparent 70%), rgba(10, 10, 14, 0.82);
+      isolation: isolate;
+    }
+
+    .hero-showcase video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.85;
+      mix-blend-mode: lighten;
+    }
+
+    .hero-showcase::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(140deg, rgba(10, 10, 14, 0.2), rgba(10, 10, 14, 0.75));
+      pointer-events: none;
+    }
+
+    .hero-showcase__badge {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(0, 255, 255, 0.4);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4em;
+      color: #ecfeff;
+      backdrop-filter: blur(12px);
+      box-shadow: inset 0 0 30px rgba(0, 255, 255, 0.2);
+    }
+
+    .hero-showcase__badge svg {
+      width: 18px;
+      height: 18px;
+      color: #39ff14;
+      filter: drop-shadow(0 0 12px rgba(57, 255, 20, 0.8));
+    }
+
+    .hero-showcase__meta {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 26px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: linear-gradient(0deg, rgba(10, 10, 14, 0.88) 0%, rgba(10, 10, 14, 0.55) 60%, transparent 100%);
+      color: #f8fafc;
+    }
+
+    .hero-showcase__meta span {
+      text-transform: uppercase;
+      letter-spacing: 0.4em;
+      font-size: 0.7rem;
+      color: rgba(224, 242, 254, 0.75);
+    }
+
+    .hero-showcase__meta p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      letter-spacing: 0.05em;
+    }
+
+    .tier-card {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+      padding-block: 34px;
+    }
+
+    .tier-card.is-featured {
+      background: linear-gradient(160deg, rgba(0, 255, 255, 0.28), rgba(255, 0, 255, 0.18));
+      border-color: rgba(255, 0, 255, 0.35);
+      box-shadow: 0 25px 70px rgba(0, 255, 255, 0.35);
+    }
+
+    .tier-card .price {
+      font-family: 'Clash Display', sans-serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      letter-spacing: 0.06em;
+      color: #0f0f13;
+    }
+
+    .tier-card ul {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .tier-card ul li {
+      position: relative;
+      padding-left: 22px;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      color: rgba(15, 15, 19, 0.75);
+      text-transform: uppercase;
+    }
+
+    .tier-card ul li::before {
+      content: "";
+      position: absolute;
+      top: 0.6em;
+      left: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(120deg, #00ffff, #ff00ff);
+      box-shadow: 0 0 12px rgba(0, 255, 255, 0.6);
+    }
+
+    .tier-chip {
+      align-self: flex-start;
+      padding: 8px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      background: rgba(255, 255, 255, 0.85);
+      text-transform: uppercase;
+      letter-spacing: 0.5em;
+      font-size: 0.65rem;
+    }
+
+    .tier-card.is-featured .tier-chip {
+      background: rgba(15, 15, 19, 0.92);
+      color: #ecfeff;
+      border-color: rgba(0, 255, 255, 0.4);
+    }
+
+    .testimonial-card {
+      position: relative;
+      border-radius: 20px;
+      padding: 28px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      box-shadow: 0 18px 45px rgba(15, 15, 19, 0.12);
+      overflow: hidden;
+    }
+
+    .testimonial-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 15% 20%, rgba(0, 255, 255, 0.25), transparent 55%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 0;
+    }
+
+    .testimonial-card:hover::before {
+      opacity: 1;
+    }
+
+    .testimonial-card p,
+    .testimonial-card span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-card p {
+      letter-spacing: 0.06em;
+      color: rgba(15, 15, 19, 0.75);
+    }
+
+    .testimonial-card span {
+      display: block;
+      margin-top: 18px;
+      font-size: 0.78rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: rgba(15, 15, 19, 0.6);
     }
 
     /* // LUXURY EFFECT: Neon focus ring */
@@ -349,8 +595,30 @@
     }
 
     .hero-title {
-      font-family: 'Clash Display', sans-serif;
+      font-family: 'Bebas Neue', sans-serif;
       letter-spacing: 0.08em;
+    }
+
+    .card-media {
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      height: 200px;
+    }
+
+    .card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .lux-card:hover .card-media img {
+      transform: scale(1.08);
+    }
+
+    .card-media--wide {
+      height: 260px;
     }
 
     .section-title {
@@ -362,6 +630,23 @@
     }
 
     @media (max-width: 768px) {
+      .hero-eyebrow {
+        letter-spacing: 0.4em;
+        font-size: 0.65rem;
+        padding: 10px 16px;
+      }
+
+      .hero-showcase__badge {
+        top: 16px;
+        left: 16px;
+        padding: 10px 16px;
+        letter-spacing: 0.35em;
+      }
+
+      .hero-showcase__meta {
+        padding: 22px 20px;
+      }
+
       .map-marker {
         top: 50%;
         left: 50%;
@@ -406,23 +691,25 @@
 </head>
 <body class="relative">
   <div class="cursor-halo" aria-hidden="true"></div>
-  <div class="hero-video absolute inset-0 -z-10 overflow-hidden noise-mask">
+  <div class="page-backdrop hero-video absolute inset-0 -z-10 overflow-hidden noise-mask">
     <video class="w-full h-full object-cover" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=80">
       <source src="https://cdn.coverr.co/videos/coverr-boxing-training-5588/1080p.mp4" type="video/mp4" />
       Tu navegador no soporta video.
     </video>
   </div>
 
-  <header class="min-h-screen flex flex-col justify-between">
-    <nav class="flex items-center justify-between px-6 sm:px-12 py-8">
+  <header class="relative min-h-screen flex flex-col justify-between pt-10">
+    <div class="header-gradient" aria-hidden="true"></div>
+    <nav class="relative mx-6 sm:mx-12 flex items-center justify-between gap-6 rounded-full border border-white/40 bg-white/70 px-6 sm:px-12 py-4 text-[0.65rem] uppercase tracking-[0.45em] backdrop-blur-xl shadow-[0_20px_60px_rgba(15,15,19,0.15)]">
       <!-- // LOGO: lionlogo.png -->
       <a href="#hero" class="focus-neon inline-flex items-center gap-3">
         <img src="./lionlogo.png" alt="Logo Lion Fitness" class="w-16 h-16 object-contain logo-glow" loading="lazy" />
         <span class="uppercase tracking-[0.35em] text-xs sm:text-sm">Lion Fitness</span>
       </a>
-      <div class="hidden sm:flex items-center gap-8 text-xs tracking-[0.4em] uppercase">
+      <div class="hidden sm:flex items-center gap-8">
         <a href="#experiencias" class="focus-neon">Experiencias</a>
         <a href="#suplementos" class="focus-neon">Suplementos</a>
+        <a href="#testimonios" class="focus-neon">Testimonios</a>
         <a href="#ubicacion" class="focus-neon">Ubicación</a>
       </div>
       <button class="neon-btn focus-neon rounded-full px-5 py-2 text-xs uppercase tracking-[0.5em]" type="button">
@@ -430,16 +717,54 @@
       </button>
     </nav>
 
-    <section id="hero" class="flex flex-col items-center justify-center text-center px-6 sm:px-12 pb-24 pt-12">
-      <!-- // LOGO: lionlogo.png -->
-      <img src="./lionlogo.png" alt="Logo Lion Fitness" class="w-40 sm:w-52 mb-10 logo-glow" loading="lazy" />
-      <h1 class="hero-title text-4xl sm:text-6xl lg:text-7xl font-semibold mb-6 uppercase tracking-[0.2em]">El gimnasio que ruge con fuerza</h1>
-      <p class="max-w-2xl text-sm sm:text-base text-neutral-700 tracking-[0.15em] uppercase">Tecnología, lujo y energía neon para transformar tu entrenamiento diario en una experiencia sensorial inolvidable.</p>
-      <div class="mt-12 flex flex-col sm:flex-row items-center gap-6">
-        <a href="#experiencias" class="neon-btn focus-neon rounded-full px-10 py-4 uppercase tracking-[0.65em] text-xs sm:text-sm">
-          <span>Entrenar ahora</span>
-        </a>
-        <a href="#suplementos" class="text-xs sm:text-sm uppercase tracking-[0.4em] underline-offset-8 hover:underline">Descubre más</a>
+    <section id="hero" class="relative px-6 sm:px-12 pb-28 pt-16">
+      <div class="absolute inset-x-10 -top-20 h-80 -z-10 rounded-[120px] bg-gradient-to-r from-cyan-200/30 via-white to-fuchsia-200/30 blur-3xl pointer-events-none" aria-hidden="true"></div>
+      <div class="relative grid gap-12 lg:grid-cols-[1.05fr,0.95fr] items-center">
+        <div class="text-center lg:text-left space-y-8">
+          <span class="hero-eyebrow">Luxury neon fitness club</span>
+          <h1 class="hero-title text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-[0.08em] leading-tight">
+            En Lion fitness, no solo sudas...<br class="hidden sm:block" /> ¡evolucionas!
+          </h1>
+          <p class="mx-auto lg:mx-0 max-w-2xl text-sm sm:text-base text-neutral-700 tracking-[0.15em] uppercase">
+            Tu disciplina despierta tu mejor versión: cada sesión es un salto más alto hacia la grandeza que llevas dentro.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-6 pt-4">
+            <a href="#experiencias" class="neon-btn focus-neon rounded-full px-10 py-4 uppercase tracking-[0.65em] text-xs sm:text-sm">
+              <span>Entrenar ahora</span>
+            </a>
+            <a href="#testimonios" class="text-xs sm:text-sm uppercase tracking-[0.4em] underline-offset-8 hover:underline">Ver experiencias reales</a>
+          </div>
+          <dl class="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8 pt-8">
+            <div class="flex flex-col gap-2 text-left">
+              <dt class="stat-label order-2">Clases semanales</dt>
+              <dd class="stat-number order-1">45+</dd>
+            </div>
+            <div class="flex flex-col gap-2 text-left">
+              <dt class="stat-label order-2">Experiencias inmersivas</dt>
+              <dd class="stat-number order-1">360°</dd>
+            </div>
+            <div class="flex flex-col gap-2 text-left col-span-2 sm:col-span-1">
+              <dt class="stat-label order-2">Acceso digital</dt>
+              <dd class="stat-number order-1">24/7</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="hero-showcase h-full min-h-[360px]">
+          <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1200&q=80">
+            <source src="https://cdn.coverr.co/videos/coverr-hardcore-workout-6078/1080p.mp4" type="video/mp4" />
+            Tu navegador no soporta video.
+          </video>
+          <div class="hero-showcase__badge">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 3L14.4721 8.02786L20 9.0549L16 13.1056L16.9443 18.9451L12 16.2L7.05573 18.9451L8 13.1056L4 9.0549L9.52786 8.02786L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Club premium
+          </div>
+          <div class="hero-showcase__meta">
+            <span>Studio Lion XR</span>
+            <p>Salas con espejos interactivos, sensores de movimiento y playlists sincrónicas que pulsan al ritmo de tu corazón.</p>
+          </div>
+        </div>
       </div>
     </section>
   </header>
@@ -454,6 +779,9 @@
         <article class="lux-card p-8" data-color="cyan">
           <div class="micro-particles"></div>
           <div class="content space-y-4">
+            <figure class="card-media">
+              <img src="https://images.unsplash.com/photo-1558611848-73f7eb4001a1?auto=format&fit=crop&w=900&q=80" alt="Atleta utilizando maquinaria de fuerza en gimnasio futurista" loading="lazy" />
+            </figure>
             <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Máquinas de última generación</h3>
             <p class="text-neutral-600 text-sm">Circuitos inteligentes, resistencia adaptativa y pantallas biométricas que registran cada micro progreso.</p>
           </div>
@@ -461,6 +789,9 @@
         <article class="lux-card p-8" id="suplementos" data-color="magenta">
           <div class="micro-particles"></div>
           <div class="content space-y-6">
+            <figure class="card-media">
+              <img src="https://images.unsplash.com/photo-1583864697784-a0efc8379f70?auto=format&fit=crop&w=900&q=80" alt="Suplementos deportivos premium en barra iluminada" loading="lazy" />
+            </figure>
             <div class="flex items-center justify-between">
               <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Suplementos premium</h3>
               <span class="text-[0.65rem] uppercase tracking-[0.4em]">3D</span>
@@ -474,6 +805,9 @@
         <article class="lux-card p-8" data-color="lime">
           <div class="micro-particles"></div>
           <div class="content space-y-4">
+            <figure class="card-media">
+              <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=900&q=80" alt="Zona de cardio con caminadoras tecnológicas" loading="lazy" />
+            </figure>
             <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Área de cardio</h3>
             <p class="text-neutral-600 text-sm">Cintas con simulación de rutas reales, control climático y música inmersiva en 360°.</p>
           </div>
@@ -481,6 +815,9 @@
         <article class="lux-card p-8" data-color="magenta">
           <div class="micro-particles"></div>
           <div class="content space-y-4">
+            <figure class="card-media">
+              <img src="https://images.unsplash.com/photo-1517832207067-4db24a2ae47c?auto=format&fit=crop&w=900&q=80" alt="Clase de indoor cycling con luces neon" loading="lazy" />
+            </figure>
             <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Indoor Cycling</h3>
             <p class="text-neutral-600 text-sm">Pelotón sincronizado con mapping de luz neon y métricas proyectadas en tiempo real.</p>
           </div>
@@ -488,6 +825,9 @@
         <article class="lux-card p-8" data-color="cyan">
           <div class="micro-particles"></div>
           <div class="content space-y-4">
+            <figure class="card-media">
+              <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=900&q=80" alt="Grupo bailando en clase de zumba con iluminación colorida" loading="lazy" />
+            </figure>
             <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Clases de Zumba</h3>
             <p class="text-neutral-600 text-sm">Coreografías de alto impacto con beats tropicales y efectos lumínicos responsivos.</p>
           </div>
@@ -495,6 +835,9 @@
         <article class="lux-card p-8" data-color="lime">
           <div class="micro-particles"></div>
           <div class="content space-y-4">
+            <figure class="card-media">
+              <img src="https://images.unsplash.com/photo-1528712306091-ed0763094c98?auto=format&fit=crop&w=900&q=80" alt="Cafetería saludable con bebidas energéticas" loading="lazy" />
+            </figure>
             <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Cafetería &amp; comedor saludable</h3>
             <p class="text-neutral-600 text-sm">Menú adaptogénico, smoothies funcionales y chefs dedicados a tu recuperación.</p>
           </div>
@@ -502,9 +845,33 @@
         <article class="lux-card p-8 sm:col-span-2 xl:col-span-3" data-color="magenta">
           <div class="micro-particles"></div>
           <div class="content space-y-4">
+            <figure class="card-media card-media--wide">
+              <img src="https://images.unsplash.com/photo-1612965607446-26ef211a432f?auto=format&fit=crop&w=1200&q=80" alt="Vestidores de lujo con iluminación cálida" loading="lazy" />
+            </figure>
             <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Baños + regaderas con diseño spa</h3>
             <p class="text-neutral-600 text-sm max-w-3xl">Sensores aromáticos, cromoterapia y toallas de microfibra calentadas con precisión para finalizar tu ritual de entrenamiento con un estallido de lujo.</p>
           </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="testimonios" class="px-6 sm:px-12">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-10 mb-12">
+        <h2 class="section-title text-3xl sm:text-5xl uppercase tracking-[0.3em]">Voces de la manada</h2>
+        <p class="max-w-xl text-sm sm:text-base text-neutral-600">Historias reales que muestran cómo el rugido interior se enciende con nuestras experiencias inmersivas.</p>
+      </div>
+      <div class="grid gap-8 lg:grid-cols-3">
+        <article class="testimonial-card">
+          <p>“El estudio de cycling tiene un mapping de luces que te transporta. Mis métricas se dispararon y nunca había sentido tanta energía.”</p>
+          <span>Ana · Membresía Signature</span>
+        </article>
+        <article class="testimonial-card">
+          <p>“Lion Fitness combina lujo con resultados. El coaching personalizado y el spa de recuperación me tienen listo para cualquier reto.”</p>
+          <span>Diego · Elite Team</span>
+        </article>
+        <article class="testimonial-card">
+          <p>“Me encanta el control biométrico. Desde la app puedo abrir el gimnasio y seguir mis progresos en tiempo real.”</p>
+          <span>Valeria · Starter</span>
         </article>
       </div>
     </section>
