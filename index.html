@@ -7,7 +7,7 @@
   <meta name="description" content="Lion Fitness: el gimnasio que ruge con fuerza. Entrena en instalaciones premium con tecnología de punta, clases exclusivas y energía neon." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Clash+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&family=Clash+Display:wght@600;700&display=swap" rel="stylesheet" />
   <meta property="og:title" content="Lion Fitness" />
   <meta property="og:description" content="El gimnasio que ruge con fuerza en Zitácuaro." />
   <meta property="og:type" content="website" />
@@ -595,8 +595,30 @@
     }
 
     .hero-title {
-      font-family: 'Clash Display', sans-serif;
+      font-family: 'Bebas Neue', sans-serif;
       letter-spacing: 0.08em;
+    }
+
+    .card-media {
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      height: 200px;
+    }
+
+    .card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .lux-card:hover .card-media img {
+      transform: scale(1.08);
+    }
+
+    .card-media--wide {
+      height: 260px;
     }
 
     .section-title {
@@ -685,7 +707,6 @@
         <span class="uppercase tracking-[0.35em] text-xs sm:text-sm">Lion Fitness</span>
       </a>
       <div class="hidden sm:flex items-center gap-8">
-        <a href="#membresias" class="focus-neon">Membresías</a>
         <a href="#experiencias" class="focus-neon">Experiencias</a>
         <a href="#suplementos" class="focus-neon">Suplementos</a>
         <a href="#testimonios" class="focus-neon">Testimonios</a>
@@ -701,17 +722,17 @@
       <div class="relative grid gap-12 lg:grid-cols-[1.05fr,0.95fr] items-center">
         <div class="text-center lg:text-left space-y-8">
           <span class="hero-eyebrow">Luxury neon fitness club</span>
-          <h1 class="hero-title text-4xl sm:text-6xl lg:text-7xl font-semibold uppercase tracking-[0.18em] leading-tight">
-            Donde la fuerza<br class="hidden sm:block" /> se fusiona con el lujo
+          <h1 class="hero-title text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-[0.08em] leading-tight">
+            En Lion fitness, no solo sudas...<br class="hidden sm:block" /> ¡evolucionas!
           </h1>
           <p class="mx-auto lg:mx-0 max-w-2xl text-sm sm:text-base text-neutral-700 tracking-[0.15em] uppercase">
-            Entrena en cápsulas sensoriales con coaches élite, domos de luz y tecnología biométrica que acompaña cada rep de tu evolución.
+            Tu disciplina despierta tu mejor versión: cada sesión es un salto más alto hacia la grandeza que llevas dentro.
           </p>
           <div class="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-6 pt-4">
             <a href="#experiencias" class="neon-btn focus-neon rounded-full px-10 py-4 uppercase tracking-[0.65em] text-xs sm:text-sm">
               <span>Entrenar ahora</span>
             </a>
-            <a href="#membresias" class="text-xs sm:text-sm uppercase tracking-[0.4em] underline-offset-8 hover:underline">Ver membresías</a>
+            <a href="#testimonios" class="text-xs sm:text-sm uppercase tracking-[0.4em] underline-offset-8 hover:underline">Ver experiencias reales</a>
           </div>
           <dl class="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8 pt-8">
             <div class="flex flex-col gap-2 text-left">
@@ -813,6 +834,9 @@
         <article class="lux-card p-8" data-color="cyan">
           <div class="micro-particles"></div>
           <div class="content space-y-4">
+            <figure class="card-media">
+              <img src="https://images.unsplash.com/photo-1558611848-73f7eb4001a1?auto=format&fit=crop&w=900&q=80" alt="Atleta utilizando maquinaria de fuerza en gimnasio futurista" loading="lazy" />
+            </figure>
             <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Máquinas de última generación</h3>
             <p class="text-neutral-600 text-sm">Circuitos inteligentes, resistencia adaptativa y pantallas biométricas que registran cada micro progreso.</p>
           </div>
@@ -820,6 +844,9 @@
         <article class="lux-card p-8" id="suplementos" data-color="magenta">
           <div class="micro-particles"></div>
           <div class="content space-y-6">
+            <figure class="card-media">
+              <img src="https://images.unsplash.com/photo-1583864697784-a0efc8379f70?auto=format&fit=crop&w=900&q=80" alt="Suplementos deportivos premium en barra iluminada" loading="lazy" />
+            </figure>
             <div class="flex items-center justify-between">
               <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Suplementos premium</h3>
               <span class="text-[0.65rem] uppercase tracking-[0.4em]">3D</span>
@@ -833,6 +860,9 @@
         <article class="lux-card p-8" data-color="lime">
           <div class="micro-particles"></div>
           <div class="content space-y-4">
+            <figure class="card-media">
+              <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=900&q=80" alt="Zona de cardio con caminadoras tecnológicas" loading="lazy" />
+            </figure>
             <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Área de cardio</h3>
             <p class="text-neutral-600 text-sm">Cintas con simulación de rutas reales, control climático y música inmersiva en 360°.</p>
           </div>
@@ -840,6 +870,9 @@
         <article class="lux-card p-8" data-color="magenta">
           <div class="micro-particles"></div>
           <div class="content space-y-4">
+            <figure class="card-media">
+              <img src="https://images.unsplash.com/photo-1517832207067-4db24a2ae47c?auto=format&fit=crop&w=900&q=80" alt="Clase de indoor cycling con luces neon" loading="lazy" />
+            </figure>
             <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Indoor Cycling</h3>
             <p class="text-neutral-600 text-sm">Pelotón sincronizado con mapping de luz neon y métricas proyectadas en tiempo real.</p>
           </div>
@@ -847,6 +880,9 @@
         <article class="lux-card p-8" data-color="cyan">
           <div class="micro-particles"></div>
           <div class="content space-y-4">
+            <figure class="card-media">
+              <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=900&q=80" alt="Grupo bailando en clase de zumba con iluminación colorida" loading="lazy" />
+            </figure>
             <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Clases de Zumba</h3>
             <p class="text-neutral-600 text-sm">Coreografías de alto impacto con beats tropicales y efectos lumínicos responsivos.</p>
           </div>
@@ -854,6 +890,9 @@
         <article class="lux-card p-8" data-color="lime">
           <div class="micro-particles"></div>
           <div class="content space-y-4">
+            <figure class="card-media">
+              <img src="https://images.unsplash.com/photo-1528712306091-ed0763094c98?auto=format&fit=crop&w=900&q=80" alt="Cafetería saludable con bebidas energéticas" loading="lazy" />
+            </figure>
             <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Cafetería &amp; comedor saludable</h3>
             <p class="text-neutral-600 text-sm">Menú adaptogénico, smoothies funcionales y chefs dedicados a tu recuperación.</p>
           </div>
@@ -861,6 +900,9 @@
         <article class="lux-card p-8 sm:col-span-2 xl:col-span-3" data-color="magenta">
           <div class="micro-particles"></div>
           <div class="content space-y-4">
+            <figure class="card-media card-media--wide">
+              <img src="https://images.unsplash.com/photo-1612965607446-26ef211a432f?auto=format&fit=crop&w=1200&q=80" alt="Vestidores de lujo con iluminación cálida" loading="lazy" />
+            </figure>
             <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Baños + regaderas con diseño spa</h3>
             <p class="text-neutral-600 text-sm max-w-3xl">Sensores aromáticos, cromoterapia y toallas de microfibra calentadas con precisión para finalizar tu ritual de entrenamiento con un estallido de lujo.</p>
           </div>
