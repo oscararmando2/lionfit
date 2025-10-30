@@ -364,12 +364,36 @@
       mix-blend-mode: lighten;
     }
 
+    .hero-video,
+    .hero-showcase {
+      --video-fallback-image: none;
+    }
+
+    .hero-video.is-video-fallback video,
+    .hero-showcase.is-video-fallback video {
+      display: none;
+    }
+
+    .hero-video.is-video-fallback::before,
+    .hero-showcase.is-video-fallback::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: #08080c;
+      background-image: var(--video-fallback-image);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 0;
+    }
+
     .hero-showcase::after {
       content: "";
       position: absolute;
       inset: 0;
       background: linear-gradient(140deg, rgba(10, 10, 14, 0.2), rgba(10, 10, 14, 0.75));
       pointer-events: none;
+      z-index: 1;
     }
 
     .hero-showcase__badge {
@@ -389,6 +413,7 @@
       color: #ecfeff;
       backdrop-filter: blur(12px);
       box-shadow: inset 0 0 30px rgba(0, 255, 255, 0.2);
+      z-index: 2;
     }
 
     .hero-showcase__badge svg {
@@ -409,6 +434,7 @@
       gap: 10px;
       background: linear-gradient(0deg, rgba(10, 10, 14, 0.88) 0%, rgba(10, 10, 14, 0.55) 60%, transparent 100%);
       color: #f8fafc;
+      z-index: 2;
     }
 
     .hero-showcase__meta span {
@@ -696,9 +722,9 @@
 </head>
 <body class="relative">
   <div class="cursor-halo" aria-hidden="true"></div>
-  <div class="page-backdrop hero-video absolute inset-0 -z-10 overflow-hidden noise-mask">
-    <video class="w-full h-full object-cover" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=80">
-      <source src="https://cdn.coverr.co/videos/coverr-boxing-training-5588/1080p.mp4" type="video/mp4" />
+  <div class="page-backdrop hero-video absolute inset-0 -z-10 overflow-hidden noise-mask" data-video-fallback="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=80">
+    <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=80">
+      <source src="https://cdn.pixabay.com/video/2021/08/21/84755-599598860_large.mp4" type="video/mp4" />
       Tu navegador no soporta video.
     </video>
   </div>
@@ -754,9 +780,9 @@
             </div>
           </dl>
         </div>
-        <div class="hero-showcase">
-          <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1200&q=80">
-            <source src="https://cdn.coverr.co/videos/coverr-hardcore-workout-6078/1080p.mp4" type="video/mp4" />
+        <div class="hero-showcase" data-video-fallback="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1200&q=80">
+          <video autoplay loop muted playsinline preload="metadata" poster="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1200&q=80">
+            <source src="https://cdn.pixabay.com/video/2021/02/13/65217-520297815_large.mp4" type="video/mp4" />
             Tu navegador no soporta video.
           </video>
           <div class="hero-showcase__badge">
@@ -910,6 +936,27 @@
       </div>
     </section>
 
+    <section id="testimonios" class="px-6 sm:px-12">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-10 mb-12">
+        <h2 class="section-title text-3xl sm:text-5xl uppercase tracking-[0.3em]">Voces de la manada</h2>
+        <p class="max-w-xl text-sm sm:text-base text-neutral-600">Historias reales que muestran cómo el rugido interior se enciende con nuestras experiencias inmersivas.</p>
+      </div>
+      <div class="grid gap-8 lg:grid-cols-3">
+        <article class="testimonial-card">
+          <p>“El estudio de cycling tiene un mapping de luces que te transporta. Mis métricas se dispararon y nunca había sentido tanta energía.”</p>
+          <span>Ana · Membresía Signature</span>
+        </article>
+        <article class="testimonial-card">
+          <p>“Lion Fitness combina lujo con resultados. El coaching personalizado y el spa de recuperación me tienen listo para cualquier reto.”</p>
+          <span>Diego · Elite Team</span>
+        </article>
+        <article class="testimonial-card">
+          <p>“Me encanta el control biométrico. Desde la app puedo abrir el gimnasio y seguir mis progresos en tiempo real.”</p>
+          <span>Valeria · Starter</span>
+        </article>
+      </div>
+    </section>
+
     <section id="ubicacion" class="px-6 sm:px-12">
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-10 mb-12">
         <h2 class="section-title text-3xl sm:text-5xl uppercase tracking-[0.3em]">Ubicación que ruge</h2>
@@ -963,21 +1010,60 @@
       const ctas = document.querySelectorAll('.neon-btn');
       const body = document.body;
 
-      const syncCardHeights = () => {
-        const targetCard = document.getElementById('suplementos');
-        if (!targetCard) return;
+      const videoWrappers = document.querySelectorAll('[data-video-fallback]');
+      videoWrappers.forEach((wrapper) => {
+        const video = wrapper.querySelector('video');
+        if (!video) return;
 
-        const targetHeight = targetCard.offsetHeight;
-        cards.forEach((card) => {
-          card.style.minHeight = `${targetHeight}px`;
-        });
-      };
+        const fallbackImage = wrapper.dataset.videoFallback;
+        const setFallbackImage = () => {
+          if (fallbackImage) {
+            wrapper.style.setProperty('--video-fallback-image', `url('${fallbackImage}')`);
+          }
+        };
 
-      const resetCardHeights = () => {
-        cards.forEach((card) => {
-          card.style.minHeight = '';
+        const activateFallback = () => {
+          if (wrapper.classList.contains('is-video-fallback')) return;
+          wrapper.classList.add('is-video-fallback');
+          setFallbackImage();
+          try {
+            if (typeof video.pause === 'function') {
+              video.pause();
+            }
+          } catch (error) {
+            // noop
+          }
+          if (window.gsap && typeof window.gsap.killTweensOf === 'function') {
+            window.gsap.killTweensOf(video);
+          }
+          video.removeAttribute('src');
+          while (video.firstChild) {
+            video.removeChild(video.firstChild);
+          }
+          if (typeof video.load === 'function') {
+            video.load();
+          }
+        };
+
+        const fallbackTimer = window.setTimeout(() => {
+          if (video.readyState < 2) {
+            activateFallback();
+          }
+        }, 6000);
+
+        video.addEventListener('canplay', () => {
+          window.clearTimeout(fallbackTimer);
+        }, { once: true });
+
+        ['error', 'stalled', 'abort', 'emptied'].forEach((eventName) => {
+          video.addEventListener(eventName, () => {
+            window.clearTimeout(fallbackTimer);
+            activateFallback();
+          }, { once: true });
         });
-      };
+
+        setFallbackImage();
+      });
 
       // // LUXURY EFFECT: Cursor halo follow
       document.addEventListener('pointermove', (e) => {
@@ -1086,16 +1172,21 @@
         });
 
         // // LUXURY EFFECT: Hero video parallax
-        gsap.to('.hero-video video', {
-          scale: 1.08,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '#hero',
-            start: 'top top',
-            end: 'bottom top',
-            scrub: true
-          }
-        });
+        const heroVideoEl = document.querySelector('.hero-video video');
+        const heroVideoWrapper = heroVideoEl ? heroVideoEl.closest('.hero-video') : null;
+
+        if (heroVideoEl && heroVideoWrapper && !heroVideoWrapper.classList.contains('is-video-fallback')) {
+          gsap.to(heroVideoEl, {
+            scale: 1.08,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '#hero',
+              start: 'top top',
+              end: 'bottom top',
+              scrub: true
+            }
+          });
+        }
       };
 
       if (window.gsap) {
