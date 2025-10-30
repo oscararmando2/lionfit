@@ -702,7 +702,7 @@
     </video>
   </div>
 
-  <header class="relative min-h-[90vh] flex flex-col justify-between pt-10 pb-10">
+  <header class="relative min-h-[95vh] flex flex-col justify-between pt-12 pb-20">
     <div class="header-gradient" aria-hidden="true"></div>
     <nav class="relative mx-6 sm:mx-12 flex items-center justify-between gap-6 rounded-full border border-white/40 bg-white/70 px-6 sm:px-12 py-4 text-[0.65rem] uppercase tracking-[0.45em] backdrop-blur-xl shadow-[0_20px_60px_rgba(15,15,19,0.15)]">
       <!-- // LOGO: lionlogo.png -->
@@ -721,13 +721,13 @@
       </button>
     </nav>
 
-    <section id="hero" class="relative px-6 sm:px-12 pb-12 sm:pb-16 pt-14 sm:pt-16">
+    <section id="hero" class="relative px-6 sm:px-12 pb-16 sm:pb-20 pt-16 sm:pt-20">
       <div class="absolute inset-x-10 -top-20 h-80 -z-10 rounded-[120px] bg-gradient-to-r from-cyan-200/30 via-white to-fuchsia-200/30 blur-3xl pointer-events-none" aria-hidden="true"></div>
       <div class="relative grid gap-12 lg:grid-cols-[1.05fr,0.95fr] items-center">
         <div class="text-center lg:text-left space-y-8">
           <span class="hero-eyebrow">Luxury neon fitness club</span>
           <h1 class="hero-title text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-[0.08em] leading-tight">
-            En Lion fitness, <br class="hidden sm:block" /> no solo sudas...<br class="hidden sm:block" /> ¡evolucionas!
+            En Lion fitness, no solo sudas...<br class="hidden sm:block" /> ¡evolucionas!
           </h1>
           <p class="mx-auto lg:mx-0 max-w-2xl text-sm sm:text-base text-neutral-700 tracking-[0.15em] uppercase">
             Tu disciplina despierta tu mejor versión: cada sesión es un salto más alto hacia la grandeza que llevas dentro.
@@ -773,8 +773,8 @@
     </section>
   </header>
 
-  <main class="space-y-16 sm:space-y-24 pb-24">
-    <article class="experience-card max-w-5xl mx-auto -mt-10 sm:-mt-6" data-color="magenta">
+  <main class="space-y-24 sm:space-y-32 pb-28">
+    <article class="experience-card max-w-5xl mx-auto -mt-14 sm:-mt-12" data-color="magenta">
       <img src="https://images.unsplash.com/photo-1546483875-ad9014c88eba?auto=format&fit=crop&w=1400&q=80" alt="Zona lounge futurista con iluminación tenue y sillones de descanso" loading="lazy" />
       <div class="hero-showcase__badge">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -782,6 +782,12 @@
         </svg>
         Recovery ritual
       </div>
+      <div class="hero-showcase__meta">
+        <span>Lounge de recuperación</span>
+        <p>Capsulas de crioterapia suave, oxigenoterapia y aromas botánicos que recalibran tu energía tras cada entrenamiento.</p>
+      </div>
+    </article>
+
     <section id="experiencias" class="px-6 sm:px-12">
       <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-10">
         <h2 class="section-title text-3xl sm:text-5xl uppercase tracking-[0.3em]">Experiencias flotantes</h2>
@@ -801,7 +807,7 @@
             <p>Circuitos inteligentes, resistencia calibrada y pantallas biométricas que registran cada micro progreso de tu sesión.</p>
           </div>
         </article>
-        <article class="experience-card" data-color="magenta">
+        <article class="experience-card" id="suplementos" data-color="magenta">
           <img src="https://images.unsplash.com/photo-1583864697784-a0efc8379f70?auto=format&fit=crop&w=1200&q=80" alt="Suplementos deportivos premium en barra iluminada" loading="lazy" />
           <div class="hero-showcase__badge">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
