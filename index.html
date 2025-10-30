@@ -979,6 +979,27 @@
         <h2 class="section-title text-3xl sm:text-5xl uppercase tracking-[0.3em]">Voces de la manada</h2>
         <p class="max-w-xl text-sm sm:text-base text-neutral-600">Historias reales que muestran cómo el rugido interior se enciende con nuestras experiencias inmersivas.</p>
       </div>
+      <div class="testimonial-track" role="list">
+        <article class="testimonial-card" role="listitem">
+          <p>“El estudio de cycling tiene un mapping de luces que te transporta. Mis métricas se dispararon y nunca había sentido tanta energía.”</p>
+          <span>Ana · Membresía Signature</span>
+        </article>
+        <article class="testimonial-card" role="listitem">
+          <p>“Lion Fitness combina lujo con resultados. El coaching personalizado y el spa de recuperación me tienen listo para cualquier reto.”</p>
+          <span>Diego · Elite Team</span>
+        </article>
+        <article class="testimonial-card" role="listitem">
+          <p>“Me encanta el control biométrico. Desde la app puedo abrir el gimnasio y seguir mis progresos en tiempo real.”</p>
+          <span>Valeria · Starter</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="testimonios" class="px-6 sm:px-12">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-10 mb-12">
+        <h2 class="section-title text-3xl sm:text-5xl uppercase tracking-[0.3em]">Voces de la manada</h2>
+        <p class="max-w-xl text-sm sm:text-base text-neutral-600">Historias reales que muestran cómo el rugido interior se enciende con nuestras experiencias inmersivas.</p>
+      </div>
       <div class="grid gap-8 lg:grid-cols-3">
         <article class="testimonial-card">
           <p>“El estudio de cycling tiene un mapping de luces que te transporta. Mis métricas se dispararon y nunca había sentido tanta energía.”</p>
@@ -1075,59 +1096,14 @@
       const cards = document.querySelectorAll('.experience-card');
       const ctas = document.querySelectorAll('.neon-btn');
 
-      const videoWrappers = document.querySelectorAll('[data-video-fallback]');
-      videoWrappers.forEach((wrapper) => {
-        const video = wrapper.querySelector('video');
-        if (!video) return;
+      // Ensure only the horizontal testimonial rail stays on the page
+      document.querySelectorAll('section').forEach((section) => {
+        const heading = section.querySelector('.section-title');
+        if (!heading) return;
 
-        const fallbackImage = wrapper.dataset.videoFallback;
-        const setFallbackImage = () => {
-          if (fallbackImage) {
-            wrapper.style.setProperty('--video-fallback-image', `url('${fallbackImage}')`);
-          }
-        };
-
-        const activateFallback = () => {
-          if (wrapper.classList.contains('is-video-fallback')) return;
-          wrapper.classList.add('is-video-fallback');
-          setFallbackImage();
-          try {
-            if (typeof video.pause === 'function') {
-              video.pause();
-            }
-          } catch (error) {
-            // noop
-          }
-          if (window.gsap && typeof window.gsap.killTweensOf === 'function') {
-            window.gsap.killTweensOf(video);
-          }
-          video.removeAttribute('src');
-          while (video.firstChild) {
-            video.removeChild(video.firstChild);
-          }
-          if (typeof video.load === 'function') {
-            video.load();
-          }
-        };
-
-        const fallbackTimer = window.setTimeout(() => {
-          if (video.readyState < 2) {
-            activateFallback();
-          }
-        }, 6000);
-
-        video.addEventListener('canplay', () => {
-          window.clearTimeout(fallbackTimer);
-        }, { once: true });
-
-        ['error', 'stalled', 'abort', 'emptied'].forEach((eventName) => {
-          video.addEventListener(eventName, () => {
-            window.clearTimeout(fallbackTimer);
-            activateFallback();
-          }, { once: true });
-        });
-
-        setFallbackImage();
+        if (heading.textContent.trim().toLowerCase() === 'voces de la manada' && section.id !== 'testimonios') {
+          section.remove();
+        }
       });
 
       // // LUXURY EFFECT: Cursor halo follow
