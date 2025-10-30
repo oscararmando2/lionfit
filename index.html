@@ -149,64 +149,135 @@
       z-index: 0;
     }
 
-    /* // LUXURY EFFECT: Glassmorphism cards */
-    .lux-card {
+    /* // LUXURY EFFECT: Immersive media cards */
+    .experience-card {
       position: relative;
-      background: rgba(255, 255, 255, 0.75);
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      border-radius: 24px;
-      backdrop-filter: blur(22px);
-      transition: transform 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
-      box-shadow: 0 12px 40px rgba(15, 15, 19, 0.08);
+      border-radius: 28px;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
+      min-height: 360px;
+      isolation: isolate;
+      background: #090910;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 16px 45px rgba(15, 15, 19, 0.16);
+      transition: transform 0.6s ease, box-shadow 0.6s ease, border-color 0.6s ease;
     }
 
-    .lux-card::before {
+    .experience-card::before,
+    .experience-card::after {
       content: "";
-      position: absolute;
-      inset: -2px;
-      border-radius: inherit;
-      border: 1px solid transparent;
-      background: linear-gradient(120deg, rgba(0, 255, 255, 0.7), rgba(255, 0, 255, 0.4), rgba(57, 255, 20, 0.6));
-      opacity: 0;
-      transition: opacity 0.5s ease;
-      filter: blur(0px);
-      z-index: 0;
-    }
-
-    .lux-card:hover::before {
-      opacity: 1;
-    }
-
-    .lux-card:hover {
-      transform: translateY(-12px) scale(1.01);
-      box-shadow: 0 20px 60px rgba(0, 255, 255, 0.18);
-      border-color: rgba(255, 0, 255, 0.35);
-    }
-
-    .lux-card .content {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-
-    .lux-card .micro-particles {
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background-image: radial-gradient(circle at 20% 30%, rgba(0, 255, 255, 0.45) 0, transparent 55%),
-        radial-gradient(circle at 80% 40%, rgba(255, 0, 255, 0.45) 0, transparent 60%),
-        radial-gradient(circle at 50% 85%, rgba(57, 255, 20, 0.45) 0, transparent 50%);
-      opacity: 0;
-      transition: opacity 0.4s ease;
+      z-index: 1;
+      transition: opacity 0.6s ease;
     }
 
-    .lux-card:hover .micro-particles {
-      opacity: 0.5;
+    .experience-card::before {
+      background: radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.25), transparent 65%);
+      opacity: 0.75;
+    }
+
+    .experience-card::after {
+      background: linear-gradient(180deg, rgba(8, 8, 12, 0.05) 0%, rgba(8, 8, 12, 0.75) 70%, rgba(8, 8, 12, 0.92) 100%);
+      opacity: 1;
+    }
+
+    .experience-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.05);
+      transition: transform 1s ease;
+    }
+
+    .experience-card:hover {
+      transform: translateY(-12px);
+    }
+
+    .experience-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .experience-card:hover::before {
+      opacity: 1;
+    }
+
+    .experience-card:hover::after {
+      opacity: 0.95;
+    }
+
+    .experience-card[data-color='cyan'] {
+      border-color: rgba(0, 255, 255, 0.3);
+      box-shadow: 0 16px 45px rgba(0, 255, 255, 0.18);
+    }
+
+    .experience-card[data-color='cyan']::before {
+      background: radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.28), transparent 68%);
+    }
+
+    .experience-card[data-color='cyan']:hover {
+      box-shadow: 0 26px 70px rgba(0, 255, 255, 0.35);
+    }
+
+    .experience-card[data-color='magenta'] {
+      border-color: rgba(255, 0, 255, 0.25);
+      box-shadow: 0 16px 45px rgba(255, 0, 255, 0.16);
+    }
+
+    .experience-card[data-color='magenta']::before {
+      background: radial-gradient(circle at 20% 20%, rgba(255, 0, 255, 0.24), transparent 68%);
+    }
+
+    .experience-card[data-color='magenta']:hover {
+      box-shadow: 0 26px 70px rgba(255, 0, 255, 0.32);
+    }
+
+    .experience-card[data-color='lime'] {
+      border-color: rgba(57, 255, 20, 0.28);
+      box-shadow: 0 16px 45px rgba(57, 255, 20, 0.18);
+    }
+
+    .experience-card[data-color='lime']::before {
+      background: radial-gradient(circle at 20% 20%, rgba(57, 255, 20, 0.24), transparent 68%);
+    }
+
+    .experience-card[data-color='lime']:hover {
+      box-shadow: 0 26px 70px rgba(57, 255, 20, 0.34);
+    }
+
+    .experience-card .hero-showcase__badge,
+    .experience-card .hero-showcase__meta {
+      z-index: 2;
+    }
+
+    .experience-card .hero-showcase__badge {
+      top: 22px;
+      left: 22px;
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .experience-card .hero-showcase__meta {
+      gap: 14px;
+      padding: 26px 28px 32px;
+    }
+
+    .experience-card .hero-showcase__meta span {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      letter-spacing: 0.18em;
+    }
+
+    .experience-card .hero-showcase__meta p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      letter-spacing: 0.05em;
+      color: rgba(226, 232, 240, 0.9);
+    }
+
+    .page-backdrop {
+      filter: saturate(1.2);
     }
 
     .page-backdrop {
@@ -493,66 +564,6 @@
       }
     }
 
-    /* // LUXURY EFFECT: 3D product carousel */
-    .carousel {
-      position: relative;
-      width: min(420px, 90vw);
-      height: 300px;
-      perspective: 1200px;
-      margin: 0 auto;
-    }
-
-    .carousel-track {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      transform-style: preserve-3d;
-      transition: transform 1s ease;
-    }
-
-    .carousel-item {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 220px;
-      height: 120px;
-      border-radius: 20px;
-      transform: translate(-50%, -50%);
-      display: grid;
-      place-items: center;
-      background: rgba(255, 255, 255, 0.85);
-      box-shadow: 0 14px 45px rgba(15, 15, 19, 0.12);
-      border: 1px solid rgba(0, 255, 255, 0.35);
-      overflow: hidden;
-    }
-
-    .carousel-item img {
-      width: 60%;
-      height: auto;
-    }
-
-    .carousel-nav {
-      position: absolute;
-      inset: auto 0 -55px 0;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .carousel-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: rgba(0, 0, 0, 0.15);
-      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .carousel-dot.active {
-      background: #00FFFF;
-      transform: scale(1.4);
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
-    }
-
     /* // LUXURY EFFECT: Map marker glow */
     .map-container {
       position: relative;
@@ -657,14 +668,6 @@
         left: 50%;
       }
 
-      .carousel {
-        height: 240px;
-      }
-
-      .carousel-item {
-        width: 180px;
-        height: 100px;
-      }
     }
   </style>
   <script type="application/ld+json">
@@ -781,80 +784,95 @@
         <p class="max-w-xl text-sm sm:text-base text-neutral-600">Descubre ambientes con equipamiento de última generación, aromas revitalizantes y coaches expertos que guían cada sesión con precisión quirúrgica.</p>
       </div>
       <div class="mt-12 sm:mt-16 grid gap-8 sm:grid-cols-2 xl:grid-cols-3" id="cards-grid">
-        <article class="lux-card p-8" data-color="cyan">
-          <div class="micro-particles"></div>
-          <div class="content space-y-4">
-            <figure class="card-media">
-              <img src="https://images.unsplash.com/photo-1558611848-73f7eb4001a1?auto=format&fit=crop&w=900&q=80" alt="Atleta utilizando maquinaria de fuerza en gimnasio futurista" loading="lazy" />
-            </figure>
-            <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Máquinas de última generación</h3>
-            <p class="text-neutral-600 text-sm">Circuitos inteligentes, resistencia adaptativa y pantallas biométricas que registran cada micro progreso.</p>
+        <article class="experience-card" data-color="cyan">
+          <img src="https://images.unsplash.com/photo-1558611848-73f7eb4001a1?auto=format&fit=crop&w=1200&q=80" alt="Atleta utilizando maquinaria de fuerza en gimnasio futurista" loading="lazy" />
+          <div class="hero-showcase__badge">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 3L14.4721 8.02786L20 9.0549L16 13.1056L16.9443 18.9451L12 16.2L7.05573 18.9451L8 13.1056L4 9.0549L9.52786 8.02786L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Fuerza adaptativa
+          </div>
+          <div class="hero-showcase__meta">
+            <span>Máquinas de última generación</span>
+            <p>Circuitos inteligentes, resistencia calibrada y pantallas biométricas que registran cada micro progreso de tu sesión.</p>
           </div>
         </article>
-        <article class="lux-card p-8" id="suplementos" data-color="magenta">
-          <div class="micro-particles"></div>
-          <div class="content space-y-4">
-            <figure class="card-media">
-              <img src="https://images.unsplash.com/photo-1583864697784-a0efc8379f70?auto=format&fit=crop&w=900&q=80" alt="Suplementos deportivos premium en barra iluminada" loading="lazy" />
-            </figure>
-            <div class="flex items-center justify-between">
-              <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Suplementos premium</h3>
-              <span class="text-[0.65rem] uppercase tracking-[0.4em]">3D</span>
-            </div>
-            <div class="carousel" aria-label="Carrusel de suplementos">
-              <div class="carousel-track"></div>
-              <div class="carousel-nav"></div>
-            </div>
+        <article class="experience-card" data-color="magenta">
+          <img src="https://images.unsplash.com/photo-1583864697784-a0efc8379f70?auto=format&fit=crop&w=1200&q=80" alt="Suplementos deportivos premium en barra iluminada" loading="lazy" />
+          <div class="hero-showcase__badge">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 3L14.4721 8.02786L20 9.0549L16 13.1056L16.9443 18.9451L12 16.2L7.05573 18.9451L8 13.1056L4 9.0549L9.52786 8.02786L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Barra luminosa
+          </div>
+          <div class="hero-showcase__meta">
+            <span>Suplementos premium</span>
+            <p>Cócteles nutracéuticos en 3D, shots funcionales y mixología inteligente que potencia cada entrenamiento.</p>
           </div>
         </article>
-        <article class="lux-card p-8" data-color="lime">
-          <div class="micro-particles"></div>
-          <div class="content space-y-4">
-            <figure class="card-media">
-              <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=900&q=80" alt="Zona de cardio con caminadoras tecnológicas" loading="lazy" />
-            </figure>
-            <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Área de cardio</h3>
-            <p class="text-neutral-600 text-sm">Cintas con simulación de rutas reales, control climático y música inmersiva en 360°.</p>
+        <article class="experience-card" data-color="lime">
+          <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=1200&q=80" alt="Zona de cardio con caminadoras tecnológicas" loading="lazy" />
+          <div class="hero-showcase__badge">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 3L14.4721 8.02786L20 9.0549L16 13.1056L16.9443 18.9451L12 16.2L7.05573 18.9451L8 13.1056L4 9.0549L9.52786 8.02786L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Cardio 360°
+          </div>
+          <div class="hero-showcase__meta">
+            <span>Área de cardio</span>
+            <p>Cintas con simulación de rutas reales, control climático y audio inmersivo que sincroniza tu zancada con la música.</p>
           </div>
         </article>
-        <article class="lux-card p-8" data-color="magenta">
-          <div class="micro-particles"></div>
-          <div class="content space-y-4">
-            <figure class="card-media">
-              <img src="https://images.unsplash.com/photo-1517832207067-4db24a2ae47c?auto=format&fit=crop&w=900&q=80" alt="Clase de indoor cycling con luces neon" loading="lazy" />
-            </figure>
-            <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Indoor Cycling</h3>
-            <p class="text-neutral-600 text-sm">Pelotón sincronizado con mapping de luz neon y métricas proyectadas en tiempo real.</p>
+        <article class="experience-card" data-color="magenta">
+          <img src="https://images.unsplash.com/photo-1517832207067-4db24a2ae47c?auto=format&fit=crop&w=1200&q=80" alt="Clase de indoor cycling con luces neon" loading="lazy" />
+          <div class="hero-showcase__badge">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 3L14.4721 8.02786L20 9.0549L16 13.1056L16.9443 18.9451L12 16.2L7.05573 18.9451L8 13.1056L4 9.0549L9.52786 8.02786L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Neon ride
+          </div>
+          <div class="hero-showcase__meta">
+            <span>Indoor Cycling</span>
+            <p>Pelotón sincronizado con mapping lumínico, métricas proyectadas en tiempo real y playlists que amplifican tu cadencia.</p>
           </div>
         </article>
-        <article class="lux-card p-8" data-color="cyan">
-          <div class="micro-particles"></div>
-          <div class="content space-y-4">
-            <figure class="card-media">
-              <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=900&q=80" alt="Grupo bailando en clase de zumba con iluminación colorida" loading="lazy" />
-            </figure>
-            <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Clases de Zumba</h3>
-            <p class="text-neutral-600 text-sm">Coreografías de alto impacto con beats tropicales y efectos lumínicos responsivos.</p>
+        <article class="experience-card" data-color="cyan">
+          <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=80" alt="Grupo bailando en clase de zumba con iluminación colorida" loading="lazy" />
+          <div class="hero-showcase__badge">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 3L14.4721 8.02786L20 9.0549L16 13.1056L16.9443 18.9451L12 16.2L7.05573 18.9451L8 13.1056L4 9.0549L9.52786 8.02786L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Ritmo tribal
+          </div>
+          <div class="hero-showcase__meta">
+            <span>Clases de Zumba</span>
+            <p>Coreografías de alto impacto, beats tropicales y efectos lumínicos responsivos que encienden tu energía.</p>
           </div>
         </article>
-        <article class="lux-card p-8" data-color="lime">
-          <div class="micro-particles"></div>
-          <div class="content space-y-4">
-            <figure class="card-media">
-              <img src="https://images.unsplash.com/photo-1528712306091-ed0763094c98?auto=format&fit=crop&w=900&q=80" alt="Cafetería saludable con bebidas energéticas" loading="lazy" />
-            </figure>
-            <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Cafetería &amp; comedor saludable</h3>
-            <p class="text-neutral-600 text-sm">Menú adaptogénico, smoothies funcionales y chefs dedicados a tu recuperación.</p>
+        <article class="experience-card" data-color="lime">
+          <img src="https://images.unsplash.com/photo-1528712306091-ed0763094c98?auto=format&fit=crop&w=1200&q=80" alt="Cafetería saludable con bebidas energéticas" loading="lazy" />
+          <div class="hero-showcase__badge">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 3L14.4721 8.02786L20 9.0549L16 13.1056L16.9443 18.9451L12 16.2L7.05573 18.9451L8 13.1056L4 9.0549L9.52786 8.02786L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Fuel bar
+          </div>
+          <div class="hero-showcase__meta">
+            <span>Cafetería saludable</span>
+            <p>Menú adaptogénico, smoothies funcionales y chefs dedicados a diseñar tu recuperación al más alto nivel.</p>
           </div>
         </article>
-        <article class="lux-card p-8 sm:col-span-2 xl:col-span-3" data-color="magenta">
-          <div class="micro-particles"></div>
-          <div class="content space-y-4">
-            <figure class="card-media card-media--wide">
-              <img src="https://images.unsplash.com/photo-1612965607446-26ef211a432f?auto=format&fit=crop&w=1200&q=80" alt="Vestidores de lujo con iluminación cálida" loading="lazy" />
-            </figure>
-            <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Baños + regaderas con diseño spa</h3>
-            <p class="text-neutral-600 text-sm max-w-3xl">Sensores aromáticos, cromoterapia y toallas de microfibra calentadas con precisión para finalizar tu ritual de entrenamiento con un estallido de lujo.</p>
+        <article class="experience-card sm:col-span-2 xl:col-span-3" data-color="magenta">
+          <img src="https://images.unsplash.com/photo-1612965607446-26ef211a432f?auto=format&fit=crop&w=1400&q=80" alt="Vestidores de lujo con iluminación cálida" loading="lazy" />
+          <div class="hero-showcase__badge">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 3L14.4721 8.02786L20 9.0549L16 13.1056L16.9443 18.9451L12 16.2L7.05573 18.9451L8 13.1056L4 9.0549L9.52786 8.02786L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Ritual spa
+          </div>
+          <div class="hero-showcase__meta">
+            <span>Baños &amp; regaderas spa</span>
+            <p>Sensores aromáticos, cromoterapia y toallas de microfibra climatizadas para cerrar tu entrenamiento con lujo absoluto.</p>
           </div>
         </article>
       </div>
@@ -930,7 +948,7 @@
       }
 
       const halo = document.querySelector('.cursor-halo');
-      const cards = document.querySelectorAll('.lux-card');
+      const cards = document.querySelectorAll('.experience-card');
       const ctas = document.querySelectorAll('.neon-btn');
       const body = document.body;
 
@@ -1025,7 +1043,7 @@
           ease: 'power3.out'
         });
 
-        gsap.utils.toArray('.lux-card').forEach((card, index) => {
+        gsap.utils.toArray('.experience-card').forEach((card, index) => {
           const color = card.dataset.color || 'cyan';
           const glow = {
             cyan: '0 0 35px rgba(0,255,255,0.6)',
@@ -1074,46 +1092,6 @@
       } else {
         window.addEventListener('load', gsapInit);
       }
-
-      // // LUXURY EFFECT: 3D carousel setup
-      const carouselTrack = document.querySelector('.carousel-track');
-      const carouselNav = document.querySelector('.carousel-nav');
-      const products = [
-        { name: 'Protein XR', color: '#00FFFF' },
-        { name: 'Neon BCAA', color: '#FF00FF' },
-        { name: 'Recovery Glow', color: '#39FF14' },
-        { name: 'Focus Lion', color: '#00FFFF' }
-      ];
-
-      const total = products.length;
-      products.forEach((product, i) => {
-        const angle = (360 / total) * i;
-        const item = document.createElement('div');
-        item.className = 'carousel-item';
-        item.style.transform += ` rotateY(${angle}deg) translateZ(240px)`;
-        item.innerHTML = `<span class="text-sm uppercase tracking-[0.4em]" style="color:${product.color}">${product.name}</span>`;
-        carouselTrack.appendChild(item);
-
-        const dot = document.createElement('button');
-        dot.className = 'carousel-dot focus-neon';
-        dot.type = 'button';
-        dot.setAttribute('aria-label', product.name);
-        dot.addEventListener('click', () => rotateTo(i));
-        carouselNav.appendChild(dot);
-      });
-
-      const dots = Array.from(document.querySelectorAll('.carousel-dot'));
-      let currentIndex = 0;
-
-      const rotateTo = (index) => {
-        currentIndex = index;
-        const rotation = (360 / total) * index * -1;
-        carouselTrack.style.transform = `rotateY(${rotation}deg)`;
-        dots.forEach((dot, idx) => dot.classList.toggle('active', idx === index));
-      };
-
-      rotateTo(0);
-      setInterval(() => rotateTo((currentIndex + 1) % total), 5000);
 
       // // LUXURY EFFECT: Dynamic background pulse on scroll
       window.addEventListener('scroll', () => {
