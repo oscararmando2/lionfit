@@ -7,7 +7,7 @@
   <meta name="description" content="Lion Fitness: el gimnasio que ruge con fuerza. Entrena en instalaciones premium con tecnología de punta, clases exclusivas y energía neon." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Clash+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&family=Clash+Display:wght@600;700&display=swap" rel="stylesheet" />
   <meta property="og:title" content="Lion Fitness" />
   <meta property="og:description" content="El gimnasio que ruge con fuerza en Zitácuaro." />
   <meta property="og:type" content="website" />
@@ -149,69 +149,387 @@
       z-index: 0;
     }
 
-    /* // LUXURY EFFECT: Glassmorphism cards */
-    .lux-card {
+    /* // LUXURY EFFECT: Immersive media cards */
+    .experience-card {
       position: relative;
-      background: rgba(255, 255, 255, 0.75);
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      border-radius: 24px;
-      backdrop-filter: blur(22px);
-      transition: transform 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
-      box-shadow: 0 12px 40px rgba(15, 15, 19, 0.08);
+      border-radius: 28px;
       overflow: hidden;
+      min-height: 360px;
+      isolation: isolate;
+      background: #090910;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 16px 45px rgba(15, 15, 19, 0.16);
+      transition: transform 0.6s ease, box-shadow 0.6s ease, border-color 0.6s ease;
     }
 
-    .lux-card::before {
+    .experience-card::before,
+    .experience-card::after {
       content: "";
-      position: absolute;
-      inset: -2px;
-      border-radius: inherit;
-      border: 1px solid transparent;
-      background: linear-gradient(120deg, rgba(0, 255, 255, 0.7), rgba(255, 0, 255, 0.4), rgba(57, 255, 20, 0.6));
-      opacity: 0;
-      transition: opacity 0.5s ease;
-      filter: blur(0px);
-      z-index: 0;
-    }
-
-    .lux-card:hover::before {
-      opacity: 1;
-    }
-
-    .lux-card:hover {
-      transform: translateY(-12px) scale(1.01);
-      box-shadow: 0 20px 60px rgba(0, 255, 255, 0.18);
-      border-color: rgba(255, 0, 255, 0.35);
-    }
-
-    .lux-card .content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .lux-card .micro-particles {
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background-image: radial-gradient(circle at 20% 30%, rgba(0, 255, 255, 0.45) 0, transparent 55%),
-        radial-gradient(circle at 80% 40%, rgba(255, 0, 255, 0.45) 0, transparent 60%),
-        radial-gradient(circle at 50% 85%, rgba(57, 255, 20, 0.45) 0, transparent 50%);
-      opacity: 0;
-      transition: opacity 0.4s ease;
+      z-index: 1;
+      transition: opacity 0.6s ease;
     }
 
-    .lux-card:hover .micro-particles {
-      opacity: 0.5;
+    .experience-card::before {
+      background: radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.25), transparent 65%);
+      opacity: 0.75;
+    }
+
+    .experience-card::after {
+      background: linear-gradient(180deg, rgba(8, 8, 12, 0.05) 0%, rgba(8, 8, 12, 0.75) 70%, rgba(8, 8, 12, 0.92) 100%);
+      opacity: 1;
+    }
+
+    .experience-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.05);
+      transition: transform 1s ease;
+    }
+
+    .experience-card:hover {
+      transform: translateY(-12px);
+    }
+
+    .experience-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .experience-card:hover::before {
+      opacity: 1;
+    }
+
+    .experience-card:hover::after {
+      opacity: 0.95;
+    }
+
+    .experience-card[data-color='cyan'] {
+      border-color: rgba(0, 255, 255, 0.3);
+      box-shadow: 0 16px 45px rgba(0, 255, 255, 0.18);
+    }
+
+    .experience-card[data-color='cyan']::before {
+      background: radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.28), transparent 68%);
+    }
+
+    .experience-card[data-color='cyan']:hover {
+      box-shadow: 0 26px 70px rgba(0, 255, 255, 0.35);
+    }
+
+    .experience-card[data-color='magenta'] {
+      border-color: rgba(255, 0, 255, 0.25);
+      box-shadow: 0 16px 45px rgba(255, 0, 255, 0.16);
+    }
+
+    .experience-card[data-color='magenta']::before {
+      background: radial-gradient(circle at 20% 20%, rgba(255, 0, 255, 0.24), transparent 68%);
+    }
+
+    .experience-card[data-color='magenta']:hover {
+      box-shadow: 0 26px 70px rgba(255, 0, 255, 0.32);
+    }
+
+    .experience-card[data-color='lime'] {
+      border-color: rgba(57, 255, 20, 0.28);
+      box-shadow: 0 16px 45px rgba(57, 255, 20, 0.18);
+    }
+
+    .experience-card[data-color='lime']::before {
+      background: radial-gradient(circle at 20% 20%, rgba(57, 255, 20, 0.24), transparent 68%);
+    }
+
+    .experience-card[data-color='lime']:hover {
+      box-shadow: 0 26px 70px rgba(57, 255, 20, 0.34);
+    }
+
+    .experience-card .hero-showcase__badge,
+    .experience-card .hero-showcase__meta {
+      z-index: 2;
+    }
+
+    .experience-card .hero-showcase__badge {
+      top: 22px;
+      left: 22px;
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .experience-card .hero-showcase__meta {
+      gap: 14px;
+      padding: 26px 28px 32px;
+    }
+
+    .experience-card .hero-showcase__meta span {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      letter-spacing: 0.18em;
+    }
+
+    .experience-card .hero-showcase__meta p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      letter-spacing: 0.05em;
+      color: rgba(226, 232, 240, 0.9);
+    }
+
+    .page-backdrop {
+      filter: saturate(1.2);
     }
 
     /* // LUXURY EFFECT: Hero video overlay */
-    .hero-video::after {
+    .page-backdrop.hero-video::after {
       content: "";
       position: absolute;
       inset: 0;
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.75) 35%, rgba(255, 255, 255, 0.6) 55%, rgba(255, 255, 255, 0.85) 100%);
       mix-blend-mode: screen;
       pointer-events: none;
+    }
+
+    .header-gradient {
+      position: absolute;
+      inset: -25% -30% 40% -30%;
+      background:
+        radial-gradient(circle at 20% 35%, rgba(0, 255, 255, 0.35), transparent 60%),
+        radial-gradient(circle at 80% 20%, rgba(255, 0, 255, 0.25), transparent 60%),
+        radial-gradient(circle at 55% 75%, rgba(57, 255, 20, 0.3), transparent 65%);
+      filter: blur(140px);
+      opacity: 0.8;
+      z-index: -1;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.8);
+      text-transform: uppercase;
+      letter-spacing: 0.55em;
+      font-size: 0.72rem;
+      box-shadow: 0 18px 40px rgba(0, 255, 255, 0.25);
+    }
+
+    .hero-eyebrow::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00ffff, #ff00ff);
+      box-shadow: 0 0 16px rgba(255, 0, 255, 0.6);
+    }
+
+    .stat-number {
+      font-family: 'Clash Display', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: 0.08em;
+      background: linear-gradient(120deg, #0f172a, #00ffff);
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .stat-label {
+      text-transform: uppercase;
+      letter-spacing: 0.45em;
+      font-size: 0.65rem;
+      color: rgba(15, 15, 19, 0.65);
+    }
+
+    .hero-showcase {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      box-shadow: 0 32px 70px rgba(15, 15, 19, 0.25);
+      background: radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.25), transparent 65%),
+        radial-gradient(circle at 80% 60%, rgba(255, 0, 255, 0.25), transparent 70%), rgba(10, 10, 14, 0.82);
+      isolation: isolate;
+    }
+
+    .hero-showcase video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.85;
+      mix-blend-mode: lighten;
+    }
+
+    .hero-showcase::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(140deg, rgba(10, 10, 14, 0.2), rgba(10, 10, 14, 0.75));
+      pointer-events: none;
+    }
+
+    .hero-showcase__badge {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(0, 255, 255, 0.4);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4em;
+      color: #ecfeff;
+      backdrop-filter: blur(12px);
+      box-shadow: inset 0 0 30px rgba(0, 255, 255, 0.2);
+    }
+
+    .hero-showcase__badge svg {
+      width: 18px;
+      height: 18px;
+      color: #39ff14;
+      filter: drop-shadow(0 0 12px rgba(57, 255, 20, 0.8));
+    }
+
+    .hero-showcase__meta {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 26px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: linear-gradient(0deg, rgba(10, 10, 14, 0.88) 0%, rgba(10, 10, 14, 0.55) 60%, transparent 100%);
+      color: #f8fafc;
+    }
+
+    .hero-showcase__meta span {
+      text-transform: uppercase;
+      letter-spacing: 0.4em;
+      font-size: 0.7rem;
+      color: rgba(224, 242, 254, 0.75);
+    }
+
+    .hero-showcase__meta p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      letter-spacing: 0.05em;
+    }
+
+    .tier-card {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+      padding-block: 34px;
+    }
+
+    .tier-card.is-featured {
+      background: linear-gradient(160deg, rgba(0, 255, 255, 0.28), rgba(255, 0, 255, 0.18));
+      border-color: rgba(255, 0, 255, 0.35);
+      box-shadow: 0 25px 70px rgba(0, 255, 255, 0.35);
+    }
+
+    .tier-card .price {
+      font-family: 'Clash Display', sans-serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      letter-spacing: 0.06em;
+      color: #0f0f13;
+    }
+
+    .tier-card ul {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .tier-card ul li {
+      position: relative;
+      padding-left: 22px;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      color: rgba(15, 15, 19, 0.75);
+      text-transform: uppercase;
+    }
+
+    .tier-card ul li::before {
+      content: "";
+      position: absolute;
+      top: 0.6em;
+      left: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(120deg, #00ffff, #ff00ff);
+      box-shadow: 0 0 12px rgba(0, 255, 255, 0.6);
+    }
+
+    .tier-chip {
+      align-self: flex-start;
+      padding: 8px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      background: rgba(255, 255, 255, 0.85);
+      text-transform: uppercase;
+      letter-spacing: 0.5em;
+      font-size: 0.65rem;
+    }
+
+    .tier-card.is-featured .tier-chip {
+      background: rgba(15, 15, 19, 0.92);
+      color: #ecfeff;
+      border-color: rgba(0, 255, 255, 0.4);
+    }
+
+    .testimonial-card {
+      position: relative;
+      border-radius: 20px;
+      padding: 28px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      box-shadow: 0 18px 45px rgba(15, 15, 19, 0.12);
+      overflow: hidden;
+    }
+
+    .testimonial-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 15% 20%, rgba(0, 255, 255, 0.25), transparent 55%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 0;
+    }
+
+    .testimonial-card:hover::before {
+      opacity: 1;
+    }
+
+    .testimonial-card p,
+    .testimonial-card span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-card p {
+      letter-spacing: 0.06em;
+      color: rgba(15, 15, 19, 0.75);
+    }
+
+    .testimonial-card span {
+      display: block;
+      margin-top: 18px;
+      font-size: 0.78rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: rgba(15, 15, 19, 0.6);
     }
 
     /* // LUXURY EFFECT: Neon focus ring */
@@ -240,66 +558,6 @@
       50% {
         filter: drop-shadow(0 0 24px rgba(0, 255, 255, 0.85)) drop-shadow(0 0 60px rgba(57, 255, 20, 0.55));
       }
-    }
-
-    /* // LUXURY EFFECT: 3D product carousel */
-    .carousel {
-      position: relative;
-      width: min(420px, 90vw);
-      height: 300px;
-      perspective: 1200px;
-      margin: 0 auto;
-    }
-
-    .carousel-track {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      transform-style: preserve-3d;
-      transition: transform 1s ease;
-    }
-
-    .carousel-item {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 220px;
-      height: 120px;
-      border-radius: 20px;
-      transform: translate(-50%, -50%);
-      display: grid;
-      place-items: center;
-      background: rgba(255, 255, 255, 0.85);
-      box-shadow: 0 14px 45px rgba(15, 15, 19, 0.12);
-      border: 1px solid rgba(0, 255, 255, 0.35);
-      overflow: hidden;
-    }
-
-    .carousel-item img {
-      width: 60%;
-      height: auto;
-    }
-
-    .carousel-nav {
-      position: absolute;
-      inset: auto 0 -55px 0;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .carousel-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: rgba(0, 0, 0, 0.15);
-      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .carousel-dot.active {
-      background: #00FFFF;
-      transform: scale(1.4);
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
     }
 
     /* // LUXURY EFFECT: Map marker glow */
@@ -349,7 +607,7 @@
     }
 
     .hero-title {
-      font-family: 'Clash Display', sans-serif;
+      font-family: 'Bebas Neue', sans-serif;
       letter-spacing: 0.08em;
     }
 
@@ -362,19 +620,28 @@
     }
 
     @media (max-width: 768px) {
+      .hero-eyebrow {
+        letter-spacing: 0.4em;
+        font-size: 0.65rem;
+        padding: 10px 16px;
+      }
+
+      .hero-showcase__badge {
+        top: 16px;
+        left: 16px;
+        padding: 10px 16px;
+        letter-spacing: 0.35em;
+      }
+
+      .hero-showcase__meta {
+        padding: 22px 20px;
+      }
+
       .map-marker {
         top: 50%;
         left: 50%;
       }
 
-      .carousel {
-        height: 240px;
-      }
-
-      .carousel-item {
-        width: 180px;
-        height: 100px;
-      }
     }
   </style>
   <script type="application/ld+json">
@@ -406,23 +673,25 @@
 </head>
 <body class="relative">
   <div class="cursor-halo" aria-hidden="true"></div>
-  <div class="hero-video absolute inset-0 -z-10 overflow-hidden noise-mask">
+  <div class="page-backdrop hero-video absolute inset-0 -z-10 overflow-hidden noise-mask">
     <video class="w-full h-full object-cover" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=80">
       <source src="https://cdn.coverr.co/videos/coverr-boxing-training-5588/1080p.mp4" type="video/mp4" />
       Tu navegador no soporta video.
     </video>
   </div>
 
-  <header class="min-h-screen flex flex-col justify-between">
-    <nav class="flex items-center justify-between px-6 sm:px-12 py-8">
+  <header class="relative min-h-[90vh] flex flex-col justify-between pt-10 pb-10">
+    <div class="header-gradient" aria-hidden="true"></div>
+    <nav class="relative mx-6 sm:mx-12 flex items-center justify-between gap-6 rounded-full border border-white/40 bg-white/70 px-6 sm:px-12 py-4 text-[0.65rem] uppercase tracking-[0.45em] backdrop-blur-xl shadow-[0_20px_60px_rgba(15,15,19,0.15)]">
       <!-- // LOGO: lionlogo.png -->
       <a href="#hero" class="focus-neon inline-flex items-center gap-3">
         <img src="./lionlogo.png" alt="Logo Lion Fitness" class="w-16 h-16 object-contain logo-glow" loading="lazy" />
         <span class="uppercase tracking-[0.35em] text-xs sm:text-sm">Lion Fitness</span>
       </a>
-      <div class="hidden sm:flex items-center gap-8 text-xs tracking-[0.4em] uppercase">
+      <div class="hidden sm:flex items-center gap-8">
         <a href="#experiencias" class="focus-neon">Experiencias</a>
         <a href="#suplementos" class="focus-neon">Suplementos</a>
+        <a href="#testimonios" class="focus-neon">Testimonios</a>
         <a href="#ubicacion" class="focus-neon">Ubicación</a>
       </div>
       <button class="neon-btn focus-neon rounded-full px-5 py-2 text-xs uppercase tracking-[0.5em]" type="button">
@@ -430,81 +699,176 @@
       </button>
     </nav>
 
-    <section id="hero" class="flex flex-col items-center justify-center text-center px-6 sm:px-12 pb-24 pt-12">
-      <!-- // LOGO: lionlogo.png -->
-      <img src="./lionlogo.png" alt="Logo Lion Fitness" class="w-40 sm:w-52 mb-10 logo-glow" loading="lazy" />
-      <h1 class="hero-title text-4xl sm:text-6xl lg:text-7xl font-semibold mb-6 uppercase tracking-[0.2em]">El gimnasio que ruge con fuerza</h1>
-      <p class="max-w-2xl text-sm sm:text-base text-neutral-700 tracking-[0.15em] uppercase">Tecnología, lujo y energía neon para transformar tu entrenamiento diario en una experiencia sensorial inolvidable.</p>
-      <div class="mt-12 flex flex-col sm:flex-row items-center gap-6">
-        <a href="#experiencias" class="neon-btn focus-neon rounded-full px-10 py-4 uppercase tracking-[0.65em] text-xs sm:text-sm">
-          <span>Entrenar ahora</span>
-        </a>
-        <a href="#suplementos" class="text-xs sm:text-sm uppercase tracking-[0.4em] underline-offset-8 hover:underline">Descubre más</a>
+    <section id="hero" class="relative px-6 sm:px-12 pb-20 sm:pb-24 pt-14 sm:pt-16">
+      <div class="absolute inset-x-10 -top-20 h-80 -z-10 rounded-[120px] bg-gradient-to-r from-cyan-200/30 via-white to-fuchsia-200/30 blur-3xl pointer-events-none" aria-hidden="true"></div>
+      <div class="relative grid gap-12 lg:grid-cols-[1.05fr,0.95fr] items-center">
+        <div class="text-center lg:text-left space-y-8">
+          <span class="hero-eyebrow">Luxury neon fitness club</span>
+          <h1 class="hero-title text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-[0.08em] leading-tight">
+            En Lion fitness, no solo sudas...<br class="hidden sm:block" /> ¡evolucionas!
+          </h1>
+          <p class="mx-auto lg:mx-0 max-w-2xl text-sm sm:text-base text-neutral-700 tracking-[0.15em] uppercase">
+            Tu disciplina despierta tu mejor versión: cada sesión es un salto más alto hacia la grandeza que llevas dentro.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-6 pt-4">
+            <a href="#experiencias" class="neon-btn focus-neon rounded-full px-10 py-4 uppercase tracking-[0.65em] text-xs sm:text-sm">
+              <span>Entrenar ahora</span>
+            </a>
+            <a href="#testimonios" class="text-xs sm:text-sm uppercase tracking-[0.4em] underline-offset-8 hover:underline">Ver experiencias reales</a>
+          </div>
+          <dl class="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8 pt-8">
+            <div class="flex flex-col gap-2 text-left">
+              <dt class="stat-label order-2">Clases semanales</dt>
+              <dd class="stat-number order-1">45+</dd>
+            </div>
+            <div class="flex flex-col gap-2 text-left">
+              <dt class="stat-label order-2">Experiencias inmersivas</dt>
+              <dd class="stat-number order-1">360°</dd>
+            </div>
+            <div class="flex flex-col gap-2 text-left col-span-2 sm:col-span-1">
+              <dt class="stat-label order-2">Acceso digital</dt>
+              <dd class="stat-number order-1">24/7</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="hero-showcase h-full min-h-[360px]">
+          <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1200&q=80">
+            <source src="https://cdn.coverr.co/videos/coverr-hardcore-workout-6078/1080p.mp4" type="video/mp4" />
+            Tu navegador no soporta video.
+          </video>
+          <div class="hero-showcase__badge">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 3L14.4721 8.02786L20 9.0549L16 13.1056L16.9443 18.9451L12 16.2L7.05573 18.9451L8 13.1056L4 9.0549L9.52786 8.02786L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Club premium
+          </div>
+          <div class="hero-showcase__meta">
+            <span>Studio Lion XR</span>
+            <p>Salas con espejos interactivos, sensores de movimiento y playlists sincrónicas que pulsan al ritmo de tu corazón.</p>
+          </div>
+        </div>
       </div>
     </section>
   </header>
 
-  <main class="space-y-32 sm:space-y-40 pb-32">
+  <main class="space-y-24 sm:space-y-32 pb-24">
     <section id="experiencias" class="px-6 sm:px-12">
       <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-10">
         <h2 class="section-title text-3xl sm:text-5xl uppercase tracking-[0.3em]">Experiencias flotantes</h2>
         <p class="max-w-xl text-sm sm:text-base text-neutral-600">Descubre ambientes con equipamiento de última generación, aromas revitalizantes y coaches expertos que guían cada sesión con precisión quirúrgica.</p>
       </div>
-      <div class="mt-16 grid gap-8 sm:grid-cols-2 xl:grid-cols-3" id="cards-grid">
-        <article class="lux-card p-8" data-color="cyan">
-          <div class="micro-particles"></div>
-          <div class="content space-y-4">
-            <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Máquinas de última generación</h3>
-            <p class="text-neutral-600 text-sm">Circuitos inteligentes, resistencia adaptativa y pantallas biométricas que registran cada micro progreso.</p>
+      <div class="mt-12 sm:mt-16 grid gap-8 sm:grid-cols-2 xl:grid-cols-3" id="cards-grid">
+        <article class="experience-card" data-color="cyan">
+          <img src="https://images.unsplash.com/photo-1558611848-73f7eb4001a1?auto=format&fit=crop&w=1200&q=80" alt="Atleta utilizando maquinaria de fuerza en gimnasio futurista" loading="lazy" />
+          <div class="hero-showcase__badge">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 3L14.4721 8.02786L20 9.0549L16 13.1056L16.9443 18.9451L12 16.2L7.05573 18.9451L8 13.1056L4 9.0549L9.52786 8.02786L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Fuerza adaptativa
+          </div>
+          <div class="hero-showcase__meta">
+            <span>Máquinas de última generación</span>
+            <p>Circuitos inteligentes, resistencia calibrada y pantallas biométricas que registran cada micro progreso de tu sesión.</p>
           </div>
         </article>
-        <article class="lux-card p-8" id="suplementos" data-color="magenta">
-          <div class="micro-particles"></div>
-          <div class="content space-y-6">
-            <div class="flex items-center justify-between">
-              <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Suplementos premium</h3>
-              <span class="text-[0.65rem] uppercase tracking-[0.4em]">3D</span>
-            </div>
-            <div class="carousel" aria-label="Carrusel de suplementos">
-              <div class="carousel-track"></div>
-              <div class="carousel-nav"></div>
-            </div>
+        <article class="experience-card" data-color="magenta">
+          <img src="https://images.unsplash.com/photo-1583864697784-a0efc8379f70?auto=format&fit=crop&w=1200&q=80" alt="Suplementos deportivos premium en barra iluminada" loading="lazy" />
+          <div class="hero-showcase__badge">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 3L14.4721 8.02786L20 9.0549L16 13.1056L16.9443 18.9451L12 16.2L7.05573 18.9451L8 13.1056L4 9.0549L9.52786 8.02786L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Barra luminosa
+          </div>
+          <div class="hero-showcase__meta">
+            <span>Suplementos premium</span>
+            <p>Cócteles nutracéuticos en 3D, shots funcionales y mixología inteligente que potencia cada entrenamiento.</p>
           </div>
         </article>
-        <article class="lux-card p-8" data-color="lime">
-          <div class="micro-particles"></div>
-          <div class="content space-y-4">
-            <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Área de cardio</h3>
-            <p class="text-neutral-600 text-sm">Cintas con simulación de rutas reales, control climático y música inmersiva en 360°.</p>
+        <article class="experience-card" data-color="lime">
+          <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=1200&q=80" alt="Zona de cardio con caminadoras tecnológicas" loading="lazy" />
+          <div class="hero-showcase__badge">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 3L14.4721 8.02786L20 9.0549L16 13.1056L16.9443 18.9451L12 16.2L7.05573 18.9451L8 13.1056L4 9.0549L9.52786 8.02786L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Cardio 360°
+          </div>
+          <div class="hero-showcase__meta">
+            <span>Área de cardio</span>
+            <p>Cintas con simulación de rutas reales, control climático y audio inmersivo que sincroniza tu zancada con la música.</p>
           </div>
         </article>
-        <article class="lux-card p-8" data-color="magenta">
-          <div class="micro-particles"></div>
-          <div class="content space-y-4">
-            <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Indoor Cycling</h3>
-            <p class="text-neutral-600 text-sm">Pelotón sincronizado con mapping de luz neon y métricas proyectadas en tiempo real.</p>
+        <article class="experience-card" data-color="magenta">
+          <img src="https://images.unsplash.com/photo-1517832207067-4db24a2ae47c?auto=format&fit=crop&w=1200&q=80" alt="Clase de indoor cycling con luces neon" loading="lazy" />
+          <div class="hero-showcase__badge">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 3L14.4721 8.02786L20 9.0549L16 13.1056L16.9443 18.9451L12 16.2L7.05573 18.9451L8 13.1056L4 9.0549L9.52786 8.02786L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Neon ride
+          </div>
+          <div class="hero-showcase__meta">
+            <span>Indoor Cycling</span>
+            <p>Pelotón sincronizado con mapping lumínico, métricas proyectadas en tiempo real y playlists que amplifican tu cadencia.</p>
           </div>
         </article>
-        <article class="lux-card p-8" data-color="cyan">
-          <div class="micro-particles"></div>
-          <div class="content space-y-4">
-            <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Clases de Zumba</h3>
-            <p class="text-neutral-600 text-sm">Coreografías de alto impacto con beats tropicales y efectos lumínicos responsivos.</p>
+        <article class="experience-card" data-color="cyan">
+          <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=80" alt="Grupo bailando en clase de zumba con iluminación colorida" loading="lazy" />
+          <div class="hero-showcase__badge">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 3L14.4721 8.02786L20 9.0549L16 13.1056L16.9443 18.9451L12 16.2L7.05573 18.9451L8 13.1056L4 9.0549L9.52786 8.02786L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Ritmo tribal
+          </div>
+          <div class="hero-showcase__meta">
+            <span>Clases de Zumba</span>
+            <p>Coreografías de alto impacto, beats tropicales y efectos lumínicos responsivos que encienden tu energía.</p>
           </div>
         </article>
-        <article class="lux-card p-8" data-color="lime">
-          <div class="micro-particles"></div>
-          <div class="content space-y-4">
-            <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Cafetería &amp; comedor saludable</h3>
-            <p class="text-neutral-600 text-sm">Menú adaptogénico, smoothies funcionales y chefs dedicados a tu recuperación.</p>
+        <article class="experience-card" data-color="lime">
+          <img src="https://images.unsplash.com/photo-1528712306091-ed0763094c98?auto=format&fit=crop&w=1200&q=80" alt="Cafetería saludable con bebidas energéticas" loading="lazy" />
+          <div class="hero-showcase__badge">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 3L14.4721 8.02786L20 9.0549L16 13.1056L16.9443 18.9451L12 16.2L7.05573 18.9451L8 13.1056L4 9.0549L9.52786 8.02786L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Fuel bar
+          </div>
+          <div class="hero-showcase__meta">
+            <span>Cafetería saludable</span>
+            <p>Menú adaptogénico, smoothies funcionales y chefs dedicados a diseñar tu recuperación al más alto nivel.</p>
           </div>
         </article>
-        <article class="lux-card p-8 sm:col-span-2 xl:col-span-3" data-color="magenta">
-          <div class="micro-particles"></div>
-          <div class="content space-y-4">
-            <h3 class="text-xl font-semibold tracking-[0.3em] uppercase">Baños + regaderas con diseño spa</h3>
-            <p class="text-neutral-600 text-sm max-w-3xl">Sensores aromáticos, cromoterapia y toallas de microfibra calentadas con precisión para finalizar tu ritual de entrenamiento con un estallido de lujo.</p>
+        <article class="experience-card sm:col-span-2 xl:col-span-3" data-color="magenta">
+          <img src="https://images.unsplash.com/photo-1612965607446-26ef211a432f?auto=format&fit=crop&w=1400&q=80" alt="Vestidores de lujo con iluminación cálida" loading="lazy" />
+          <div class="hero-showcase__badge">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 3L14.4721 8.02786L20 9.0549L16 13.1056L16.9443 18.9451L12 16.2L7.05573 18.9451L8 13.1056L4 9.0549L9.52786 8.02786L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Ritual spa
           </div>
+          <div class="hero-showcase__meta">
+            <span>Baños &amp; regaderas spa</span>
+            <p>Sensores aromáticos, cromoterapia y toallas de microfibra climatizadas para cerrar tu entrenamiento con lujo absoluto.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="testimonios" class="px-6 sm:px-12">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-10 mb-12">
+        <h2 class="section-title text-3xl sm:text-5xl uppercase tracking-[0.3em]">Voces de la manada</h2>
+        <p class="max-w-xl text-sm sm:text-base text-neutral-600">Historias reales que muestran cómo el rugido interior se enciende con nuestras experiencias inmersivas.</p>
+      </div>
+      <div class="grid gap-8 lg:grid-cols-3">
+        <article class="testimonial-card">
+          <p>“El estudio de cycling tiene un mapping de luces que te transporta. Mis métricas se dispararon y nunca había sentido tanta energía.”</p>
+          <span>Ana · Membresía Signature</span>
+        </article>
+        <article class="testimonial-card">
+          <p>“Lion Fitness combina lujo con resultados. El coaching personalizado y el spa de recuperación me tienen listo para cualquier reto.”</p>
+          <span>Diego · Elite Team</span>
+        </article>
+        <article class="testimonial-card">
+          <p>“Me encanta el control biométrico. Desde la app puedo abrir el gimnasio y seguir mis progresos en tiempo real.”</p>
+          <span>Valeria · Starter</span>
         </article>
       </div>
     </section>
@@ -558,7 +922,7 @@
       }
 
       const halo = document.querySelector('.cursor-halo');
-      const cards = document.querySelectorAll('.lux-card');
+      const cards = document.querySelectorAll('.experience-card');
       const ctas = document.querySelectorAll('.neon-btn');
       const body = document.body;
 
@@ -625,7 +989,7 @@
           ease: 'power3.out'
         });
 
-        gsap.utils.toArray('.lux-card').forEach((card, index) => {
+        gsap.utils.toArray('.experience-card').forEach((card, index) => {
           const color = card.dataset.color || 'cyan';
           const glow = {
             cyan: '0 0 35px rgba(0,255,255,0.6)',
@@ -674,46 +1038,6 @@
       } else {
         window.addEventListener('load', gsapInit);
       }
-
-      // // LUXURY EFFECT: 3D carousel setup
-      const carouselTrack = document.querySelector('.carousel-track');
-      const carouselNav = document.querySelector('.carousel-nav');
-      const products = [
-        { name: 'Protein XR', color: '#00FFFF' },
-        { name: 'Neon BCAA', color: '#FF00FF' },
-        { name: 'Recovery Glow', color: '#39FF14' },
-        { name: 'Focus Lion', color: '#00FFFF' }
-      ];
-
-      const total = products.length;
-      products.forEach((product, i) => {
-        const angle = (360 / total) * i;
-        const item = document.createElement('div');
-        item.className = 'carousel-item';
-        item.style.transform += ` rotateY(${angle}deg) translateZ(240px)`;
-        item.innerHTML = `<span class="text-sm uppercase tracking-[0.4em]" style="color:${product.color}">${product.name}</span>`;
-        carouselTrack.appendChild(item);
-
-        const dot = document.createElement('button');
-        dot.className = 'carousel-dot focus-neon';
-        dot.type = 'button';
-        dot.setAttribute('aria-label', product.name);
-        dot.addEventListener('click', () => rotateTo(i));
-        carouselNav.appendChild(dot);
-      });
-
-      const dots = Array.from(document.querySelectorAll('.carousel-dot'));
-      let currentIndex = 0;
-
-      const rotateTo = (index) => {
-        currentIndex = index;
-        const rotation = (360 / total) * index * -1;
-        carouselTrack.style.transform = `rotateY(${rotation}deg)`;
-        dots.forEach((dot, idx) => dot.classList.toggle('active', idx === index));
-      };
-
-      rotateTo(0);
-      setInterval(() => rotateTo((currentIndex + 1) % total), 5000);
 
       // // LUXURY EFFECT: Dynamic background pulse on scroll
       window.addEventListener('scroll', () => {
