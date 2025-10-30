@@ -934,6 +934,22 @@
       const ctas = document.querySelectorAll('.neon-btn');
       const body = document.body;
 
+      const syncCardHeights = () => {
+        const targetCard = document.getElementById('suplementos');
+        if (!targetCard) return;
+
+        const targetHeight = targetCard.offsetHeight;
+        cards.forEach((card) => {
+          card.style.minHeight = `${targetHeight}px`;
+        });
+      };
+
+      const resetCardHeights = () => {
+        cards.forEach((card) => {
+          card.style.minHeight = '';
+        });
+      };
+
       // // LUXURY EFFECT: Cursor halo follow
       document.addEventListener('pointermove', (e) => {
         halo.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
@@ -950,6 +966,18 @@
         cta.addEventListener('mouseenter', () => halo.classList.add('is-cta'));
         cta.addEventListener('mouseleave', () => halo.classList.remove('is-cta'));
       });
+
+      window.addEventListener('load', () => {
+        syncCardHeights();
+        setTimeout(syncCardHeights, 250);
+      });
+
+      window.addEventListener('resize', () => {
+        resetCardHeights();
+        syncCardHeights();
+      });
+
+      syncCardHeights();
 
       // // LUXURY EFFECT: Lenis smooth scroll
       const lenis = new Lenis({
