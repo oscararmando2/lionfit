@@ -280,7 +280,7 @@
       filter: saturate(1.2);
     }
 
-    /* // LUXURY EFFECT: Hero video overlay */
+    /* // LUXURY EFFECT: Hero media overlay */
     .page-backdrop.hero-video::after {
       content: "";
       position: absolute;
@@ -354,37 +354,21 @@
       height: clamp(320px, 58vh, 520px);
     }
 
-    .hero-showcase video {
+    .hero-showcase__media,
+    .hero-video img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
       opacity: 0.85;
-      mix-blend-mode: lighten;
+      mix-blend-mode: normal;
+      filter: saturate(1.05);
+      transition: transform 1.1s ease;
     }
 
-    .hero-video,
-    .hero-showcase {
-      --video-fallback-image: none;
-    }
-
-    .hero-video.is-video-fallback video,
-    .hero-showcase.is-video-fallback video {
-      display: none;
-    }
-
-    .hero-video.is-video-fallback::before,
-    .hero-showcase.is-video-fallback::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-color: #08080c;
-      background-image: var(--video-fallback-image);
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      z-index: 0;
+    .hero-showcase:hover .hero-showcase__media {
+      transform: scale(1.05);
     }
 
     .hero-showcase::after {
@@ -515,6 +499,30 @@
       border-color: rgba(0, 255, 255, 0.4);
     }
 
+    .testimonial-track {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      padding-bottom: 12px;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .testimonial-track::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .testimonial-track::-webkit-scrollbar-track {
+      background: rgba(15, 15, 19, 0.08);
+      border-radius: 999px;
+    }
+
+    .testimonial-track::-webkit-scrollbar-thumb {
+      background: linear-gradient(120deg, rgba(0, 255, 255, 0.8), rgba(255, 0, 255, 0.8));
+      border-radius: 999px;
+    }
+
     .testimonial-card {
       position: relative;
       border-radius: 20px;
@@ -523,6 +531,8 @@
       border: 1px solid rgba(0, 0, 0, 0.06);
       box-shadow: 0 18px 45px rgba(15, 15, 19, 0.12);
       overflow: hidden;
+      flex: 0 0 clamp(260px, 60vw, 340px);
+      scroll-snap-align: start;
     }
 
     .testimonial-card::before {
@@ -624,6 +634,33 @@
       min-width: 180px;
     }
 
+    .whatsapp-bubble {
+      position: fixed;
+      right: 20px;
+      bottom: 24px;
+      z-index: 950;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: #fff;
+      box-shadow: 0 20px 45px rgba(18, 140, 126, 0.35);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .whatsapp-bubble svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    .whatsapp-bubble:hover {
+      transform: translateY(-6px) scale(1.04);
+      box-shadow: 0 28px 55px rgba(18, 140, 126, 0.45);
+    }
+
     footer a {
       transition: color 0.3s ease, text-shadow 0.3s ease;
     }
@@ -691,6 +728,13 @@
         left: 50%;
       }
 
+      .whatsapp-bubble {
+        width: 56px;
+        height: 56px;
+        right: 16px;
+        bottom: 20px;
+      }
+
     }
   </style>
   <script type="application/ld+json">
@@ -722,11 +766,8 @@
 </head>
 <body class="relative">
   <div class="cursor-halo" aria-hidden="true"></div>
-  <div class="page-backdrop hero-video absolute inset-0 -z-10 overflow-hidden noise-mask" data-video-fallback="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=80">
-    <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=80">
-      <source src="https://cdn.pixabay.com/video/2021/08/21/84755-599598860_large.mp4" type="video/mp4" />
-      Tu navegador no soporta video.
-    </video>
+  <div class="page-backdrop hero-video absolute inset-0 -z-10 overflow-hidden noise-mask">
+    <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=80" alt="Atleta entrenando en un gimnasio futurista" fetchpriority="high" />
   </div>
 
   <header class="relative min-h-[95vh] flex flex-col justify-between pt-12 pb-20">
@@ -780,11 +821,8 @@
             </div>
           </dl>
         </div>
-        <div class="hero-showcase" data-video-fallback="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1200&q=80">
-          <video autoplay loop muted playsinline preload="metadata" poster="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1200&q=80">
-            <source src="https://cdn.pixabay.com/video/2021/02/13/65217-520297815_large.mp4" type="video/mp4" />
-            Tu navegador no soporta video.
-          </video>
+        <div class="hero-showcase">
+          <img class="hero-showcase__media" src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1200&q=80" alt="Entrenamiento inmersivo en estudio Lion XR" loading="lazy" />
           <div class="hero-showcase__badge">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M12 3L14.4721 8.02786L20 9.0549L16 13.1056L16.9443 18.9451L12 16.2L7.05573 18.9451L8 13.1056L4 9.0549L9.52786 8.02786L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -920,6 +958,27 @@
         <h2 class="section-title text-3xl sm:text-5xl uppercase tracking-[0.3em]">Voces de la manada</h2>
         <p class="max-w-xl text-sm sm:text-base text-neutral-600">Historias reales que muestran cómo el rugido interior se enciende con nuestras experiencias inmersivas.</p>
       </div>
+      <div class="testimonial-track" role="list">
+        <article class="testimonial-card" role="listitem">
+          <p>“El estudio de cycling tiene un mapping de luces que te transporta. Mis métricas se dispararon y nunca había sentido tanta energía.”</p>
+          <span>Ana · Membresía Signature</span>
+        </article>
+        <article class="testimonial-card" role="listitem">
+          <p>“Lion Fitness combina lujo con resultados. El coaching personalizado y el spa de recuperación me tienen listo para cualquier reto.”</p>
+          <span>Diego · Elite Team</span>
+        </article>
+        <article class="testimonial-card" role="listitem">
+          <p>“Me encanta el control biométrico. Desde la app puedo abrir el gimnasio y seguir mis progresos en tiempo real.”</p>
+          <span>Valeria · Starter</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="testimonios" class="px-6 sm:px-12">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-10 mb-12">
+        <h2 class="section-title text-3xl sm:text-5xl uppercase tracking-[0.3em]">Voces de la manada</h2>
+        <p class="max-w-xl text-sm sm:text-base text-neutral-600">Historias reales que muestran cómo el rugido interior se enciende con nuestras experiencias inmersivas.</p>
+      </div>
       <div class="grid gap-8 lg:grid-cols-3">
         <article class="testimonial-card">
           <p>“El estudio de cycling tiene un mapping de luces que te transporta. Mis métricas se dispararon y nunca había sentido tanta energía.”</p>
@@ -995,6 +1054,13 @@
     <p class="mt-10 text-[0.7rem] uppercase tracking-[0.5em] text-neutral-500">&copy; <span id="year"></span> Lion Fitness. Todos los rugidos reservados.</p>
   </footer>
 
+  <a class="whatsapp-bubble focus-neon" href="https://wa.me/527151249436" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M27.5 16.5C27.5 22.5751 22.5751 27.5 16.5 27.5C14.4132 27.5 12.4452 26.9396 10.7375 25.9531L6.5 27.5L8.13281 23.3711C7.00938 21.5875 6.375 19.4948 6.375 17.25C6.375 11.1749 11.2999 6.25 17.375 6.25C23.4501 6.25 27.5 11.1749 27.5 16.5Z" stroke="currentColor" stroke-width="1.6" fill="currentColor" />
+      <path d="M13.8438 11.9375C13.6406 11.4625 13.1781 11.125 12.6313 11.125C12.0844 11.125 11.575 11.2313 11.2313 11.6813C10.8875 12.1313 9.9375 13.0875 9.9375 15.0375C9.9375 16.9875 11.3687 18.8438 11.575 19.1C11.7812 19.3562 13.9906 22.475 17.1188 23.5313C17.9156 23.7938 18.6156 24.0313 19.2938 24.0313C19.9719 24.0313 20.5469 23.8813 20.9625 23.4438C21.3781 23.0063 21.9125 22.2031 22.0531 21.6625C22.1938 21.1219 22.1938 20.7719 22.1188 20.6438C22.0438 20.5156 21.7313 20.3875 21.2188 20.1594C20.7062 19.9313 18.9219 19.0531 18.4719 18.8906C18.0219 18.7281 17.7125 18.6375 17.4125 19.0875C17.1125 19.5375 16.4688 20.3813 16.2375 20.6313C16.0062 20.8813 15.775 20.8813 15.4625 20.7531C15.15 20.625 14.1656 20.2813 13.0344 19.3375C11.9031 18.3938 11.1656 17.1656 10.9344 16.8531C10.7031 16.5406 10.8687 16.3625 10.9969 16.2344C11.1094 16.1219 11.2688 15.9156 11.3969 15.7781C11.525 15.6406 11.575 15.5563 11.6625 15.3813C11.75 15.2062 11.7062 15.0469 11.6469 14.9187C11.5875 14.7906 10.9781 13.2906 10.6594 12.5938Z" fill="#0F0F13" />
+    </svg>
+  </a>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.6/bundled/lenis.min.js" defer></script>
@@ -1008,7 +1074,6 @@
       const halo = document.querySelector('.cursor-halo');
       const cards = document.querySelectorAll('.experience-card');
       const ctas = document.querySelectorAll('.neon-btn');
-      const body = document.body;
 
       const videoWrappers = document.querySelectorAll('[data-video-fallback]');
       videoWrappers.forEach((wrapper) => {
@@ -1171,22 +1236,6 @@
           });
         });
 
-        // // LUXURY EFFECT: Hero video parallax
-        const heroVideoEl = document.querySelector('.hero-video video');
-        const heroVideoWrapper = heroVideoEl ? heroVideoEl.closest('.hero-video') : null;
-
-        if (heroVideoEl && heroVideoWrapper && !heroVideoWrapper.classList.contains('is-video-fallback')) {
-          gsap.to(heroVideoEl, {
-            scale: 1.08,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: '#hero',
-              start: 'top top',
-              end: 'bottom top',
-              scrub: true
-            }
-          });
-        }
       };
 
       if (window.gsap) {
@@ -1194,13 +1243,6 @@
       } else {
         window.addEventListener('load', gsapInit);
       }
-
-      // // LUXURY EFFECT: Dynamic background pulse on scroll
-      window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        const intensity = Math.min(1, scrollY / 600);
-        body.style.setProperty('--bg-opacity', intensity);
-      });
     });
   </script>
 </body>
