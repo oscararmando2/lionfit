@@ -588,6 +588,36 @@
       transform: perspective(800px) rotateX(0deg) rotateY(0deg) scale(1.03);
     }
 
+    .logo-link {
+      position: relative;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 0 18px 45px rgba(15, 15, 19, 0.12);
+      min-height: 64px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .logo-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 55px rgba(15, 15, 19, 0.18);
+    }
+
+    .logo-link__image {
+      width: 3.25rem;
+      height: 3.25rem;
+      object-fit: contain;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 64px;
+      background: transparent;
+    }
+
     @keyframes pulseGlow {
       0%, 100% {
         filter: drop-shadow(0 0 14px rgba(0, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(255, 0, 255, 0.35));
@@ -774,11 +804,11 @@
     <div class="header-gradient" aria-hidden="true"></div>
     <nav class="relative mx-6 sm:mx-12 flex items-center justify-between gap-6 rounded-full border border-white/40 bg-white/70 px-6 sm:px-12 py-4 text-[0.65rem] uppercase tracking-[0.45em] backdrop-blur-xl shadow-[0_20px_60px_rgba(15,15,19,0.15)]">
       <!-- // LOGO: lionlogo.png -->
-      <a href="#hero" class="focus-neon inline-flex items-center gap-3">
-        <img src="./lionlogo.png" alt="Logo Lion Fitness" class="w-16 h-16 object-contain logo-glow" loading="lazy" />
+      <a href="#hero" class="focus-neon logo-link inline-flex items-center gap-3">
+        <img src="./lionlogo.png" alt="Logo Lion Fitness" class="logo-link__image logo-glow" loading="lazy" />
         <span class="uppercase tracking-[0.35em] text-xs sm:text-sm">Lion Fitness</span>
       </a>
-      <button class="neon-btn focus-neon rounded-full px-5 py-2 text-xs uppercase tracking-[0.5em]" type="button">
+      <button class="neon-btn nav-cta focus-neon rounded-full px-5 py-2 text-xs uppercase tracking-[0.5em]" type="button">
         <span></span>
       </button>
     </nav>
