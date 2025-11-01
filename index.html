@@ -590,23 +590,27 @@
 
     .logo-link {
       position: relative;
-      padding: 0.75rem 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 4.25rem;
+      height: 4.25rem;
+      padding: 0.35rem;
       border-radius: 9999px;
-      background: rgba(255, 255, 255, 0.96);
+      background: #ffffff;
       border: 1px solid rgba(255, 255, 255, 0.6);
-      box-shadow: 0 18px 45px rgba(15, 15, 19, 0.12);
-      min-height: 64px;
+      overflow: hidden;
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
     .logo-link:hover {
-      transform: translateY(-2px);
       box-shadow: 0 22px 55px rgba(15, 15, 19, 0.18);
     }
 
     .logo-link__image {
-      width: 3.25rem;
-      height: 3.25rem;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
       object-fit: contain;
     }
 
@@ -802,15 +806,19 @@
 
   <header class="relative min-h-[95vh] flex flex-col justify-between pt-12 pb-20">
     <div class="header-gradient" aria-hidden="true"></div>
-    <nav class="relative mx-6 sm:mx-12 flex items-center justify-between gap-6 rounded-full border border-white/40 bg-white/70 px-6 sm:px-12 py-4 text-[0.65rem] uppercase tracking-[0.45em] backdrop-blur-xl shadow-[0_20px_60px_rgba(15,15,19,0.15)]">
+    <nav class="relative mx-6 sm:mx-12 flex items-center justify-center gap-6 rounded-full border border-white/40 bg-white/70 px-6 sm:px-12 py-4 text-[0.65rem] uppercase tracking-[0.45em] backdrop-blur-xl shadow-[0_20px_60px_rgba(15,15,19,0.15)]">
       <!-- // LOGO: lionlogo.png -->
-      <a href="#hero" class="focus-neon logo-link inline-flex items-center gap-3">
-        <img src="./lionlogo.png" alt="Logo Lion Fitness" class="logo-link__image logo-glow" loading="lazy" />
-        <span class="uppercase tracking-[0.35em] text-xs sm:text-sm">Lion Fitness</span>
+      <a
+        href="#hero"
+        class="focus-neon logo-link inline-flex items-center justify-center bg-white text-black font-semibold shadow-md transition hover:scale-105"
+      >
+        <img
+          src="./lionlogo.png"
+          alt="Logo Lion Fitness"
+          class="logo-link__image logo-glow"
+          loading="lazy"
+        />
       </a>
-      <button class="neon-btn nav-cta focus-neon rounded-full px-5 py-2 text-xs uppercase tracking-[0.5em]" type="button">
-        <span></span>
-      </button>
     </nav>
 
     <section id="hero" class="relative px-6 sm:px-12 pb-12 sm:pb-16 pt-16 sm:pt-20">
