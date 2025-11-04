@@ -13,7 +13,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://lionfitness.mx" />
   <meta property="og:image" content="https://lionfitness.mx/lionlogo.png" />
-  <meta name="theme-color" content="#000000" />
+  <meta name="theme-color" content="#FFFFFF" />
   <link rel="icon" type="image/png" href="./lionlogo.png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -25,9 +25,9 @@
             display: ['Clash Display', 'Space Grotesk', 'system-ui']
           },
           colors: {
-            neonCyan: '#00FFFF',
-            neonMagenta: '#FF00FF',
-            neonLime: '#39FF14'
+            gold: '#D4AF37',
+            lightGold: '#F4E4C1',
+            darkGold: '#B8860B'
           }
         }
       }
@@ -40,8 +40,8 @@
 
     body {
       font-family: 'Space Grotesk', sans-serif;
-      background-color: #000000;
-      color: #0F0F13;
+      background-color: #FFFFFF;
+      color: #2C3E50;
       overflow-x: hidden;
     }
 
@@ -56,20 +56,20 @@
       pointer-events: none;
     }
 
-    /* // LUXURY EFFECT: Dynamic neon gradient haze */
+    /* // LUXURY EFFECT: Dynamic gold gradient haze */
     body::after {
       content: "";
       position: fixed;
       inset: -20% 0;
       z-index: -3;
-      background: radial-gradient(circle at var(--grad-x, 50%) var(--grad-y, 20%), rgba(0, 255, 255, 0.25), rgba(255, 0, 255, 0.12) 30%, rgba(57, 255, 20, 0.08) 45%, transparent 60%);
+      background: radial-gradient(circle at var(--grad-x, 50%) var(--grad-y, 20%), rgba(212, 175, 55, 0.08), rgba(244, 228, 193, 0.06) 30%, rgba(184, 134, 11, 0.04) 45%, transparent 60%);
       transition: transform 1.2s ease, opacity 1.2s ease;
-      opacity: 0.75;
+      opacity: 0.6;
       filter: blur(70px);
       pointer-events: none;
     }
 
-    /* // LUXURY EFFECT: Custom neon cursor */
+    /* // LUXURY EFFECT: Custom gold cursor */
     .cursor-halo {
       position: fixed;
       top: 0;
@@ -78,9 +78,9 @@
       height: 36px;
       border-radius: 9999px;
       pointer-events: none;
-      mix-blend-mode: screen;
-      background: radial-gradient(circle, rgba(0, 255, 255, 0.65) 0%, rgba(255, 0, 255, 0.35) 45%, transparent 65%);
-      box-shadow: 0 0 24px rgba(0, 255, 255, 0.75);
+      mix-blend-mode: multiply;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, rgba(244, 228, 193, 0.15) 45%, transparent 65%);
+      box-shadow: 0 0 24px rgba(212, 175, 55, 0.25);
       z-index: 1000;
       transform: translate(-50%, -50%);
       transition: width 0.3s ease, height 0.3s ease, box-shadow 0.3s ease;
@@ -89,35 +89,35 @@
     .cursor-halo.is-card {
       width: 60px;
       height: 60px;
-      box-shadow: 0 0 40px rgba(57, 255, 20, 0.8);
-      background: radial-gradient(circle, rgba(57, 255, 20, 0.7) 0%, rgba(0, 255, 255, 0.25) 60%, transparent 80%);
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.35);
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.35) 0%, rgba(244, 228, 193, 0.2) 60%, transparent 80%);
     }
 
     .cursor-halo.is-cta {
       width: 80px;
       height: 80px;
-      box-shadow: 0 0 55px rgba(255, 0, 255, 0.75);
-      background: radial-gradient(circle, rgba(255, 0, 255, 0.8) 0%, rgba(0, 255, 255, 0.45) 55%, transparent 85%);
+      box-shadow: 0 0 55px rgba(212, 175, 55, 0.4);
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.4) 0%, rgba(244, 228, 193, 0.25) 55%, transparent 85%);
     }
 
-    /* // LUXURY EFFECT: Neon pulsating buttons */
+    /* // LUXURY EFFECT: Gold elegant buttons */
     .neon-btn {
       position: relative;
       overflow: hidden;
-      border: 1px solid rgba(0, 255, 255, 0.3);
+      border: 2px solid rgba(212, 175, 55, 0.5);
       transition: transform 0.4s ease;
-      box-shadow: 0 0 25px rgba(0, 255, 255, 0.25);
+      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
     }
 
     .neon-btn::before {
       content: "";
       position: absolute;
       inset: -120%;
-      background: conic-gradient(from 90deg, rgba(0, 255, 255, 0.6), rgba(255, 0, 255, 0.6), rgba(57, 255, 20, 0.6), rgba(0, 255, 255, 0.6));
+      background: conic-gradient(from 90deg, rgba(212, 175, 55, 0.3), rgba(244, 228, 193, 0.3), rgba(184, 134, 11, 0.3), rgba(212, 175, 55, 0.3));
       transition: transform 0.6s ease;
       transform: rotate(0deg);
       animation: neonRotate 5s linear infinite;
-      opacity: 0.7;
+      opacity: 0.5;
     }
 
     .neon-btn span {
@@ -156,9 +156,9 @@
       overflow: hidden;
       min-height: 360px;
       isolation: isolate;
-      background: #090910;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 16px 45px rgba(15, 15, 19, 0.16);
+      background: #F8F9FA;
+      border: 2px solid rgba(212, 175, 55, 0.2);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
       transition: transform 0.6s ease, box-shadow 0.6s ease, border-color 0.6s ease;
     }
 
@@ -173,12 +173,12 @@
     }
 
     .experience-card::before {
-      background: radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.25), transparent 65%);
-      opacity: 0.75;
+      background: radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.15), transparent 65%);
+      opacity: 0.6;
     }
 
     .experience-card::after {
-      background: linear-gradient(180deg, rgba(8, 8, 12, 0.05) 0%, rgba(8, 8, 12, 0.75) 70%, rgba(8, 8, 12, 0.92) 100%);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.7) 70%, rgba(255, 255, 255, 0.9) 100%);
       opacity: 1;
     }
 
@@ -201,7 +201,7 @@
     }
 
     .experience-card:hover::before {
-      opacity: 1;
+      opacity: 0.8;
     }
 
     .experience-card:hover::after {
@@ -209,42 +209,42 @@
     }
 
     .experience-card[data-color='cyan'] {
-      border-color: rgba(0, 255, 255, 0.3);
-      box-shadow: 0 16px 45px rgba(0, 255, 255, 0.18);
+      border-color: rgba(212, 175, 55, 0.3);
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.12);
     }
 
     .experience-card[data-color='cyan']::before {
-      background: radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.28), transparent 68%);
+      background: radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.18), transparent 68%);
     }
 
     .experience-card[data-color='cyan']:hover {
-      box-shadow: 0 26px 70px rgba(0, 255, 255, 0.35);
+      box-shadow: 0 16px 50px rgba(212, 175, 55, 0.25);
     }
 
     .experience-card[data-color='magenta'] {
-      border-color: rgba(255, 0, 255, 0.25);
-      box-shadow: 0 16px 45px rgba(255, 0, 255, 0.16);
+      border-color: rgba(212, 175, 55, 0.25);
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.1);
     }
 
     .experience-card[data-color='magenta']::before {
-      background: radial-gradient(circle at 20% 20%, rgba(255, 0, 255, 0.24), transparent 68%);
+      background: radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.16), transparent 68%);
     }
 
     .experience-card[data-color='magenta']:hover {
-      box-shadow: 0 26px 70px rgba(255, 0, 255, 0.32);
+      box-shadow: 0 16px 50px rgba(212, 175, 55, 0.22);
     }
 
     .experience-card[data-color='lime'] {
-      border-color: rgba(57, 255, 20, 0.28);
-      box-shadow: 0 16px 45px rgba(57, 255, 20, 0.18);
+      border-color: rgba(212, 175, 55, 0.28);
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.11);
     }
 
     .experience-card[data-color='lime']::before {
-      background: radial-gradient(circle at 20% 20%, rgba(57, 255, 20, 0.24), transparent 68%);
+      background: radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.17), transparent 68%);
     }
 
     .experience-card[data-color='lime']:hover {
-      box-shadow: 0 26px 70px rgba(57, 255, 20, 0.34);
+      box-shadow: 0 16px 50px rgba(212, 175, 55, 0.24);
     }
 
     .experience-card .hero-showcase__badge,
@@ -255,7 +255,7 @@
     .experience-card .hero-showcase__badge {
       top: 22px;
       left: 22px;
-      background: rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.95);
     }
 
     .experience-card .hero-showcase__meta {
@@ -273,7 +273,7 @@
       font-size: 0.9rem;
       line-height: 1.7;
       letter-spacing: 0.05em;
-      color: rgba(226, 232, 240, 0.9);
+      color: rgba(44, 62, 80, 0.9);
     }
 
     .page-backdrop {
@@ -285,8 +285,8 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.75) 35%, rgba(255, 255, 255, 0.6) 55%, rgba(255, 255, 255, 0.85) 100%);
-      mix-blend-mode: screen;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 35%, rgba(255, 255, 255, 0.75) 55%, rgba(255, 255, 255, 0.9) 100%);
+      mix-blend-mode: normal;
       pointer-events: none;
     }
 
@@ -294,11 +294,11 @@
       position: absolute;
       inset: -25% -30% 40% -30%;
       background:
-        radial-gradient(circle at 20% 35%, rgba(0, 255, 255, 0.35), transparent 60%),
-        radial-gradient(circle at 80% 20%, rgba(255, 0, 255, 0.25), transparent 60%),
-        radial-gradient(circle at 55% 75%, rgba(57, 255, 20, 0.3), transparent 65%);
+        radial-gradient(circle at 20% 35%, rgba(212, 175, 55, 0.15), transparent 60%),
+        radial-gradient(circle at 80% 20%, rgba(244, 228, 193, 0.12), transparent 60%),
+        radial-gradient(circle at 55% 75%, rgba(184, 134, 11, 0.1), transparent 65%);
       filter: blur(140px);
-      opacity: 0.8;
+      opacity: 0.5;
       z-index: -1;
     }
 
@@ -308,12 +308,12 @@
       gap: 12px;
       padding: 12px 20px;
       border-radius: 999px;
-      border: 1px solid rgba(0, 255, 255, 0.35);
-      background: rgba(255, 255, 255, 0.8);
+      border: 2px solid rgba(212, 175, 55, 0.4);
+      background: rgba(255, 255, 255, 0.95);
       text-transform: uppercase;
       letter-spacing: 0.55em;
       font-size: 0.72rem;
-      box-shadow: 0 18px 40px rgba(0, 255, 255, 0.25);
+      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.15);
     }
 
     .hero-eyebrow::before {
@@ -321,15 +321,15 @@
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #00ffff, #ff00ff);
-      box-shadow: 0 0 16px rgba(255, 0, 255, 0.6);
+      background: linear-gradient(135deg, #D4AF37, #B8860B);
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
     }
 
     .stat-number {
       font-family: 'Clash Display', sans-serif;
       font-size: clamp(2rem, 4vw, 3rem);
       letter-spacing: 0.08em;
-      background: linear-gradient(120deg, #0f172a, #00ffff);
+      background: linear-gradient(120deg, #2C3E50, #D4AF37);
       -webkit-text-fill-color: transparent;
       -webkit-background-clip: text;
       background-clip: text;
@@ -339,17 +339,17 @@
       text-transform: uppercase;
       letter-spacing: 0.45em;
       font-size: 0.65rem;
-      color: rgba(15, 15, 19, 0.65);
+      color: rgba(44, 62, 80, 0.7);
     }
 
     .hero-showcase {
       position: relative;
       border-radius: 28px;
       overflow: hidden;
-      border: 1px solid rgba(0, 255, 255, 0.3);
-      box-shadow: 0 32px 70px rgba(15, 15, 19, 0.25);
-      background: radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.25), transparent 65%),
-        radial-gradient(circle at 80% 60%, rgba(255, 0, 255, 0.25), transparent 70%), rgba(10, 10, 14, 0.82);
+      border: 2px solid rgba(212, 175, 55, 0.3);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+      background: radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.12), transparent 65%),
+        radial-gradient(circle at 80% 60%, rgba(244, 228, 193, 0.1), transparent 70%), rgba(248, 249, 250, 0.95);
       isolation: isolate;
       height: clamp(320px, 58vh, 520px);
     }
@@ -375,7 +375,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(140deg, rgba(10, 10, 14, 0.2), rgba(10, 10, 14, 0.75));
+      background: linear-gradient(140deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.7));
       pointer-events: none;
       z-index: 1;
     }
@@ -389,22 +389,22 @@
       gap: 12px;
       padding: 12px 18px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(0, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid rgba(212, 175, 55, 0.4);
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.4em;
-      color: #ecfeff;
+      color: #2C3E50;
       backdrop-filter: blur(12px);
-      box-shadow: inset 0 0 30px rgba(0, 255, 255, 0.2);
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
       z-index: 2;
     }
 
     .hero-showcase__badge svg {
       width: 18px;
       height: 18px;
-      color: #39ff14;
-      filter: drop-shadow(0 0 12px rgba(57, 255, 20, 0.8));
+      color: #D4AF37;
+      filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
     }
 
     .hero-showcase__meta {
@@ -416,8 +416,8 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      background: linear-gradient(0deg, rgba(10, 10, 14, 0.88) 0%, rgba(10, 10, 14, 0.55) 60%, transparent 100%);
-      color: #f8fafc;
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.7) 60%, transparent 100%);
+      color: #2C3E50;
       z-index: 2;
     }
 
@@ -425,7 +425,7 @@
       text-transform: uppercase;
       letter-spacing: 0.4em;
       font-size: 0.7rem;
-      color: rgba(224, 242, 254, 0.75);
+      color: rgba(212, 175, 55, 0.9);
     }
 
     .hero-showcase__meta p {
@@ -438,21 +438,21 @@
       display: flex;
       flex-direction: column;
       gap: 18px;
-      background: linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.98), rgba(248, 249, 250, 0.95));
       padding-block: 34px;
     }
 
     .tier-card.is-featured {
-      background: linear-gradient(160deg, rgba(0, 255, 255, 0.28), rgba(255, 0, 255, 0.18));
-      border-color: rgba(255, 0, 255, 0.35);
-      box-shadow: 0 25px 70px rgba(0, 255, 255, 0.35);
+      background: linear-gradient(160deg, rgba(212, 175, 55, 0.15), rgba(244, 228, 193, 0.1));
+      border-color: rgba(212, 175, 55, 0.4);
+      box-shadow: 0 12px 40px rgba(212, 175, 55, 0.2);
     }
 
     .tier-card .price {
       font-family: 'Clash Display', sans-serif;
       font-size: clamp(2rem, 4vw, 2.8rem);
       letter-spacing: 0.06em;
-      color: #0f0f13;
+      color: #2C3E50;
     }
 
     .tier-card ul {
@@ -466,7 +466,7 @@
       padding-left: 22px;
       font-size: 0.85rem;
       letter-spacing: 0.08em;
-      color: rgba(15, 15, 19, 0.75);
+      color: rgba(44, 62, 80, 0.8);
       text-transform: uppercase;
     }
 
@@ -478,25 +478,25 @@
       width: 8px;
       height: 8px;
       border-radius: 999px;
-      background: linear-gradient(120deg, #00ffff, #ff00ff);
-      box-shadow: 0 0 12px rgba(0, 255, 255, 0.6);
+      background: linear-gradient(120deg, #D4AF37, #B8860B);
+      box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
     }
 
     .tier-chip {
       align-self: flex-start;
       padding: 8px 18px;
       border-radius: 999px;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      background: rgba(255, 255, 255, 0.85);
+      border: 2px solid rgba(212, 175, 55, 0.3);
+      background: rgba(255, 255, 255, 0.95);
       text-transform: uppercase;
       letter-spacing: 0.5em;
       font-size: 0.65rem;
     }
 
     .tier-card.is-featured .tier-chip {
-      background: rgba(15, 15, 19, 0.92);
-      color: #ecfeff;
-      border-color: rgba(0, 255, 255, 0.4);
+      background: rgba(212, 175, 55, 0.15);
+      color: #2C3E50;
+      border-color: rgba(212, 175, 55, 0.5);
     }
 
     .testimonial-track {
@@ -519,7 +519,7 @@
     }
 
     .testimonial-track::-webkit-scrollbar-thumb {
-      background: linear-gradient(120deg, rgba(0, 255, 255, 0.8), rgba(255, 0, 255, 0.8));
+      background: linear-gradient(120deg, rgba(212, 175, 55, 0.6), rgba(184, 134, 11, 0.6));
       border-radius: 999px;
     }
 
@@ -527,9 +527,9 @@
       position: relative;
       border-radius: 20px;
       padding: 28px;
-      background: rgba(255, 255, 255, 0.82);
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      box-shadow: 0 18px 45px rgba(15, 15, 19, 0.12);
+      background: rgba(255, 255, 255, 0.98);
+      border: 2px solid rgba(212, 175, 55, 0.2);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
       overflow: hidden;
       flex: 0 0 clamp(260px, 60vw, 340px);
       scroll-snap-align: start;
@@ -539,7 +539,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 15% 20%, rgba(0, 255, 255, 0.25), transparent 55%);
+      background: radial-gradient(circle at 15% 20%, rgba(212, 175, 55, 0.12), transparent 55%);
       opacity: 0;
       transition: opacity 0.4s ease;
       z-index: 0;
@@ -557,7 +557,7 @@
 
     .testimonial-card p {
       letter-spacing: 0.06em;
-      color: rgba(15, 15, 19, 0.75);
+      color: rgba(44, 62, 80, 0.85);
     }
 
     .testimonial-card span {
@@ -566,19 +566,19 @@
       font-size: 0.78rem;
       letter-spacing: 0.4em;
       text-transform: uppercase;
-      color: rgba(15, 15, 19, 0.6);
+      color: rgba(212, 175, 55, 0.9);
     }
 
-    /* // LUXURY EFFECT: Neon focus ring */
+    /* // LUXURY EFFECT: Gold focus ring */
     .focus-neon:focus {
-      outline: 3px solid rgba(0, 255, 255, 0.7);
+      outline: 3px solid rgba(212, 175, 55, 0.6);
       outline-offset: 4px;
-      box-shadow: 0 0 0 6px rgba(255, 0, 255, 0.18);
+      box-shadow: 0 0 0 6px rgba(212, 175, 55, 0.15);
     }
 
     /* // LUXURY EFFECT: 3D logo glow */
     .logo-glow {
-      filter: drop-shadow(0 0 14px rgba(0, 255, 255, 0.65)) drop-shadow(0 0 30px rgba(255, 0, 255, 0.45));
+      filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.35)) drop-shadow(0 0 20px rgba(212, 175, 55, 0.2));
       animation: pulseGlow 4s ease-in-out infinite;
       transform: perspective(800px) rotateX(6deg) rotateY(-6deg);
       transition: transform 0.6s ease;
@@ -624,10 +624,10 @@
 
     @keyframes pulseGlow {
       0%, 100% {
-        filter: drop-shadow(0 0 14px rgba(0, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(255, 0, 255, 0.35));
+        filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.35)) drop-shadow(0 0 20px rgba(212, 175, 55, 0.2));
       }
       50% {
-        filter: drop-shadow(0 0 24px rgba(0, 255, 255, 0.85)) drop-shadow(0 0 60px rgba(57, 255, 20, 0.55));
+        filter: drop-shadow(0 0 16px rgba(212, 175, 55, 0.5)) drop-shadow(0 0 30px rgba(212, 175, 55, 0.3));
       }
     }
 
@@ -636,8 +636,8 @@
       position: relative;
       border-radius: 32px;
       overflow: hidden;
-      border: 1px solid rgba(0, 255, 255, 0.25);
-      box-shadow: 0 25px 60px rgba(15, 15, 19, 0.15);
+      border: 2px solid rgba(212, 175, 55, 0.3);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
     }
 
     .map-marker {
@@ -654,16 +654,16 @@
 
     .map-marker img {
       width: 70px;
-      filter: drop-shadow(0 0 18px rgba(0, 255, 255, 0.75));
+      filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.4));
       animation: pulseGlow 3s ease-in-out infinite;
     }
 
     .map-popup {
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.98);
       border-radius: 18px;
       padding: 10px 18px;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
-      border: 1px solid rgba(255, 0, 255, 0.25);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+      border: 2px solid rgba(212, 175, 55, 0.3);
       font-size: 0.85rem;
       min-width: 180px;
     }
@@ -700,8 +700,8 @@
     }
 
     footer a:hover {
-      color: #00FFFF;
-      text-shadow: 0 0 18px rgba(0, 255, 255, 0.7);
+      color: #D4AF37;
+      text-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
     }
 
     .hero-title {
@@ -822,7 +822,7 @@
     </nav>
 
     <section id="hero" class="relative px-6 sm:px-12 pb-12 sm:pb-16 pt-16 sm:pt-20">
-      <div class="absolute inset-x-10 -top-20 h-80 -z-10 rounded-[120px] bg-gradient-to-r from-cyan-200/30 via-white to-fuchsia-200/30 blur-3xl pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute inset-x-10 -top-20 h-80 -z-10 rounded-[120px] bg-gradient-to-r from-yellow-100/20 via-white to-yellow-50/20 blur-3xl pointer-events-none" aria-hidden="true"></div>
       <div class="relative grid gap-12 lg:grid-cols-[1.05fr,0.95fr] items-center">
         <div class="text-center lg:text-left space-y-8">
           <span class="hero-eyebrow">Lion Fitness Club</span>
@@ -980,8 +980,8 @@
 
     <section id="testimonios" class="px-6 sm:px-12">
       <div class="flex flex-col items-center text-center gap-4 sm:gap-5 mb-12">
-        <p class="max-w-2xl text-sm sm:text-base text-white">Historias reales que muestran cómo el rugido interior se enciende con nuestro Gym, ellos ya tomaron la desición..</p>
-        <p class="text-xs sm:text-sm uppercase tracking-[0.5em] text-white">Y TU PARA CUANDO?.</p>
+        <p class="max-w-2xl text-sm sm:text-base text-gray-700">Historias reales que muestran cómo el rugido interior se enciende con nuestro Gym, ellos ya tomaron la desición..</p>
+        <p class="text-xs sm:text-sm uppercase tracking-[0.5em] text-gray-600">Y TU PARA CUANDO?.</p>
       </div>
       <div class="testimonial-track" role="list">
         <article class="testimonial-card" role="listitem">
@@ -1005,8 +1005,8 @@
 
     <section id="ubicacion" class="px-6 sm:px-12">
       <div class="flex flex-col items-center text-center gap-4 sm:gap-5 mb-12">
-        <p class="max-w-2xl text-sm sm:text-base text-white">Carretera Zitácuaro-Huetamo 
-         <p class="max-w-2xl text-sm sm:text-base text-white"> Km 1</p>
+        <p class="max-w-2xl text-sm sm:text-base text-gray-700">Carretera Zitácuaro-Huetamo 
+         <p class="max-w-2xl text-sm sm:text-base text-gray-700"> Km 1</p>
       </div>
       <div class="map-container">
         <iframe title="Mapa Lion Fitness" width="100%" height="420" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.94452966147!2d-100.36054308462729!3d19.436119045813845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI2JzA5LjMiTiAxMDDCsDIxJzMxLjAiVw!5e0!3m2!1ses!2smx!4v1700000000000"></iframe>
@@ -1022,9 +1022,9 @@
     </section>
   </main>
 
-  <footer class="relative px-6 sm:px-12 py-16 border-t border-white/10 bg-gradient-to-b from-black via-[#05021a] to-black text-white">
-    <div class="absolute inset-0 pointer-events-none opacity-40" aria-hidden="true">
-      <div class="h-full w-full bg-[radial-gradient(circle_at_top,_rgba(0,255,255,0.18),_transparent_60%)]"></div>
+  <footer class="relative px-6 sm:px-12 py-16 border-t border-gray-200 bg-gradient-to-b from-white via-gray-50 to-white text-gray-800">
+    <div class="absolute inset-0 pointer-events-none opacity-30" aria-hidden="true">
+      <div class="h-full w-full bg-[radial-gradient(circle_at_top,_rgba(212,175,55,0.08),_transparent_60%)]"></div>
     </div>
     <div class="relative max-w-5xl mx-auto flex flex-col items-center text-center gap-10">
       <div class="flex flex-col items-center gap-5">
@@ -1036,7 +1036,7 @@
         </div>
       </div>
       <div class="flex items-center justify-center gap-8">
-        <a href="https://instagram.com" target="_blank" rel="noopener" class="focus-neon text-white/80 transition hover:text-white">
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="focus-neon text-gray-600 transition hover:text-[#D4AF37]">
           <span class="sr-only">Instagram</span>
           <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="currentColor" stroke-width="1.5" />
@@ -1044,20 +1044,20 @@
             <circle cx="17" cy="7" r="1" fill="currentColor" />
           </svg>
         </a>
-        <a href="https://www.facebook.com/profile.php?id=61583091388035" target="_blank" rel="noopener" class="focus-neon text-white/80 transition hover:text-white">
+        <a href="https://www.facebook.com/profile.php?id=61583091388035" target="_blank" rel="noopener" class="focus-neon text-gray-600 transition hover:text-[#D4AF37]">
           <span class="sr-only">Facebook</span>
           <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M13.5 21H10.5C9.67157 21 9 20.3284 9 19.5V13.5H7.5C6.67157 13.5 6 12.8284 6 12V10.5C6 9.67157 6.67157 9 7.5 9H9V7C9 4.79086 10.7909 3 13 3H16.5C17.3284 3 18 3.67157 18 4.5V6C18 6.82843 17.3284 7.5 16.5 7.5H14.5C14.2239 7.5 14 7.72386 14 8V9H16.5C17.3284 9 18 9.67157 18 10.5L17.25 12.75C17.0074 13.4748 16.3358 14 15.5695 14H14V19.5C14 20.3284 13.3284 21 12.5 21H13.5Z" fill="currentColor" />
           </svg>
         </a>
-        <a href="https://tiktok.com" target="_blank" rel="noopener" class="focus-neon text-white/80 transition hover:text-white">
+        <a href="https://tiktok.com" target="_blank" rel="noopener" class="focus-neon text-gray-600 transition hover:text-[#D4AF37]">
           <span class="sr-only">TikTok</span>
           <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M14.75 4.25C15.5373 5.37445 16.723 6.15339 18.046 6.42175V8.92925C16.9583 8.82629 15.8951 8.4715 14.95 7.8985V14.25C14.95 16.9025 12.8025 19.05 10.15 19.05C7.49751 19.05 5.34998 16.9025 5.34998 14.25C5.34998 11.5975 7.49751 9.44995 10.15 9.44995C10.4227 9.44995 10.6908 9.47404 10.9523 9.52035V12.1354C10.6984 12.0581 10.4318 12.0166 10.15 12.0166C8.99809 12.0166 8.06498 12.9497 8.06498 14.1016C8.06498 15.2535 8.99809 16.1866 10.15 16.1866C11.3018 16.1866 12.235 15.2535 12.235 14.1016V4.25H14.75Z" fill="currentColor" />
           </svg>
         </a>
       </div>
-      <p class="text-[0.7rem] uppercase tracking-[0.5em] text-white/70">&copy; <span id="year"></span> Lion Fitness. Todos los rugidos reservados.</p>
+      <p class="text-[0.7rem] uppercase tracking-[0.5em] text-gray-500">&copy; <span id="year"></span> Lion Fitness. Todos los rugidos reservados.</p>
     </div>
   </footer>
 
@@ -1170,9 +1170,9 @@
         gsap.utils.toArray('.experience-card').forEach((card, index) => {
           const color = card.dataset.color || 'cyan';
           const glow = {
-            cyan: '0 0 35px rgba(0,255,255,0.6)',
-            magenta: '0 0 35px rgba(255,0,255,0.6)',
-            lime: '0 0 35px rgba(57,255,20,0.6)'
+            cyan: '0 8px 30px rgba(212,175,55,0.25)',
+            magenta: '0 8px 30px rgba(212,175,55,0.25)',
+            lime: '0 8px 30px rgba(212,175,55,0.25)'
           }[color];
 
           // // LUXURY EFFECT: Card materialization
