@@ -1093,16 +1093,14 @@
       });
 
       window.addEventListener('load', () => {
-        syncCardHeights();
-        setTimeout(syncCardHeights, 250);
+        setTimeout(() => {
+          // Cards loaded
+        }, 250);
       });
 
       window.addEventListener('resize', () => {
-        resetCardHeights();
-        syncCardHeights();
+        // Handle resize
       });
-
-      syncCardHeights();
 
       // // LUXURY EFFECT: Lenis smooth scroll
       const lenis = new Lenis({
