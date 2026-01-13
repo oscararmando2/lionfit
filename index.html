@@ -40,6 +40,12 @@
       color: #000000;
       overflow-x: hidden;
     }
+    
+    /* Ensure all links use black/white colors only */
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     /* Minimalist texture overlay */
     body::before {
@@ -677,11 +683,16 @@
     }
 
     footer a {
+      color: rgba(0, 0, 0, 0.6);
       transition: color 0.3s ease;
     }
 
     footer a:hover {
       color: #000000;
+    }
+    
+    footer a svg {
+      color: inherit;
     }
 
     .hero-title {
