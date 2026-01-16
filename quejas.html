@@ -326,6 +326,9 @@
     // Set current year
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Configuration
+    const WHATSAPP_NUMBER = '527151249433';
+
     // Form handling
     const form = document.getElementById('quejasForm');
     const mensajeInput = document.getElementById('mensaje');
@@ -368,15 +371,24 @@
       fallbackText.value = textoFormateado;
 
       // Open WhatsApp
-      const whatsappURL = `https://wa.me/527151249433?text=${encodeURIComponent(textoFormateado)}`;
+      const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(textoFormateado)}`;
       
       // Try to open WhatsApp
       const whatsappWindow = window.open(whatsappURL, '_blank');
 
       // Show fallback after a delay
       setTimeout(() => {
-        // Check if window was blocked or closed
-        if (!whatsappWindow || whatsappWindow.closed) {
+        // Check if window was blocked or closed (with try-catch for security exceptions)
+        let windowBlocked = false;
+        try {
+          windowBlocked = !whatsappWindow || whatsappWindow.closed;
+        } catch (e) {
+          // Security exception in some browsers when checking cross-origin windows
+          // Assume window opened successfully if we get this error
+          windowBlocked = false;
+        }
+
+        if (windowBlocked) {
           // Show fallback
           fallbackContainer.classList.remove('hidden');
           statusMessage.textContent = '✓ Mensaje preparado';
