@@ -849,7 +849,7 @@
 <body class="relative">
   <!-- Video Loader -->
   <div class="loader-overlay" id="loader">
-    <video id="loaderVideo" autoplay muted playsinline webkit-playsinline>
+    <video id="loaderVideo" autoplay muted playsinline loop preload="auto">
       <source src="./loaderlion.mp4" type="video/mp4">
     </video>
   </div>
@@ -1150,6 +1150,8 @@
       const loader = document.getElementById('loader');
       const loaderVideo = document.getElementById('loaderVideo');
       const mainContent = document.getElementById('mainContent');
+      let hasPlayed = false;
+      let interactionListenersAdded = false;
 
       function hideLoader() {
         if (loader && mainContent && !mainContent.classList.contains('visible')) {
@@ -1163,16 +1165,47 @@
         }
       }
 
-      if (loaderVideo && loader && mainContent) {
-        // Explicitly trigger play for mobile devices
+      function tryPlayVideo() {
+        if (!loaderVideo || hasPlayed) return;
+        
+        // Set properties for mobile compatibility
+        loaderVideo.muted = true;
+        loaderVideo.playsInline = true;
+        
         const playPromise = loaderVideo.play();
         
         if (playPromise !== undefined) {
-          playPromise.catch(function(error) {
-            // Autoplay was prevented, but we continue anyway
-            console.log('Autoplay prevented:', error);
+          playPromise.then(function() {
+            hasPlayed = true;
+            removeInteractionListeners();
+          }).catch(function(error) {
+            // Autoplay was prevented, set up retry on user interaction
+            console.log('Autoplay prevented, will retry on user interaction:', error);
+            setupInteractionRetry();
           });
         }
+      }
+
+      function removeInteractionListeners() {
+        if (!interactionListenersAdded) return;
+        document.removeEventListener('touchstart', tryPlayVideo);
+        document.removeEventListener('click', tryPlayVideo);
+        document.removeEventListener('scroll', tryPlayVideo);
+        interactionListenersAdded = false;
+      }
+
+      function setupInteractionRetry() {
+        if (interactionListenersAdded || hasPlayed) return;
+        
+        document.addEventListener('touchstart', tryPlayVideo, { once: true, passive: true });
+        document.addEventListener('click', tryPlayVideo, { once: true });
+        document.addEventListener('scroll', tryPlayVideo, { once: true, passive: true });
+        interactionListenersAdded = true;
+      }
+
+      if (loaderVideo && loader && mainContent) {
+        // Try to play immediately
+        tryPlayVideo();
 
         // Check if video already ended (e.g., cached and played quickly)
         if (loaderVideo.ended) {
