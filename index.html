@@ -1094,6 +1094,44 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.6/bundled/lenis.min.js" defer></script>
+  <script>
+    // Video Loader Handler - Execute immediately
+    (function() {
+      const loader = document.getElementById('loader');
+      const loaderVideo = document.getElementById('loaderVideo');
+      const mainContent = document.getElementById('mainContent');
+
+      function hideLoader() {
+        if (loader && mainContent && !mainContent.classList.contains('visible')) {
+          loader.classList.add('fade-out');
+          mainContent.classList.add('visible');
+          
+          // Remove loader from DOM after transition
+          setTimeout(() => {
+            loader.style.display = 'none';
+          }, 800);
+        }
+      }
+
+      if (loaderVideo && loader && mainContent) {
+        // Check if video already ended (e.g., cached and played quickly)
+        if (loaderVideo.ended) {
+          hideLoader();
+        } else {
+          // When video ends, fade out loader and show main content
+          loaderVideo.addEventListener('ended', hideLoader);
+        }
+
+        // Fallback: If video fails to load or play, show content anyway
+        loaderVideo.addEventListener('error', hideLoader);
+
+        // Safety timeout: Show content after 10 seconds regardless
+        setTimeout(() => {
+          hideLoader();
+        }, 10000);
+      }
+    })();
+  </script>
   <script defer>
     window.addEventListener('DOMContentLoaded', () => {
       const yearEl = document.getElementById('year');
@@ -1225,44 +1263,6 @@
         gsapInit();
       } else {
         window.addEventListener('load', gsapInit);
-      }
-
-      // Video Loader Handler
-      const loader = document.getElementById('loader');
-      const loaderVideo = document.getElementById('loaderVideo');
-      const mainContent = document.getElementById('mainContent');
-
-      if (loaderVideo && loader && mainContent) {
-        // When video ends, fade out loader and show main content
-        loaderVideo.addEventListener('ended', () => {
-          loader.classList.add('fade-out');
-          mainContent.classList.add('visible');
-          
-          // Remove loader from DOM after transition
-          setTimeout(() => {
-            loader.style.display = 'none';
-          }, 800);
-        });
-
-        // Fallback: If video fails to load or play, show content anyway
-        loaderVideo.addEventListener('error', () => {
-          loader.classList.add('fade-out');
-          mainContent.classList.add('visible');
-          setTimeout(() => {
-            loader.style.display = 'none';
-          }, 800);
-        });
-
-        // Safety timeout: Show content after 10 seconds regardless
-        setTimeout(() => {
-          if (!mainContent.classList.contains('visible')) {
-            loader.classList.add('fade-out');
-            mainContent.classList.add('visible');
-            setTimeout(() => {
-              loader.style.display = 'none';
-            }, 800);
-          }
-        }, 10000);
       }
     });
   </script>
