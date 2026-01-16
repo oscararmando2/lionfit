@@ -206,7 +206,7 @@
       padding: 16px;
       border: 2px solid #E5E5E5;
       border-radius: 12px;
-      font-family: 'Inter', monospace;
+      font-family: 'Inter', sans-serif;
       font-size: 0.9rem;
       line-height: 1.6;
       resize: vertical;
@@ -376,7 +376,7 @@
       // Show fallback after a delay
       setTimeout(() => {
         // Check if window was blocked or closed
-        if (!whatsappWindow || whatsappWindow.closed || typeof whatsappWindow.closed == 'undefined') {
+        if (!whatsappWindow || whatsappWindow.closed || typeof whatsappWindow.closed === 'undefined') {
           // Show fallback
           fallbackContainer.classList.remove('hidden');
           statusMessage.textContent = '✓ Mensaje preparado';
@@ -401,18 +401,39 @@
 
     // Copy button functionality
     copyBtn.addEventListener('click', function() {
-      fallbackText.select();
-      fallbackText.setSelectionRange(0, 99999); // For mobile devices
+      const textToCopy = fallbackText.value;
 
-      try {
-        document.execCommand('copy');
-        const originalText = copyBtn.innerHTML;
-        copyBtn.innerHTML = '<span>✓ Copiado</span>';
-        setTimeout(() => {
-          copyBtn.innerHTML = originalText;
-        }, 2000);
-      } catch (err) {
-        console.error('Error al copiar:', err);
+      // Use modern Clipboard API if available, fallback to execCommand
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          const originalText = copyBtn.innerHTML;
+          copyBtn.innerHTML = '<span>✓ Copiado</span>';
+          setTimeout(() => {
+            copyBtn.innerHTML = originalText;
+          }, 2000);
+        }).catch(err => {
+          console.error('Error al copiar:', err);
+          // Fallback to select method
+          fallbackToSelectCopy();
+        });
+      } else {
+        // Fallback for older browsers
+        fallbackToSelectCopy();
+      }
+
+      function fallbackToSelectCopy() {
+        try {
+          fallbackText.select();
+          fallbackText.setSelectionRange(0, 99999); // For mobile devices
+          document.execCommand('copy');
+          const originalText = copyBtn.innerHTML;
+          copyBtn.innerHTML = '<span>✓ Copiado</span>';
+          setTimeout(() => {
+            copyBtn.innerHTML = originalText;
+          }, 2000);
+        } catch (err) {
+          console.error('Error al copiar:', err);
+        }
       }
     });
   </script>
