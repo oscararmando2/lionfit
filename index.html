@@ -830,7 +830,7 @@
 <body class="relative">
   <!-- Video Loader -->
   <div class="loader-overlay" id="loader">
-    <video id="loaderVideo" autoplay muted playsinline>
+    <video id="loaderVideo" autoplay muted playsinline webkit-playsinline>
       <source src="./loaderlion.mp4" type="video/mp4">
     </video>
   </div>
@@ -1114,6 +1114,16 @@
       }
 
       if (loaderVideo && loader && mainContent) {
+        // Explicitly trigger play for mobile devices
+        const playPromise = loaderVideo.play();
+        
+        if (playPromise !== undefined) {
+          playPromise.catch(function(error) {
+            // Autoplay was prevented, but we continue anyway
+            console.log('Autoplay prevented:', error);
+          });
+        }
+
         // Check if video already ended (e.g., cached and played quickly)
         if (loaderVideo.ended) {
           hideLoader();
