@@ -376,7 +376,7 @@
       // Show fallback after a delay
       setTimeout(() => {
         // Check if window was blocked or closed
-        if (!whatsappWindow || whatsappWindow.closed || typeof whatsappWindow.closed === 'undefined') {
+        if (!whatsappWindow || whatsappWindow.closed) {
           // Show fallback
           fallbackContainer.classList.remove('hidden');
           statusMessage.textContent = '✓ Mensaje preparado';
