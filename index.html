@@ -502,62 +502,80 @@
     }
 
     .card {
-      width: 190px;
-      height: 264px;
+      width: 220px;
+      height: 300px;
       background: rgb(73, 74, 68);
       font-family: inherit;
       position: relative;
-      border-radius: 8px;
-      flex: 0 0 190px;
+      border-radius: 12px;
+      flex: 0 0 220px;
       scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
     }
 
     .quote {
       color: rgb(52, 185, 134);
-      padding-left: 30px;
-      padding-right: 30px;
       position: relative;
       text-align: center;
       display: flex;
       justify-content: center;
+      align-items: center;
+      order: 2;
+      margin-bottom: 10px;
+    }
+
+    .quote svg {
+      width: 50px;
+      height: 50px;
+      opacity: 0.8;
     }
 
     .card-name {
       text-transform: uppercase;
       font-weight: 700;
       color: rgb(253, 255, 248);
-      padding: 35px;
-      line-height: 23px;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
       text-align: center;
+      margin-bottom: 15px;
+      order: 1;
     }
 
     .body-text {
-      font-size: 20px;
-      font-weight: 900;
-      padding: 60px 40px 0;
+      font-size: 15px;
+      font-weight: 600;
       color: #ffffff;
-      position: absolute;
-      top: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: calc(100% - 80px);
-      line-height: 23px;
+      line-height: 1.5;
       text-align: center;
+      order: 3;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 0;
     }
 
     .author {
-      margin-top: 5px;
-      opacity: 0;
-      transition: 0.5s;
-      font-weight: 700;
-      color: rgb(255, 255, 255);
-      padding-left: 30px;
-      text-align: center;
-      padding-right: 30px;
-    }
-
-    .card:hover .author {
       opacity: 1;
+      transition: 0.3s;
+      font-weight: 700;
+      font-size: 16px;
+      color: rgb(255, 255, 255);
+      text-align: center;
+      order: 4;
+      margin-top: auto;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .pic {
@@ -579,8 +597,17 @@
     }
 
     @media (max-width: 768px) {
-      .card .author {
-        opacity: 1;
+      .card {
+        width: 200px;
+        height: 280px;
+      }
+      
+      .body-text {
+        font-size: 14px;
+      }
+      
+      .author {
+        font-size: 14px;
       }
     }
 
