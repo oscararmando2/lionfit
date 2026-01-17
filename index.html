@@ -1310,12 +1310,16 @@
             isOpen = true;
             const hoursLeft = Math.floor((closeTime - currentTime) / 60);
             const minutesLeft = (closeTime - currentTime) % 60;
-            message = `Cerramos en ${hoursLeft}h ${minutesLeft}m`;
+            message = minutesLeft > 0 
+              ? `Cerramos en ${hoursLeft}h ${minutesLeft}m`
+              : `Cerramos en ${hoursLeft}h`;
           } else if (currentTime < openTime) {
             const minutesUntilOpen = openTime - currentTime;
             const hoursUntil = Math.floor(minutesUntilOpen / 60);
             const minsUntil = minutesUntilOpen % 60;
-            message = `Abrimos en ${hoursUntil}h ${minsUntil}m`;
+            message = minsUntil > 0
+              ? `Abrimos en ${hoursUntil}h ${minsUntil}m`
+              : `Abrimos en ${hoursUntil}h`;
           } else {
             message = 'Abrimos mañana a las 5:00 AM';
           }
@@ -1329,12 +1333,16 @@
             isOpen = true;
             const hoursLeft = Math.floor((closeTime - currentTime) / 60);
             const minutesLeft = (closeTime - currentTime) % 60;
-            message = `Cerramos en ${hoursLeft}h ${minutesLeft}m`;
+            message = minutesLeft > 0
+              ? `Cerramos en ${hoursLeft}h ${minutesLeft}m`
+              : `Cerramos en ${hoursLeft}h`;
           } else if (currentTime < openTime) {
             const minutesUntilOpen = openTime - currentTime;
             const hoursUntil = Math.floor(minutesUntilOpen / 60);
             const minsUntil = minutesUntilOpen % 60;
-            message = `Abrimos en ${hoursUntil}h ${minsUntil}m`;
+            message = minsUntil > 0
+              ? `Abrimos en ${hoursUntil}h ${minsUntil}m`
+              : `Abrimos en ${hoursUntil}h`;
           } else {
             // Saturday closed -> opens Sunday at 7 AM
             // Sunday closed -> opens Monday at 5 AM
