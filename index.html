@@ -502,62 +502,80 @@
     }
 
     .card {
-      width: 190px;
-      height: 264px;
+      width: 220px;
+      height: 300px;
       background: rgb(73, 74, 68);
       font-family: inherit;
       position: relative;
-      border-radius: 8px;
-      flex: 0 0 190px;
+      border-radius: 12px;
+      flex: 0 0 220px;
       scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
     }
 
     .quote {
       color: rgb(52, 185, 134);
-      padding-left: 30px;
-      padding-right: 30px;
       position: relative;
       text-align: center;
       display: flex;
       justify-content: center;
+      align-items: center;
+      order: 2;
+      margin-bottom: 10px;
+    }
+
+    .quote svg {
+      width: 60px;
+      height: 60px;
+      opacity: 0.8;
     }
 
     .card-name {
       text-transform: uppercase;
       font-weight: 700;
       color: rgb(253, 255, 248);
-      padding: 35px;
-      line-height: 23px;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
       text-align: center;
+      margin-bottom: 15px;
+      order: 1;
     }
 
     .body-text {
-      font-size: 20px;
-      font-weight: 900;
-      padding: 60px 40px 0;
+      font-size: 0.94rem;
+      font-weight: 600;
       color: #ffffff;
-      position: absolute;
-      top: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: calc(100% - 80px);
-      line-height: 23px;
+      line-height: 1.5;
       text-align: center;
+      order: 3;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 0;
     }
 
     .author {
-      margin-top: 5px;
-      opacity: 0;
-      transition: 0.5s;
-      font-weight: 700;
-      color: rgb(255, 255, 255);
-      padding-left: 30px;
-      text-align: center;
-      padding-right: 30px;
-    }
-
-    .card:hover .author {
       opacity: 1;
+      transition: 0.3s;
+      font-weight: 700;
+      font-size: 1rem;
+      color: rgb(255, 255, 255);
+      text-align: center;
+      order: 4;
+      margin-top: auto;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .pic {
@@ -579,8 +597,17 @@
     }
 
     @media (max-width: 768px) {
-      .card .author {
-        opacity: 1;
+      .card {
+        width: 200px;
+        height: 280px;
+      }
+      
+      .body-text {
+        font-size: 0.875rem;
+      }
+      
+      .author {
+        font-size: 0.875rem;
       }
     }
 
@@ -1107,14 +1134,14 @@
 
     <section id="testimonios" class="px-6 sm:px-12">
       <div class="flex flex-col items-center text-center gap-4 sm:gap-5 mb-12">
-        <p class="max-w-2xl text-sm sm:text-base text-black/70">Historias reales que muestran cómo el rugido interior se enciende con nuestro Gym, ellos ya tomaron la desición..</p>
+        <p class="max-w-2xl text-sm sm:text-base text-black/70">Historias reales que muestran cómo el rugido interior se enciende con nuestro Gym, ellos ya tomaron la decisión..</p>
         <p class="text-xs sm:text-sm uppercase tracking-[0.4em] font-semibold text-black/60">Y TU PARA CUANDO?.</p>
       </div>
       <div class="testimonial-track" role="list">
         <article class="card" role="listitem">
           <div class="card-name">Opiniones</div>
           <div class="quote">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307" height="80" width="80">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307">
               <path fill="currentColor" d="M302.258 176.221C320.678 176.221 329.889 185.432 329.889 203.853V278.764C329.889 297.185 320.678 306.395 302.258 306.395H231.031C212.61 306.395 203.399 297.185 203.399 278.764V203.853C203.399 160.871 207.902 123.415 216.908 91.4858C226.323 59.1472 244.539 30.902 271.556 6.75027C280.562 -1.02739 288.135 -2.05076 294.275 3.68014L321.906 29.4692C328.047 35.2001 326.614 42.1591 317.608 50.3461C303.69 62.6266 292.228 80.4334 283.223 103.766C274.626 126.69 270.328 150.842 270.328 176.221H302.258ZM99.629 176.221C118.05 176.221 127.26 185.432 127.26 203.853V278.764C127.26 297.185 118.05 306.395 99.629 306.395H28.402C9.98126 306.395 0.770874 297.185 0.770874 278.764V203.853C0.770874 160.871 5.27373 123.415 14.2794 91.4858C23.6945 59.1472 41.9106 30.902 68.9277 6.75027C77.9335 -1.02739 85.5064 -2.05076 91.6467 3.68014L119.278 29.4692C125.418 35.2001 123.985 42.1591 114.98 50.3461C101.062 62.6266 89.6 80.4334 80.5942 103.766C71.9979 126.69 67.6997 150.842 67.6997 176.221H99.629Z"></path>
             </svg>
           </div>
@@ -1125,7 +1152,7 @@
         <article class="card" role="listitem">
           <div class="card-name">Opiniones</div>
           <div class="quote">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307" height="80" width="80">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307">
               <path fill="currentColor" d="M302.258 176.221C320.678 176.221 329.889 185.432 329.889 203.853V278.764C329.889 297.185 320.678 306.395 302.258 306.395H231.031C212.61 306.395 203.399 297.185 203.399 278.764V203.853C203.399 160.871 207.902 123.415 216.908 91.4858C226.323 59.1472 244.539 30.902 271.556 6.75027C280.562 -1.02739 288.135 -2.05076 294.275 3.68014L321.906 29.4692C328.047 35.2001 326.614 42.1591 317.608 50.3461C303.69 62.6266 292.228 80.4334 283.223 103.766C274.626 126.69 270.328 150.842 270.328 176.221H302.258ZM99.629 176.221C118.05 176.221 127.26 185.432 127.26 203.853V278.764C127.26 297.185 118.05 306.395 99.629 306.395H28.402C9.98126 306.395 0.770874 297.185 0.770874 278.764V203.853C0.770874 160.871 5.27373 123.415 14.2794 91.4858C23.6945 59.1472 41.9106 30.902 68.9277 6.75027C77.9335 -1.02739 85.5064 -2.05076 91.6467 3.68014L119.278 29.4692C125.418 35.2001 123.985 42.1591 114.98 50.3461C101.062 62.6266 89.6 80.4334 80.5942 103.766C71.9979 126.69 67.6997 150.842 67.6997 176.221H99.629Z"></path>
             </svg>
           </div>
@@ -1136,7 +1163,7 @@
         <article class="card" role="listitem">
           <div class="card-name">Opiniones</div>
           <div class="quote">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307" height="80" width="80">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307">
               <path fill="currentColor" d="M302.258 176.221C320.678 176.221 329.889 185.432 329.889 203.853V278.764C329.889 297.185 320.678 306.395 302.258 306.395H231.031C212.61 306.395 203.399 297.185 203.399 278.764V203.853C203.399 160.871 207.902 123.415 216.908 91.4858C226.323 59.1472 244.539 30.902 271.556 6.75027C280.562 -1.02739 288.135 -2.05076 294.275 3.68014L321.906 29.4692C328.047 35.2001 326.614 42.1591 317.608 50.3461C303.69 62.6266 292.228 80.4334 283.223 103.766C274.626 126.69 270.328 150.842 270.328 176.221H302.258ZM99.629 176.221C118.05 176.221 127.26 185.432 127.26 203.853V278.764C127.26 297.185 118.05 306.395 99.629 306.395H28.402C9.98126 306.395 0.770874 297.185 0.770874 278.764V203.853C0.770874 160.871 5.27373 123.415 14.2794 91.4858C23.6945 59.1472 41.9106 30.902 68.9277 6.75027C77.9335 -1.02739 85.5064 -2.05076 91.6467 3.68014L119.278 29.4692C125.418 35.2001 123.985 42.1591 114.98 50.3461C101.062 62.6266 89.6 80.4334 80.5942 103.766C71.9979 126.69 67.6997 150.842 67.6997 176.221H99.629Z"></path>
             </svg>
           </div>
@@ -1147,7 +1174,7 @@
         <article class="card" role="listitem">
           <div class="card-name">Opiniones</div>
           <div class="quote">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307" height="80" width="80">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307">
               <path fill="currentColor" d="M302.258 176.221C320.678 176.221 329.889 185.432 329.889 203.853V278.764C329.889 297.185 320.678 306.395 302.258 306.395H231.031C212.61 306.395 203.399 297.185 203.399 278.764V203.853C203.399 160.871 207.902 123.415 216.908 91.4858C226.323 59.1472 244.539 30.902 271.556 6.75027C280.562 -1.02739 288.135 -2.05076 294.275 3.68014L321.906 29.4692C328.047 35.2001 326.614 42.1591 317.608 50.3461C303.69 62.6266 292.228 80.4334 283.223 103.766C274.626 126.69 270.328 150.842 270.328 176.221H302.258ZM99.629 176.221C118.05 176.221 127.26 185.432 127.26 203.853V278.764C127.26 297.185 118.05 306.395 99.629 306.395H28.402C9.98126 306.395 0.770874 297.185 0.770874 278.764V203.853C0.770874 160.871 5.27373 123.415 14.2794 91.4858C23.6945 59.1472 41.9106 30.902 68.9277 6.75027C77.9335 -1.02739 85.5064 -2.05076 91.6467 3.68014L119.278 29.4692C125.418 35.2001 123.985 42.1591 114.98 50.3461C101.062 62.6266 89.6 80.4334 80.5942 103.766C71.9979 126.69 67.6997 150.842 67.6997 176.221H99.629Z"></path>
             </svg>
           </div>
