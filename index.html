@@ -1336,9 +1336,13 @@
             const minsUntil = minutesUntilOpen % 60;
             message = `Abrimos en ${hoursUntil}h ${minsUntil}m`;
           } else {
-            const nextDay = day === 6 ? 'domingo' : 'lunes';
-            const nextTime = day === 6 ? '7:00 AM' : '5:00 AM';
-            message = `Abrimos ${nextDay} a las ${nextTime}`;
+            // Saturday closed -> opens Sunday at 7 AM
+            // Sunday closed -> opens Monday at 5 AM
+            if (day === 6) {
+              message = 'Abrimos domingo a las 7:00 AM';
+            } else {
+              message = 'Abrimos lunes a las 5:00 AM';
+            }
           }
         }
         
