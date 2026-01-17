@@ -1216,6 +1216,31 @@
           <p class="uppercase text-xs tracking-[0.3em] font-medium">Curva La Mangana · Zitácuaro, Mich.</p>
         </div>
       </div>
+      
+      <!-- Live Schedule Section -->
+      <div class="w-full max-w-md mx-auto border-2 border-black/10 rounded-2xl p-6 bg-white/80 backdrop-blur-sm">
+        <div class="text-center space-y-4">
+          <h3 class="uppercase text-sm tracking-[0.35em] font-semibold text-black">Horarios</h3>
+          <div class="space-y-2">
+            <div class="flex items-center justify-between text-sm">
+              <span class="text-black/70 font-medium">Lunes a Viernes</span>
+              <span class="text-black font-semibold">5:00 AM - 10:00 PM</span>
+            </div>
+            <div class="flex items-center justify-between text-sm">
+              <span class="text-black/70 font-medium">Sábado y Domingo</span>
+              <span class="text-black font-semibold">7:00 AM - 2:00 PM</span>
+            </div>
+          </div>
+          <div id="gym-status" class="mt-4 pt-4 border-t border-black/10">
+            <div class="flex items-center justify-center gap-2">
+              <span id="status-indicator" class="w-3 h-3 rounded-full"></span>
+              <span id="status-text" class="text-sm font-semibold uppercase tracking-[0.2em]"></span>
+            </div>
+            <p id="status-time" class="text-xs text-black/60 mt-2"></p>
+          </div>
+        </div>
+      </div>
+      
       <div class="flex items-center justify-center gap-8">
         <a href="https://www.instagram.com/lionfitnesszit/" target="_blank" rel="noopener" class="focus-neon text-black/60 transition hover:text-black">
           <span class="sr-only">Instagram</span>
@@ -1258,6 +1283,84 @@
       if (yearEl) {
         yearEl.textContent = new Date().getFullYear();
       }
+
+      // Live Gym Status Update
+      function updateGymStatus() {
+        const now = new Date();
+        const day = now.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        const currentTime = hours * 60 + minutes; // Convert to minutes for easier comparison
+        
+        const statusIndicator = document.getElementById('status-indicator');
+        const statusText = document.getElementById('status-text');
+        const statusTime = document.getElementById('status-time');
+        
+        if (!statusIndicator || !statusText || !statusTime) return;
+        
+        let isOpen = false;
+        let message = '';
+        
+        // Monday to Friday (day 1-5): 5:00 AM - 10:00 PM
+        if (day >= 1 && day <= 5) {
+          const openTime = 5 * 60; // 5:00 AM in minutes
+          const closeTime = 22 * 60; // 10:00 PM in minutes
+          
+          if (currentTime >= openTime && currentTime < closeTime) {
+            isOpen = true;
+            const hoursLeft = Math.floor((closeTime - currentTime) / 60);
+            const minutesLeft = (closeTime - currentTime) % 60;
+            message = `Cerramos en ${hoursLeft}h ${minutesLeft}m`;
+          } else if (currentTime < openTime) {
+            const minutesUntilOpen = openTime - currentTime;
+            const hoursUntil = Math.floor(minutesUntilOpen / 60);
+            const minsUntil = minutesUntilOpen % 60;
+            message = `Abrimos en ${hoursUntil}h ${minsUntil}m`;
+          } else {
+            message = 'Abrimos mañana a las 5:00 AM';
+          }
+        }
+        // Saturday and Sunday (day 0 and 6): 7:00 AM - 2:00 PM
+        else if (day === 0 || day === 6) {
+          const openTime = 7 * 60; // 7:00 AM in minutes
+          const closeTime = 14 * 60; // 2:00 PM in minutes
+          
+          if (currentTime >= openTime && currentTime < closeTime) {
+            isOpen = true;
+            const hoursLeft = Math.floor((closeTime - currentTime) / 60);
+            const minutesLeft = (closeTime - currentTime) % 60;
+            message = `Cerramos en ${hoursLeft}h ${minutesLeft}m`;
+          } else if (currentTime < openTime) {
+            const minutesUntilOpen = openTime - currentTime;
+            const hoursUntil = Math.floor(minutesUntilOpen / 60);
+            const minsUntil = minutesUntilOpen % 60;
+            message = `Abrimos en ${hoursUntil}h ${minsUntil}m`;
+          } else {
+            const nextDay = day === 6 ? 'domingo' : 'lunes';
+            const nextTime = day === 6 ? '7:00 AM' : '5:00 AM';
+            message = `Abrimos ${nextDay} a las ${nextTime}`;
+          }
+        }
+        
+        // Update UI
+        if (isOpen) {
+          statusIndicator.style.backgroundColor = '#10b981'; // Green
+          statusIndicator.style.boxShadow = '0 0 10px rgba(16, 185, 129, 0.5)';
+          statusText.textContent = 'Abierto Ahora';
+          statusText.style.color = '#10b981';
+        } else {
+          statusIndicator.style.backgroundColor = '#ef4444'; // Red
+          statusIndicator.style.boxShadow = '0 0 10px rgba(239, 68, 68, 0.5)';
+          statusText.textContent = 'Cerrado';
+          statusText.style.color = '#ef4444';
+        }
+        
+        statusTime.textContent = message;
+      }
+      
+      // Update immediately and then every minute
+      updateGymStatus();
+      setInterval(updateGymStatus, 60000); // Update every 60 seconds
 
       const halo = document.querySelector('.cursor-halo');
       const cards = document.querySelectorAll('.experience-card');
