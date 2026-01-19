@@ -1627,7 +1627,6 @@
 
       // Navigation bar scroll behavior
       const nav = document.getElementById('mainNav');
-      let lastScroll = 0;
       
       window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
@@ -1638,8 +1637,6 @@
         } else {
           nav.classList.remove('visible');
         }
-        
-        lastScroll = currentScroll;
       });
 
       // Active section highlighting
@@ -1649,6 +1646,9 @@
       function highlightActiveSection() {
         const scrollY = window.pageYOffset;
         
+        // Remove active class from all links first
+        navLinks.forEach(link => link.classList.remove('active'));
+        
         sections.forEach(section => {
           const sectionHeight = section.offsetHeight;
           const sectionTop = section.offsetTop - 100;
@@ -1656,7 +1656,6 @@
           
           if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
             navLinks.forEach(link => {
-              link.classList.remove('active');
               if (link.getAttribute('href') === `#${sectionId}`) {
                 link.classList.add('active');
               }
@@ -1665,7 +1664,17 @@
         });
       }
 
-      window.addEventListener('scroll', highlightActiveSection);
+      // Throttle scroll events for better performance
+      let scrollTimeout;
+      window.addEventListener('scroll', () => {
+        if (!scrollTimeout) {
+          scrollTimeout = setTimeout(() => {
+            highlightActiveSection();
+            scrollTimeout = null;
+          }, 100);
+        }
+      });
+      
       highlightActiveSection(); // Call once on load
 
       // Live Gym Status Update
