@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
   <title>Buzón - Lion Fitness | Zitácuaro</title>
   <meta name="description" content="Envía tus comentarios y sugerencias a Lion Fitness" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,12 +26,38 @@
   <style>
     :root {
       color-scheme: only light;
+      overflow-x: hidden;
+    }
+
+    html {
+      overflow-x: hidden;
+      overscroll-behavior: none;
+      touch-action: pan-y;
     }
 
     body {
       font-family: 'Inter', sans-serif;
       background-color: #FFFFFF;
       color: #000000;
+      overscroll-behavior: none;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-y;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Allow text selection for readable content */
+    p, h1, h2, h3, h4, h5, h6, span, a, label {
+      user-select: text;
+      -webkit-user-select: text;
+    }
+    
+    /* Allow text selection and editing in form fields */
+    input, textarea {
+      user-select: text;
+      -webkit-user-select: text;
+      touch-action: manipulation;
     }
     
     a {

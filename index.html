@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
   <title>Lion Fitness | Zitácuaro</title>
   <meta name="description" content="Lion Fitness: el gimnasio que ruge con fuerza. Entrena en instalaciones premium con tecnología de punta, clases exclusivas y energía neon." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -32,12 +32,31 @@
   <style>
     :root {
       color-scheme: only light;
+      overflow-x: hidden;
+    }
+
+    html {
+      overflow-x: hidden;
+      overscroll-behavior: none;
+      touch-action: pan-y;
     }
 
     body {
       font-family: 'Inter', sans-serif;
       background-color: #FFFFFF;
       color: #000000;
+      overscroll-behavior: none;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-y;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Allow text selection for readable content */
+    p, h1, h2, h3, h4, h5, h6, span, a {
+      user-select: text;
+      -webkit-user-select: text;
     }
     
     /* Ensure all links use black/white colors only */
@@ -489,6 +508,8 @@
       scroll-snap-type: x mandatory;
       scrollbar-width: thin;
       -webkit-overflow-scrolling: touch;
+      overscroll-behavior-x: contain;
+      touch-action: pan-x;
     }
 
     .testimonial-track::-webkit-scrollbar {
@@ -998,6 +1019,8 @@
       position: relative;
       width: 100%;
       padding: 20px 0;
+      overscroll-behavior-x: contain;
+      touch-action: pan-x;
     }
 
     .services-scroll-track {
