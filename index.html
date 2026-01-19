@@ -1625,43 +1625,46 @@
         yearEl.textContent = new Date().getFullYear();
       }
 
-      // Navigation bar scroll behavior
+      // Navigation bar scroll behavior and active section highlighting
       const nav = document.getElementById('mainNav');
-      
-      window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      function handleScroll() {
         const currentScroll = window.pageYOffset;
         
-        // Show nav after scrolling down 100px
+        // Show/hide nav after scrolling down 100px
         if (currentScroll > 100) {
           nav.classList.add('visible');
         } else {
           nav.classList.remove('visible');
         }
-      });
-
-      // Active section highlighting
-      const sections = document.querySelectorAll('section[id]');
-      const navLinks = document.querySelectorAll('.nav-link');
-
-      function highlightActiveSection() {
-        const scrollY = window.pageYOffset;
         
+        // Highlight active section
+        highlightActiveSection(currentScroll);
+      }
+
+      function highlightActiveSection(scrollY) {
         // Remove active class from all links first
         navLinks.forEach(link => link.classList.remove('active'));
         
-        sections.forEach(section => {
+        // Find the currently visible section
+        for (const section of sections) {
           const sectionHeight = section.offsetHeight;
           const sectionTop = section.offsetTop - 100;
           const sectionId = section.getAttribute('id');
           
           if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            navLinks.forEach(link => {
-              if (link.getAttribute('href') === `#${sectionId}`) {
-                link.classList.add('active');
-              }
-            });
+            // Find and activate the corresponding nav link
+            const activeLink = Array.from(navLinks).find(
+              link => link.getAttribute('href') === `#${sectionId}`
+            );
+            if (activeLink) {
+              activeLink.classList.add('active');
+            }
+            break; // Exit once we find the active section
           }
-        });
+        }
       }
 
       // Throttle scroll events for better performance
@@ -1669,13 +1672,14 @@
       window.addEventListener('scroll', () => {
         if (!scrollTimeout) {
           scrollTimeout = setTimeout(() => {
-            highlightActiveSection();
+            handleScroll();
             scrollTimeout = null;
           }, 100);
         }
       });
       
-      highlightActiveSection(); // Call once on load
+      // Initial call on load
+      highlightActiveSection(window.pageYOffset);
 
       // Live Gym Status Update
       function updateGymStatus() {
