@@ -903,6 +903,27 @@
       mask-image: radial-gradient(circle at top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0));
     }
 
+    /* Grid layout for experience cards */
+    .experience-grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 768px) {
+      .experience-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .experience-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+      }
+    }
+
     @media (max-width: 768px) {
       .hero-eyebrow {
         letter-spacing: 0.4em;
@@ -1007,6 +1028,19 @@
       </div>
     </section>
   </header>
+
+  <main class="relative z-10">
+    <section id="experiencias" class="px-6 sm:px-12 py-16 sm:py-24">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col items-center text-center gap-4 sm:gap-5 mb-12 sm:mb-16">
+          <h2 class="section-title text-3xl sm:text-5xl font-bold tracking-[0.08em] uppercase text-black">
+            Nuestras Instalaciones
+          </h2>
+          <p class="max-w-2xl text-sm sm:text-base text-black/70 tracking-[0.05em]">
+            Espacios diseñados para potenciar tu entrenamiento con tecnología de punta y comodidad premium.
+          </p>
+        </div>
+        <div class="experience-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
         <article class="experience-card" id="suplementos" data-color="magenta">
           <img src="https://media.istockphoto.com/id/1403337144/es/foto/mujer-joven-y-activa-tomando-un-descanso-en-el-gimnasio-y-bebiendo-batido-de-prote%C3%ADnas.jpg?s=612x612&w=0&k=20&c=nlpsm61DAgQS4cZC96VsUDstdTzEvWdbyP4rXkxnokQ=" alt="Mujer tomando batido de proteínas en el gimnasio" loading="lazy" />
           <div class="hero-showcase__badge">
@@ -1101,8 +1135,11 @@
       </div>
     </section>
 
-    <section id="testimonios" class="px-6 sm:px-12">
+    <section id="testimonios" class="px-6 sm:px-12 py-16 sm:py-24">
       <div class="flex flex-col items-center text-center gap-4 sm:gap-5 mb-12">
+        <h2 class="section-title text-3xl sm:text-5xl font-bold tracking-[0.08em] uppercase text-black">
+          Testimonios
+        </h2>
         <p class="max-w-2xl text-sm sm:text-base text-black/70">Historias reales que muestran cómo el rugido interior se enciende con nuestro Gym, ellos ya tomaron la decisión..</p>
         <p class="text-xs sm:text-sm uppercase tracking-[0.4em] font-semibold text-black/60">Y TU PARA CUANDO?.</p>
       </div>
@@ -1154,10 +1191,12 @@
       </div>
     </section>
 
-    <section id="ubicacion" class="px-6 sm:px-12">
+    <section id="ubicacion" class="px-6 sm:px-12 py-16 sm:py-24">
       <div class="flex flex-col items-center text-center gap-4 sm:gap-5 mb-12">
-        <p class="max-w-2xl text-sm sm:text-base text-black/70">Carretera Zitácuaro-Huetamo 
-         <p class="max-w-2xl text-sm sm:text-base text-black/70"> Km 1</p>
+        <h2 class="section-title text-3xl sm:text-5xl font-bold tracking-[0.08em] uppercase text-black">
+          Ubicación
+        </h2>
+        <p class="max-w-2xl text-sm sm:text-base text-black/70">Carretera Zitácuaro-Huetamo Km 1</p>
       </div>
       <div class="map-container">
         <iframe title="Mapa Lion Fitness" width="100%" height="420" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.94452966147!2d-100.36054308462729!3d19.436119045813845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI2JzA5LjMiTiAxMDDCsDIxJzMxLjAiVw!5e0!3m2!1ses!2smx!4v1700000000000"></iframe>
