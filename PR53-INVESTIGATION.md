@@ -41,7 +41,7 @@ Para verificar que el PR #53 está fusionado en main, ejecutar:
 # Ver el commit de fusión
 git log --oneline main -1
 
-# Salida esperada:
+# Salida (verificada):
 # 05eda16 Merge pull request #53 from oscararmando2/copilot/update-card-designs
 
 # Ver detalles del commit
@@ -50,6 +50,8 @@ git show 05eda16 --stat
 # Ver archivos en main
 git ls-tree -r main --name-only
 ```
+
+**Nota**: El commit SHA 05eda16 ha sido verificado y está presente en el repositorio.
 
 ### Verificación de Archivos
 Todos los archivos del PR #53 están presentes en el repositorio:
