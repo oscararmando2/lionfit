@@ -814,14 +814,6 @@
       mask-image: radial-gradient(circle at top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0));
     }
 
-    .section-title {
-      font-family: 'Anton', 'Impact', sans-serif;
-    }
-
-    .noise-mask {
-      mask-image: radial-gradient(circle at top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0));
-    }
-
     /* Services card with fluorescent yellow gradient */
     .service-card {
       position: relative;
@@ -1522,6 +1514,10 @@
       const nav = document.getElementById('mainNav');
       const sections = document.querySelectorAll('section[id]');
       const navLinks = document.querySelectorAll('.nav-link');
+      
+      // Configuration constants
+      const NAV_SCROLL_THRESHOLD = 100; // px to scroll before showing nav
+      const SECTION_OFFSET = 100; // px offset for section detection
 
       // Cache section positions for better performance
       let sectionPositions = [];
@@ -1529,16 +1525,16 @@
       function cacheSectionPositions() {
         sectionPositions = Array.from(sections).map(section => ({
           id: section.getAttribute('id'),
-          top: section.offsetTop - 100,
-          bottom: section.offsetTop + section.offsetHeight - 100
+          top: section.offsetTop - SECTION_OFFSET,
+          bottom: section.offsetTop + section.offsetHeight - SECTION_OFFSET
         }));
       }
 
       function handleScroll() {
         const currentScroll = window.pageYOffset;
         
-        // Show/hide nav after scrolling down 100px
-        if (currentScroll > 100) {
+        // Show/hide nav after scrolling down threshold
+        if (currentScroll > NAV_SCROLL_THRESHOLD) {
           nav.classList.add('visible');
         } else {
           nav.classList.remove('visible');
@@ -1554,7 +1550,7 @@
         
         // Find the currently visible section using cached positions
         for (const sectionPos of sectionPositions) {
-          if (scrollY > sectionPos.top && scrollY < sectionPos.bottom) {
+          if (scrollY >= sectionPos.top && scrollY < sectionPos.bottom) {
             // Find and activate the corresponding nav link
             const activeLink = Array.from(navLinks).find(
               link => link.getAttribute('href') === `#${sectionPos.id}`
