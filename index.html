@@ -929,18 +929,18 @@
       mask-image: radial-gradient(circle at top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0));
     }
 
-    /* Services card with golden gradient */
+    /* Services card with fluorescent yellow gradient */
     .service-card {
       position: relative;
-      width: 190px;
-      height: 254px;
+      width: 280px;
+      height: 380px;
       background-color: #000;
       display: flex;
       flex-direction: column;
       justify-content: end;
-      padding: 12px;
+      padding: 20px;
       gap: 12px;
-      border-radius: 8px;
+      border-radius: 12px;
       cursor: pointer;
       flex-shrink: 0;
     }
@@ -951,10 +951,10 @@
       inset: 0;
       left: -5px;
       margin: auto;
-      width: 200px;
-      height: 264px;
-      border-radius: 10px;
-      background: linear-gradient(-45deg, #ab9e60 0%, #ab9e60 100%);
+      width: 290px;
+      height: 390px;
+      border-radius: 14px;
+      background: linear-gradient(-45deg, #FFFF00 0%, #CCFF00 100%);
       z-index: -10;
       pointer-events: none;
       transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -965,16 +965,17 @@
       z-index: -1;
       position: absolute;
       inset: 0;
-      background: linear-gradient(-45deg, #ab9e60 0%, #ab9e60 100%);
+      background: linear-gradient(-45deg, #FFFF00 0%, #CCFF00 100%);
       transform: translate3d(0, 0, 0) scale(0.95);
       filter: blur(20px);
     }
 
     .service-card .service-heading {
-      font-size: 20px;
+      font-size: 24px;
       text-transform: capitalize;
       font-weight: 700;
       color: #FFFFFF;
+      text-align: center;
     }
 
     .service-card .service-type {
@@ -1002,15 +1003,19 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 8px 8px 0 0;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 12px;
+      padding: 20px;
     }
 
     .service-card-content {
       position: relative;
       z-index: 2;
-      margin-top: 140px;
+      margin-top: auto;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 16px;
+      border-radius: 8px;
     }
 
     /* Infinite horizontal scroll container */
@@ -1092,6 +1097,16 @@
         height: 56px;
         right: 16px;
         bottom: 20px;
+      }
+
+      .service-card {
+        width: 260px;
+        height: 350px;
+      }
+
+      .service-card::before {
+        width: 270px;
+        height: 360px;
       }
 
     }
@@ -1182,116 +1197,92 @@
         <div class="services-scroll-track">
           <!-- Service 1: Jumping extremo -->
           <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74?auto=format&fit=crop&w=400&q=80" alt="Jumping extremo" class="service-card-image" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74?auto=format&fit=crop&w=400&q=80" alt="Zona de saltos y rebotes" class="service-card-image" loading="lazy" />
             <div class="service-card-content">
-              <p class="service-heading">Jumping extremo</p>
-              <p class="service-type">Zona de saltos y rebotes</p>
-              <p class="service-description">Trampolines profesionales, botas kangoo y ejercicios de bajo impacto que desafían tu equilibrio y queman calorías.</p>
+              <p class="service-heading">Zona de saltos y rebotes</p>
             </div>
           </div>
 
           <!-- Service 2: Cardio 360° -->
           <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1579758682665-3a149dd8d0c6?auto=format&fit=crop&w=400&q=80" alt="Cardio 360" class="service-card-image" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1579758682665-3a149dd8d0c6?auto=format&fit=crop&w=400&q=80" alt="Área de cardio" class="service-card-image" loading="lazy" />
             <div class="service-card-content">
-              <p class="service-heading">Cardio 360°</p>
-              <p class="service-type">Área de cardio</p>
-              <p class="service-description">Entrena con la mejor vista, control climático y audio inmersivo que sincroniza tu zancada con la música.</p>
+              <p class="service-heading">Área de cardio</p>
             </div>
           </div>
 
           <!-- Service 3: Neon ride -->
           <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=400&q=80" alt="Neon ride" class="service-card-image" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=400&q=80" alt="Indoor Cycling" class="service-card-image" loading="lazy" />
             <div class="service-card-content">
-              <p class="service-heading">Neon ride</p>
-              <p class="service-type">Indoor Cycling</p>
-              <p class="service-description">Pelotón sincronizado con mapping lumínico, métricas proyectadas en tiempo real y playlists que motivan.</p>
+              <p class="service-heading">Indoor Cycling</p>
             </div>
           </div>
 
           <!-- Service 4: Ritmo tribal -->
           <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=400&q=80" alt="Ritmo tribal" class="service-card-image" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=400&q=80" alt="Clases de Zumba" class="service-card-image" loading="lazy" />
             <div class="service-card-content">
-              <p class="service-heading">Ritmo tribal</p>
-              <p class="service-type">Clases de Zumba</p>
-              <p class="service-description">Coreografías de alto impacto, beats tropicales que encienden tu energía.</p>
+              <p class="service-heading">Clases de Zumba</p>
             </div>
           </div>
 
           <!-- Service 5: Fuel bar -->
           <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80" alt="Fuel bar" class="service-card-image" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80" alt="Cafetería saludable" class="service-card-image" loading="lazy" />
             <div class="service-card-content">
-              <p class="service-heading">Fuel bar</p>
-              <p class="service-type">Cafetería saludable</p>
-              <p class="service-description">Menú a tu medida, smoothies funcionales y chefs dedicados a diseñar tu recuperación al más alto nivel.</p>
+              <p class="service-heading">Cafetería saludable</p>
             </div>
           </div>
 
           <!-- Service 6: Ritual Final -->
           <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=400&q=80" alt="Ritual Final" class="service-card-image" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=400&q=80" alt="Baños & regaderas" class="service-card-image" loading="lazy" />
             <div class="service-card-content">
-              <p class="service-heading">Ritual Final</p>
-              <p class="service-type">Baños & regaderas</p>
-              <p class="service-description">Diseñado para cerrar tu entrenamiento con lujo absoluto.</p>
+              <p class="service-heading">Baños & regaderas</p>
             </div>
           </div>
 
           <!-- Duplicate cards for infinite loop effect -->
           <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74?auto=format&fit=crop&w=400&q=80" alt="Jumping extremo" class="service-card-image" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74?auto=format&fit=crop&w=400&q=80" alt="Zona de saltos y rebotes" class="service-card-image" loading="lazy" />
             <div class="service-card-content">
-              <p class="service-heading">Jumping extremo</p>
-              <p class="service-type">Zona de saltos y rebotes</p>
-              <p class="service-description">Trampolines profesionales, botas kangoo y ejercicios de bajo impacto que desafían tu equilibrio y queman calorías.</p>
+              <p class="service-heading">Zona de saltos y rebotes</p>
             </div>
           </div>
 
           <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1579758682665-3a149dd8d0c6?auto=format&fit=crop&w=400&q=80" alt="Cardio 360" class="service-card-image" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1579758682665-3a149dd8d0c6?auto=format&fit=crop&w=400&q=80" alt="Área de cardio" class="service-card-image" loading="lazy" />
             <div class="service-card-content">
-              <p class="service-heading">Cardio 360°</p>
-              <p class="service-type">Área de cardio</p>
-              <p class="service-description">Entrena con la mejor vista, control climático y audio inmersivo que sincroniza tu zancada con la música.</p>
+              <p class="service-heading">Área de cardio</p>
             </div>
           </div>
 
           <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=400&q=80" alt="Neon ride" class="service-card-image" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=400&q=80" alt="Indoor Cycling" class="service-card-image" loading="lazy" />
             <div class="service-card-content">
-              <p class="service-heading">Neon ride</p>
-              <p class="service-type">Indoor Cycling</p>
-              <p class="service-description">Pelotón sincronizado con mapping lumínico, métricas proyectadas en tiempo real y playlists que motivan.</p>
+              <p class="service-heading">Indoor Cycling</p>
             </div>
           </div>
 
           <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=400&q=80" alt="Ritmo tribal" class="service-card-image" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=400&q=80" alt="Clases de Zumba" class="service-card-image" loading="lazy" />
             <div class="service-card-content">
-              <p class="service-heading">Ritmo tribal</p>
-              <p class="service-type">Clases de Zumba</p>
-              <p class="service-description">Coreografías de alto impacto, beats tropicales que encienden tu energía.</p>
+              <p class="service-heading">Clases de Zumba</p>
             </div>
           </div>
 
           <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80" alt="Fuel bar" class="service-card-image" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80" alt="Cafetería saludable" class="service-card-image" loading="lazy" />
             <div class="service-card-content">
-              <p class="service-heading">Fuel bar</p>
-              <p class="service-type">Cafetería saludable</p>
-              <p class="service-description">Menú a tu medida, smoothies funcionales y chefs dedicados a diseñar tu recuperación al más alto nivel.</p>
+              <p class="service-heading">Cafetería saludable</p>
             </div>
           </div>
 
           <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=400&q=80" alt="Ritual Final" class="service-card-image" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=400&q=80" alt="Baños & regaderas" class="service-card-image" loading="lazy" />
             <div class="service-card-content">
-              <p class="service-heading">Ritual Final</p>
-              <p class="service-type">Baños & regaderas</p>
-              <p class="service-description">Diseñado para cerrar tu entrenamiento con lujo absoluto.</p>
+              <p class="service-heading">Baños & regaderas</p>
             </div>
           </div>
         </div>
