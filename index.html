@@ -144,7 +144,7 @@
       overflow: hidden;
       min-height: 360px;
       isolation: isolate;
-      background: #FFFFFF;
+      background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
       border: 2px solid #E5E5E5;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
       transition: transform 0.6s ease, box-shadow 0.6s ease, border-color 0.6s ease;
@@ -177,7 +177,13 @@
       height: 100%;
       object-fit: cover;
       filter: contrast(1.1);
-      transition: transform 1s ease, filter 0.6s ease;
+      transition: transform 1s ease, filter 0.6s ease, opacity 0.3s ease;
+      background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+    }
+    
+    .experience-card img.img-error {
+      opacity: 0;
+      pointer-events: none;
     }
 
     .experience-card:hover {
@@ -1042,7 +1048,7 @@
         </div>
         <div class="experience-grid">
           <article class="experience-card" data-color="lime">
-          <img src="https://images.pexels.com/photos/6740756/pexels-photo-6740756.jpeg" alt="Persona saltando en trampolín en gimnasio" loading="lazy" />
+          <img src="https://images.pexels.com/photos/6740756/pexels-photo-6740756.jpeg" alt="Persona saltando en trampolín en gimnasio" loading="lazy" onerror="this.classList.add('img-error')" />
           <div class="hero-showcase__badge">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M12 3L14.4721 8.02786L20 9.0549L16 13.1056L16.9443 18.9451L12 16.2L7.05573 18.9451L8 13.1056L4 9.0549L9.52786 8.02786L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -1055,7 +1061,7 @@
           </div>
           </article>
           <article class="experience-card" data-color="cyan">
-          <img src="https://media.istockphoto.com/id/1132086660/es/foto/vista-lateral-de-la-mujer-musculosa-hermosa-corriendo-en-la-cinta.jpg?s=612x612&w=0&k=20&c=NVS7gyHC9_XNjGHDorwxiQLk11bFUBz6sxMIlS8El1s=" alt="Zona de cardio con caminadoras tecnológicas" loading="lazy" />
+          <img src="https://media.istockphoto.com/id/1132086660/es/foto/vista-lateral-de-la-mujer-musculosa-hermosa-corriendo-en-la-cinta.jpg?s=612x612&w=0&k=20&c=NVS7gyHC9_XNjGHDorwxiQLk11bFUBz6sxMIlS8El1s=" alt="Zona de cardio con caminadoras tecnológicas" loading="lazy" onerror="this.classList.add('img-error')" />
           <div class="hero-showcase__badge">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M12 3L14.4721 8.02786L20 9.0549L16 13.1056L16.9443 18.9451L12 16.2L7.05573 18.9451L8 13.1056L4 9.0549L9.52786 8.02786L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -1068,7 +1074,7 @@
           </div>
           </article>
           <article class="experience-card" data-color="magenta">
-          <img src="https://t3.ftcdn.net/jpg/06/51/19/06/360_F_651190682_6Xsa7OPKoJ3pnXB3Y2moLvt5LKE1e4Ls.jpg" alt="Clase de indoor cycling con luces neon" loading="lazy" />
+          <img src="https://t3.ftcdn.net/jpg/06/51/19/06/360_F_651190682_6Xsa7OPKoJ3pnXB3Y2moLvt5LKE1e4Ls.jpg" alt="Clase de indoor cycling con luces neon" loading="lazy" onerror="this.classList.add('img-error')" />
           <div class="hero-showcase__badge">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M12 3L14.4721 8.02786L20 9.0549L16 13.1056L16.9443 18.9451L12 16.2L7.05573 18.9451L8 13.1056L4 9.0549L9.52786 8.02786L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -1081,7 +1087,7 @@
           </div>
           </article>
           <article class="experience-card" data-color="cyan">
-          <img src="https://media.istockphoto.com/id/535496740/es/foto/baile-de-ejercicios.jpg?s=612x612&w=0&k=20&c=om4I6lwH7xnDVSnoz9ndxItSit1_w__snRZI76r6jbU=" alt="Grupo bailando en clase de zumba con iluminación colorida" loading="lazy" />
+          <img src="https://media.istockphoto.com/id/535496740/es/foto/baile-de-ejercicios.jpg?s=612x612&w=0&k=20&c=om4I6lwH7xnDVSnoz9ndxItSit1_w__snRZI76r6jbU=" alt="Grupo bailando en clase de zumba con iluminación colorida" loading="lazy" onerror="this.classList.add('img-error')" />
           <div class="hero-showcase__badge">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M12 3L14.4721 8.02786L20 9.0549L16 13.1056L16.9443 18.9451L12 16.2L7.05573 18.9451L8 13.1056L4 9.0549L9.52786 8.02786L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -1094,7 +1100,7 @@
           </div>
           </article>
           <article class="experience-card" data-color="lime">
-          <img src="https://www.shutterstock.com/image-photo/healthy-fitness-food-chicken-salad-600nw-1262711218.jpg" alt="Cafetería saludable con bebidas energéticas" loading="lazy" />
+          <img src="https://www.shutterstock.com/image-photo/healthy-fitness-food-chicken-salad-600nw-1262711218.jpg" alt="Cafetería saludable con bebidas energéticas" loading="lazy" onerror="this.classList.add('img-error')" />
           <div class="hero-showcase__badge">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M12 3L14.4721 8.02786L20 9.0549L16 13.1056L16.9443 18.9451L12 16.2L7.05573 18.9451L8 13.1056L4 9.0549L9.52786 8.02786L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -1107,7 +1113,7 @@
           </div>
           </article>
         <article class="experience-card md:col-span-3" data-color="magenta">
-          <img src="https://media.istockphoto.com/id/985880238/es/foto/asia-mujeres-ba%C3%B1andose-y-ella-se-ba%C3%B1a-y-lava-hair-she-es-feliz.jpg?s=612x612&w=0&k=20&c=7QUrkqjc2u5OxLmrfsODDRJAlMDDkzIqRMbim_xENFQ=" alt="Vestidores de lujo con iluminación cálida" loading="lazy" />
+          <img src="https://media.istockphoto.com/id/985880238/es/foto/asia-mujeres-ba%C3%B1andose-y-ella-se-ba%C3%B1a-y-lava-hair-she-es-feliz.jpg?s=612x612&w=0&k=20&c=7QUrkqjc2u5OxLmrfsODDRJAlMDDkzIqRMbim_xENFQ=" alt="Vestidores de lujo con iluminación cálida" loading="lazy" onerror="this.classList.add('img-error')" />
           <div class="hero-showcase__badge">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M12 3L14.4721 8.02786L20 9.0549L16 13.1056L16.9443 18.9451L12 16.2L7.05573 18.9451L8 13.1056L4 9.0549L9.52786 8.02786L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
