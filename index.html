@@ -1069,7 +1069,164 @@
       }
     }
 
+    /* Sticky Navigation Bar */
+    .nav-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transform: translateY(-100%);
+    }
+
+    .nav-bar.visible {
+      transform: translateY(0);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-logo-img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-logo:hover .nav-logo-img {
+      transform: scale(1.1);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-link {
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(0, 0, 0, 0.7);
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #000000;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #000000;
+    }
+
+    .nav-link:hover::after {
+      transform: scaleX(1);
+    }
+
+    .nav-link.active {
+      color: #000000;
+    }
+
+    .nav-link.active::after {
+      transform: scaleX(1);
+    }
+
+    .nav-btn-link {
+      display: inline-block;
+    }
+
+    .nav-cta-btn {
+      padding: 10px 24px;
+      background: #000000;
+      color: #FFFFFF;
+      border: 2px solid #000000;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.35em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nav-cta-btn:hover {
+      background: #1a1a1a;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Section Separators */
+    section {
+      position: relative;
+    }
+
+    section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 1200px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1) 50%, transparent);
+    }
+
+    section#hero::before {
+      display: none;
+    }
+
+    .section-divider {
+      margin: 0 auto 48px;
+      width: 120px;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #000000, transparent);
+      border-radius: 999px;
+    }
+
+    /* Mobile Navigation */
     @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-container {
+        padding: 12px 16px;
+      }
+
+      .nav-cta-btn {
+        font-size: 0.65rem;
+        padding: 8px 16px;
+        letter-spacing: 0.25em;
+      }
+
       .hero-eyebrow {
         letter-spacing: 0.4em;
         font-size: 0.65rem;
@@ -1144,6 +1301,24 @@
     <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=80" alt="Atleta entrenando en un gimnasio futurista" fetchpriority="high" />
   </div>
 
+  <!-- Sticky Navigation -->
+  <nav class="nav-bar" id="mainNav">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <img src="./lionlogo.png" alt="Lion Fitness" class="nav-logo-img" />
+      </a>
+      <div class="nav-links">
+        <a href="#hero" class="nav-link">Inicio</a>
+        <a href="#servicios" class="nav-link">Servicios</a>
+        <a href="#testimonios" class="nav-link">Testimonios</a>
+        <a href="#ubicacion" class="nav-link">Ubicación</a>
+      </div>
+      <a href="quejas.html" class="nav-btn-link">
+        <button class="nav-cta-btn">Buzón</button>
+      </a>
+    </div>
+  </nav>
+
   <header class="relative min-h-[95vh] flex flex-col justify-center pt-12 pb-20">
     <div class="header-gradient" aria-hidden="true"></div>
 
@@ -1187,6 +1362,7 @@
   <main class="relative z-10">
     <!-- Nuestros Servicios Section -->
     <section id="servicios" class="px-6 sm:px-12 py-16 sm:py-24">
+      <div class="section-divider"></div>
       <div class="flex flex-col items-center text-center gap-4 sm:gap-5 mb-12">
         <h2 class="section-title text-3xl sm:text-5xl font-bold tracking-[0.08em] uppercase text-black">
           Nuestros Servicios
@@ -1290,6 +1466,7 @@
     </section>
 
     <section id="testimonios" class="px-6 sm:px-12 py-16 sm:py-24">
+      <div class="section-divider"></div>
       <div class="flex flex-col items-center text-center gap-4 sm:gap-5 mb-12">
         <h2 class="section-title text-3xl sm:text-5xl font-bold tracking-[0.08em] uppercase text-black">
           Testimonios
@@ -1346,6 +1523,7 @@
     </section>
 
     <section id="ubicacion" class="px-6 sm:px-12 py-16 sm:py-24">
+      <div class="section-divider"></div>
       <div class="flex flex-col items-center text-center gap-4 sm:gap-5 mb-12">
         <h2 class="section-title text-3xl sm:text-5xl font-bold tracking-[0.08em] uppercase text-black">
           Ubicación
@@ -1446,6 +1624,49 @@
       if (yearEl) {
         yearEl.textContent = new Date().getFullYear();
       }
+
+      // Navigation bar scroll behavior
+      const nav = document.getElementById('mainNav');
+      let lastScroll = 0;
+      
+      window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        // Show nav after scrolling down 100px
+        if (currentScroll > 100) {
+          nav.classList.add('visible');
+        } else {
+          nav.classList.remove('visible');
+        }
+        
+        lastScroll = currentScroll;
+      });
+
+      // Active section highlighting
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      function highlightActiveSection() {
+        const scrollY = window.pageYOffset;
+        
+        sections.forEach(section => {
+          const sectionHeight = section.offsetHeight;
+          const sectionTop = section.offsetTop - 100;
+          const sectionId = section.getAttribute('id');
+          
+          if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            navLinks.forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === `#${sectionId}`) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }
+
+      window.addEventListener('scroll', highlightActiveSection);
+      highlightActiveSection(); // Call once on load
 
       // Live Gym Status Update
       function updateGymStatus() {
