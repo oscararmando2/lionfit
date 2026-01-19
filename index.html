@@ -1523,6 +1523,17 @@
       const sections = document.querySelectorAll('section[id]');
       const navLinks = document.querySelectorAll('.nav-link');
 
+      // Cache section positions for better performance
+      let sectionPositions = [];
+      
+      function cacheSectionPositions() {
+        sectionPositions = Array.from(sections).map(section => ({
+          id: section.getAttribute('id'),
+          top: section.offsetTop - 100,
+          bottom: section.offsetTop + section.offsetHeight - 100
+        }));
+      }
+
       function handleScroll() {
         const currentScroll = window.pageYOffset;
         
@@ -1541,16 +1552,12 @@
         // Remove active class from all links first
         navLinks.forEach(link => link.classList.remove('active'));
         
-        // Find the currently visible section
-        for (const section of sections) {
-          const sectionHeight = section.offsetHeight;
-          const sectionTop = section.offsetTop - 100;
-          const sectionId = section.getAttribute('id');
-          
-          if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+        // Find the currently visible section using cached positions
+        for (const sectionPos of sectionPositions) {
+          if (scrollY > sectionPos.top && scrollY < sectionPos.bottom) {
             // Find and activate the corresponding nav link
             const activeLink = Array.from(navLinks).find(
-              link => link.getAttribute('href') === `#${sectionId}`
+              link => link.getAttribute('href') === `#${sectionPos.id}`
             );
             if (activeLink) {
               activeLink.classList.add('active');
@@ -1571,7 +1578,11 @@
         }
       });
       
-      // Initial call on load
+      // Recalculate positions on resize
+      window.addEventListener('resize', cacheSectionPositions);
+      
+      // Initial setup
+      cacheSectionPositions();
       highlightActiveSection(window.pageYOffset);
 
       // Live Gym Status Update
