@@ -814,121 +814,6 @@
       mask-image: radial-gradient(circle at top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0));
     }
 
-    /* Map styling */
-    .map-container {
-      position: relative;
-      border-radius: 32px;
-      overflow: hidden;
-      border: 2px solid #E5E5E5;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
-    }
-
-    .map-marker {
-      position: absolute;
-      top: 45%;
-      left: 52%;
-      transform: translate(-50%, -50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      text-align: center;
-    }
-
-    .map-marker img {
-      width: 70px;
-      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
-      animation: subtlePulse 3s ease-in-out infinite;
-    }
-
-    .map-popup {
-      background: rgba(255, 255, 255, 0.98);
-      border-radius: 18px;
-      padding: 10px 18px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-      border: 2px solid #E5E5E5;
-      font-size: 0.85rem;
-      min-width: 180px;
-    }
-
-    .whatsapp-bubble {
-      position: fixed;
-      right: 20px;
-      bottom: 24px;
-      z-index: 950;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: #000000;
-      color: #fff;
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
-    }
-
-    .whatsapp-bubble svg {
-      width: 28px;
-      height: 28px;
-    }
-
-    .whatsapp-bubble:hover {
-      transform: translateY(-6px) scale(1.04);
-      box-shadow: 0 28px 55px rgba(0, 0, 0, 0.35);
-    }
-
-    footer a {
-      color: rgba(0, 0, 0, 0.6);
-      transition: color 0.3s ease;
-    }
-
-    footer a:hover {
-      color: #000000;
-    }
-    
-    footer a svg {
-      color: inherit;
-    }
-
-    .hero-title {
-      font-family: 'Anton', 'Impact', sans-serif;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    .card-media {
-      position: relative;
-      overflow: hidden;
-      border-radius: 18px;
-      height: 200px;
-    }
-
-    .card-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: contrast(1.1);
-      transition: transform 0.6s ease, filter 0.6s ease;
-    }
-
-    .lux-card:hover .card-media img {
-      transform: scale(1.08);
-      filter: contrast(1.2);
-    }
-
-    .card-media--wide {
-      height: 260px;
-    }
-
-    .section-title {
-      font-family: 'Anton', 'Impact', sans-serif;
-    }
-
-    .noise-mask {
-      mask-image: radial-gradient(circle at top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0));
-    }
-
     /* Services card with fluorescent yellow gradient */
     .service-card {
       position: relative;
@@ -1069,7 +954,164 @@
       }
     }
 
+    /* Sticky Navigation Bar */
+    .nav-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transform: translateY(-100%);
+    }
+
+    .nav-bar.visible {
+      transform: translateY(0);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-logo-img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-logo:hover .nav-logo-img {
+      transform: scale(1.1);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-link {
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(0, 0, 0, 0.7);
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #000000;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #000000;
+    }
+
+    .nav-link:hover::after {
+      transform: scaleX(1);
+    }
+
+    .nav-link.active {
+      color: #000000;
+    }
+
+    .nav-link.active::after {
+      transform: scaleX(1);
+    }
+
+    .nav-btn-link {
+      display: inline-block;
+    }
+
+    .nav-cta-btn {
+      padding: 10px 24px;
+      background: #000000;
+      color: #FFFFFF;
+      border: 2px solid #000000;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.35em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nav-cta-btn:hover {
+      background: #1a1a1a;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Section Separators */
+    section {
+      position: relative;
+    }
+
+    section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 1200px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1) 50%, transparent);
+    }
+
+    section#hero::before {
+      display: none;
+    }
+
+    .section-divider {
+      margin: 0 auto 48px;
+      width: 120px;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #000000, transparent);
+      border-radius: 999px;
+    }
+
+    /* Mobile Navigation */
     @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-container {
+        padding: 12px 16px;
+      }
+
+      .nav-cta-btn {
+        font-size: 0.65rem;
+        padding: 8px 16px;
+        letter-spacing: 0.25em;
+      }
+
       .hero-eyebrow {
         letter-spacing: 0.4em;
         font-size: 0.65rem;
@@ -1144,6 +1186,24 @@
     <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=80" alt="Atleta entrenando en un gimnasio futurista" fetchpriority="high" />
   </div>
 
+  <!-- Sticky Navigation -->
+  <nav class="nav-bar" id="mainNav">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <img src="./lionlogo.png" alt="Lion Fitness" class="nav-logo-img" />
+      </a>
+      <div class="nav-links">
+        <a href="#hero" class="nav-link">Inicio</a>
+        <a href="#servicios" class="nav-link">Servicios</a>
+        <a href="#testimonios" class="nav-link">Testimonios</a>
+        <a href="#ubicacion" class="nav-link">Ubicación</a>
+      </div>
+      <a href="quejas.html" class="nav-btn-link">
+        <button class="nav-cta-btn">Buzón</button>
+      </a>
+    </div>
+  </nav>
+
   <header class="relative min-h-[95vh] flex flex-col justify-center pt-12 pb-20">
     <div class="header-gradient" aria-hidden="true"></div>
 
@@ -1187,6 +1247,7 @@
   <main class="relative z-10">
     <!-- Nuestros Servicios Section -->
     <section id="servicios" class="px-6 sm:px-12 py-16 sm:py-24">
+      <div class="section-divider"></div>
       <div class="flex flex-col items-center text-center gap-4 sm:gap-5 mb-12">
         <h2 class="section-title text-3xl sm:text-5xl font-bold tracking-[0.08em] uppercase text-black">
           Nuestros Servicios
@@ -1290,6 +1351,7 @@
     </section>
 
     <section id="testimonios" class="px-6 sm:px-12 py-16 sm:py-24">
+      <div class="section-divider"></div>
       <div class="flex flex-col items-center text-center gap-4 sm:gap-5 mb-12">
         <h2 class="section-title text-3xl sm:text-5xl font-bold tracking-[0.08em] uppercase text-black">
           Testimonios
@@ -1346,6 +1408,7 @@
     </section>
 
     <section id="ubicacion" class="px-6 sm:px-12 py-16 sm:py-24">
+      <div class="section-divider"></div>
       <div class="flex flex-col items-center text-center gap-4 sm:gap-5 mb-12">
         <h2 class="section-title text-3xl sm:text-5xl font-bold tracking-[0.08em] uppercase text-black">
           Ubicación
@@ -1446,6 +1509,77 @@
       if (yearEl) {
         yearEl.textContent = new Date().getFullYear();
       }
+
+      // Navigation bar scroll behavior and active section highlighting
+      const nav = document.getElementById('mainNav');
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      // Configuration constants
+      const NAV_SCROLL_THRESHOLD = 100; // px to scroll before showing nav
+      const SECTION_OFFSET = 100; // px offset for section detection
+
+      // Cache section positions for better performance
+      let sectionPositions = [];
+      
+      function cacheSectionPositions() {
+        sectionPositions = Array.from(sections).map(section => ({
+          id: section.getAttribute('id'),
+          top: section.offsetTop - SECTION_OFFSET,
+          bottom: section.offsetTop + section.offsetHeight - SECTION_OFFSET
+        }));
+      }
+
+      function handleScroll() {
+        const currentScroll = window.pageYOffset;
+        
+        // Show/hide nav after scrolling down threshold
+        if (currentScroll > NAV_SCROLL_THRESHOLD) {
+          nav.classList.add('visible');
+        } else {
+          nav.classList.remove('visible');
+        }
+        
+        // Highlight active section
+        highlightActiveSection(currentScroll);
+      }
+
+      function highlightActiveSection(scrollY) {
+        // Remove active class from all links first
+        navLinks.forEach(link => link.classList.remove('active'));
+        
+        // Find the currently visible section using cached positions
+        for (const sectionPos of sectionPositions) {
+          if (scrollY >= sectionPos.top && scrollY < sectionPos.bottom) {
+            // Find and activate the corresponding nav link
+            const activeLink = Array.from(navLinks).find(
+              link => link.getAttribute('href') === `#${sectionPos.id}`
+            );
+            if (activeLink) {
+              activeLink.classList.add('active');
+            }
+            break; // Exit once we find the active section
+          }
+        }
+      }
+
+      // Throttle scroll events for better performance
+      let scrollTimeout;
+      window.addEventListener('scroll', () => {
+        if (!scrollTimeout) {
+          scrollTimeout = setTimeout(() => {
+            handleScroll();
+            scrollTimeout = null;
+          }, 100);
+        }
+      });
+      
+      // Recalculate positions on resize
+      window.addEventListener('resize', cacheSectionPositions);
+      
+      // Initial setup
+      cacheSectionPositions();
+      highlightActiveSection(window.pageYOffset);
 
       // Live Gym Status Update
       function updateGymStatus() {
