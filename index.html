@@ -527,80 +527,84 @@
     }
 
     .card {
-      width: 220px;
-      height: 300px;
-      background: rgb(73, 74, 68);
+      width: 280px;
+      min-height: 340px;
+      background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%);
       font-family: inherit;
       position: relative;
-      border-radius: 12px;
-      flex: 0 0 220px;
+      border-radius: 20px;
+      flex: 0 0 280px;
       scroll-snap-align: start;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      padding: 20px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      padding: 32px 28px;
+      border: 2px solid #E5E5E5;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
     }
 
     .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+      transform: translateY(-12px);
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.15);
+      border-color: #000000;
     }
 
     .quote {
-      color: rgb(52, 185, 134);
+      color: #000000;
       position: relative;
       text-align: center;
       display: flex;
       justify-content: center;
       align-items: center;
-      order: 2;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
+      opacity: 0.15;
     }
 
     .quote svg {
-      width: 60px;
-      height: 60px;
-      opacity: 0.8;
+      width: 50px;
+      height: 50px;
     }
 
     .card-name {
       text-transform: uppercase;
-      font-weight: 700;
-      color: rgb(253, 255, 248);
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.4);
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
       text-align: center;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       order: 1;
     }
 
     .body-text {
-      font-size: 0.94rem;
-      font-weight: 600;
-      color: #ffffff;
-      line-height: 1.5;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: rgba(0, 0, 0, 0.75);
+      line-height: 1.65;
       text-align: center;
-      order: 3;
       flex-grow: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 0;
+      padding: 8px 0;
+      letter-spacing: 0.02em;
     }
 
     .author {
-      opacity: 1;
-      transition: 0.3s;
-      font-weight: 700;
-      font-size: 1rem;
-      color: rgb(255, 255, 255);
+      font-family: 'Anton', 'Impact', sans-serif;
+      font-weight: 400;
+      font-size: 1.1rem;
+      color: #000000;
       text-align: center;
-      order: 4;
       margin-top: auto;
-      padding-top: 15px;
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 24px;
+      border-top: 2px solid rgba(0, 0, 0, 0.1);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .pic {
@@ -616,15 +620,14 @@
     }
 
     .card .author svg {
-      display: inline;
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.452);
+      display: none;
     }
 
     @media (max-width: 768px) {
       .card {
-        width: 200px;
-        height: 280px;
+        width: 260px;
+        min-height: 320px;
+        padding: 28px 24px;
       }
       
       .body-text {
@@ -632,7 +635,8 @@
       }
       
       .author {
-        font-size: 0.875rem;
+        font-size: 1rem;
+        min-height: 56px;
       }
     }
 
@@ -1360,49 +1364,92 @@
       </div>
       <div class="testimonial-track" role="list">
         <article class="card" role="listitem">
-          <div class="card-name">Opiniones</div>
+          <div class="card-name">Testimonio</div>
           <div class="quote">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307">
               <path fill="currentColor" d="M302.258 176.221C320.678 176.221 329.889 185.432 329.889 203.853V278.764C329.889 297.185 320.678 306.395 302.258 306.395H231.031C212.61 306.395 203.399 297.185 203.399 278.764V203.853C203.399 160.871 207.902 123.415 216.908 91.4858C226.323 59.1472 244.539 30.902 271.556 6.75027C280.562 -1.02739 288.135 -2.05076 294.275 3.68014L321.906 29.4692C328.047 35.2001 326.614 42.1591 317.608 50.3461C303.69 62.6266 292.228 80.4334 283.223 103.766C274.626 126.69 270.328 150.842 270.328 176.221H302.258ZM99.629 176.221C118.05 176.221 127.26 185.432 127.26 203.853V278.764C127.26 297.185 118.05 306.395 99.629 306.395H28.402C9.98126 306.395 0.770874 297.185 0.770874 278.764V203.853C0.770874 160.871 5.27373 123.415 14.2794 91.4858C23.6945 59.1472 41.9106 30.902 68.9277 6.75027C77.9335 -1.02739 85.5064 -2.05076 91.6467 3.68014L119.278 29.4692C125.418 35.2001 123.985 42.1591 114.98 50.3461C101.062 62.6266 89.6 80.4334 80.5942 103.766C71.9979 126.69 67.6997 150.842 67.6997 176.221H99.629Z"></path>
             </svg>
           </div>
-          <div class="body-text">El estudio de cycling tiene un mapping de luces que te transporta. Nunca había sentido tanta energía.</div>
-          <div class="author">- Ana <br> <svg height="" width="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H24V24H0z" fill="none"></path><path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2z"></path></svg>
-          </div>
-          </article>
+          <div class="body-text">El estudio de cycling tiene un mapeo de luces que te transporta. Nunca había sentido tanta energía en un gimnasio.</div>
+          <div class="author">Ana López</div>
+        </article>
+        
         <article class="card" role="listitem">
-          <div class="card-name">Opiniones</div>
+          <div class="card-name">Testimonio</div>
           <div class="quote">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307">
               <path fill="currentColor" d="M302.258 176.221C320.678 176.221 329.889 185.432 329.889 203.853V278.764C329.889 297.185 320.678 306.395 302.258 306.395H231.031C212.61 306.395 203.399 297.185 203.399 278.764V203.853C203.399 160.871 207.902 123.415 216.908 91.4858C226.323 59.1472 244.539 30.902 271.556 6.75027C280.562 -1.02739 288.135 -2.05076 294.275 3.68014L321.906 29.4692C328.047 35.2001 326.614 42.1591 317.608 50.3461C303.69 62.6266 292.228 80.4334 283.223 103.766C274.626 126.69 270.328 150.842 270.328 176.221H302.258ZM99.629 176.221C118.05 176.221 127.26 185.432 127.26 203.853V278.764C127.26 297.185 118.05 306.395 99.629 306.395H28.402C9.98126 306.395 0.770874 297.185 0.770874 278.764V203.853C0.770874 160.871 5.27373 123.415 14.2794 91.4858C23.6945 59.1472 41.9106 30.902 68.9277 6.75027C77.9335 -1.02739 85.5064 -2.05076 91.6467 3.68014L119.278 29.4692C125.418 35.2001 123.985 42.1591 114.98 50.3461C101.062 62.6266 89.6 80.4334 80.5942 103.766C71.9979 126.69 67.6997 150.842 67.6997 176.221H99.629Z"></path>
             </svg>
           </div>
-          <div class="body-text">Lion Fitness combina lujo con resultados. El coaching personalizado era lo que yo necesitaba</div>
-          <div class="author">- Diego M <br> <svg height="" width="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H24V24H0z" fill="none"></path><path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2z"></path></svg>
-          </div>
-          </article>
+          <div class="body-text">Lion Fitness combina lujo con resultados. El coaching personalizado era exactamente lo que necesitaba para alcanzar mis metas.</div>
+          <div class="author">Diego Martínez</div>
+        </article>
+        
         <article class="card" role="listitem">
-          <div class="card-name">Opiniones</div>
+          <div class="card-name">Testimonio</div>
           <div class="quote">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307">
               <path fill="currentColor" d="M302.258 176.221C320.678 176.221 329.889 185.432 329.889 203.853V278.764C329.889 297.185 320.678 306.395 302.258 306.395H231.031C212.61 306.395 203.399 297.185 203.399 278.764V203.853C203.399 160.871 207.902 123.415 216.908 91.4858C226.323 59.1472 244.539 30.902 271.556 6.75027C280.562 -1.02739 288.135 -2.05076 294.275 3.68014L321.906 29.4692C328.047 35.2001 326.614 42.1591 317.608 50.3461C303.69 62.6266 292.228 80.4334 283.223 103.766C274.626 126.69 270.328 150.842 270.328 176.221H302.258ZM99.629 176.221C118.05 176.221 127.26 185.432 127.26 203.853V278.764C127.26 297.185 118.05 306.395 99.629 306.395H28.402C9.98126 306.395 0.770874 297.185 0.770874 278.764V203.853C0.770874 160.871 5.27373 123.415 14.2794 91.4858C23.6945 59.1472 41.9106 30.902 68.9277 6.75027C77.9335 -1.02739 85.5064 -2.05076 91.6467 3.68014L119.278 29.4692C125.418 35.2001 123.985 42.1591 114.98 50.3461C101.062 62.6266 89.6 80.4334 80.5942 103.766C71.9979 126.69 67.6997 150.842 67.6997 176.221H99.629Z"></path>
             </svg>
           </div>
-          <div class="body-text">Me encanta la vista al hacer cardio</div>
-          <div class="author">- Valeria G <br> <svg height="" width="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H24V24H0z" fill="none"></path><path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2z"></path></svg>
-          </div>
-          </article>
+          <div class="body-text">Me encanta la vista al hacer cardio. Las instalaciones son impecables y el ambiente es motivador todos los días.</div>
+          <div class="author">Valeria González</div>
+        </article>
+        
         <article class="card" role="listitem">
-          <div class="card-name">Opiniones</div>
+          <div class="card-name">Testimonio</div>
           <div class="quote">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307">
               <path fill="currentColor" d="M302.258 176.221C320.678 176.221 329.889 185.432 329.889 203.853V278.764C329.889 297.185 320.678 306.395 302.258 306.395H231.031C212.61 306.395 203.399 297.185 203.399 278.764V203.853C203.399 160.871 207.902 123.415 216.908 91.4858C226.323 59.1472 244.539 30.902 271.556 6.75027C280.562 -1.02739 288.135 -2.05076 294.275 3.68014L321.906 29.4692C328.047 35.2001 326.614 42.1591 317.608 50.3461C303.69 62.6266 292.228 80.4334 283.223 103.766C274.626 126.69 270.328 150.842 270.328 176.221H302.258ZM99.629 176.221C118.05 176.221 127.26 185.432 127.26 203.853V278.764C127.26 297.185 118.05 306.395 99.629 306.395H28.402C9.98126 306.395 0.770874 297.185 0.770874 278.764V203.853C0.770874 160.871 5.27373 123.415 14.2794 91.4858C23.6945 59.1472 41.9106 30.902 68.9277 6.75027C77.9335 -1.02739 85.5064 -2.05076 91.6467 3.68014L119.278 29.4692C125.418 35.2001 123.985 42.1591 114.98 50.3461C101.062 62.6266 89.6 80.4334 80.5942 103.766C71.9979 126.69 67.6997 150.842 67.6997 176.221H99.629Z"></path>
             </svg>
           </div>
-          <div class="body-text">Super atentos todas las personas y amables</div>
-          <div class="author">- Jose A <br> <svg height="" width="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H24V24H0z" fill="none"></path><path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2z"></path></svg>
+          <div class="body-text">Super atentos todas las personas y muy amables. El equipo de Lion Fitness te hace sentir como en familia desde el primer día.</div>
+          <div class="author">José Ávila</div>
+        </article>
+        
+        <article class="card" role="listitem">
+          <div class="card-name">Testimonio</div>
+          <div class="quote">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307">
+              <path fill="currentColor" d="M302.258 176.221C320.678 176.221 329.889 185.432 329.889 203.853V278.764C329.889 297.185 320.678 306.395 302.258 306.395H231.031C212.61 306.395 203.399 297.185 203.399 278.764V203.853C203.399 160.871 207.902 123.415 216.908 91.4858C226.323 59.1472 244.539 30.902 271.556 6.75027C280.562 -1.02739 288.135 -2.05076 294.275 3.68014L321.906 29.4692C328.047 35.2001 326.614 42.1591 317.608 50.3461C303.69 62.6266 292.228 80.4334 283.223 103.766C274.626 126.69 270.328 150.842 270.328 176.221H302.258ZM99.629 176.221C118.05 176.221 127.26 185.432 127.26 203.853V278.764C127.26 297.185 118.05 306.395 99.629 306.395H28.402C9.98126 306.395 0.770874 297.185 0.770874 278.764V203.853C0.770874 160.871 5.27373 123.415 14.2794 91.4858C23.6945 59.1472 41.9106 30.902 68.9277 6.75027C77.9335 -1.02739 85.5064 -2.05076 91.6467 3.68014L119.278 29.4692C125.418 35.2001 123.985 42.1591 114.98 50.3461C101.062 62.6266 89.6 80.4334 80.5942 103.766C71.9979 126.69 67.6997 150.842 67.6997 176.221H99.629Z"></path>
+            </svg>
           </div>
-          </article>
+          <div class="body-text">Las clases de Zumba son increíbles. La instructora tiene una energía contagiosa que te motiva a dar lo mejor en cada sesión.</div>
+          <div class="author">María Fernández</div>
+        </article>
+        
+        <article class="card" role="listitem">
+          <div class="card-name">Testimonio</div>
+          <div class="quote">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307">
+              <path fill="currentColor" d="M302.258 176.221C320.678 176.221 329.889 185.432 329.889 203.853V278.764C329.889 297.185 320.678 306.395 302.258 306.395H231.031C212.61 306.395 203.399 297.185 203.399 278.764V203.853C203.399 160.871 207.902 123.415 216.908 91.4858C226.323 59.1472 244.539 30.902 271.556 6.75027C280.562 -1.02739 288.135 -2.05076 294.275 3.68014L321.906 29.4692C328.047 35.2001 326.614 42.1591 317.608 50.3461C303.69 62.6266 292.228 80.4334 283.223 103.766C274.626 126.69 270.328 150.842 270.328 176.221H302.258ZM99.629 176.221C118.05 176.221 127.26 185.432 127.26 203.853V278.764C127.26 297.185 118.05 306.395 99.629 306.395H28.402C9.98126 306.395 0.770874 297.185 0.770874 278.764V203.853C0.770874 160.871 5.27373 123.415 14.2794 91.4858C23.6945 59.1472 41.9106 30.902 68.9277 6.75027C77.9335 -1.02739 85.5064 -2.05076 91.6467 3.68014L119.278 29.4692C125.418 35.2001 123.985 42.1591 114.98 50.3461C101.062 62.6266 89.6 80.4334 80.5942 103.766C71.9979 126.69 67.6997 150.842 67.6997 176.221H99.629Z"></path>
+            </svg>
+          </div>
+          <div class="body-text">Desde que entreno aquí, mi vida cambió completamente. He mejorado mi fuerza, resistencia y sobre todo mi confianza personal.</div>
+          <div class="author">Roberto Sánchez</div>
+        </article>
+        
+        <article class="card" role="listitem">
+          <div class="card-name">Testimonio</div>
+          <div class="quote">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307">
+              <path fill="currentColor" d="M302.258 176.221C320.678 176.221 329.889 185.432 329.889 203.853V278.764C329.889 297.185 320.678 306.395 302.258 306.395H231.031C212.61 306.395 203.399 297.185 203.399 278.764V203.853C203.399 160.871 207.902 123.415 216.908 91.4858C226.323 59.1472 244.539 30.902 271.556 6.75027C280.562 -1.02739 288.135 -2.05076 294.275 3.68014L321.906 29.4692C328.047 35.2001 326.614 42.1591 317.608 50.3461C303.69 62.6266 292.228 80.4334 283.223 103.766C274.626 126.69 270.328 150.842 270.328 176.221H302.258ZM99.629 176.221C118.05 176.221 127.26 185.432 127.26 203.853V278.764C127.26 297.185 118.05 306.395 99.629 306.395H28.402C9.98126 306.395 0.770874 297.185 0.770874 278.764V203.853C0.770874 160.871 5.27373 123.415 14.2794 91.4858C23.6945 59.1472 41.9106 30.902 68.9277 6.75027C77.9335 -1.02739 85.5064 -2.05076 91.6467 3.68014L119.278 29.4692C125.418 35.2001 123.985 42.1591 114.98 50.3461C101.062 62.6266 89.6 80.4334 80.5942 103.766C71.9979 126.69 67.6997 150.842 67.6997 176.221H99.629Z"></path>
+            </svg>
+          </div>
+          <div class="body-text">El área de pesas está perfectamente equipada con máquinas de última generación. Es un verdadero paraíso para los amantes del fitness.</div>
+          <div class="author">Carmen Ruiz</div>
+        </article>
+        
+        <article class="card" role="listitem">
+          <div class="card-name">Testimonio</div>
+          <div class="quote">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307">
+              <path fill="currentColor" d="M302.258 176.221C320.678 176.221 329.889 185.432 329.889 203.853V278.764C329.889 297.185 320.678 306.395 302.258 306.395H231.031C212.61 306.395 203.399 297.185 203.399 278.764V203.853C203.399 160.871 207.902 123.415 216.908 91.4858C226.323 59.1472 244.539 30.902 271.556 6.75027C280.562 -1.02739 288.135 -2.05076 294.275 3.68014L321.906 29.4692C328.047 35.2001 326.614 42.1591 317.608 50.3461C303.69 62.6266 292.228 80.4334 283.223 103.766C274.626 126.69 270.328 150.842 270.328 176.221H302.258ZM99.629 176.221C118.05 176.221 127.26 185.432 127.26 203.853V278.764C127.26 297.185 118.05 306.395 99.629 306.395H28.402C9.98126 306.395 0.770874 297.185 0.770874 278.764V203.853C0.770874 160.871 5.27373 123.415 14.2794 91.4858C23.6945 59.1472 41.9106 30.902 68.9277 6.75027C77.9335 -1.02739 85.5064 -2.05076 91.6467 3.68014L119.278 29.4692C125.418 35.2001 123.985 42.1591 114.98 50.3461C101.062 62.6266 89.6 80.4334 80.5942 103.766C71.9979 126.69 67.6997 150.842 67.6997 176.221H99.629Z"></path>
+            </svg>
+          </div>
+          <div class="body-text">Lo mejor de Lion es el ambiente. Todos se apoyan y motivan mutuamente. Es más que un gym, es una comunidad de leones.</div>
+          <div class="author">Luis Mendoza</div>
+        </article>
       </div>
     </section>
 
