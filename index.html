@@ -117,43 +117,91 @@
       background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.5) 55%, transparent 85%);
     }
 
-    /* Minimalist elegant buttons */
+    /* Animated Lion Button */
     .neon-btn {
       position: relative;
+      width: auto;
+      min-width: 180px;
+      height: 50px;
+      border: none;
+      background-color: #005f99;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
-      border: 2px solid #000000;
-      transition: all 0.4s ease;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      background: #000000;
-      color: #FFFFFF;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 8px 8px 0px rgb(12, 12, 12);
+      transition-duration: .3s;
     }
 
-    .neon-btn::before {
-      content: "";
+    .neon-btn .Layer {
+      width: 60px;
       position: absolute;
-      inset: 0;
-      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-      transition: transform 0.6s ease;
-      transform: translateX(-100%);
-    }
-
-    .neon-btn span {
-      position: relative;
-      z-index: 1;
+      left: -30px;
+      transition-duration: .3s;
+      animation: spin 5s linear infinite;
     }
 
     .neon-btn:hover {
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-      background: #1a1a1a;
+      transform: translateY(5px);
+      box-shadow: 3px 3px 0px black;
+      transition-duration: .3s;
     }
 
-    .neon-btn:hover::before {
-      transform: translateX(100%);
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
     }
 
-    .neon-btn::after {
-      display: none;
+    .neon-btn:hover .Layer {
+      left: 0%;
+      width: 100%;
+      transition-duration: .3s;
+    }
+
+    .neon-btn .text {
+      color: white;
+      font-weight: 600;
+      font-size: 1.1em;
+      position: absolute;
+      z-index: 2;
+      transition-duration: .1s;
+      font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    .neon-btn:hover .text {
+      color: transparent;
+      transition-duration: .3s;
+    }
+
+    /* SVG colors for button */
+    .neon-btn .cls-1 {
+      fill: #242021;
+    }
+
+    .neon-btn .cls-2 {
+      fill: #e82728;
+    }
+
+    .neon-btn .cls-3 {
+      fill: #fefefe;
+    }
+
+    .neon-btn .cls-4 {
+      fill: #e92728;
+    }
+
+    .neon-btn .cls-5 {
+      fill: #005f99;
+    }
+
+    .neon-btn .cls-6 {
+      fill: #fff;
     }
 
     /* Minimalist immersive media cards */
@@ -1090,23 +1138,83 @@
     }
 
     .nav-cta-btn {
-      padding: 10px 24px;
-      background: #000000;
-      color: #FFFFFF;
-      border: 2px solid #000000;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.35em;
+      position: relative;
+      width: auto;
+      min-width: 140px;
+      height: 44px;
+      border: none;
+      background-color: #005f99;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 30px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      box-shadow: 6px 6px 0px rgb(12, 12, 12);
+      transition-duration: .3s;
+      padding: 0 16px;
+    }
+
+    .nav-cta-btn .Layer {
+      width: 50px;
+      position: absolute;
+      left: -25px;
+      transition-duration: .3s;
+      animation: spin 5s linear infinite;
     }
 
     .nav-cta-btn:hover {
-      background: #1a1a1a;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transform: translateY(4px);
+      box-shadow: 2px 2px 0px black;
+      transition-duration: .3s;
+    }
+
+    .nav-cta-btn:hover .Layer {
+      left: 0%;
+      width: 100%;
+      transition-duration: .3s;
+    }
+
+    .nav-cta-btn .text {
+      color: white;
+      font-weight: 600;
+      font-size: 0.75rem;
+      position: relative;
+      z-index: 2;
+      transition-duration: .1s;
+      text-transform: uppercase;
+      letter-spacing: 0.35em;
+      font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    .nav-cta-btn:hover .text {
+      color: transparent;
+      transition-duration: .3s;
+    }
+
+    /* SVG colors for nav button */
+    .nav-cta-btn .cls-1 {
+      fill: #242021;
+    }
+
+    .nav-cta-btn .cls-2 {
+      fill: #e82728;
+    }
+
+    .nav-cta-btn .cls-3 {
+      fill: #fefefe;
+    }
+
+    .nav-cta-btn .cls-4 {
+      fill: #e92728;
+    }
+
+    .nav-cta-btn .cls-5 {
+      fill: #005f99;
+    }
+
+    .nav-cta-btn .cls-6 {
+      fill: #fff;
     }
 
     /* Section Separators */
@@ -1149,8 +1257,19 @@
       }
 
       .nav-cta-btn {
+        min-width: 120px;
+        height: 40px;
+        padding: 0 12px;
+        box-shadow: 5px 5px 0px rgb(12, 12, 12);
+      }
+
+      .nav-cta-btn .Layer {
+        width: 45px;
+        left: -22px;
+      }
+
+      .nav-cta-btn .text {
         font-size: 0.65rem;
-        padding: 8px 16px;
         letter-spacing: 0.25em;
       }
 
@@ -1241,7 +1360,10 @@
         <a href="#ubicacion" class="nav-link">Ubicación</a>
       </div>
       <a href="quejas.html" class="nav-btn-link">
-        <button class="nav-cta-btn">Buzón</button>
+        <button class="nav-cta-btn">
+          <svg class="Layer" viewBox="0 0 1095.66 1095.63"><path class="cls-1" d="M1298,749.62c.4,300.41-243,548-548.1,547.9C446.23,1297.4,201.92,1051.2,202.29,749c.37-301.52,244.49-547.41,548.34-547.12C1055.43,202.18,1298.25,449.6,1298,749.62Z" transform="translate(-202.29 -201.89)"></path><path class="cls-2" d="M1285.89,749.79c-.25,297.07-241.24,535.86-536.12,535.66-296.34-.21-537-241.72-535.29-539,1.68-293.16,240.83-534.18,539.15-532.37C1046.8,215.84,1285.62,453.88,1285.89,749.79Z" transform="translate(-202.29 -201.89)"></path><path class="cls-3" d="M1195.29,749.56c.54,244.73-198.67,446.2-446.87,445.33C503.27,1194,304,994.53,304.93,748c.91-244.52,199.12-443.08,444.39-443.49C997.43,304,1195.74,505.59,1195.29,749.56Z" transform="translate(-202.29 -201.89)"></path><path class="cls-4" d="M1097.23,749.87c.22,190.31-154.42,347.43-348,346.92-192-.5-346.48-156.44-346.17-347.7C403.33,558,558.18,402,751.08,402.55,944.62,403.09,1097.69,560.56,1097.23,749.87Z" transform="translate(-202.29 -201.89)"></path><path class="cls-5" d="M1006.72,744.28c2.81,143.23-110.17,257.35-247.42,261.9C613.15,1011,498.22,895.93,493.71,758.88,488.93,613.71,603,498,740.69,493.28,886.73,488.24,1004,603.87,1006.72,744.28Z" transform="translate(-202.29 -201.89)"></path><path class="cls-6" d="M607.55,553.77c5.13,3.72,10.28,7.42,15.4,11.15l124.12,90.24a8.57,8.57,0,0,1,1.2.84c1.26,1.27,2.35,1.09,3.77,0,6.36-4.74,12.82-9.35,19.24-14l118.23-85.89c1.07-.78,2.17-1.54,3.28-2.32.82,1.1,0,2-.27,2.77Q866.29,637.48,840,718.38c-1.11,3.42-1.13,3.42,1.81,5.56l136,98.81c1.17.86,2.33,1.74,3.79,2.83-1.48.73-2.79.45-4,.45q-84.07,0-168.16,0h-.73c-3.7,0-3.68,0-4.8,3.43q-26.1,80.4-52.23,160.78c-.4,1.21-.45,2.66-1.77,3.6L735,948.24q-19.34-59.52-38.68-119c-1-3.16-1-3.17-4.6-3.17q-84.27,0-168.53,0a10.57,10.57,0,0,1-4.24-.34,13.17,13.17,0,0,1,3.33-2.77q67.55-49.08,135.1-98.18c5-3.63,4.38-1.8,2.43-7.83q-25.94-80.07-52-160.11c-.3-.91-.57-1.83-.85-2.75Z" transform="translate(-202.29 -201.89)"></path></svg>
+          <p class="text">Buzón</p>
+        </button>
       </a>
     </div>
   </nav>
@@ -1261,11 +1383,13 @@
             Tu disciplina despierta tu mejor versión: cada sesión es un salto más alto hacia la grandeza que llevas dentro.
           </p>
           <div class="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-6 pt-4">
-            <a href="#ubicacion" class="neon-btn focus-neon rounded-full px-10 py-4 uppercase tracking-[0.65em] text-xs sm:text-sm">
-              <span>¡INSCRIBETE YA!</span>
+            <a href="#ubicacion" class="neon-btn focus-neon">
+              <svg class="Layer" viewBox="0 0 1095.66 1095.63"><path class="cls-1" d="M1298,749.62c.4,300.41-243,548-548.1,547.9C446.23,1297.4,201.92,1051.2,202.29,749c.37-301.52,244.49-547.41,548.34-547.12C1055.43,202.18,1298.25,449.6,1298,749.62Z" transform="translate(-202.29 -201.89)"></path><path class="cls-2" d="M1285.89,749.79c-.25,297.07-241.24,535.86-536.12,535.66-296.34-.21-537-241.72-535.29-539,1.68-293.16,240.83-534.18,539.15-532.37C1046.8,215.84,1285.62,453.88,1285.89,749.79Z" transform="translate(-202.29 -201.89)"></path><path class="cls-3" d="M1195.29,749.56c.54,244.73-198.67,446.2-446.87,445.33C503.27,1194,304,994.53,304.93,748c.91-244.52,199.12-443.08,444.39-443.49C997.43,304,1195.74,505.59,1195.29,749.56Z" transform="translate(-202.29 -201.89)"></path><path class="cls-4" d="M1097.23,749.87c.22,190.31-154.42,347.43-348,346.92-192-.5-346.48-156.44-346.17-347.7C403.33,558,558.18,402,751.08,402.55,944.62,403.09,1097.69,560.56,1097.23,749.87Z" transform="translate(-202.29 -201.89)"></path><path class="cls-5" d="M1006.72,744.28c2.81,143.23-110.17,257.35-247.42,261.9C613.15,1011,498.22,895.93,493.71,758.88,488.93,613.71,603,498,740.69,493.28,886.73,488.24,1004,603.87,1006.72,744.28Z" transform="translate(-202.29 -201.89)"></path><path class="cls-6" d="M607.55,553.77c5.13,3.72,10.28,7.42,15.4,11.15l124.12,90.24a8.57,8.57,0,0,1,1.2.84c1.26,1.27,2.35,1.09,3.77,0,6.36-4.74,12.82-9.35,19.24-14l118.23-85.89c1.07-.78,2.17-1.54,3.28-2.32.82,1.1,0,2-.27,2.77Q866.29,637.48,840,718.38c-1.11,3.42-1.13,3.42,1.81,5.56l136,98.81c1.17.86,2.33,1.74,3.79,2.83-1.48.73-2.79.45-4,.45q-84.07,0-168.16,0h-.73c-3.7,0-3.68,0-4.8,3.43q-26.1,80.4-52.23,160.78c-.4,1.21-.45,2.66-1.77,3.6L735,948.24q-19.34-59.52-38.68-119c-1-3.16-1-3.17-4.6-3.17q-84.27,0-168.53,0a10.57,10.57,0,0,1-4.24-.34,13.17,13.17,0,0,1,3.33-2.77q67.55-49.08,135.1-98.18c5-3.63,4.38-1.8,2.43-7.83q-25.94-80.07-52-160.11c-.3-.91-.57-1.83-.85-2.75Z" transform="translate(-202.29 -201.89)"></path></svg>
+              <p class="text">¡INSCRIBETE YA!</p>
             </a>
-            <a href="quejas.html" class="neon-btn focus-neon rounded-full px-10 py-4 uppercase tracking-[0.65em] text-xs sm:text-sm">
-              <span>BUZÓN</span>
+            <a href="quejas.html" class="neon-btn focus-neon">
+              <svg class="Layer" viewBox="0 0 1095.66 1095.63"><path class="cls-1" d="M1298,749.62c.4,300.41-243,548-548.1,547.9C446.23,1297.4,201.92,1051.2,202.29,749c.37-301.52,244.49-547.41,548.34-547.12C1055.43,202.18,1298.25,449.6,1298,749.62Z" transform="translate(-202.29 -201.89)"></path><path class="cls-2" d="M1285.89,749.79c-.25,297.07-241.24,535.86-536.12,535.66-296.34-.21-537-241.72-535.29-539,1.68-293.16,240.83-534.18,539.15-532.37C1046.8,215.84,1285.62,453.88,1285.89,749.79Z" transform="translate(-202.29 -201.89)"></path><path class="cls-3" d="M1195.29,749.56c.54,244.73-198.67,446.2-446.87,445.33C503.27,1194,304,994.53,304.93,748c.91-244.52,199.12-443.08,444.39-443.49C997.43,304,1195.74,505.59,1195.29,749.56Z" transform="translate(-202.29 -201.89)"></path><path class="cls-4" d="M1097.23,749.87c.22,190.31-154.42,347.43-348,346.92-192-.5-346.48-156.44-346.17-347.7C403.33,558,558.18,402,751.08,402.55,944.62,403.09,1097.69,560.56,1097.23,749.87Z" transform="translate(-202.29 -201.89)"></path><path class="cls-5" d="M1006.72,744.28c2.81,143.23-110.17,257.35-247.42,261.9C613.15,1011,498.22,895.93,493.71,758.88,488.93,613.71,603,498,740.69,493.28,886.73,488.24,1004,603.87,1006.72,744.28Z" transform="translate(-202.29 -201.89)"></path><path class="cls-6" d="M607.55,553.77c5.13,3.72,10.28,7.42,15.4,11.15l124.12,90.24a8.57,8.57,0,0,1,1.2.84c1.26,1.27,2.35,1.09,3.77,0,6.36-4.74,12.82-9.35,19.24-14l118.23-85.89c1.07-.78,2.17-1.54,3.28-2.32.82,1.1,0,2-.27,2.77Q866.29,637.48,840,718.38c-1.11,3.42-1.13,3.42,1.81,5.56l136,98.81c1.17.86,2.33,1.74,3.79,2.83-1.48.73-2.79.45-4,.45q-84.07,0-168.16,0h-.73c-3.7,0-3.68,0-4.8,3.43q-26.1,80.4-52.23,160.78c-.4,1.21-.45,2.66-1.77,3.6L735,948.24q-19.34-59.52-38.68-119c-1-3.16-1-3.17-4.6-3.17q-84.27,0-168.53,0a10.57,10.57,0,0,1-4.24-.34,13.17,13.17,0,0,1,3.33-2.77q67.55-49.08,135.1-98.18c5-3.63,4.38-1.8,2.43-7.83q-25.94-80.07-52-160.11c-.3-.91-.57-1.83-.85-2.75Z" transform="translate(-202.29 -201.89)"></path></svg>
+              <p class="text">BUZÓN</p>
             </a>
           </div>
         </div>
