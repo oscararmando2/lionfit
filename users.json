@@ -498,5 +498,40 @@
     "id": "7151081551",
     "nombre": "CARLOS CRISTOBAL SILVA QUIROZ",
     "telefono": "7151081551"
+  },
+  {
+    "id": "7151738246",
+    "nombre": "FERNANDA COLIN",
+    "telefono": "7151738246",
+    "tipo": "gold",
+    "clase": "Indoor"
+  },
+  {
+    "id": "7153077047",
+    "nombre": "ESTEFANIA COLIN",
+    "telefono": "7153077047",
+    "tipo": "gold",
+    "clase": "Indoor"
+  },
+  {
+    "id": "7151158866",
+    "nombre": "LIZET GARCIA GRANDE",
+    "telefono": "7151158866",
+    "tipo": "gold",
+    "clase": "Zumba"
+  },
+  {
+    "id": "7152550779",
+    "nombre": "ELIZABETH GARCIA",
+    "telefono": "7152550779",
+    "tipo": "gold",
+    "clase": "Zumba"
+  },
+  {
+    "id": "7151090063",
+    "nombre": "ALMA DULCE INIESTRA",
+    "telefono": "7151090063",
+    "tipo": "gold",
+    "clase": "Zumba"
   }
 ]
