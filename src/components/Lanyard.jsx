@@ -6,7 +6,7 @@ import PixelSnow from './PixelSnow';
 import './Lanyard.css';
 
 // Card component with dynamic texture
-function Card({ nombre, telefono }) {
+function Card({ nombre, telefono, tipo, userId }) {
   const meshRef = useRef();
   const [texture, setTexture] = useState(null);
 
@@ -82,13 +82,22 @@ function Card({ nombre, telefono }) {
     ctx.font = 'bold 68px Impact, Arial Black, sans-serif';
     ctx.fillText(telefono, canvas.width / 2, phoneY);
 
-    // Miembro White label - Impact font (moved up)
+    // Miembro type/URL section - Impact font (moved up)
     const memberY = phoneY + 120; // Moved up significantly
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(120, memberY - 10, canvas.width - 240, 6);
     
-    ctx.font = 'bold 48px Impact, Arial Black, sans-serif';
-    ctx.fillText('MIEMBRO WHITE', canvas.width / 2, memberY + 60);
+    // Display URL for Gold members, "MIEMBRO WHITE" for others
+    if (tipo === 'gold') {
+      // For Gold members, display the URL
+      const url = `www.lionfit.pro/users.html?c=${userId}`;
+      ctx.font = 'bold 36px Impact, Arial Black, sans-serif';
+      ctx.fillText(url, canvas.width / 2, memberY + 60);
+    } else {
+      // For regular members, display "MIEMBRO WHITE"
+      ctx.font = 'bold 48px Impact, Arial Black, sans-serif';
+      ctx.fillText('MIEMBRO WHITE', canvas.width / 2, memberY + 60);
+    }
 
     // Create texture from canvas
     const newTexture = new THREE.CanvasTexture(canvas);
@@ -106,7 +115,7 @@ function Card({ nombre, telefono }) {
     return () => {
       if (newTexture) newTexture.dispose();
     };
-  }, [nombre, telefono]);
+  }, [nombre, telefono, tipo, userId]);
 
   // Animation
   useFrame((state) => {
@@ -186,7 +195,7 @@ function LanyardString() {
 }
 
 // Scene component
-function Scene({ nombre, telefono }) {
+function Scene({ nombre, telefono, tipo, userId }) {
   const { viewport } = useThree();
   const isMobile = viewport.width < 7;
 
@@ -205,7 +214,7 @@ function Scene({ nombre, telefono }) {
         <group position={[0, 0, -0.1]}>
           <LanyardString />
         </group>
-        <Card nombre={nombre} telefono={telefono} />
+        <Card nombre={nombre} telefono={telefono} tipo={tipo} userId={userId} />
       </group>
       
       {/* Controls */}
@@ -222,7 +231,7 @@ function Scene({ nombre, telefono }) {
 }
 
 // Main Lanyard component
-export default function Lanyard({ nombre, telefono }) {
+export default function Lanyard({ nombre, telefono, tipo, userId }) {
   return (
     <div className="lanyard-wrapper">
       {/* PixelSnow background effect */}
@@ -250,7 +259,7 @@ export default function Lanyard({ nombre, telefono }) {
           gl={{ antialias: true, alpha: true }}
           dpr={[1, 2]}
         >
-          <Scene nombre={nombre} telefono={telefono} />
+          <Scene nombre={nombre} telefono={telefono} tipo={tipo} userId={userId} />
         </Canvas>
       </div>
     </div>
