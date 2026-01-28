@@ -121,13 +121,16 @@ function Card({ nombre, telefono }) {
 
   return (
     <group ref={meshRef} position={[0, 0, 0]}>
-      {/* Card front */}
+      {/* Card front with glass effect */}
       <mesh position={[0, 0, 0.02]}>
         <boxGeometry args={[2, 3, 0.05]} />
         <meshStandardMaterial 
           map={texture} 
-          roughness={0.3}
-          metalness={0.1}
+          roughness={0.2}
+          metalness={0.5}
+          transparent={true}
+          opacity={0.95}
+          envMapIntensity={1.5}
         />
       </mesh>
       
@@ -196,9 +199,11 @@ function Scene({ nombre, telefono }) {
       <directionalLight position={[-5, 5, -5]} intensity={0.5} />
       <pointLight position={[0, -2, 2]} intensity={0.3} />
       
-      {/* Lanyard and Card */}
+      {/* Lanyard and Card - Lanyard behind card */}
       <group position={[0, 0, 0]}>
-        <LanyardString />
+        <group position={[0, 0, -0.1]}>
+          <LanyardString />
+        </group>
         <Card nombre={nombre} telefono={telefono} />
       </group>
       
