@@ -252,10 +252,9 @@ export default function Lanyard({ nombre, telefono }) {
       <div style={{ position: 'relative', zIndex: 2, width: '100%', height: '100%' }}>
         <Canvas
           shadows
-          gl={{ antialias: true, alpha: false }}
+          gl={{ antialias: true, alpha: true }}
           dpr={[1, 2]}
         >
-          <color attach="background" args={['#ffffff']} />
           <Scene nombre={nombre} telefono={telefono} />
         </Canvas>
       </div>
