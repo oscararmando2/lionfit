@@ -68,12 +68,22 @@
 </head>
 <body>
   <div class="container">
-    <div id="content">
+    <div id="content" role="status" aria-live="polite">
       <div class="loading">Cargando...</div>
     </div>
   </div>
 
   <script>
+    // Función helper para mostrar mensaje de error
+    function showError(message) {
+      const errorDiv = document.createElement('div');
+      errorDiv.className = 'error-message';
+      errorDiv.textContent = message;
+      errorDiv.setAttribute('role', 'alert');
+      contentDiv.innerHTML = '';
+      contentDiv.appendChild(errorDiv);
+    }
+
     // Obtener el parámetro 'c' desde la URL
     const urlParams = new URLSearchParams(window.location.search);
     const userCode = urlParams.get('c');
@@ -82,7 +92,7 @@
 
     // Verificar si existe el parámetro 'c'
     if (!userCode) {
-      contentDiv.innerHTML = '<div class="error-message">Falta código QR</div>';
+      showError('Falta código QR');
     } else {
       // Cargar el archivo users.json usando ruta relativa
       fetch('./users.json')
@@ -99,8 +109,11 @@
 
           // Si no se encuentra el usuario, mostrar error
           if (!user) {
-            contentDiv.innerHTML = '<div class="error-message">QR inválido</div>';
+            showError('QR inválido');
           } else {
+            // Limpiar contenido previo (mensaje de carga)
+            contentDiv.innerHTML = '';
+            
             // Mostrar nombre y teléfono del usuario (usando textContent para prevenir XSS)
             const labelNombre = document.createElement('div');
             labelNombre.className = 'label';
@@ -118,7 +131,6 @@
             userPhone.className = 'user-phone';
             userPhone.textContent = user.telefono;
             
-            contentDiv.innerHTML = '';
             contentDiv.appendChild(labelNombre);
             contentDiv.appendChild(userName);
             contentDiv.appendChild(labelTelefono);
@@ -128,7 +140,7 @@
         .catch(error => {
           // Si falla la carga de users.json, mostrar error
           console.error('Error:', error);
-          contentDiv.innerHTML = '<div class="error-message">Error cargando base de datos</div>';
+          showError('Error cargando base de datos');
         });
     }
   </script>
