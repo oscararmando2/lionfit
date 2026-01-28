@@ -126,11 +126,8 @@ function Card({ nombre, telefono }) {
         <boxGeometry args={[2, 3, 0.05]} />
         <meshStandardMaterial 
           map={texture} 
-          roughness={0.2}
-          metalness={0.5}
-          transparent={true}
-          opacity={0.95}
-          envMapIntensity={1.5}
+          roughness={0.1}
+          metalness={0.2}
         />
       </mesh>
       
