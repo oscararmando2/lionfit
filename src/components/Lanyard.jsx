@@ -16,45 +16,45 @@ function Card({ nombre, telefono }) {
     canvas.height = 1024;
     const ctx = canvas.getContext('2d');
 
-    // Background
+    // Background - Black with subtle gradient
     const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-    gradient.addColorStop(0, '#667eea');
-    gradient.addColorStop(1, '#764ba2');
+    gradient.addColorStop(0, '#000000');
+    gradient.addColorStop(1, '#1a1a1a');
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Border
+    // Border - Bold white border
     ctx.strokeStyle = '#ffffff';
-    ctx.lineWidth = 20;
-    ctx.strokeRect(40, 40, canvas.width - 80, canvas.height - 80);
+    ctx.lineWidth = 30;
+    ctx.strokeRect(45, 45, canvas.width - 90, canvas.height - 90);
 
-    // Logo placeholder
+    // Logo placeholder - Impact font
     ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 80px Arial';
+    ctx.font = 'bold 90px Impact, Arial Black, sans-serif';
     ctx.textAlign = 'center';
     ctx.fillText('LION FITNESS', canvas.width / 2, 200);
 
-    // Divider line
+    // Divider line - Thicker and more prominent
     ctx.fillStyle = '#ffffff';
-    ctx.fillRect(100, 280, canvas.width - 200, 4);
+    ctx.fillRect(120, 280, canvas.width - 240, 6);
 
-    // Name label
-    ctx.font = 'bold 48px Arial';
+    // Name label - Impact font
+    ctx.font = 'bold 52px Impact, Arial Black, sans-serif';
     ctx.textAlign = 'center';
     ctx.fillStyle = '#ffffff';
     ctx.fillText('NOMBRE:', canvas.width / 2, 420);
 
-    // Name value - handle long names
-    ctx.font = 'bold 56px Arial';
-    const maxWidth = canvas.width - 160;
-    let fontSize = 56;
-    ctx.font = `bold ${fontSize}px Arial`;
+    // Name value - handle long names with Impact font
+    ctx.font = 'bold 60px Impact, Arial Black, sans-serif';
+    const maxWidth = canvas.width - 180;
+    let fontSize = 60;
+    ctx.font = `bold ${fontSize}px Impact, Arial Black, sans-serif`;
     let textWidth = ctx.measureText(nombre).width;
     
     // Reduce font size if text is too wide
-    while (textWidth > maxWidth && fontSize > 28) {
+    while (textWidth > maxWidth && fontSize > 32) {
       fontSize -= 2;
-      ctx.font = `bold ${fontSize}px Arial`;
+      ctx.font = `bold ${fontSize}px Impact, Arial Black, sans-serif`;
       textWidth = ctx.measureText(nombre).width;
     }
     
@@ -82,13 +82,13 @@ function Card({ nombre, telefono }) {
       ctx.fillText(line, canvas.width / 2, startY + (index * lineHeight));
     });
 
-    // Phone label
+    // Phone label - Impact font
     const phoneY = startY + (lines.length * lineHeight) + 100;
-    ctx.font = 'bold 48px Arial';
+    ctx.font = 'bold 52px Impact, Arial Black, sans-serif';
     ctx.fillText('TELÉFONO:', canvas.width / 2, phoneY);
 
-    // Phone value
-    ctx.font = 'bold 64px Arial';
+    // Phone value - Impact font
+    ctx.font = 'bold 68px Impact, Arial Black, sans-serif';
     ctx.fillText(telefono, canvas.width / 2, phoneY + 100);
 
     // Create texture from canvas
@@ -131,51 +131,51 @@ function Card({ nombre, telefono }) {
         />
       </mesh>
       
-      {/* Card back */}
+      {/* Card back - White with subtle texture */}
       <mesh position={[0, 0, -0.02]} rotation={[0, Math.PI, 0]}>
         <boxGeometry args={[2, 3, 0.05]} />
         <meshStandardMaterial 
-          color="#333333"
-          roughness={0.4}
-          metalness={0.2}
+          color="#ffffff"
+          roughness={0.5}
+          metalness={0.1}
         />
       </mesh>
 
-      {/* Card edges for depth */}
+      {/* Card edges for depth - Black edges */}
       <mesh position={[0, 1.525, 0]}>
         <boxGeometry args={[2, 0.05, 0.05]} />
-        <meshStandardMaterial color="#222222" />
+        <meshStandardMaterial color="#000000" />
       </mesh>
       <mesh position={[0, -1.525, 0]}>
         <boxGeometry args={[2, 0.05, 0.05]} />
-        <meshStandardMaterial color="#222222" />
+        <meshStandardMaterial color="#000000" />
       </mesh>
       <mesh position={[1.025, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
         <boxGeometry args={[3, 0.05, 0.05]} />
-        <meshStandardMaterial color="#222222" />
+        <meshStandardMaterial color="#000000" />
       </mesh>
       <mesh position={[-1.025, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
         <boxGeometry args={[3, 0.05, 0.05]} />
-        <meshStandardMaterial color="#222222" />
+        <meshStandardMaterial color="#000000" />
       </mesh>
     </group>
   );
 }
 
-// Lanyard string component
+// Lanyard string component - Black lanyard
 function LanyardString() {
   return (
     <group>
       {/* Simple lanyard string */}
       <mesh position={[0, 2, 0]}>
         <cylinderGeometry args={[0.02, 0.02, 2, 8]} />
-        <meshStandardMaterial color="#ff6b6b" roughness={0.8} />
+        <meshStandardMaterial color="#000000" roughness={0.8} />
       </mesh>
       
       {/* Top loop */}
       <mesh position={[0, 3, 0]} rotation={[Math.PI / 2, 0, 0]}>
         <torusGeometry args={[0.15, 0.02, 8, 16]} />
-        <meshStandardMaterial color="#ff6b6b" roughness={0.8} />
+        <meshStandardMaterial color="#000000" roughness={0.8} />
       </mesh>
     </group>
   );
@@ -224,7 +224,7 @@ export default function Lanyard({ nombre, telefono }) {
         gl={{ antialias: true, alpha: false }}
         dpr={[1, 2]}
       >
-        <color attach="background" args={['#1a1a2e']} />
+        <color attach="background" args={['#ffffff']} />
         <Scene nombre={nombre} telefono={telefono} />
       </Canvas>
     </div>
