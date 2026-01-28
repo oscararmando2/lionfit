@@ -63,7 +63,7 @@ export default function UsersPage() {
   }
 
   if (user) {
-    return <Lanyard nombre={user.nombre} telefono={user.telefono} />;
+    return <Lanyard nombre={user.nombre} telefono={user.telefono} tipo={user.tipo} userId={user.id} />;
   }
 
   return null;
