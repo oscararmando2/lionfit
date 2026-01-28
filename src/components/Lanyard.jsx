@@ -1,6 +1,6 @@
 import React, { useRef, useMemo, useEffect, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { useGLTF, OrbitControls, Text, PerspectiveCamera } from '@react-three/drei';
+import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import * as THREE from 'three';
 import './Lanyard.css';
 
@@ -94,8 +94,16 @@ function Card({ nombre, telefono }) {
     // Create texture from canvas
     const newTexture = new THREE.CanvasTexture(canvas);
     newTexture.needsUpdate = true;
-    setTexture(newTexture);
+    
+    // Update state and clean up old texture
+    setTexture(prevTexture => {
+      if (prevTexture) {
+        prevTexture.dispose();
+      }
+      return newTexture;
+    });
 
+    // Cleanup on unmount
     return () => {
       if (newTexture) newTexture.dispose();
     };

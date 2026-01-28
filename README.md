@@ -173,4 +173,4 @@ This is normal due to Three.js size. To reduce bundle size:
 
 ## License
 
-© 2024 Lion Fitness. All rights reserved.
+© 2024-2026 Lion Fitness. All rights reserved.
