@@ -2,6 +2,7 @@ import React, { useRef, useMemo, useEffect, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import * as THREE from 'three';
+import PixelSnow from './PixelSnow';
 import './Lanyard.css';
 
 // Card component with dynamic texture
@@ -90,6 +91,14 @@ function Card({ nombre, telefono }) {
     // Phone value - Impact font
     ctx.font = 'bold 68px Impact, Arial Black, sans-serif';
     ctx.fillText(telefono, canvas.width / 2, phoneY + 100);
+
+    // Miembro White label - Impact font
+    const memberY = phoneY + 240;
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(120, memberY - 10, canvas.width - 240, 6);
+    
+    ctx.font = 'bold 48px Impact, Arial Black, sans-serif';
+    ctx.fillText('MIEMBRO WHITE', canvas.width / 2, memberY + 60);
 
     // Create texture from canvas
     const newTexture = new THREE.CanvasTexture(canvas);
@@ -221,14 +230,34 @@ function Scene({ nombre, telefono }) {
 export default function Lanyard({ nombre, telefono }) {
   return (
     <div className="lanyard-wrapper">
-      <Canvas
-        shadows
-        gl={{ antialias: true, alpha: false }}
-        dpr={[1, 2]}
-      >
-        <color attach="background" args={['#ffffff']} />
-        <Scene nombre={nombre} telefono={telefono} />
-      </Canvas>
+      {/* PixelSnow background effect */}
+      <div style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0, zIndex: 1 }}>
+        <PixelSnow 
+          color="#ffffff"
+          flakeSize={0.01}
+          minFlakeSize={1.25}
+          pixelResolution={200}
+          speed={1.25}
+          density={0.3}
+          direction={125}
+          brightness={1}
+          depthFade={8}
+          farPlane={20}
+          gamma={0.4545}
+          variant="square"
+        />
+      </div>
+      
+      {/* Canvas with the card - positioned above snow */}
+      <div style={{ position: 'relative', zIndex: 2, width: '100%', height: '100%' }}>
+        <Canvas
+          shadows
+          gl={{ antialias: true, alpha: true }}
+          dpr={[1, 2]}
+        >
+          <Scene nombre={nombre} telefono={telefono} />
+        </Canvas>
+      </div>
     </div>
   );
 }
