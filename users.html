@@ -89,7 +89,7 @@
         .then(response => {
           // Verificar si la carga fue exitosa
           if (!response.ok) {
-            throw new Error('Error en la red');
+            throw new Error('Failed to load users.json: ' + response.status);
           }
           return response.json();
         })
@@ -101,13 +101,28 @@
           if (!user) {
             contentDiv.innerHTML = '<div class="error-message">QR inválido</div>';
           } else {
-            // Mostrar nombre y teléfono del usuario
-            contentDiv.innerHTML = `
-              <div class="label">Nombre</div>
-              <div class="user-name">${user.nombre}</div>
-              <div class="label">Teléfono</div>
-              <div class="user-phone">${user.telefono}</div>
-            `;
+            // Mostrar nombre y teléfono del usuario (usando textContent para prevenir XSS)
+            const labelNombre = document.createElement('div');
+            labelNombre.className = 'label';
+            labelNombre.textContent = 'Nombre';
+            
+            const userName = document.createElement('div');
+            userName.className = 'user-name';
+            userName.textContent = user.nombre;
+            
+            const labelTelefono = document.createElement('div');
+            labelTelefono.className = 'label';
+            labelTelefono.textContent = 'Teléfono';
+            
+            const userPhone = document.createElement('div');
+            userPhone.className = 'user-phone';
+            userPhone.textContent = user.telefono;
+            
+            contentDiv.innerHTML = '';
+            contentDiv.appendChild(labelNombre);
+            contentDiv.appendChild(userName);
+            contentDiv.appendChild(labelTelefono);
+            contentDiv.appendChild(userPhone);
           }
         })
         .catch(error => {
