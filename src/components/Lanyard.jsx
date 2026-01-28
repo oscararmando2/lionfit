@@ -39,13 +39,7 @@ function Card({ nombre, telefono }) {
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(120, 280, canvas.width - 240, 6);
 
-    // Name label - Impact font
-    ctx.font = 'bold 52px Impact, Arial Black, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.fillStyle = '#ffffff';
-    ctx.fillText('NOMBRE:', canvas.width / 2, 420);
-
-    // Name value - handle long names with Impact font
+    // Name value - handle long names with Impact font (removed NOMBRE: label)
     ctx.font = 'bold 60px Impact, Arial Black, sans-serif';
     const maxWidth = canvas.width - 180;
     let fontSize = 60;
@@ -78,22 +72,18 @@ function Card({ nombre, telefono }) {
     
     // Draw name lines
     const lineHeight = fontSize + 20;
-    const startY = 520;
+    const startY = 380; // Moved up since we removed the NOMBRE: label
     lines.forEach((line, index) => {
       ctx.fillText(line, canvas.width / 2, startY + (index * lineHeight));
     });
 
-    // Phone label - Impact font
-    const phoneY = startY + (lines.length * lineHeight) + 100;
-    ctx.font = 'bold 52px Impact, Arial Black, sans-serif';
-    ctx.fillText('TELÉFONO:', canvas.width / 2, phoneY);
-
-    // Phone value - Impact font
+    // Phone value - Impact font (removed TELÉFONO: label)
+    const phoneY = startY + (lines.length * lineHeight) + 80; // Adjusted spacing
     ctx.font = 'bold 68px Impact, Arial Black, sans-serif';
-    ctx.fillText(telefono, canvas.width / 2, phoneY + 100);
+    ctx.fillText(telefono, canvas.width / 2, phoneY);
 
-    // Miembro White label - Impact font
-    const memberY = phoneY + 240;
+    // Miembro White label - Impact font (moved up)
+    const memberY = phoneY + 120; // Moved up significantly
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(120, memberY - 10, canvas.width - 240, 6);
     
@@ -130,43 +120,48 @@ function Card({ nombre, telefono }) {
 
   return (
     <group ref={meshRef} position={[0, 0, 0]}>
-      {/* Card front with glass effect */}
-      <mesh position={[0, 0, 0.02]}>
-        <boxGeometry args={[2, 3, 0.05]} />
-        <meshStandardMaterial 
-          map={texture} 
-          roughness={0.1}
-          metalness={0.2}
-        />
-      </mesh>
-      
-      {/* Card back - White with subtle texture */}
-      <mesh position={[0, 0, -0.02]} rotation={[0, Math.PI, 0]}>
-        <boxGeometry args={[2, 3, 0.05]} />
-        <meshStandardMaterial 
-          color="#ffffff"
-          roughness={0.5}
-          metalness={0.1}
-        />
-      </mesh>
+      {/* Only render card when texture is ready */}
+      {texture && (
+        <>
+          {/* Card front with glass effect */}
+          <mesh position={[0, 0, 0.02]}>
+            <boxGeometry args={[2, 3, 0.05]} />
+            <meshStandardMaterial 
+              map={texture} 
+              roughness={0.1}
+              metalness={0.2}
+            />
+          </mesh>
+          
+          {/* Card back - White with subtle texture */}
+          <mesh position={[0, 0, -0.02]} rotation={[0, Math.PI, 0]}>
+            <boxGeometry args={[2, 3, 0.05]} />
+            <meshStandardMaterial 
+              color="#ffffff"
+              roughness={0.5}
+              metalness={0.1}
+            />
+          </mesh>
 
-      {/* Card edges for depth - Black edges */}
-      <mesh position={[0, 1.525, 0]}>
-        <boxGeometry args={[2, 0.05, 0.05]} />
-        <meshStandardMaterial color="#000000" />
-      </mesh>
-      <mesh position={[0, -1.525, 0]}>
-        <boxGeometry args={[2, 0.05, 0.05]} />
-        <meshStandardMaterial color="#000000" />
-      </mesh>
-      <mesh position={[1.025, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
-        <boxGeometry args={[3, 0.05, 0.05]} />
-        <meshStandardMaterial color="#000000" />
-      </mesh>
-      <mesh position={[-1.025, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
-        <boxGeometry args={[3, 0.05, 0.05]} />
-        <meshStandardMaterial color="#000000" />
-      </mesh>
+          {/* Card edges for depth - Black edges */}
+          <mesh position={[0, 1.525, 0]}>
+            <boxGeometry args={[2, 0.05, 0.05]} />
+            <meshStandardMaterial color="#000000" />
+          </mesh>
+          <mesh position={[0, -1.525, 0]}>
+            <boxGeometry args={[2, 0.05, 0.05]} />
+            <meshStandardMaterial color="#000000" />
+          </mesh>
+          <mesh position={[1.025, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
+            <boxGeometry args={[3, 0.05, 0.05]} />
+            <meshStandardMaterial color="#000000" />
+          </mesh>
+          <mesh position={[-1.025, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
+            <boxGeometry args={[3, 0.05, 0.05]} />
+            <meshStandardMaterial color="#000000" />
+          </mesh>
+        </>
+      )}
     </group>
   );
 }
