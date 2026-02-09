@@ -576,25 +576,25 @@
     }
 
     .card {
-      width: 280px;
-      min-height: 340px;
+      width: 290px;
+      min-height: 350px;
       background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%);
       font-family: inherit;
       position: relative;
-      border-radius: 20px;
-      flex: 0 0 280px;
+      border-radius: 22px;
+      flex: 0 0 290px;
       scroll-snap-align: start;
       display: flex;
       flex-direction: column;
-      padding: 32px 28px;
-      border: 2px solid #E5E5E5;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      padding: 36px 30px;
+      border: 2.5px solid #E5E5E5;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
       transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
     }
 
     .card:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.15);
+      transform: translateY(-14px);
+      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.18);
       border-color: #000000;
     }
 
@@ -605,49 +605,49 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 20px;
-      opacity: 0.15;
+      margin-bottom: 22px;
+      opacity: 0.18;
     }
 
     .quote svg {
-      width: 50px;
-      height: 50px;
+      width: 54px;
+      height: 54px;
     }
 
     .card-name {
       text-transform: uppercase;
-      font-weight: 600;
-      color: rgba(0, 0, 0, 0.4);
-      font-size: 0.65rem;
-      letter-spacing: 0.35em;
+      font-weight: 700;
+      color: rgba(0, 0, 0, 0.45);
+      font-size: 0.7rem;
+      letter-spacing: 0.38em;
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
       order: 1;
     }
 
     .body-text {
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: rgba(0, 0, 0, 0.75);
-      line-height: 1.65;
+      font-size: 1rem;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.8);
+      line-height: 1.7;
       text-align: center;
       flex-grow: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 8px 0;
+      padding: 10px 0;
       letter-spacing: 0.02em;
     }
 
     .author {
       font-family: 'Anton', 'Impact', sans-serif;
       font-weight: 400;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       color: #000000;
       text-align: center;
       margin-top: auto;
-      padding-top: 24px;
-      border-top: 2px solid rgba(0, 0, 0, 0.1);
+      padding-top: 26px;
+      border-top: 2.5px solid rgba(0, 0, 0, 0.12);
       text-transform: uppercase;
       letter-spacing: 0.08em;
       min-height: 60px;
@@ -870,15 +870,15 @@
     /* Services card with minimalist black & white gradient */
     .service-card {
       position: relative;
-      width: 280px;
-      height: 380px;
+      width: 290px;
+      height: 390px;
       background-color: #FFFFFF;
       display: flex;
       flex-direction: column;
       justify-content: end;
-      padding: 20px;
-      gap: 12px;
-      border-radius: 12px;
+      padding: 22px;
+      gap: 14px;
+      border-radius: 14px;
       cursor: default;
       flex-shrink: 0;
       pointer-events: none;
@@ -888,11 +888,11 @@
       content: "";
       position: absolute;
       inset: 0;
-      left: -5px;
+      left: -6px;
       margin: auto;
-      width: 290px;
-      height: 390px;
-      border-radius: 14px;
+      width: 302px;
+      height: 402px;
+      border-radius: 16px;
       background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
       z-index: -10;
       pointer-events: none;
@@ -903,13 +903,13 @@
       z-index: -1;
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.3) 100%);
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.15) 50%, rgba(0, 0, 0, 0.4) 100%);
       transform: translate3d(0, 0, 0) scale(0.95);
-      filter: blur(20px);
+      filter: blur(22px);
     }
 
     .service-card .service-heading {
-      font-size: 24px;
+      font-size: 26px;
       text-transform: capitalize;
       font-weight: 900;
       color: #fff;
@@ -1639,12 +1639,12 @@
     </section>
   </main>
 
-  <footer class="relative px-6 sm:px-12 py-16 border-t-2 border-black/10 bg-gradient-to-b from-white via-gray-50 to-white text-black">
+  <footer class="relative px-6 sm:px-12 py-12 border-t-2 border-black/10 bg-gradient-to-b from-white via-gray-50 to-white text-black">
     <div class="absolute inset-0 pointer-events-none opacity-20" aria-hidden="true">
       <div class="h-full w-full bg-[radial-gradient(circle_at_top,_rgba(0,0,0,0.05),_transparent_60%)]"></div>
     </div>
-    <div class="relative max-w-5xl mx-auto flex flex-col items-center text-center gap-10">
-      <div class="flex flex-col items-center gap-5">
+    <div class="relative max-w-5xl mx-auto flex flex-col items-center text-center gap-8">
+      <div class="flex flex-col items-center gap-4">
         <!-- // LOGO: lionlogo.png -->
         <img src="./lionlogo.png" alt="Logo Lion Fitness" class="w-14 h-14 object-contain" loading="lazy" />
         <div class="space-y-1">
