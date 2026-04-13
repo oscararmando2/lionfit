@@ -4,34 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
   <title>Lion Fitness | Zitácuaro</title>
-  <meta name="description" content="Lion Fitness: el gimnasio que ruge con fuerza. Entrena en instalaciones premium con tecnología de punta, clases exclusivas y energía neon." />
+  <meta name="description" content="Lion Fitness: el gimnasio que ruge con fuerza. Entrena en instalaciones premium con tecnología de punta, clases exclusivas y energía." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <meta property="og:title" content="Lion Fitness" />
   <meta property="og:description" content="El gimnasio que ruge con fuerza en Zitácuaro." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://lionfitness.mx" />
   <meta property="og:image" content="https://lionfitness.mx/lionlogo.png" />
-  <meta name="theme-color" content="#FFFFFF" />
+  <meta name="theme-color" content="#0B0B0B" />
   <link rel="icon" type="image/png" href="./lionlogo.png" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-            display: ['Anton', 'Impact', 'Arial Black', 'sans-serif'],
-            impact: ['Anton', 'Impact', 'Arial Black', 'sans-serif']
-          }
-        }
-      }
-    }
-  </script>
   <style>
+    /* ===== DESIGN TOKENS ===== */
     :root {
-      color-scheme: only light;
+      --gold:        #F0A500;
+      --gold-light:  #FFB800;
+      --gold-dark:   #CC8B00;
+      --dark:        #0B0B0B;
+      --dark-2:      #111111;
+      --dark-3:      #1A1A1A;
+      --dark-4:      #242424;
+      --text:        #FFFFFF;
+      --text-muted:  rgba(255,255,255,0.55);
+      --text-dim:    rgba(255,255,255,0.28);
+      --border:      rgba(255,255,255,0.07);
+      color-scheme: dark;
       overflow-x: hidden;
     }
 
@@ -43,1969 +42,1207 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #FFFFFF;
-      color: #000000;
+      background-color: var(--dark);
+      color: var(--text);
       overscroll-behavior: none;
       -webkit-overflow-scrolling: touch;
       touch-action: pan-y;
+      -webkit-tap-highlight-color: transparent;
       user-select: none;
       -webkit-user-select: none;
-      -webkit-tap-highlight-color: transparent;
     }
-    
-    /* Allow text selection for readable content */
-    p, h1, h2, h3, h4, h5, h6, span, a {
+
+    p, h1, h2, h3, h4, h5, h6, span, a, li {
       user-select: text;
       -webkit-user-select: text;
     }
-    
-    /* Ensure all links use black/white colors only */
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
 
-    /* Minimalist texture overlay */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"%3E%3Cfilter id="n"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23n)" opacity="0.03"/%3E%3C/svg%3E');
-      background-size: cover;
-      pointer-events: none;
-    }
+    a { color: inherit; text-decoration: none; }
+    *, *::before, *::after { box-sizing: border-box; }
 
-    /* Subtle gradient background */
-    body::after {
-      content: "";
-      position: fixed;
-      inset: -20% 0;
-      z-index: -3;
-      background: radial-gradient(circle at var(--grad-x, 50%) var(--grad-y, 20%), rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.02) 30%, transparent 60%);
-      transition: transform 1.2s ease, opacity 1.2s ease;
-      opacity: 0.6;
-      filter: blur(70px);
-      pointer-events: none;
-    }
-
-    /* Minimalist cursor */
+    /* ===== CURSOR ===== */
     .cursor-halo {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 36px;
-      height: 36px;
-      border-radius: 9999px;
+      top: 0; left: 0;
+      width: 24px; height: 24px;
+      border-radius: 50%;
       pointer-events: none;
-      mix-blend-mode: difference;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.3) 45%, transparent 65%);
-      z-index: 1000;
+      z-index: 9999;
       transform: translate(-50%, -50%);
-      transition: width 0.3s ease, height 0.3s ease;
+      background: radial-gradient(circle, rgba(240,165,0,0.65) 0%, rgba(240,165,0,0.15) 50%, transparent 70%);
+      mix-blend-mode: screen;
+      transition: width .3s ease, height .3s ease;
     }
+    .cursor-halo.is-hover { width: 52px; height: 52px; }
 
-    .cursor-halo.is-card {
-      width: 60px;
-      height: 60px;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.4) 60%, transparent 80%);
-    }
-
-    .cursor-halo.is-cta {
-      width: 80px;
-      height: 80px;
-      background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.5) 55%, transparent 85%);
-    }
-
-    /* Animated Lion Button */
-    .neon-btn {
-      position: relative;
-      width: auto;
-      min-width: 200px;
-      height: 58px;
-      border: none;
-      background-color: #005f99;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      border-radius: 30px;
-      cursor: pointer;
-      box-shadow: 10px 10px 0px rgb(12, 12, 12);
-      transition-duration: .3s;
-    }
-
-    .neon-btn .Layer {
-      width: 65px;
-      position: absolute;
-      left: -32px;
-      transition-duration: .3s;
-      animation: spin 5s linear infinite;
-    }
-
-    .neon-btn:hover {
-      transform: translateY(5px);
-      box-shadow: 4px 4px 0px black;
-      transition-duration: .3s;
-    }
-
-    @keyframes spin {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    .neon-btn:hover .Layer {
-      left: 0%;
-      width: 100%;
-      transition-duration: .3s;
-    }
-
-    .neon-btn .text {
-      color: white;
-      font-weight: 700;
-      font-size: 1.15em;
-      position: relative;
-      z-index: 2;
-      transition-duration: .1s;
-      font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      letter-spacing: 0.05em;
-    }
-
-    .neon-btn:hover .text {
-      color: transparent;
-      transition-duration: .3s;
-    }
-
-    /* SVG colors for button */
-    .neon-btn .cls-1 {
-      fill: #242021;
-    }
-
-    .neon-btn .cls-2 {
-      fill: #e82728;
-    }
-
-    .neon-btn .cls-3 {
-      fill: #fefefe;
-    }
-
-    .neon-btn .cls-4 {
-      fill: #e92728;
-    }
-
-    .neon-btn .cls-5 {
-      fill: #005f99;
-    }
-
-    .neon-btn .cls-6 {
-      fill: #fff;
-    }
-
-    /* Minimalist immersive media cards */
-    .experience-card {
-      position: relative;
-      border-radius: 28px;
-      overflow: hidden;
-      min-height: 360px;
-      isolation: isolate;
-      background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
-      border: 2px solid #E5E5E5;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-      transition: transform 0.6s ease, box-shadow 0.6s ease, border-color 0.6s ease;
-    }
-
-    .experience-card::before,
-    .experience-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-      transition: opacity 0.6s ease;
-    }
-
-    .experience-card::before {
-      background: radial-gradient(circle at 20% 20%, rgba(0, 0, 0, 0.1), transparent 65%);
-      opacity: 0;
-    }
-
-    .experience-card::after {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.8) 70%, rgba(255, 255, 255, 0.95) 100%);
-      opacity: 1;
-    }
-
-    .experience-card img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: contrast(1.1);
-      transition: transform 1s ease, filter 0.6s ease, opacity 0.3s ease;
-    }
-    
-    .experience-card img.img-error {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .experience-card:hover {
-      transform: translateY(-12px);
-      border-color: #000000;
-      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.15);
-    }
-
-    .experience-card:hover img {
-      transform: scale(1.08);
-      filter: contrast(1.2);
-    }
-
-    .experience-card:hover::before {
-      opacity: 0.3;
-    }
-
-    .experience-card:hover::after {
-      opacity: 0.9;
-    }
-
-    .experience-card[data-color='cyan'],
-    .experience-card[data-color='magenta'],
-    .experience-card[data-color='lime'] {
-      border-color: #E5E5E5;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-    }
-
-    .experience-card[data-color='cyan']::before,
-    .experience-card[data-color='magenta']::before,
-    .experience-card[data-color='lime']::before {
-      background: radial-gradient(circle at 20% 20%, rgba(0, 0, 0, 0.1), transparent 68%);
-    }
-
-    .experience-card[data-color='cyan']:hover,
-    .experience-card[data-color='magenta']:hover,
-    .experience-card[data-color='lime']:hover {
-      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.15);
-      border-color: #000000;
-    }
-
-    .experience-card .hero-showcase__badge,
-    .experience-card .hero-showcase__meta {
-      z-index: 2;
-    }
-
-    .experience-card .hero-showcase__badge {
-      top: 22px;
-      left: 22px;
-      background: rgba(255, 255, 255, 0.95);
-      border: 2px solid #000000;
-    }
-
-    .experience-card .hero-showcase__meta {
-      gap: 14px;
-      padding: 26px 28px 32px;
-    }
-
-    .experience-card .hero-showcase__meta span {
-      font-family: 'Anton', 'Impact', sans-serif;
-      font-size: clamp(1.4rem, 3vw, 1.8rem);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .experience-card .hero-showcase__meta p {
-      font-size: 0.9rem;
-      line-height: 1.7;
-      letter-spacing: 0.03em;
-      color: rgba(0, 0, 0, 0.8);
-    }
-
-    .page-backdrop {
-      filter: grayscale(100%) contrast(1.1);
-    }
-
-    /* Hero media overlay */
-    .page-backdrop.hero-video::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 35%, rgba(255, 255, 255, 0.75) 55%, rgba(255, 255, 255, 0.9) 100%);
-      mix-blend-mode: normal;
-      pointer-events: none;
-    }
-
-    .header-gradient {
-      position: absolute;
-      inset: -25% -30% 40% -30%;
-      background:
-        radial-gradient(circle at 20% 35%, rgba(0, 0, 0, 0.08), transparent 60%),
-        radial-gradient(circle at 80% 20%, rgba(0, 0, 0, 0.06), transparent 60%),
-        radial-gradient(circle at 55% 75%, rgba(0, 0, 0, 0.05), transparent 65%);
-      filter: blur(140px);
-      opacity: 0.3;
-      z-index: -1;
-    }
-
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 14px 24px;
-      border-radius: 999px;
-      border: 2.5px solid #000000;
-      background: rgba(255, 255, 255, 0.98);
-      text-transform: uppercase;
-      letter-spacing: 0.4em;
-      font-size: 0.78rem;
-      font-weight: 700;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-    }
-
-    .hero-eyebrow::before {
-      content: "";
-      width: 11px;
-      height: 11px;
-      border-radius: 50%;
-      background: #000000;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-    }
-
-    .stat-number {
-      font-family: 'Anton', 'Impact', sans-serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      letter-spacing: 0.05em;
-      background: linear-gradient(120deg, #000000, #4a4a4a);
-      -webkit-text-fill-color: transparent;
-      -webkit-background-clip: text;
-      background-clip: text;
-    }
-
-    .stat-label {
-      text-transform: uppercase;
-      letter-spacing: 0.35em;
-      font-size: 0.65rem;
-      font-weight: 600;
-      color: rgba(0, 0, 0, 0.6);
-    }
-
-    .hero-showcase {
-      position: relative;
-      border-radius: 28px;
-      overflow: hidden;
-      border: 2px solid #E5E5E5;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
-      background: rgba(255, 255, 255, 0.95);
-      isolation: isolate;
-      height: clamp(320px, 58vh, 520px);
-    }
-
-    .hero-showcase__media,
-    .hero-video img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.85;
-      mix-blend-mode: normal;
-      filter: grayscale(100%) contrast(1.1);
-      transition: transform 1.1s ease, filter 0.6s ease;
-    }
-
-    .hero-showcase:hover .hero-showcase__media {
-      transform: scale(1.05);
-      filter: grayscale(100%) contrast(1.2);
-    }
-
-    .hero-showcase::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(140deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.7));
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .hero-showcase__badge {
-      position: absolute;
-      top: 24px;
-      left: 24px;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 18px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.95);
-      border: 2px solid #000000;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.3em;
-      font-weight: 600;
-      color: #000000;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-      z-index: 2;
-    }
-
-    .hero-showcase__badge svg {
-      width: 18px;
-      height: 18px;
-      color: #000000;
-    }
-
-    .hero-showcase__meta {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 26px 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      background: linear-gradient(0deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.7) 60%, transparent 100%);
-      color: #000000;
-      z-index: 2;
-    }
-
-    .hero-showcase__meta span {
-      text-transform: uppercase;
-      letter-spacing: 0.3em;
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: rgba(0, 0, 0, 0.8);
-    }
-
-    .hero-showcase__meta p {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      letter-spacing: 0.03em;
-    }
-
-    .tier-card {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      background: linear-gradient(160deg, rgba(255, 255, 255, 0.98), rgba(248, 249, 250, 0.95));
-      padding-block: 34px;
-    }
-
-    .tier-card.is-featured {
-      background: linear-gradient(160deg, rgba(0, 0, 0, 0.05), rgba(240, 240, 240, 0.95));
-      border-color: #000000;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-    }
-
-    .tier-card .price {
-      font-family: 'Anton', 'Impact', sans-serif;
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      letter-spacing: 0.04em;
-      color: #000000;
-    }
-
-    .tier-card ul {
-      display: grid;
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .tier-card ul li {
-      position: relative;
-      padding-left: 22px;
-      font-size: 0.85rem;
-      letter-spacing: 0.05em;
-      color: rgba(0, 0, 0, 0.7);
-      text-transform: uppercase;
-    }
-
-    .tier-card ul li::before {
-      content: "";
-      position: absolute;
-      top: 0.6em;
-      left: 0;
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #000000;
-    }
-
-    .tier-chip {
-      align-self: flex-start;
-      padding: 8px 18px;
-      border-radius: 999px;
-      border: 2px solid #E5E5E5;
-      background: rgba(255, 255, 255, 0.95);
-      text-transform: uppercase;
-      letter-spacing: 0.35em;
-      font-size: 0.65rem;
-      font-weight: 600;
-    }
-
-    .tier-card.is-featured .tier-chip {
-      background: rgba(0, 0, 0, 0.9);
-      color: #FFFFFF;
-      border-color: #000000;
-    }
-
-    .testimonial-track {
-      display: flex;
-      gap: 24px;
-      overflow-x: auto;
-      padding-bottom: 12px;
-      scroll-snap-type: x mandatory;
-      scrollbar-width: thin;
-      -webkit-overflow-scrolling: touch;
-      overscroll-behavior-x: contain;
-      touch-action: pan-x;
-    }
-
-    .testimonial-track::-webkit-scrollbar {
-      height: 8px;
-    }
-
-    .testimonial-track::-webkit-scrollbar-track {
-      background: rgba(0, 0, 0, 0.05);
-      border-radius: 999px;
-    }
-
-    .testimonial-track::-webkit-scrollbar-thumb {
-      background: rgba(0, 0, 0, 0.3);
-      border-radius: 999px;
-    }
-
-    .card {
-      width: 290px;
-      min-height: 350px;
-      background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%);
-      font-family: inherit;
-      position: relative;
-      border-radius: 22px;
-      flex: 0 0 290px;
-      scroll-snap-align: start;
-      display: flex;
-      flex-direction: column;
-      padding: 36px 30px;
-      border: 2.5px solid #E5E5E5;
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
-      transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-14px);
-      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.18);
-      border-color: #000000;
-    }
-
-    .quote {
-      color: #000000;
-      position: relative;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 22px;
-      opacity: 0.18;
-    }
-
-    .quote svg {
-      width: 54px;
-      height: 54px;
-    }
-
-    .card-name {
-      text-transform: uppercase;
-      font-weight: 700;
-      color: rgba(0, 0, 0, 0.45);
-      font-size: 0.7rem;
-      letter-spacing: 0.38em;
-      text-align: center;
-      margin-bottom: 22px;
-      order: 1;
-    }
-
-    .body-text {
-      font-size: 1rem;
-      font-weight: 600;
-      color: rgba(0, 0, 0, 0.8);
-      line-height: 1.7;
-      text-align: center;
-      flex-grow: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 0;
-      letter-spacing: 0.02em;
-    }
-
-    .author {
-      font-family: 'Anton', 'Impact', sans-serif;
-      font-weight: 400;
-      font-size: 1.15rem;
-      color: #000000;
-      text-align: center;
-      margin-top: auto;
-      padding-top: 26px;
-      border-top: 2.5px solid rgba(0, 0, 0, 0.12);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      min-height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .pic {
-      width: 50px;
-      height: 50px;
-      background-color: rgb(255, 255, 255);
-      border-radius: 50%;
-    }
-
-    .author-container {
-      display: flex;
-      align-items: center;
-    }
-
-    .card .author svg {
-      display: none;
-    }
-
-    @media (max-width: 768px) {
-      .card {
-        width: 260px;
-        min-height: 320px;
-        padding: 28px 24px;
-      }
-      
-      .body-text {
-        font-size: 0.875rem;
-      }
-      
-      .author {
-        font-size: 1rem;
-        min-height: 56px;
-      }
-    }
-
-    /* Minimalist focus ring */
-    .focus-neon:focus {
-      outline: 3px solid rgba(0, 0, 0, 0.6);
-      outline-offset: 4px;
-      box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Minimalist logo */
-    .logo-glow {
-      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
-      animation: subtlePulse 4s ease-in-out infinite;
-      transition: transform 0.6s ease;
-    }
-
-    .logo-glow:hover {
-      transform: scale(1.05);
-      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
-    }
-
-    .logo-link {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 4.25rem;
-      height: 4.25rem;
-      padding: 0.35rem;
-      border-radius: 9999px;
-      background: #ffffff;
-      border: 2px solid #E5E5E5;
-      overflow: hidden;
-      transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-    }
-
-    .logo-link:hover {
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-      border-color: #000000;
-    }
-
-    .logo-link__image {
-      width: 100%;
-      height: 100%;
-      border-radius: inherit;
-      object-fit: contain;
-    }
-
-    .nav-cta {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 64px;
-      background: transparent;
-    }
-
-    @keyframes subtlePulse {
-      0%, 100% {
-        filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
-      }
-      50% {
-        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
-      }
-    }
-
-    /* Map styling */
-    .map-container {
-      position: relative;
-      border-radius: 32px;
-      overflow: hidden;
-      border: 2px solid #E5E5E5;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
-    }
-
-    .map-marker {
-      position: absolute;
-      top: 45%;
-      left: 52%;
-      transform: translate(-50%, -50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      text-align: center;
-    }
-
-    .map-marker img {
-      width: 70px;
-      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
-      animation: subtlePulse 3s ease-in-out infinite;
-    }
-
-    .map-popup {
-      background: rgba(255, 255, 255, 0.98);
-      border-radius: 18px;
-      padding: 10px 18px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-      border: 2px solid #E5E5E5;
-      font-size: 0.85rem;
-      min-width: 180px;
-    }
-
-    .whatsapp-bubble {
-      position: fixed;
-      right: 20px;
-      bottom: 24px;
-      z-index: 950;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: #000000;
-      color: #fff;
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
-    }
-
-    .whatsapp-bubble svg {
-      width: 28px;
-      height: 28px;
-    }
-
-    .whatsapp-bubble:hover {
-      transform: translateY(-6px) scale(1.04);
-      box-shadow: 0 28px 55px rgba(0, 0, 0, 0.35);
-    }
-
-    footer a {
-      color: rgba(0, 0, 0, 0.6);
-      transition: color 0.3s ease;
-    }
-
-    footer a:hover {
-      color: #000000;
-    }
-    
-    footer a svg {
-      color: inherit;
-    }
-
-    .hero-title {
-      font-family: 'Anton', 'Impact', sans-serif;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    .card-media {
-      position: relative;
-      overflow: hidden;
-      border-radius: 18px;
-      height: 200px;
-    }
-
-    .card-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: contrast(1.1);
-      transition: transform 0.6s ease, filter 0.6s ease;
-    }
-
-    .lux-card:hover .card-media img {
-      transform: scale(1.08);
-      filter: contrast(1.2);
-    }
-
-    .card-media--wide {
-      height: 260px;
-    }
-
-    .section-title {
-      font-family: 'Anton', 'Impact', sans-serif;
-    }
-
-    .noise-mask {
-      mask-image: radial-gradient(circle at top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0));
-    }
-
-    /* Services card with minimalist black & white gradient */
-    .service-card {
-      position: relative;
-      width: 290px;
-      height: 390px;
-      background-color: #FFFFFF;
-      display: flex;
-      flex-direction: column;
-      justify-content: end;
-      padding: 22px;
-      gap: 14px;
-      border-radius: 14px;
-      cursor: default;
-      flex-shrink: 0;
-      pointer-events: none;
-    }
-
-    .service-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      left: -6px;
-      margin: auto;
-      width: 302px;
-      height: 402px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
-      z-index: -10;
-      pointer-events: none;
-    }
-
-    .service-card::after {
-      content: "";
-      z-index: -1;
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.15) 50%, rgba(0, 0, 0, 0.4) 100%);
-      transform: translate3d(0, 0, 0) scale(0.95);
-      filter: blur(22px);
-    }
-
-    .service-card .service-heading {
-      font-size: 26px;
-      text-transform: capitalize;
-      font-weight: 900;
-      color: #fff;
-      text-align: center;
-      position: relative;
-      user-select: none;
-      white-space: nowrap;
-    }
-
-    .service-card .service-heading::after,
-    .service-card .service-heading::before {
-      content: attr(data-text);
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      color: #fff;
-      overflow: hidden;
-      clip-path: inset(0 0 0 0);
-    }
-
-    .service-card .service-heading::after {
-      text-shadow: -5px 0 red;
-      animation: glitch-animation 3s infinite linear alternate-reverse;
-    }
-
-    .service-card .service-heading::before {
-      text-shadow: 5px 0 cyan;
-      animation: glitch-animation 2s infinite linear alternate-reverse;
-    }
-
-    @keyframes glitch-animation {
-      0% { clip-path: inset(20% 0 50% 0); }
-      5% { clip-path: inset(10% 0 60% 0); }
-      10% { clip-path: inset(15% 0 55% 0); }
-      15% { clip-path: inset(25% 0 35% 0); }
-      20% { clip-path: inset(30% 0 40% 0); }
-      25% { clip-path: inset(40% 0 20% 0); }
-      30% { clip-path: inset(10% 0 60% 0); }
-      35% { clip-path: inset(15% 0 55% 0); }
-      40% { clip-path: inset(25% 0 35% 0); }
-      45% { clip-path: inset(30% 0 40% 0); }
-      50% { clip-path: inset(20% 0 50% 0); }
-      55% { clip-path: inset(10% 0 60% 0); }
-      60% { clip-path: inset(15% 0 55% 0); }
-      65% { clip-path: inset(25% 0 35% 0); }
-      70% { clip-path: inset(30% 0 40% 0); }
-      75% { clip-path: inset(40% 0 20% 0); }
-      80% { clip-path: inset(20% 0 50% 0); }
-      85% { clip-path: inset(10% 0 60% 0); }
-      90% { clip-path: inset(15% 0 55% 0); }
-      95% { clip-path: inset(25% 0 35% 0); }
-      100% { clip-path: inset(30% 0 40% 0); }
-    }
-
-    .service-card .service-type {
-      font-size: 14px;
-      color: #000000;
-    }
-
-    .service-card .service-description {
-      font-size: 14px;
-      color: #000000;
-      font-weight: 400;
-      line-height: 1.4;
-    }
-
-    .service-card-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 12px;
-    }
-
-    .service-card-content {
-      position: relative;
-      z-index: 2;
-      margin-top: auto;
-      padding: 16px;
-      background: transparent;
-    }
-
-    /* Infinite horizontal scroll container */
-    .services-scroll-container {
-      overflow: hidden;
-      position: relative;
-      width: 100%;
-      padding: 20px 0;
-      overscroll-behavior-x: contain;
-      touch-action: pan-y;
-      pointer-events: none;
-    }
-
-    .services-scroll-track {
-      display: flex;
-      gap: 24px;
-      animation: infiniteScroll 30s linear infinite;
-      width: fit-content;
-      pointer-events: none;
-    }
-
-    @keyframes infiniteScroll {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
-    }
-
-    /* Grid layout for experience cards */
-    .experience-grid {
-      display: grid;
-      gap: 2rem;
-      grid-template-columns: 1fr;
-    }
-
-    @media (min-width: 768px) {
-      .experience-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2.5rem;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .experience-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2.5rem;
-      }
-    }
-
-    /* Sticky Navigation Bar */
+    /* ===== NAVIGATION ===== */
     .nav-bar {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 999;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: rgba(11,11,11,0.92);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(240,165,0,0.12);
       transform: translateY(-100%);
+      transition: transform .35s ease;
     }
-
-    .nav-bar.visible {
-      transform: translateY(0);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    }
+    .nav-bar.visible { transform: translateY(0); }
 
     .nav-container {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 24px;
+      padding: 12px 28px;
       max-width: 1400px;
       margin: 0 auto;
     }
 
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .nav-logo-ring {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      border: 2px solid rgba(240,165,0,.5);
+      padding: 3px;
+      display: flex; align-items: center; justify-content: center;
+      transition: box-shadow .3s ease, border-color .3s ease;
+      flex-shrink: 0;
+    }
+    .nav-logo-ring:hover {
+      border-color: var(--gold);
+      box-shadow: 0 0 18px rgba(240,165,0,.4);
+    }
+    .nav-logo-ring img {
+      width: 100%; height: 100%;
+      object-fit: contain; border-radius: 50%;
     }
 
-    .nav-logo-img {
-      width: 40px;
-      height: 40px;
-      object-fit: contain;
-      transition: transform 0.3s ease;
-    }
-
-    .nav-logo:hover .nav-logo-img {
-      transform: scale(1.1);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-    }
-
+    .nav-links { display: flex; align-items: center; gap: 36px; }
     .nav-link {
-      font-size: 0.875rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: rgba(0, 0, 0, 0.7);
-      transition: color 0.3s ease;
+      font-size: .78rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .18em;
+      color: var(--text-muted);
+      transition: color .3s ease;
       position: relative;
     }
-
     .nav-link::after {
       content: "";
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: #000000;
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
+      position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1.5px;
+      background: var(--gold);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .3s ease;
     }
+    .nav-link:hover, .nav-link.active { color: var(--text); }
+    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
 
-    .nav-link:hover {
-      color: #000000;
-    }
-
-    .nav-link:hover::after {
-      transform: scaleX(1);
-    }
-
-    .nav-link.active {
-      color: #000000;
-    }
-
-    .nav-link.active::after {
-      transform: scaleX(1);
-    }
-
-    .nav-btn-link {
-      display: inline-block;
-    }
-
-    .nav-cta-btn {
+    /* ===== LION BUTTON ===== */
+    .lion-btn {
       position: relative;
-      width: auto;
-      min-width: 140px;
-      height: 44px;
+      height: 44px; min-width: 130px;
       border: none;
-      background-color: #005f99;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      border-radius: 30px;
-      cursor: pointer;
-      box-shadow: 6px 6px 0px rgb(12, 12, 12);
-      transition-duration: .3s;
-      padding: 0 16px;
+      background-color: var(--gold);
+      display: inline-flex; align-items: center; justify-content: center;
+      overflow: hidden; border-radius: 8px; cursor: pointer;
+      box-shadow: 4px 4px 0 rgba(0,0,0,.4);
+      transition: all .3s ease; padding: 0 18px;
     }
-
-    .nav-cta-btn .Layer {
-      width: 50px;
-      position: absolute;
-      left: -25px;
+    .lion-btn .Layer {
+      width: 48px;
+      position: absolute; left: -24px;
       transition-duration: .3s;
       animation: spin 5s linear infinite;
     }
+    .lion-btn:hover { transform: translateY(3px); box-shadow: 2px 2px 0 rgba(0,0,0,.3); background-color: var(--gold-light); }
+    .lion-btn:hover .Layer { left: 0; width: 100%; }
+    .lion-btn .text {
+      color: #0B0B0B; font-weight: 700; font-size: .72rem;
+      position: relative; z-index: 2;
+      text-transform: uppercase; letter-spacing: .22em;
+    }
+    .lion-btn:hover .text { color: transparent; }
+    .lion-btn .cls-1 { fill: #242021; }
+    .lion-btn .cls-2 { fill: #e82728; }
+    .lion-btn .cls-3 { fill: #fefefe; }
+    .lion-btn .cls-4 { fill: #e92728; }
+    .lion-btn .cls-5 { fill: #F0A500; }
+    .lion-btn .cls-6 { fill: #fff; }
 
-    .nav-cta-btn:hover {
-      transform: translateY(4px);
-      box-shadow: 2px 2px 0px black;
-      transition-duration: .3s;
+    .lion-btn-lg {
+      height: 56px; min-width: 200px;
+      border-radius: 8px; padding: 0 32px;
+      box-shadow: 5px 5px 0 rgba(0,0,0,.4);
+    }
+    .lion-btn-lg .text { font-size: .85rem; }
+    .lion-btn-lg .Layer { width: 58px; left: -29px; }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
     }
 
-    .nav-cta-btn:hover .Layer {
-      left: 0%;
-      width: 100%;
-      transition-duration: .3s;
+    /* Outline button */
+    .btn-outline {
+      display: inline-flex; align-items: center; justify-content: center;
+      height: 56px; min-width: 200px; padding: 0 32px;
+      border: 2px solid rgba(255,255,255,.2); border-radius: 8px;
+      font-weight: 700; font-size: .85rem;
+      text-transform: uppercase; letter-spacing: .18em;
+      color: var(--text); cursor: pointer;
+      transition: all .3s ease; background: transparent;
     }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
 
-    .nav-cta-btn .text {
-      color: white;
-      font-weight: 600;
-      font-size: 0.75rem;
-      position: relative;
-      z-index: 2;
-      transition-duration: .1s;
-      text-transform: uppercase;
-      letter-spacing: 0.35em;
-      font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    /* ===== SECTION LABELS ===== */
+    .section-label {
+      display: inline-flex; align-items: center; gap: 10px;
+      text-transform: uppercase; letter-spacing: .35em;
+      font-size: .7rem; font-weight: 700; color: var(--gold);
     }
-
-    .nav-cta-btn:hover .text {
-      color: transparent;
-      transition-duration: .3s;
-    }
-
-    /* SVG colors for nav button */
-    .nav-cta-btn .cls-1 {
-      fill: #242021;
-    }
-
-    .nav-cta-btn .cls-2 {
-      fill: #e82728;
-    }
-
-    .nav-cta-btn .cls-3 {
-      fill: #fefefe;
-    }
-
-    .nav-cta-btn .cls-4 {
-      fill: #e92728;
-    }
-
-    .nav-cta-btn .cls-5 {
-      fill: #005f99;
-    }
-
-    .nav-cta-btn .cls-6 {
-      fill: #fff;
-    }
-
-    /* Section Separators */
-    section {
-      position: relative;
-    }
-
-    section::before {
+    .section-label::before {
       content: "";
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      max-width: 1200px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1) 50%, transparent);
+      width: 24px; height: 2px;
+      background: var(--gold);
+      display: inline-block; border-radius: 999px;
     }
 
-    section#hero::before {
-      display: none;
+    .section-title {
+      font-family: 'Anton', 'Impact', sans-serif;
+      text-transform: uppercase; letter-spacing: .04em; line-height: .95;
     }
 
-    .section-divider {
-      margin: 0 auto 36px;
-      width: 120px;
-      height: 4px;
-      background: linear-gradient(90deg, transparent, #000000, transparent);
-      border-radius: 999px;
+    /* ===== HERO ===== */
+    #hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center;
+      overflow: hidden; background: var(--dark);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; opacity: .15; filter: grayscale(20%);
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg, rgba(11,11,11,.65) 0%, rgba(11,11,11,.25) 45%, rgba(11,11,11,.85) 85%, #0B0B0B 100%),
+        radial-gradient(ellipse at 65% 35%, rgba(240,165,0,.07) 0%, transparent 55%);
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 10px 20px;
+      border: 1px solid rgba(240,165,0,.35); border-radius: 999px;
+      background: rgba(240,165,0,.07);
+      text-transform: uppercase; letter-spacing: .38em;
+      font-size: .7rem; font-weight: 700; color: var(--gold);
+    }
+    .hero-eyebrow::before {
+      content: "";
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(240,165,0,.4); }
+      50%      { opacity: .7; box-shadow: 0 0 0 5px rgba(240,165,0,0); }
+    }
+    .hero-title {
+      font-family: 'Anton', 'Impact', sans-serif;
+      text-transform: uppercase; line-height: .93; letter-spacing: .02em;
+    }
+    .hero-title .accent { color: var(--gold); }
+
+    .hero-showcase {
+      position: relative; border-radius: 20px; overflow: hidden;
+      border: 1px solid rgba(240,165,0,.2);
+      box-shadow: 0 0 80px rgba(240,165,0,.1), 0 30px 80px rgba(0,0,0,.5);
+      height: clamp(300px, 52vh, 500px);
+    }
+    .hero-showcase img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 1.2s ease;
+    }
+    .hero-showcase:hover img { transform: scale(1.05); }
+    .hero-showcase-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(11,11,11,.9) 100%);
+    }
+    .hero-showcase-badge {
+      position: absolute; top: 18px; left: 18px;
+      display: flex; align-items: center; gap: 8px;
+      padding: 9px 16px;
+      background: rgba(11,11,11,.8); border: 1px solid rgba(240,165,0,.4);
+      border-radius: 999px; backdrop-filter: blur(12px);
+      font-size: .7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .2em; color: var(--gold); z-index: 2;
+    }
+    .hero-showcase-footer {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 22px 24px; z-index: 2;
     }
 
-    /* Mobile Navigation */
+    /* ===== STATS BAR ===== */
+    .stats-bar { background: var(--gold); padding: 18px 0; }
+    .stats-inner {
+      display: flex; align-items: center; justify-content: center;
+      max-width: 860px; margin: 0 auto; padding: 0 24px;
+    }
+    .stat-item {
+      flex: 1; display: flex; flex-direction: column; align-items: center;
+      padding: 4px 20px;
+      border-right: 1px solid rgba(0,0,0,.15);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-number {
+      font-family: 'Anton', 'Impact', sans-serif;
+      font-size: clamp(1.6rem,2.5vw,2.2rem);
+      letter-spacing: .04em; color: #0B0B0B; line-height: 1;
+    }
+    .stat-label {
+      font-size: .6rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .28em;
+      color: rgba(0,0,0,.55); margin-top: 3px;
+    }
+
+    /* ===== SERVICES ===== */
+    #servicios { background: var(--dark-2); }
+    .service-card {
+      position: relative; border-radius: 16px; overflow: hidden;
+      border: 1px solid var(--border); background: var(--dark-3);
+      transition: all .45s ease; cursor: default;
+    }
+    .service-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 35%, rgba(11,11,11,.95) 100%);
+      z-index: 1;
+    }
+    .service-card:hover {
+      border-color: rgba(240,165,0,.5);
+      transform: translateY(-10px);
+      box-shadow: 0 24px 60px rgba(240,165,0,.15);
+    }
+    .service-card img {
+      width: 100%; height: 280px; object-fit: cover; display: block;
+      transition: transform .65s ease, filter .45s ease;
+      filter: grayscale(20%) brightness(.85);
+    }
+    .service-card:hover img {
+      transform: scale(1.08);
+      filter: grayscale(0%) brightness(.9);
+    }
+    .service-card-content {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 22px; z-index: 2;
+    }
+    .service-card-title {
+      font-family: 'Anton', 'Impact', sans-serif;
+      font-size: 1.35rem; letter-spacing: .04em;
+      text-transform: uppercase; color: var(--text); margin-bottom: 8px;
+    }
+    .service-card-bar {
+      width: 0; height: 2px;
+      background: var(--gold); border-radius: 999px;
+      transition: width .4s ease;
+    }
+    .service-card:hover .service-card-bar { width: 36px; }
+
+    /* ===== TESTIMONIALS ===== */
+    #testimonios { background: var(--dark); }
+    .testimonial-card {
+      background: var(--dark-3); border: 1px solid var(--border);
+      border-radius: 16px; padding: 26px;
+      display: flex; flex-direction: column; gap: 14px;
+      transition: all .35s ease;
+    }
+    .testimonial-card:hover {
+      border-color: rgba(240,165,0,.25);
+      transform: translateY(-5px);
+      box-shadow: 0 16px 45px rgba(240,165,0,.08);
+    }
+    .testimonial-quote {
+      font-size: 2.8rem; line-height: 1;
+      color: var(--gold); opacity: .45;
+      font-family: Georgia, serif; margin-bottom: -4px;
+    }
+    .testimonial-text {
+      font-size: .9rem; line-height: 1.72;
+      color: var(--text-muted); flex-grow: 1;
+    }
+    .testimonial-author-name {
+      font-family: 'Anton', 'Impact', sans-serif;
+      font-size: .95rem; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--text);
+    }
+    .t-divider { width: 100%; height: 1px; background: var(--border); }
+    .star { color: var(--gold); font-size: .7rem; }
+
+    /* ===== LOCATION ===== */
+    #ubicacion { background: var(--dark-2); }
+    .map-frame { border-radius: 18px; overflow: hidden; border: 1px solid var(--border); }
+    .info-panel {
+      background: var(--dark-3); border: 1px solid var(--border);
+      border-radius: 18px; padding: 32px;
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .info-row {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 20px 0; border-bottom: 1px solid var(--border);
+    }
+    .info-row:first-child { padding-top: 0; }
+    .info-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .info-icon-wrap {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: rgba(240,165,0,.1); border: 1px solid rgba(240,165,0,.18);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      color: var(--gold);
+    }
+    .hours-line {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 7px 0; font-size: .875rem;
+    }
+    .hours-line-label { color: var(--text-muted); }
+    .hours-line-time { font-weight: 600; }
+
+    /* Status pill */
+    .status-pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 7px 14px; border-radius: 999px;
+      font-size: .72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .15em;
+      border: 1px solid;
+    }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ===== CTA SECTION ===== */
+    #cta {
+      background: var(--dark-3);
+      position: relative; overflow: hidden;
+    }
+    #cta::before {
+      content: "";
+      position: absolute; top: -30%; right: -10%;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(240,165,0,.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    #cta::after {
+      content: "";
+      position: absolute; bottom: -30%; left: -10%;
+      width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(240,165,0,.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-divider {
+      width: 60px; height: 3px;
+      background: var(--gold); border-radius: 999px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer { background: var(--dark-2); border-top: 1px solid rgba(240,165,0,.12); }
+    .footer-logo-ring {
+      width: 60px; height: 60px; border-radius: 50%;
+      border: 2px solid rgba(240,165,0,.4); padding: 4px;
+      display: flex; align-items: center; justify-content: center;
+      transition: box-shadow .3s ease, border-color .3s ease;
+    }
+    .footer-logo-ring:hover {
+      border-color: var(--gold);
+      box-shadow: 0 0 22px rgba(240,165,0,.35);
+    }
+    .social-btn {
+      width: 44px; height: 44px; border-radius: 10px;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted); transition: all .3s ease;
+    }
+    .social-btn:hover {
+      border-color: rgba(240,165,0,.5);
+      color: var(--gold); transform: translateY(-3px);
+    }
+
+    /* ===== WHATSAPP ===== */
+    .whatsapp-btn {
+      position: fixed; right: 20px; bottom: 24px; z-index: 950;
+      display: flex; align-items: center; justify-content: center;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: var(--gold); color: #0B0B0B;
+      box-shadow: 0 8px 28px rgba(240,165,0,.45);
+      transition: all .35s ease;
+    }
+    .whatsapp-btn:hover { transform: translateY(-5px) scale(1.06); box-shadow: 0 16px 42px rgba(240,165,0,.55); }
+    .whatsapp-btn svg { width: 26px; height: 26px; }
+
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
+      .nav-links { display: none; }
+      .nav-container { padding: 12px 16px; }
+      .lion-btn-lg { height: 52px; min-width: 170px; padding: 0 24px; }
+      .btn-outline  { height: 52px; min-width: 170px; padding: 0 24px; }
+      .service-card img { height: 240px; }
+      .info-panel { padding: 24px; }
+      .whatsapp-btn { right: 16px; bottom: 20px; width: 52px; height: 52px; }
+    }
 
-      .nav-container {
-        padding: 12px 16px;
-      }
+    /* ===== FOCUS ===== */
+    .focus-ring:focus {
+      outline: 2px solid var(--gold); outline-offset: 4px;
+    }
 
-      .nav-cta-btn {
-        min-width: 120px;
-        height: 40px;
-        padding: 0 12px;
-        box-shadow: 5px 5px 0px rgb(12, 12, 12);
-      }
+    /* ===== SCROLL ANIMATIONS ===== */
+    [data-animate] {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    [data-animate].animated { opacity: 1; transform: translateY(0); }
+    [data-animate][data-delay="1"] { transition-delay: .1s; }
+    [data-animate][data-delay="2"] { transition-delay: .2s; }
+    [data-animate][data-delay="3"] { transition-delay: .3s; }
+    [data-animate][data-delay="4"] { transition-delay: .4s; }
+    [data-animate][data-delay="5"] { transition-delay: .5s; }
+    [data-animate][data-delay="6"] { transition-delay: .6s; }
 
-      .nav-cta-btn .Layer {
-        width: 45px;
-        left: -22px;
-      }
-
-      .nav-cta-btn .text {
-        font-size: 0.65rem;
-        letter-spacing: 0.25em;
-      }
-
-      .hero-eyebrow {
-        letter-spacing: 0.4em;
-        font-size: 0.65rem;
-        padding: 10px 16px;
-      }
-
-      .hero-showcase__badge {
-        top: 16px;
-        left: 16px;
-        padding: 10px 16px;
-        letter-spacing: 0.35em;
-      }
-
-      .hero-showcase__meta {
-        padding: 22px 20px;
-      }
-
-      .map-marker {
-        top: 50%;
-        left: 50%;
-      }
-
-      .whatsapp-bubble {
-        width: 56px;
-        height: 56px;
-        right: 16px;
-        bottom: 20px;
-      }
-
-      .service-card {
-        width: 260px;
-        height: 350px;
-      }
-
-      .service-card::before {
-        width: 270px;
-        height: 360px;
-      }
-
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(5px); }
     }
   </style>
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "HealthClub",
-      "name": "Lion Fitness",
-      "description": "Gimnasio premium con máquinas de última generación y clases exclusivas.",
-      "image": "https://lionfitness.mx/lionlogo.png",
-      "logo": "https://lionfitness.mx/lionlogo.png",
-      "url": "https://lionfitness.mx",
-      "telephone": "+52 715 123 4567",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Carretera Zitácuaro-Huetamo Km 1",
-        "addressLocality": "Zitácuaro",
-        "addressRegion": "Michoacán",
-        "postalCode": "61500",
-        "addressCountry": "MX"
-      },
-      "openingHours": "Mo-Su 06:00-22:00",
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 19.436119,
-        "longitude": -100.358355
-      }
-    }
+  {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "Lion Fitness",
+    "description": "Gimnasio premium con máquinas de última generación y clases exclusivas.",
+    "image": "https://lionfitness.mx/lionlogo.png",
+    "logo": "https://lionfitness.mx/lionlogo.png",
+    "url": "https://lionfitness.mx",
+    "telephone": "+52 715 124 9436",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Carretera Zitácuaro-Huetamo Km 1",
+      "addressLocality": "Zitácuaro",
+      "addressRegion": "Michoacán",
+      "postalCode": "61500",
+      "addressCountry": "MX"
+    },
+    "openingHours": ["Mo-Fr 05:00-22:00", "Sa-Su 07:00-14:00"],
+    "geo": { "@type": "GeoCoordinates", "latitude": 19.436119, "longitude": -100.358355 }
+  }
   </script>
 </head>
-<body class="relative">
+<body>
+  <!-- Cursor halo -->
   <div class="cursor-halo" aria-hidden="true"></div>
-  <div class="page-backdrop hero-video absolute inset-0 -z-10 overflow-hidden noise-mask">
-    <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=80" alt="Atleta entrenando en un gimnasio futurista" fetchpriority="high" />
-  </div>
 
-  <!-- Sticky Navigation -->
-  <nav class="nav-bar" id="mainNav">
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav-bar" id="mainNav" role="navigation" aria-label="Navegación principal">
     <div class="nav-container">
-      <a href="#hero" class="nav-logo">
-        <img src="./lionlogo.png" alt="Lion Fitness" class="nav-logo-img" />
+      <a href="#hero" class="nav-logo-ring focus-ring" aria-label="Lion Fitness – Inicio">
+        <img src="./lionlogo.png" alt="Lion Fitness" />
       </a>
       <div class="nav-links">
-        <a href="#hero" class="nav-link">Inicio</a>
-        <a href="#servicios" class="nav-link">Servicios</a>
-        <a href="#testimonios" class="nav-link">Testimonios</a>
-        <a href="#ubicacion" class="nav-link">Ubicación</a>
+        <a href="#hero"        class="nav-link focus-ring">Inicio</a>
+        <a href="#servicios"   class="nav-link focus-ring">Servicios</a>
+        <a href="#testimonios" class="nav-link focus-ring">Testimonios</a>
+        <a href="#ubicacion"   class="nav-link focus-ring">Ubicación</a>
       </div>
-      <a href="quejas.html" class="nav-btn-link">
-        <button class="nav-cta-btn">
-          <svg class="Layer" viewBox="0 0 1095.66 1095.63"><path class="cls-1" d="M1298,749.62c.4,300.41-243,548-548.1,547.9C446.23,1297.4,201.92,1051.2,202.29,749c.37-301.52,244.49-547.41,548.34-547.12C1055.43,202.18,1298.25,449.6,1298,749.62Z" transform="translate(-202.29 -201.89)"></path><path class="cls-2" d="M1285.89,749.79c-.25,297.07-241.24,535.86-536.12,535.66-296.34-.21-537-241.72-535.29-539,1.68-293.16,240.83-534.18,539.15-532.37C1046.8,215.84,1285.62,453.88,1285.89,749.79Z" transform="translate(-202.29 -201.89)"></path><path class="cls-3" d="M1195.29,749.56c.54,244.73-198.67,446.2-446.87,445.33C503.27,1194,304,994.53,304.93,748c.91-244.52,199.12-443.08,444.39-443.49C997.43,304,1195.74,505.59,1195.29,749.56Z" transform="translate(-202.29 -201.89)"></path><path class="cls-4" d="M1097.23,749.87c.22,190.31-154.42,347.43-348,346.92-192-.5-346.48-156.44-346.17-347.7C403.33,558,558.18,402,751.08,402.55,944.62,403.09,1097.69,560.56,1097.23,749.87Z" transform="translate(-202.29 -201.89)"></path><path class="cls-5" d="M1006.72,744.28c2.81,143.23-110.17,257.35-247.42,261.9C613.15,1011,498.22,895.93,493.71,758.88,488.93,613.71,603,498,740.69,493.28,886.73,488.24,1004,603.87,1006.72,744.28Z" transform="translate(-202.29 -201.89)"></path><path class="cls-6" d="M607.55,553.77c5.13,3.72,10.28,7.42,15.4,11.15l124.12,90.24a8.57,8.57,0,0,1,1.2.84c1.26,1.27,2.35,1.09,3.77,0,6.36-4.74,12.82-9.35,19.24-14l118.23-85.89c1.07-.78,2.17-1.54,3.28-2.32.82,1.1,0,2-.27,2.77Q866.29,637.48,840,718.38c-1.11,3.42-1.13,3.42,1.81,5.56l136,98.81c1.17.86,2.33,1.74,3.79,2.83-1.48.73-2.79.45-4,.45q-84.07,0-168.16,0h-.73c-3.7,0-3.68,0-4.8,3.43q-26.1,80.4-52.23,160.78c-.4,1.21-.45,2.66-1.77,3.6L735,948.24q-19.34-59.52-38.68-119c-1-3.16-1-3.17-4.6-3.17q-84.27,0-168.53,0a10.57,10.57,0,0,1-4.24-.34,13.17,13.17,0,0,1,3.33-2.77q67.55-49.08,135.1-98.18c5-3.63,4.38-1.8,2.43-7.83q-25.94-80.07-52-160.11c-.3-.91-.57-1.83-.85-2.75Z" transform="translate(-202.29 -201.89)"></path></svg>
-          <p class="text">Buzón</p>
+      <a href="quejas.html" class="focus-ring">
+        <button class="lion-btn" aria-label="Buzón de quejas y sugerencias">
+          <svg class="Layer" viewBox="0 0 1095.66 1095.63" aria-hidden="true">
+            <path class="cls-1" d="M1298,749.62c.4,300.41-243,548-548.1,547.9C446.23,1297.4,201.92,1051.2,202.29,749c.37-301.52,244.49-547.41,548.34-547.12C1055.43,202.18,1298.25,449.6,1298,749.62Z" transform="translate(-202.29 -201.89)"/>
+            <path class="cls-2" d="M1285.89,749.79c-.25,297.07-241.24,535.86-536.12,535.66-296.34-.21-537-241.72-535.29-539,1.68-293.16,240.83-534.18,539.15-532.37C1046.8,215.84,1285.62,453.88,1285.89,749.79Z" transform="translate(-202.29 -201.89)"/>
+            <path class="cls-3" d="M1195.29,749.56c.54,244.73-198.67,446.2-446.87,445.33C503.27,1194,304,994.53,304.93,748c.91-244.52,199.12-443.08,444.39-443.49C997.43,304,1195.74,505.59,1195.29,749.56Z" transform="translate(-202.29 -201.89)"/>
+            <path class="cls-4" d="M1097.23,749.87c.22,190.31-154.42,347.43-348,346.92-192-.5-346.48-156.44-346.17-347.7C403.33,558,558.18,402,751.08,402.55,944.62,403.09,1097.69,560.56,1097.23,749.87Z" transform="translate(-202.29 -201.89)"/>
+            <path class="cls-5" d="M1006.72,744.28c2.81,143.23-110.17,257.35-247.42,261.9C613.15,1011,498.22,895.93,493.71,758.88,488.93,613.71,603,498,740.69,493.28,886.73,488.24,1004,603.87,1006.72,744.28Z" transform="translate(-202.29 -201.89)"/>
+            <path class="cls-6" d="M607.55,553.77c5.13,3.72,10.28,7.42,15.4,11.15l124.12,90.24a8.57,8.57,0,0,1,1.2.84c1.26,1.27,2.35,1.09,3.77,0,6.36-4.74,12.82-9.35,19.24-14l118.23-85.89c1.07-.78,2.17-1.54,3.28-2.32.82,1.1,0,2-.27,2.77Q866.29,637.48,840,718.38c-1.11,3.42-1.13,3.42,1.81,5.56l136,98.81c1.17.86,2.33,1.74,3.79,2.83-1.48.73-2.79.45-4,.45q-84.07,0-168.16,0h-.73c-3.7,0-3.68,0-4.8,3.43q-26.1,80.4-52.23,160.78c-.4,1.21-.45,2.66-1.77,3.6L735,948.24q-19.34-59.52-38.68-119c-1-3.16-1-3.17-4.6-3.17q-84.27,0-168.53,0a10.57,10.57,0,0,1-4.24-.34,13.17,13.17,0,0,1,3.33-2.77q67.55-49.08,135.1-98.18c5-3.63,4.38-1.8,2.43-7.83q-25.94-80.07-52-160.11c-.3-.91-.57-1.83-.85-2.75Z" transform="translate(-202.29 -201.89)"/>
+          </svg>
+          <span class="text">Buzón</span>
         </button>
       </a>
     </div>
   </nav>
 
-  <header class="relative min-h-[95vh] flex flex-col justify-center pt-12 pb-20">
-    <div class="header-gradient" aria-hidden="true"></div>
+  <!-- ===== HERO ===== -->
+  <section id="hero">
+    <img class="hero-bg" src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1800&q=80" alt="" aria-hidden="true" fetchpriority="high" />
+    <div class="hero-overlay" aria-hidden="true"></div>
 
-    <section id="hero" class="relative px-6 sm:px-12 pb-10 sm:pb-12 pt-12 sm:pt-16">
-      <div class="absolute inset-x-10 -top-20 h-80 -z-10 rounded-[120px] bg-gradient-to-r from-gray-100/40 via-white to-gray-50/40 blur-3xl pointer-events-none" aria-hidden="true"></div>
-      <div class="relative grid gap-10 lg:grid-cols-[1.05fr,0.95fr] items-center">
-        <div class="text-center lg:text-left space-y-6">
-          <span class="hero-eyebrow">Lion Fitness Club</span>
-          <h1 class="hero-title text-5xl sm:text-7xl lg:text-8xl font-bold tracking-[0.05em] leading-[1.05] text-black">
-            En Lion fitness, no solo sudas...<br class="hidden sm:block" /> ¡evolucionas!
-          </h1>
-          <p class="mx-auto lg:mx-0 max-w-2xl text-base sm:text-lg text-black/80 tracking-[0.08em] uppercase font-semibold leading-relaxed">
-            Tu disciplina despierta tu mejor versión: cada sesión es un salto más alto hacia la grandeza que llevas dentro.
-          </p>
-          <div class="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-5 pt-2">
-            <a href="#ubicacion" class="neon-btn focus-neon" aria-label="Inscribirse en Lion Fitness - Ver ubicación y horarios" title="Conoce nuestra ubicación y horarios para inscribirte">
-              <svg class="Layer" viewBox="0 0 1095.66 1095.63"><path class="cls-1" d="M1298,749.62c.4,300.41-243,548-548.1,547.9C446.23,1297.4,201.92,1051.2,202.29,749c.37-301.52,244.49-547.41,548.34-547.12C1055.43,202.18,1298.25,449.6,1298,749.62Z" transform="translate(-202.29 -201.89)"></path><path class="cls-2" d="M1285.89,749.79c-.25,297.07-241.24,535.86-536.12,535.66-296.34-.21-537-241.72-535.29-539,1.68-293.16,240.83-534.18,539.15-532.37C1046.8,215.84,1285.62,453.88,1285.89,749.79Z" transform="translate(-202.29 -201.89)"></path><path class="cls-3" d="M1195.29,749.56c.54,244.73-198.67,446.2-446.87,445.33C503.27,1194,304,994.53,304.93,748c.91-244.52,199.12-443.08,444.39-443.49C997.43,304,1195.74,505.59,1195.29,749.56Z" transform="translate(-202.29 -201.89)"></path><path class="cls-4" d="M1097.23,749.87c.22,190.31-154.42,347.43-348,346.92-192-.5-346.48-156.44-346.17-347.7C403.33,558,558.18,402,751.08,402.55,944.62,403.09,1097.69,560.56,1097.23,749.87Z" transform="translate(-202.29 -201.89)"></path><path class="cls-5" d="M1006.72,744.28c2.81,143.23-110.17,257.35-247.42,261.9C613.15,1011,498.22,895.93,493.71,758.88,488.93,613.71,603,498,740.69,493.28,886.73,488.24,1004,603.87,1006.72,744.28Z" transform="translate(-202.29 -201.89)"></path><path class="cls-6" d="M607.55,553.77c5.13,3.72,10.28,7.42,15.4,11.15l124.12,90.24a8.57,8.57,0,0,1,1.2.84c1.26,1.27,2.35,1.09,3.77,0,6.36-4.74,12.82-9.35,19.24-14l118.23-85.89c1.07-.78,2.17-1.54,3.28-2.32.82,1.1,0,2-.27,2.77Q866.29,637.48,840,718.38c-1.11,3.42-1.13,3.42,1.81,5.56l136,98.81c1.17.86,2.33,1.74,3.79,2.83-1.48.73-2.79.45-4,.45q-84.07,0-168.16,0h-.73c-3.7,0-3.68,0-4.8,3.43q-26.1,80.4-52.23,160.78c-.4,1.21-.45,2.66-1.77,3.6L735,948.24q-19.34-59.52-38.68-119c-1-3.16-1-3.17-4.6-3.17q-84.27,0-168.53,0a10.57,10.57,0,0,1-4.24-.34,13.17,13.17,0,0,1,3.33-2.77q67.55-49.08,135.1-98.18c5-3.63,4.38-1.8,2.43-7.83q-25.94-80.07-52-160.11c-.3-.91-.57-1.83-.85-2.75Z" transform="translate(-202.29 -201.89)"></path></svg>
-              <p class="text">¡INSCRIBETE YA!</p>
-            </a>
-            <a href="quejas.html" class="neon-btn focus-neon" aria-label="Buzón de quejas y sugerencias - Enviar comentarios" title="Envía tus quejas, sugerencias o comentarios">
-              <svg class="Layer" viewBox="0 0 1095.66 1095.63"><path class="cls-1" d="M1298,749.62c.4,300.41-243,548-548.1,547.9C446.23,1297.4,201.92,1051.2,202.29,749c.37-301.52,244.49-547.41,548.34-547.12C1055.43,202.18,1298.25,449.6,1298,749.62Z" transform="translate(-202.29 -201.89)"></path><path class="cls-2" d="M1285.89,749.79c-.25,297.07-241.24,535.86-536.12,535.66-296.34-.21-537-241.72-535.29-539,1.68-293.16,240.83-534.18,539.15-532.37C1046.8,215.84,1285.62,453.88,1285.89,749.79Z" transform="translate(-202.29 -201.89)"></path><path class="cls-3" d="M1195.29,749.56c.54,244.73-198.67,446.2-446.87,445.33C503.27,1194,304,994.53,304.93,748c.91-244.52,199.12-443.08,444.39-443.49C997.43,304,1195.74,505.59,1195.29,749.56Z" transform="translate(-202.29 -201.89)"></path><path class="cls-4" d="M1097.23,749.87c.22,190.31-154.42,347.43-348,346.92-192-.5-346.48-156.44-346.17-347.7C403.33,558,558.18,402,751.08,402.55,944.62,403.09,1097.69,560.56,1097.23,749.87Z" transform="translate(-202.29 -201.89)"></path><path class="cls-5" d="M1006.72,744.28c2.81,143.23-110.17,257.35-247.42,261.9C613.15,1011,498.22,895.93,493.71,758.88,488.93,613.71,603,498,740.69,493.28,886.73,488.24,1004,603.87,1006.72,744.28Z" transform="translate(-202.29 -201.89)"></path><path class="cls-6" d="M607.55,553.77c5.13,3.72,10.28,7.42,15.4,11.15l124.12,90.24a8.57,8.57,0,0,1,1.2.84c1.26,1.27,2.35,1.09,3.77,0,6.36-4.74,12.82-9.35,19.24-14l118.23-85.89c1.07-.78,2.17-1.54,3.28-2.32.82,1.1,0,2-.27,2.77Q866.29,637.48,840,718.38c-1.11,3.42-1.13,3.42,1.81,5.56l136,98.81c1.17.86,2.33,1.74,3.79,2.83-1.48.73-2.79.45-4,.45q-84.07,0-168.16,0h-.73c-3.7,0-3.68,0-4.8,3.43q-26.1,80.4-52.23,160.78c-.4,1.21-.45,2.66-1.77,3.6L735,948.24q-19.34-59.52-38.68-119c-1-3.16-1-3.17-4.6-3.17q-84.27,0-168.53,0a10.57,10.57,0,0,1-4.24-.34,13.17,13.17,0,0,1,3.33-2.77q67.55-49.08,135.1-98.18c5-3.63,4.38-1.8,2.43-7.83q-25.94-80.07-52-160.11c-.3-.91-.57-1.83-.85-2.75Z" transform="translate(-202.29 -201.89)"></path></svg>
-              <p class="text">BUZÓN</p>
-            </a>
-          </div>
+    <div style="position:relative;z-index:2;width:100%;max-width:1400px;margin:0 auto;padding: 7rem 1.5rem 5rem;display:grid;gap:3rem;align-items:center;" class="lg:grid-cols-2 grid">
+
+      <!-- Left: Text -->
+      <div style="display:flex;flex-direction:column;gap:1.75rem;text-align:center;" class="lg:text-left">
+        <div style="display:flex;justify-content:center;" class="lg:justify-start">
+          <span class="hero-eyebrow" data-animate>Lion Fitness Club</span>
         </div>
-        <div class="hero-showcase">
-          <img class="hero-showcase__media" src="https://t4.ftcdn.net/jpg/06/22/76/51/360_F_622765199_tdzHcj1stmJL8sDeR89rpoo6NQk4MbYy.jpg" alt="Entrenamiento inmersivo en estudio Lion XR" loading="lazy" />
-          <div class="hero-showcase__badge">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M12 3L14.4721 8.02786L20 9.0549L16 13.1056L16.9443 18.9451L12 16.2L7.05573 18.9451L8 13.1056L4 9.0549L9.52786 8.02786L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+
+        <h1 class="hero-title" style="font-size:clamp(2.8rem,10vw,6rem);" data-animate data-delay="1">
+          En Lion fitness,<br />
+          no solo sudas...<br />
+          <span class="accent">¡evolucionas!</span>
+        </h1>
+
+        <p style="font-size:1rem;color:rgba(255,255,255,.6);max-width:480px;margin:0 auto;line-height:1.75;font-weight:500;letter-spacing:.03em;" class="lg:mx-0" data-animate data-delay="2">
+          Tu disciplina despierta tu mejor versión: cada sesión es un salto más alto hacia la grandeza que llevas dentro.
+        </p>
+
+        <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1rem;padding-top:.5rem;" class="lg:justify-start" data-animate data-delay="3">
+          <a href="#ubicacion" class="lion-btn lion-btn-lg focus-ring" aria-label="Ver ubicación para inscribirse">
+            <svg class="Layer" viewBox="0 0 1095.66 1095.63" aria-hidden="true">
+              <path class="cls-1" d="M1298,749.62c.4,300.41-243,548-548.1,547.9C446.23,1297.4,201.92,1051.2,202.29,749c.37-301.52,244.49-547.41,548.34-547.12C1055.43,202.18,1298.25,449.6,1298,749.62Z" transform="translate(-202.29 -201.89)"/>
+              <path class="cls-2" d="M1285.89,749.79c-.25,297.07-241.24,535.86-536.12,535.66-296.34-.21-537-241.72-535.29-539,1.68-293.16,240.83-534.18,539.15-532.37C1046.8,215.84,1285.62,453.88,1285.89,749.79Z" transform="translate(-202.29 -201.89)"/>
+              <path class="cls-3" d="M1195.29,749.56c.54,244.73-198.67,446.2-446.87,445.33C503.27,1194,304,994.53,304.93,748c.91-244.52,199.12-443.08,444.39-443.49C997.43,304,1195.74,505.59,1195.29,749.56Z" transform="translate(-202.29 -201.89)"/>
+              <path class="cls-4" d="M1097.23,749.87c.22,190.31-154.42,347.43-348,346.92-192-.5-346.48-156.44-346.17-347.7C403.33,558,558.18,402,751.08,402.55,944.62,403.09,1097.69,560.56,1097.23,749.87Z" transform="translate(-202.29 -201.89)"/>
+              <path class="cls-5" d="M1006.72,744.28c2.81,143.23-110.17,257.35-247.42,261.9C613.15,1011,498.22,895.93,493.71,758.88,488.93,613.71,603,498,740.69,493.28,886.73,488.24,1004,603.87,1006.72,744.28Z" transform="translate(-202.29 -201.89)"/>
+              <path class="cls-6" d="M607.55,553.77c5.13,3.72,10.28,7.42,15.4,11.15l124.12,90.24a8.57,8.57,0,0,1,1.2.84c1.26,1.27,2.35,1.09,3.77,0,6.36-4.74,12.82-9.35,19.24-14l118.23-85.89c1.07-.78,2.17-1.54,3.28-2.32.82,1.1,0,2-.27,2.77Q866.29,637.48,840,718.38c-1.11,3.42-1.13,3.42,1.81,5.56l136,98.81c1.17.86,2.33,1.74,3.79,2.83-1.48.73-2.79.45-4,.45q-84.07,0-168.16,0h-.73c-3.7,0-3.68,0-4.8,3.43q-26.1,80.4-52.23,160.78c-.4,1.21-.45,2.66-1.77,3.6L735,948.24q-19.34-59.52-38.68-119c-1-3.16-1-3.17-4.6-3.17q-84.27,0-168.53,0a10.57,10.57,0,0,1-4.24-.34,13.17,13.17,0,0,1,3.33-2.77q67.55-49.08,135.1-98.18c5-3.63,4.38-1.8,2.43-7.83q-25.94-80.07-52-160.11c-.3-.91-.57-1.83-.85-2.75Z" transform="translate(-202.29 -201.89)"/>
             </svg>
-            Club premium
+            <span class="text">¡Inscríbete ya!</span>
+          </a>
+          <a href="quejas.html" class="btn-outline focus-ring">Buzón</a>
+        </div>
+      </div>
+
+      <!-- Right: Showcase card -->
+      <div class="hero-showcase" data-animate data-delay="2">
+        <img src="https://t4.ftcdn.net/jpg/06/22/76/51/360_F_622765199_tdzHcj1stmJL8sDeR89rpoo6NQk4MbYy.jpg" alt="Entrenamiento en Lion Fitness" loading="lazy" />
+        <div class="hero-showcase-overlay" aria-hidden="true"></div>
+        <div class="hero-showcase-badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3L14.47 8.03L20 9.05L16 13.11L16.94 18.95L12 16.2L7.06 18.95L8 13.11L4 9.05L9.53 8.03L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Club Premium
+        </div>
+        <div class="hero-showcase-footer">
+          <p style="font-family:'Anton',sans-serif;font-size:1.5rem;letter-spacing:.08em;text-transform:uppercase;color:#fff;margin-bottom:5px;">Indoor Cycling</p>
+          <p style="font-size:.85rem;color:rgba(255,255,255,.6);line-height:1.6;">Salas con espejos interactivos, luces con sensores de movimiento y playlists sincrónicas que pulsan al ritmo de tu corazón.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;z-index:2;opacity:.4;" aria-hidden="true">
+      <span style="font-size:.58rem;text-transform:uppercase;letter-spacing:.4em;color:rgba(255,255,255,.5);">Scroll</span>
+      <svg width="14" height="18" viewBox="0 0 14 18" fill="none" style="animation:bounce 1.8s ease-in-out infinite;color:rgba(255,255,255,.4);">
+        <path d="M7 1V13M7 13L2 8M7 13L12 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ===== STATS BAR ===== -->
+  <div class="stats-bar" role="region" aria-label="Datos de Lion Fitness">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <span class="stat-number">500+</span>
+        <span class="stat-label">Miembros Activos</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">6</span>
+        <span class="stat-label">Áreas Exclusivas</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">17h</span>
+        <span class="stat-label">Abierto Cada Día</span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- ===== SERVICES ===== -->
+    <section id="servicios" style="padding: 5rem 1.5rem;" class="sm:py-28 sm:px-12">
+      <div style="max-width:1400px;margin:0 auto;">
+        <div style="text-align:center;margin-bottom:4rem;display:flex;flex-direction:column;align-items:center;gap:1rem;" data-animate>
+          <span class="section-label">Lo que ofrecemos</span>
+          <h2 class="section-title" style="font-size:clamp(2.5rem,7vw,4.5rem);color:#fff;">Nuestros Servicios</h2>
+          <p style="color:var(--text-muted);max-width:480px;font-size:1rem;">Descubre todo lo que Lion Fitness tiene para ti</p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem;">
+          <div class="service-card" data-animate data-delay="1">
+            <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74?auto=format&fit=crop&w=600&q=80" alt="Zona de saltos y rebotes" loading="lazy" />
+            <div class="service-card-overlay" aria-hidden="true"></div>
+            <div class="service-card-content">
+              <p class="service-card-title">Zona de saltos y rebotes</p>
+              <div class="service-card-bar" aria-hidden="true"></div>
+            </div>
           </div>
-          <div class="hero-showcase__meta">
-            <span>Indoor Cycling</span>
-            <p>Salas con espejos interactivos, luces con sensores de movimiento y playlists sincrónicas que pulsan al ritmo de tu corazón.</p>
+
+          <div class="service-card" data-animate data-delay="2">
+            <img src="https://images.unsplash.com/photo-1579758682665-3a149dd8d0c6?auto=format&fit=crop&w=600&q=80" alt="Área de cardio" loading="lazy" />
+            <div class="service-card-overlay" aria-hidden="true"></div>
+            <div class="service-card-content">
+              <p class="service-card-title">Área de cardio</p>
+              <div class="service-card-bar" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <div class="service-card" data-animate data-delay="3">
+            <img src="https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=600&q=80" alt="Indoor Cycling" loading="lazy" />
+            <div class="service-card-overlay" aria-hidden="true"></div>
+            <div class="service-card-content">
+              <p class="service-card-title">Indoor Cycling</p>
+              <div class="service-card-bar" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <div class="service-card" data-animate data-delay="4">
+            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80" alt="Clases de Zumba" loading="lazy" />
+            <div class="service-card-overlay" aria-hidden="true"></div>
+            <div class="service-card-content">
+              <p class="service-card-title">Clases de Zumba</p>
+              <div class="service-card-bar" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <div class="service-card" data-animate data-delay="5">
+            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80" alt="Cafetería saludable" loading="lazy" />
+            <div class="service-card-overlay" aria-hidden="true"></div>
+            <div class="service-card-content">
+              <p class="service-card-title">Cafetería saludable</p>
+              <div class="service-card-bar" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <div class="service-card" data-animate data-delay="6">
+            <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=600&q=80" alt="Baños y regaderas" loading="lazy" />
+            <div class="service-card-overlay" aria-hidden="true"></div>
+            <div class="service-card-content">
+              <p class="service-card-title">Baños &amp; Regaderas</p>
+              <div class="service-card-bar" aria-hidden="true"></div>
+            </div>
           </div>
         </div>
       </div>
     </section>
-  </header>
 
-  <main class="relative z-10">
-    <!-- Nuestros Servicios Section -->
-    <section id="servicios" class="px-6 sm:px-12 py-10 sm:py-14">
-      <div class="section-divider"></div>
-      <div class="flex flex-col items-center text-center gap-3 sm:gap-4 mb-10">
-        <h2 class="section-title text-4xl sm:text-6xl font-bold tracking-[0.08em] uppercase text-black">
-          Nuestros Servicios
-        </h2>
-        <p class="max-w-2xl text-base sm:text-lg text-black/80 font-semibold">Descubre todo lo que Lion Fitness tiene para ti</p>
+    <!-- ===== TESTIMONIALS ===== -->
+    <section id="testimonios" style="padding:5rem 1.5rem;" class="sm:py-28 sm:px-12">
+      <div style="max-width:1400px;margin:0 auto;">
+        <div style="text-align:center;margin-bottom:4rem;display:flex;flex-direction:column;align-items:center;gap:1rem;" data-animate>
+          <span class="section-label">Lo que dicen</span>
+          <h2 class="section-title" style="font-size:clamp(2.5rem,7vw,4.5rem);color:#fff;">Testimonios</h2>
+          <p style="color:var(--text-muted);max-width:520px;font-size:1rem;">Historias reales que muestran cómo el rugido interior se enciende con nuestro Gym.</p>
+          <p style="font-size:.8rem;text-transform:uppercase;letter-spacing:.35em;font-weight:700;color:var(--gold);">¿Y tú para cuándo?</p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem;">
+
+          <article class="testimonial-card" data-animate data-delay="1">
+            <div class="testimonial-quote" aria-hidden="true">&ldquo;</div>
+            <p class="testimonial-text">El estudio de cycling tiene un mapeo de luces que te transporta. Nunca había sentido tanta energía en un gimnasio.</p>
+            <div class="t-divider" aria-hidden="true"></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <p class="testimonial-author-name">Ana López</p>
+              <span aria-label="5 estrellas">
+                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+              </span>
+            </div>
+          </article>
+
+          <article class="testimonial-card" data-animate data-delay="2">
+            <div class="testimonial-quote" aria-hidden="true">&ldquo;</div>
+            <p class="testimonial-text">Lion Fitness combina lujo con resultados. El coaching personalizado era exactamente lo que necesitaba para alcanzar mis metas.</p>
+            <div class="t-divider" aria-hidden="true"></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <p class="testimonial-author-name">Diego Martínez</p>
+              <span aria-label="5 estrellas">
+                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+              </span>
+            </div>
+          </article>
+
+          <article class="testimonial-card" data-animate data-delay="3">
+            <div class="testimonial-quote" aria-hidden="true">&ldquo;</div>
+            <p class="testimonial-text">Me encanta la vista al hacer cardio. Las instalaciones son impecables y el ambiente es motivador todos los días.</p>
+            <div class="t-divider" aria-hidden="true"></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <p class="testimonial-author-name">Valeria González</p>
+              <span aria-label="5 estrellas">
+                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+              </span>
+            </div>
+          </article>
+
+          <article class="testimonial-card" data-animate data-delay="4">
+            <div class="testimonial-quote" aria-hidden="true">&ldquo;</div>
+            <p class="testimonial-text">Super atentos todas las personas y muy amables. El equipo de Lion Fitness te hace sentir como en familia desde el primer día.</p>
+            <div class="t-divider" aria-hidden="true"></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <p class="testimonial-author-name">José Ávila</p>
+              <span aria-label="5 estrellas">
+                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+              </span>
+            </div>
+          </article>
+
+          <article class="testimonial-card" data-animate data-delay="5">
+            <div class="testimonial-quote" aria-hidden="true">&ldquo;</div>
+            <p class="testimonial-text">Las clases de Zumba son increíbles. La instructora tiene una energía contagiosa que te motiva a dar lo mejor en cada sesión.</p>
+            <div class="t-divider" aria-hidden="true"></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <p class="testimonial-author-name">María Fernández</p>
+              <span aria-label="5 estrellas">
+                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+              </span>
+            </div>
+          </article>
+
+          <article class="testimonial-card" data-animate data-delay="6">
+            <div class="testimonial-quote" aria-hidden="true">&ldquo;</div>
+            <p class="testimonial-text">Desde que entreno aquí, mi vida cambió completamente. He mejorado mi fuerza, resistencia y sobre todo mi confianza personal.</p>
+            <div class="t-divider" aria-hidden="true"></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <p class="testimonial-author-name">Roberto Sánchez</p>
+              <span aria-label="5 estrellas">
+                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+              </span>
+            </div>
+          </article>
+
+          <article class="testimonial-card" data-animate data-delay="1">
+            <div class="testimonial-quote" aria-hidden="true">&ldquo;</div>
+            <p class="testimonial-text">El área de pesas está perfectamente equipada con máquinas de última generación. Un verdadero paraíso para los amantes del fitness.</p>
+            <div class="t-divider" aria-hidden="true"></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <p class="testimonial-author-name">Carmen Ruiz</p>
+              <span aria-label="5 estrellas">
+                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+              </span>
+            </div>
+          </article>
+
+          <article class="testimonial-card" data-animate data-delay="2">
+            <div class="testimonial-quote" aria-hidden="true">&ldquo;</div>
+            <p class="testimonial-text">Lo mejor de Lion es el ambiente. Todos se apoyan y motivan mutuamente. Es más que un gym, es una comunidad de leones.</p>
+            <div class="t-divider" aria-hidden="true"></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <p class="testimonial-author-name">Luis Mendoza</p>
+              <span aria-label="5 estrellas">
+                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+              </span>
+            </div>
+          </article>
+
+        </div>
       </div>
-      <div class="services-scroll-container">
-        <div class="services-scroll-track">
-          <!-- Service 1: Jumping extremo -->
-          <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74?auto=format&fit=crop&w=400&q=80" alt="Zona de saltos y rebotes" class="service-card-image" loading="lazy" />
-            <div class="service-card-content">
-              <p class="service-heading" data-text="Zona de saltos y rebotes">Zona de saltos y rebotes</p>
-            </div>
+    </section>
+
+    <!-- ===== LOCATION ===== -->
+    <section id="ubicacion" style="padding:5rem 1.5rem;" class="sm:py-28 sm:px-12">
+      <div style="max-width:1400px;margin:0 auto;">
+        <div style="text-align:center;margin-bottom:4rem;display:flex;flex-direction:column;align-items:center;gap:1rem;" data-animate>
+          <span class="section-label">Encuéntranos</span>
+          <h2 class="section-title" style="font-size:clamp(2.5rem,7vw,4.5rem);color:#fff;">Ubicación</h2>
+          <p style="color:var(--text-muted);max-width:400px;font-size:1rem;">Carretera Zitácuaro-Huetamo Km 1</p>
+        </div>
+
+        <div style="display:grid;gap:2rem;align-items:start;" class="lg:grid-cols-2">
+          <!-- Map -->
+          <div class="map-frame" data-animate>
+            <iframe
+              title="Mapa Lion Fitness"
+              width="100%" height="500"
+              loading="lazy" allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.94452966147!2d-100.36054308462729!3d19.436119045813845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI2JzA5LjMiTiAxMDDCsDIxJzMxLjAiVw!5e0!3m2!1ses!2smx!4v1700000000000"
+              style="border:none;display:block;">
+            </iframe>
           </div>
 
-          <!-- Service 2: Cardio 360° -->
-          <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1579758682665-3a149dd8d0c6?auto=format&fit=crop&w=400&q=80" alt="Área de cardio" class="service-card-image" loading="lazy" />
-            <div class="service-card-content">
-              <p class="service-heading" data-text="Área de cardio">Área de cardio</p>
+          <!-- Info panel -->
+          <div class="info-panel" data-animate data-delay="2">
+            <!-- Brand header -->
+            <div style="display:flex;align-items:center;gap:1rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border);margin-bottom:0;">
+              <div class="footer-logo-ring" style="width:52px;height:52px;">
+                <img src="./lionlogo.png" alt="Logo Lion Fitness" style="width:100%;height:100%;object-fit:contain;border-radius:50%;" loading="lazy" />
+              </div>
+              <div>
+                <p style="font-family:'Anton',sans-serif;font-size:1.15rem;letter-spacing:.06em;color:#fff;">LION FITNESS</p>
+                <p style="font-size:.8rem;color:var(--text-muted);">Zitácuaro, Michoacán</p>
+              </div>
             </div>
-          </div>
 
-          <!-- Service 3: Neon ride -->
-          <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=400&q=80" alt="Indoor Cycling" class="service-card-image" loading="lazy" />
-            <div class="service-card-content">
-              <p class="service-heading" data-text="Indoor Cycling">Indoor Cycling</p>
+            <!-- Address -->
+            <div class="info-row">
+              <div class="info-icon-wrap">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+              </div>
+              <div>
+                <p style="font-weight:600;font-size:.85rem;color:#fff;margin-bottom:4px;">Dirección</p>
+                <p style="font-size:.85rem;color:var(--text-muted);">Carretera Zitácuaro-Huetamo Km 1</p>
+                <p style="font-size:.85rem;color:var(--text-muted);">Curva La Mangana · Zitácuaro, Mich.</p>
+              </div>
             </div>
-          </div>
 
-          <!-- Service 4: Ritmo tribal -->
-          <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=400&q=80" alt="Clases de Zumba" class="service-card-image" loading="lazy" />
-            <div class="service-card-content">
-              <p class="service-heading" data-text="Clases de Zumba">Clases de Zumba</p>
+            <!-- Hours -->
+            <div class="info-row">
+              <div class="info-icon-wrap">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M12 7V12L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div style="flex:1;">
+                <p style="font-weight:600;font-size:.85rem;color:#fff;margin-bottom:8px;">Horarios</p>
+                <div class="hours-line">
+                  <span class="hours-line-label">Lunes a Viernes</span>
+                  <span class="hours-line-time">5:00 AM – 10:00 PM</span>
+                </div>
+                <div class="hours-line">
+                  <span class="hours-line-label">Sábado y Domingo</span>
+                  <span class="hours-line-time">7:00 AM – 2:00 PM</span>
+                </div>
+                <!-- Live status -->
+                <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+                  <span id="status-pill" class="status-pill" style="background:transparent;border-color:transparent;">
+                    <span class="status-dot" id="status-dot"></span>
+                    <span id="status-text"></span>
+                  </span>
+                  <span id="status-time" style="font-size:.75rem;color:var(--text-muted);"></span>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <!-- Service 5: Fuel bar -->
-          <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80" alt="Cafetería saludable" class="service-card-image" loading="lazy" />
-            <div class="service-card-content">
-              <p class="service-heading" data-text="Cafetería saludable">Cafetería saludable</p>
+            <!-- Phone -->
+            <div class="info-row">
+              <div class="info-icon-wrap">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
+                </svg>
+              </div>
+              <div>
+                <p style="font-weight:600;font-size:.85rem;color:#fff;margin-bottom:4px;">Teléfono / WhatsApp</p>
+                <a href="https://wa.me/527151249436" style="font-size:.85rem;color:var(--gold);" class="focus-ring" target="_blank" rel="noopener">+52 715 124 9436</a>
+              </div>
             </div>
-          </div>
 
-          <!-- Service 6: Ritual Final -->
-          <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=400&q=80" alt="Baños & regaderas" class="service-card-image" loading="lazy" />
-            <div class="service-card-content">
-              <p class="service-heading" data-text="Baños & regaderas">Baños & regaderas</p>
-            </div>
-          </div>
-
-          <!-- Duplicate cards for infinite loop effect -->
-          <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74?auto=format&fit=crop&w=400&q=80" alt="Zona de saltos y rebotes" class="service-card-image" loading="lazy" />
-            <div class="service-card-content">
-              <p class="service-heading" data-text="Zona de saltos y rebotes">Zona de saltos y rebotes</p>
-            </div>
-          </div>
-
-          <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1579758682665-3a149dd8d0c6?auto=format&fit=crop&w=400&q=80" alt="Área de cardio" class="service-card-image" loading="lazy" />
-            <div class="service-card-content">
-              <p class="service-heading" data-text="Área de cardio">Área de cardio</p>
-            </div>
-          </div>
-
-          <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=400&q=80" alt="Indoor Cycling" class="service-card-image" loading="lazy" />
-            <div class="service-card-content">
-              <p class="service-heading" data-text="Indoor Cycling">Indoor Cycling</p>
-            </div>
-          </div>
-
-          <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=400&q=80" alt="Clases de Zumba" class="service-card-image" loading="lazy" />
-            <div class="service-card-content">
-              <p class="service-heading" data-text="Clases de Zumba">Clases de Zumba</p>
-            </div>
-          </div>
-
-          <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80" alt="Cafetería saludable" class="service-card-image" loading="lazy" />
-            <div class="service-card-content">
-              <p class="service-heading" data-text="Cafetería saludable">Cafetería saludable</p>
-            </div>
-          </div>
-
-          <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=400&q=80" alt="Baños & regaderas" class="service-card-image" loading="lazy" />
-            <div class="service-card-content">
-              <p class="service-heading" data-text="Baños & regaderas">Baños & regaderas</p>
+            <!-- Social links -->
+            <div class="info-row" style="padding-bottom:0;border-bottom:none;">
+              <div class="info-icon-wrap">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M17 2H7C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5z" stroke="currentColor" stroke-width="1.5"/>
+                  <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
+                  <circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/>
+                </svg>
+              </div>
+              <div>
+                <p style="font-weight:600;font-size:.85rem;color:#fff;margin-bottom:10px;">Síguenos</p>
+                <div style="display:flex;gap:.75rem;">
+                  <a href="https://www.instagram.com/lionfitnesszit/" target="_blank" rel="noopener" class="social-btn focus-ring" aria-label="Instagram de Lion Fitness">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="currentColor" stroke-width="1.5"/>
+                      <path d="M16.5 12c0 2.49-2.01 4.5-4.5 4.5S7.5 14.49 7.5 12 9.51 7.5 12 7.5s4.5 2.01 4.5 4.5z" stroke="currentColor" stroke-width="1.5"/>
+                      <circle cx="17" cy="7" r="1" fill="currentColor"/>
+                    </svg>
+                  </a>
+                  <a href="https://www.facebook.com/profile.php?id=61583091388035" target="_blank" rel="noopener" class="social-btn focus-ring" aria-label="Facebook de Lion Fitness">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M13.5 21h-3C9.67 21 9 20.33 9 19.5v-6H7.5C6.67 13.5 6 12.83 6 12v-1.5C6 9.67 6.67 9 7.5 9H9V7c0-2.21 1.79-4 4-4h3.5C17.33 3 18 3.67 18 4.5V6c0 .83-.67 1.5-1.5 1.5H14.5c-.28 0-.5.22-.5.5V9H16.5C17.33 9 18 9.67 18 10.5l-.75 2.25c-.24.72-.91 1.25-1.68 1.25H14v5.5c0 .83-.67 1.5-1.5 1.5z" fill="currentColor"/>
+                    </svg>
+                  </a>
+                  <a href="https://www.tiktok.com/@lionfitnesszit" target="_blank" rel="noopener" class="social-btn focus-ring" aria-label="TikTok de Lion Fitness">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M14.75 4.25c.79 1.12 1.97 1.9 3.3 2.17v2.51c-1.09-.1-2.15-.46-3.1-1.03v6.35c0 2.65-2.15 4.8-4.8 4.8s-4.8-2.15-4.8-4.8 2.15-4.8 4.8-4.8c.27 0 .54.02.8.07v2.61c-.25-.08-.52-.12-.8-.12-1.15 0-2.08.93-2.08 2.08s.93 2.08 2.08 2.08 2.09-.93 2.09-2.08V4.25h2.51z" fill="currentColor"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="testimonios" class="px-6 sm:px-12 py-10 sm:py-14">
-      <div class="section-divider"></div>
-      <div class="flex flex-col items-center text-center gap-3 sm:gap-4 mb-10">
-        <h2 class="section-title text-4xl sm:text-6xl font-bold tracking-[0.08em] uppercase text-black">
-          Testimonios
+    <!-- ===== CTA SECTION ===== -->
+    <section id="cta" style="padding:5rem 1.5rem;" class="sm:py-24 sm:px-12">
+      <div style="max-width:800px;margin:0 auto;text-align:center;position:relative;z-index:1;">
+        <div style="display:flex;justify-content:center;margin-bottom:1.5rem;" data-animate>
+          <span class="section-label">¿Estás listo?</span>
+        </div>
+        <h2 class="section-title" style="font-size:clamp(3rem,10vw,5.5rem);color:#fff;margin-bottom:1rem;" data-animate data-delay="1">
+          ¿Listo para<br /><span style="color:var(--gold);">rugir?</span>
         </h2>
-        <p class="max-w-2xl text-base sm:text-lg text-black/80 font-semibold">Historias reales que muestran cómo el rugido interior se enciende con nuestro Gym, ellos ya tomaron la decisión.</p>
-        <p class="text-base sm:text-lg uppercase tracking-[0.3em] font-bold text-black/90">¿Y TÚ PARA CUÁNDO?</p>
-      </div>
-      <div class="testimonial-track" role="list">
-        <article class="card" role="listitem">
-          <div class="card-name">Testimonio</div>
-          <div class="quote">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307">
-              <path fill="currentColor" d="M302.258 176.221C320.678 176.221 329.889 185.432 329.889 203.853V278.764C329.889 297.185 320.678 306.395 302.258 306.395H231.031C212.61 306.395 203.399 297.185 203.399 278.764V203.853C203.399 160.871 207.902 123.415 216.908 91.4858C226.323 59.1472 244.539 30.902 271.556 6.75027C280.562 -1.02739 288.135 -2.05076 294.275 3.68014L321.906 29.4692C328.047 35.2001 326.614 42.1591 317.608 50.3461C303.69 62.6266 292.228 80.4334 283.223 103.766C274.626 126.69 270.328 150.842 270.328 176.221H302.258ZM99.629 176.221C118.05 176.221 127.26 185.432 127.26 203.853V278.764C127.26 297.185 118.05 306.395 99.629 306.395H28.402C9.98126 306.395 0.770874 297.185 0.770874 278.764V203.853C0.770874 160.871 5.27373 123.415 14.2794 91.4858C23.6945 59.1472 41.9106 30.902 68.9277 6.75027C77.9335 -1.02739 85.5064 -2.05076 91.6467 3.68014L119.278 29.4692C125.418 35.2001 123.985 42.1591 114.98 50.3461C101.062 62.6266 89.6 80.4334 80.5942 103.766C71.9979 126.69 67.6997 150.842 67.6997 176.221H99.629Z"></path>
+        <p style="color:var(--text-muted);font-size:1.05rem;max-width:480px;margin:0 auto 2.5rem;line-height:1.7;" data-animate data-delay="2">
+          Únete a nuestra comunidad de leones. Tu transformación comienza hoy.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;" data-animate data-delay="3">
+          <a href="#ubicacion" class="lion-btn lion-btn-lg focus-ring" aria-label="Ver ubicación para inscribirse">
+            <svg class="Layer" viewBox="0 0 1095.66 1095.63" aria-hidden="true">
+              <path class="cls-1" d="M1298,749.62c.4,300.41-243,548-548.1,547.9C446.23,1297.4,201.92,1051.2,202.29,749c.37-301.52,244.49-547.41,548.34-547.12C1055.43,202.18,1298.25,449.6,1298,749.62Z" transform="translate(-202.29 -201.89)"/>
+              <path class="cls-2" d="M1285.89,749.79c-.25,297.07-241.24,535.86-536.12,535.66-296.34-.21-537-241.72-535.29-539,1.68-293.16,240.83-534.18,539.15-532.37C1046.8,215.84,1285.62,453.88,1285.89,749.79Z" transform="translate(-202.29 -201.89)"/>
+              <path class="cls-3" d="M1195.29,749.56c.54,244.73-198.67,446.2-446.87,445.33C503.27,1194,304,994.53,304.93,748c.91-244.52,199.12-443.08,444.39-443.49C997.43,304,1195.74,505.59,1195.29,749.56Z" transform="translate(-202.29 -201.89)"/>
+              <path class="cls-4" d="M1097.23,749.87c.22,190.31-154.42,347.43-348,346.92-192-.5-346.48-156.44-346.17-347.7C403.33,558,558.18,402,751.08,402.55,944.62,403.09,1097.69,560.56,1097.23,749.87Z" transform="translate(-202.29 -201.89)"/>
+              <path class="cls-5" d="M1006.72,744.28c2.81,143.23-110.17,257.35-247.42,261.9C613.15,1011,498.22,895.93,493.71,758.88,488.93,613.71,603,498,740.69,493.28,886.73,488.24,1004,603.87,1006.72,744.28Z" transform="translate(-202.29 -201.89)"/>
+              <path class="cls-6" d="M607.55,553.77c5.13,3.72,10.28,7.42,15.4,11.15l124.12,90.24a8.57,8.57,0,0,1,1.2.84c1.26,1.27,2.35,1.09,3.77,0,6.36-4.74,12.82-9.35,19.24-14l118.23-85.89c1.07-.78,2.17-1.54,3.28-2.32.82,1.1,0,2-.27,2.77Q866.29,637.48,840,718.38c-1.11,3.42-1.13,3.42,1.81,5.56l136,98.81c1.17.86,2.33,1.74,3.79,2.83-1.48.73-2.79.45-4,.45q-84.07,0-168.16,0h-.73c-3.7,0-3.68,0-4.8,3.43q-26.1,80.4-52.23,160.78c-.4,1.21-.45,2.66-1.77,3.6L735,948.24q-19.34-59.52-38.68-119c-1-3.16-1-3.17-4.6-3.17q-84.27,0-168.53,0a10.57,10.57,0,0,1-4.24-.34,13.17,13.17,0,0,1,3.33-2.77q67.55-49.08,135.1-98.18c5-3.63,4.38-1.8,2.43-7.83q-25.94-80.07-52-160.11c-.3-.91-.57-1.83-.85-2.75Z" transform="translate(-202.29 -201.89)"/>
             </svg>
-          </div>
-          <div class="body-text">El estudio de cycling tiene un mapeo de luces que te transporta. Nunca había sentido tanta energía en un gimnasio.</div>
-          <div class="author">Ana López</div>
-        </article>
-        
-        <article class="card" role="listitem">
-          <div class="card-name">Testimonio</div>
-          <div class="quote">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307">
-              <path fill="currentColor" d="M302.258 176.221C320.678 176.221 329.889 185.432 329.889 203.853V278.764C329.889 297.185 320.678 306.395 302.258 306.395H231.031C212.61 306.395 203.399 297.185 203.399 278.764V203.853C203.399 160.871 207.902 123.415 216.908 91.4858C226.323 59.1472 244.539 30.902 271.556 6.75027C280.562 -1.02739 288.135 -2.05076 294.275 3.68014L321.906 29.4692C328.047 35.2001 326.614 42.1591 317.608 50.3461C303.69 62.6266 292.228 80.4334 283.223 103.766C274.626 126.69 270.328 150.842 270.328 176.221H302.258ZM99.629 176.221C118.05 176.221 127.26 185.432 127.26 203.853V278.764C127.26 297.185 118.05 306.395 99.629 306.395H28.402C9.98126 306.395 0.770874 297.185 0.770874 278.764V203.853C0.770874 160.871 5.27373 123.415 14.2794 91.4858C23.6945 59.1472 41.9106 30.902 68.9277 6.75027C77.9335 -1.02739 85.5064 -2.05076 91.6467 3.68014L119.278 29.4692C125.418 35.2001 123.985 42.1591 114.98 50.3461C101.062 62.6266 89.6 80.4334 80.5942 103.766C71.9979 126.69 67.6997 150.842 67.6997 176.221H99.629Z"></path>
-            </svg>
-          </div>
-          <div class="body-text">Lion Fitness combina lujo con resultados. El coaching personalizado era exactamente lo que necesitaba para alcanzar mis metas.</div>
-          <div class="author">Diego Martínez</div>
-        </article>
-        
-        <article class="card" role="listitem">
-          <div class="card-name">Testimonio</div>
-          <div class="quote">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307">
-              <path fill="currentColor" d="M302.258 176.221C320.678 176.221 329.889 185.432 329.889 203.853V278.764C329.889 297.185 320.678 306.395 302.258 306.395H231.031C212.61 306.395 203.399 297.185 203.399 278.764V203.853C203.399 160.871 207.902 123.415 216.908 91.4858C226.323 59.1472 244.539 30.902 271.556 6.75027C280.562 -1.02739 288.135 -2.05076 294.275 3.68014L321.906 29.4692C328.047 35.2001 326.614 42.1591 317.608 50.3461C303.69 62.6266 292.228 80.4334 283.223 103.766C274.626 126.69 270.328 150.842 270.328 176.221H302.258ZM99.629 176.221C118.05 176.221 127.26 185.432 127.26 203.853V278.764C127.26 297.185 118.05 306.395 99.629 306.395H28.402C9.98126 306.395 0.770874 297.185 0.770874 278.764V203.853C0.770874 160.871 5.27373 123.415 14.2794 91.4858C23.6945 59.1472 41.9106 30.902 68.9277 6.75027C77.9335 -1.02739 85.5064 -2.05076 91.6467 3.68014L119.278 29.4692C125.418 35.2001 123.985 42.1591 114.98 50.3461C101.062 62.6266 89.6 80.4334 80.5942 103.766C71.9979 126.69 67.6997 150.842 67.6997 176.221H99.629Z"></path>
-            </svg>
-          </div>
-          <div class="body-text">Me encanta la vista al hacer cardio. Las instalaciones son impecables y el ambiente es motivador todos los días.</div>
-          <div class="author">Valeria González</div>
-        </article>
-        
-        <article class="card" role="listitem">
-          <div class="card-name">Testimonio</div>
-          <div class="quote">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307">
-              <path fill="currentColor" d="M302.258 176.221C320.678 176.221 329.889 185.432 329.889 203.853V278.764C329.889 297.185 320.678 306.395 302.258 306.395H231.031C212.61 306.395 203.399 297.185 203.399 278.764V203.853C203.399 160.871 207.902 123.415 216.908 91.4858C226.323 59.1472 244.539 30.902 271.556 6.75027C280.562 -1.02739 288.135 -2.05076 294.275 3.68014L321.906 29.4692C328.047 35.2001 326.614 42.1591 317.608 50.3461C303.69 62.6266 292.228 80.4334 283.223 103.766C274.626 126.69 270.328 150.842 270.328 176.221H302.258ZM99.629 176.221C118.05 176.221 127.26 185.432 127.26 203.853V278.764C127.26 297.185 118.05 306.395 99.629 306.395H28.402C9.98126 306.395 0.770874 297.185 0.770874 278.764V203.853C0.770874 160.871 5.27373 123.415 14.2794 91.4858C23.6945 59.1472 41.9106 30.902 68.9277 6.75027C77.9335 -1.02739 85.5064 -2.05076 91.6467 3.68014L119.278 29.4692C125.418 35.2001 123.985 42.1591 114.98 50.3461C101.062 62.6266 89.6 80.4334 80.5942 103.766C71.9979 126.69 67.6997 150.842 67.6997 176.221H99.629Z"></path>
-            </svg>
-          </div>
-          <div class="body-text">Super atentos todas las personas y muy amables. El equipo de Lion Fitness te hace sentir como en familia desde el primer día.</div>
-          <div class="author">José Ávila</div>
-        </article>
-        
-        <article class="card" role="listitem">
-          <div class="card-name">Testimonio</div>
-          <div class="quote">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307">
-              <path fill="currentColor" d="M302.258 176.221C320.678 176.221 329.889 185.432 329.889 203.853V278.764C329.889 297.185 320.678 306.395 302.258 306.395H231.031C212.61 306.395 203.399 297.185 203.399 278.764V203.853C203.399 160.871 207.902 123.415 216.908 91.4858C226.323 59.1472 244.539 30.902 271.556 6.75027C280.562 -1.02739 288.135 -2.05076 294.275 3.68014L321.906 29.4692C328.047 35.2001 326.614 42.1591 317.608 50.3461C303.69 62.6266 292.228 80.4334 283.223 103.766C274.626 126.69 270.328 150.842 270.328 176.221H302.258ZM99.629 176.221C118.05 176.221 127.26 185.432 127.26 203.853V278.764C127.26 297.185 118.05 306.395 99.629 306.395H28.402C9.98126 306.395 0.770874 297.185 0.770874 278.764V203.853C0.770874 160.871 5.27373 123.415 14.2794 91.4858C23.6945 59.1472 41.9106 30.902 68.9277 6.75027C77.9335 -1.02739 85.5064 -2.05076 91.6467 3.68014L119.278 29.4692C125.418 35.2001 123.985 42.1591 114.98 50.3461C101.062 62.6266 89.6 80.4334 80.5942 103.766C71.9979 126.69 67.6997 150.842 67.6997 176.221H99.629Z"></path>
-            </svg>
-          </div>
-          <div class="body-text">Las clases de Zumba son increíbles. La instructora tiene una energía contagiosa que te motiva a dar lo mejor en cada sesión.</div>
-          <div class="author">María Fernández</div>
-        </article>
-        
-        <article class="card" role="listitem">
-          <div class="card-name">Testimonio</div>
-          <div class="quote">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307">
-              <path fill="currentColor" d="M302.258 176.221C320.678 176.221 329.889 185.432 329.889 203.853V278.764C329.889 297.185 320.678 306.395 302.258 306.395H231.031C212.61 306.395 203.399 297.185 203.399 278.764V203.853C203.399 160.871 207.902 123.415 216.908 91.4858C226.323 59.1472 244.539 30.902 271.556 6.75027C280.562 -1.02739 288.135 -2.05076 294.275 3.68014L321.906 29.4692C328.047 35.2001 326.614 42.1591 317.608 50.3461C303.69 62.6266 292.228 80.4334 283.223 103.766C274.626 126.69 270.328 150.842 270.328 176.221H302.258ZM99.629 176.221C118.05 176.221 127.26 185.432 127.26 203.853V278.764C127.26 297.185 118.05 306.395 99.629 306.395H28.402C9.98126 306.395 0.770874 297.185 0.770874 278.764V203.853C0.770874 160.871 5.27373 123.415 14.2794 91.4858C23.6945 59.1472 41.9106 30.902 68.9277 6.75027C77.9335 -1.02739 85.5064 -2.05076 91.6467 3.68014L119.278 29.4692C125.418 35.2001 123.985 42.1591 114.98 50.3461C101.062 62.6266 89.6 80.4334 80.5942 103.766C71.9979 126.69 67.6997 150.842 67.6997 176.221H99.629Z"></path>
-            </svg>
-          </div>
-          <div class="body-text">Desde que entreno aquí, mi vida cambió completamente. He mejorado mi fuerza, resistencia y sobre todo mi confianza personal.</div>
-          <div class="author">Roberto Sánchez</div>
-        </article>
-        
-        <article class="card" role="listitem">
-          <div class="card-name">Testimonio</div>
-          <div class="quote">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307">
-              <path fill="currentColor" d="M302.258 176.221C320.678 176.221 329.889 185.432 329.889 203.853V278.764C329.889 297.185 320.678 306.395 302.258 306.395H231.031C212.61 306.395 203.399 297.185 203.399 278.764V203.853C203.399 160.871 207.902 123.415 216.908 91.4858C226.323 59.1472 244.539 30.902 271.556 6.75027C280.562 -1.02739 288.135 -2.05076 294.275 3.68014L321.906 29.4692C328.047 35.2001 326.614 42.1591 317.608 50.3461C303.69 62.6266 292.228 80.4334 283.223 103.766C274.626 126.69 270.328 150.842 270.328 176.221H302.258ZM99.629 176.221C118.05 176.221 127.26 185.432 127.26 203.853V278.764C127.26 297.185 118.05 306.395 99.629 306.395H28.402C9.98126 306.395 0.770874 297.185 0.770874 278.764V203.853C0.770874 160.871 5.27373 123.415 14.2794 91.4858C23.6945 59.1472 41.9106 30.902 68.9277 6.75027C77.9335 -1.02739 85.5064 -2.05076 91.6467 3.68014L119.278 29.4692C125.418 35.2001 123.985 42.1591 114.98 50.3461C101.062 62.6266 89.6 80.4334 80.5942 103.766C71.9979 126.69 67.6997 150.842 67.6997 176.221H99.629Z"></path>
-            </svg>
-          </div>
-          <div class="body-text">El área de pesas está perfectamente equipada con máquinas de última generación. Es un verdadero paraíso para los amantes del fitness.</div>
-          <div class="author">Carmen Ruiz</div>
-        </article>
-        
-        <article class="card" role="listitem">
-          <div class="card-name">Testimonio</div>
-          <div class="quote">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 330 307">
-              <path fill="currentColor" d="M302.258 176.221C320.678 176.221 329.889 185.432 329.889 203.853V278.764C329.889 297.185 320.678 306.395 302.258 306.395H231.031C212.61 306.395 203.399 297.185 203.399 278.764V203.853C203.399 160.871 207.902 123.415 216.908 91.4858C226.323 59.1472 244.539 30.902 271.556 6.75027C280.562 -1.02739 288.135 -2.05076 294.275 3.68014L321.906 29.4692C328.047 35.2001 326.614 42.1591 317.608 50.3461C303.69 62.6266 292.228 80.4334 283.223 103.766C274.626 126.69 270.328 150.842 270.328 176.221H302.258ZM99.629 176.221C118.05 176.221 127.26 185.432 127.26 203.853V278.764C127.26 297.185 118.05 306.395 99.629 306.395H28.402C9.98126 306.395 0.770874 297.185 0.770874 278.764V203.853C0.770874 160.871 5.27373 123.415 14.2794 91.4858C23.6945 59.1472 41.9106 30.902 68.9277 6.75027C77.9335 -1.02739 85.5064 -2.05076 91.6467 3.68014L119.278 29.4692C125.418 35.2001 123.985 42.1591 114.98 50.3461C101.062 62.6266 89.6 80.4334 80.5942 103.766C71.9979 126.69 67.6997 150.842 67.6997 176.221H99.629Z"></path>
-            </svg>
-          </div>
-          <div class="body-text">Lo mejor de Lion es el ambiente. Todos se apoyan y motivan mutuamente. Es más que un gym, es una comunidad de leones.</div>
-          <div class="author">Luis Mendoza</div>
-        </article>
-      </div>
-    </section>
-
-    <section id="ubicacion" class="px-6 sm:px-12 py-10 sm:py-14">
-      <div class="section-divider"></div>
-      <div class="flex flex-col items-center text-center gap-3 sm:gap-4 mb-10">
-        <h2 class="section-title text-4xl sm:text-6xl font-bold tracking-[0.08em] uppercase text-black">
-          Ubicación
-        </h2>
-        <p class="max-w-2xl text-base sm:text-lg text-black/80 font-semibold">Carretera Zitácuaro-Huetamo Km 1</p>
-      </div>
-      <div class="map-container">
-        <iframe title="Mapa Lion Fitness" width="100%" height="420" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.94452966147!2d-100.36054308462729!3d19.436119045813845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI2JzA5LjMiTiAxMDDCsDIxJzMxLjAiVw!5e0!3m2!1ses!2smx!4v1700000000000"></iframe>
-        <div class="map-marker">
-          <!-- // LOGO: lionlogo.png -->
-          <img src="./lionlogo.png" alt="Logo Lion Fitness" loading="lazy" />
-          <div class="map-popup">
-            <p class="font-semibold uppercase tracking-[0.35em] text-xs">Horarios</p>
-            <p class="text-[0.75rem] text-neutral-700">Lunes a Domingo · 06:00 a 22:00</p>
-          </div>
+            <span class="text">¡Inscríbete ya!</span>
+          </a>
+          <a href="https://wa.me/527151249436" target="_blank" rel="noopener" class="btn-outline focus-ring" aria-label="Contactar por WhatsApp">WhatsApp</a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="relative px-6 sm:px-12 py-12 border-t-2 border-black/10 bg-gradient-to-b from-white via-gray-50 to-white text-black">
-    <div class="absolute inset-0 pointer-events-none opacity-20" aria-hidden="true">
-      <div class="h-full w-full bg-[radial-gradient(circle_at_top,_rgba(0,0,0,0.05),_transparent_60%)]"></div>
-    </div>
-    <div class="relative max-w-5xl mx-auto flex flex-col items-center text-center gap-8">
-      <div class="flex flex-col items-center gap-4">
-        <!-- // LOGO: lionlogo.png -->
-        <img src="./lionlogo.png" alt="Logo Lion Fitness" class="w-14 h-14 object-contain" loading="lazy" />
-        <div class="space-y-1">
-          <p class="uppercase text-xs tracking-[0.3em] font-medium">Carretera Zitácuaro-Huetamo Km 1</p>
-          <p class="uppercase text-xs tracking-[0.3em] font-medium">Curva La Mangana · Zitácuaro, Mich.</p>
+  <!-- ===== FOOTER ===== -->
+  <footer style="padding:3.5rem 1.5rem 2.5rem;">
+    <div style="max-width:1000px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:2rem;text-align:center;">
+
+      <!-- Logo + brand -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:1rem;">
+        <a href="#hero" class="footer-logo-ring focus-ring" aria-label="Lion Fitness – Inicio">
+          <img src="./lionlogo.png" alt="Logo Lion Fitness" style="width:100%;height:100%;object-fit:contain;border-radius:50%;" loading="lazy" />
+        </a>
+        <p style="font-family:'Anton',sans-serif;font-size:1.3rem;letter-spacing:.12em;color:#fff;">LION FITNESS</p>
+        <div style="display:flex;flex-direction:column;gap:3px;">
+          <p style="font-size:.72rem;text-transform:uppercase;letter-spacing:.3em;color:var(--text-muted);">Carretera Zitácuaro-Huetamo Km 1</p>
+          <p style="font-size:.72rem;text-transform:uppercase;letter-spacing:.3em;color:var(--text-muted);">Curva La Mangana · Zitácuaro, Mich.</p>
         </div>
       </div>
-      
-      <!-- Live Schedule Section -->
-      <div class="w-full max-w-md mx-auto border-2 border-black/10 rounded-2xl p-6 bg-white/80 backdrop-blur-sm">
-        <div class="text-center space-y-4">
-          <h3 class="uppercase text-sm tracking-[0.35em] font-semibold text-black">Horarios</h3>
-          <div class="space-y-2">
-            <div class="flex items-center justify-between text-sm">
-              <span class="text-black/70 font-medium">Lunes a Viernes</span>
-              <span class="text-black font-semibold">5:00 AM - 10:00 PM</span>
-            </div>
-            <div class="flex items-center justify-between text-sm">
-              <span class="text-black/70 font-medium">Sábado y Domingo</span>
-              <span class="text-black font-semibold">7:00 AM - 2:00 PM</span>
-            </div>
-          </div>
-          <div id="gym-status" class="mt-4 pt-4 border-t border-black/10">
-            <div class="flex items-center justify-center gap-2">
-              <span id="status-indicator" class="w-3 h-3 rounded-full"></span>
-              <span id="status-text" class="text-sm font-semibold uppercase tracking-[0.2em]"></span>
-            </div>
-            <p id="status-time" class="text-xs text-black/60 mt-2"></p>
-          </div>
+
+      <!-- Hours summary -->
+      <div style="background:var(--dark-3);border:1px solid var(--border);border-radius:14px;padding:1.5rem 2rem;width:100%;max-width:380px;">
+        <p style="font-size:.72rem;text-transform:uppercase;letter-spacing:.35em;font-weight:700;color:#fff;margin-bottom:.75rem;">Horarios</p>
+        <div class="hours-line" style="border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:8px;">
+          <span class="hours-line-label">Lunes a Viernes</span>
+          <span class="hours-line-time">5:00 AM – 10:00 PM</span>
+        </div>
+        <div class="hours-line">
+          <span class="hours-line-label">Sábado y Domingo</span>
+          <span class="hours-line-time">7:00 AM – 2:00 PM</span>
+        </div>
+        <!-- Status -->
+        <div style="margin-top:.875rem;padding-top:.875rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:center;gap:.5rem;">
+          <span class="status-dot" id="footer-status-dot" style="width:8px;height:8px;border-radius:50%;"></span>
+          <span id="footer-status-text" style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;"></span>
         </div>
       </div>
-      
-      <div class="flex items-center justify-center gap-8">
-        <a href="https://www.instagram.com/lionfitnesszit/" target="_blank" rel="noopener" class="focus-neon text-black/60 transition hover:text-black">
-          <span class="sr-only">Instagram</span>
-          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="currentColor" stroke-width="1.5" />
-            <path d="M16.5 11.9999C16.5 14.4852 14.4852 16.5 12 16.5C9.51472 16.5 7.5 14.4852 7.5 11.9999C7.5 9.51464 9.51472 7.49988 12 7.49988C14.4852 7.49988 16.5 9.51464 16.5 11.9999Z" stroke="currentColor" stroke-width="1.5" />
-            <circle cx="17" cy="7" r="1" fill="currentColor" />
+
+      <!-- Social links -->
+      <div style="display:flex;gap:.875rem;">
+        <a href="https://www.instagram.com/lionfitnesszit/" target="_blank" rel="noopener" class="social-btn focus-ring" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M16.5 12c0 2.49-2.01 4.5-4.5 4.5S7.5 14.49 7.5 12 9.51 7.5 12 7.5s4.5 2.01 4.5 4.5z" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="17" cy="7" r="1" fill="currentColor"/>
           </svg>
         </a>
-        <a href="https://www.facebook.com/profile.php?id=61583091388035" target="_blank" rel="noopener" class="focus-neon text-black/60 transition hover:text-black">
-          <span class="sr-only">Facebook</span>
-          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M13.5 21H10.5C9.67157 21 9 20.3284 9 19.5V13.5H7.5C6.67157 13.5 6 12.8284 6 12V10.5C6 9.67157 6.67157 9 7.5 9H9V7C9 4.79086 10.7909 3 13 3H16.5C17.3284 3 18 3.67157 18 4.5V6C18 6.82843 17.3284 7.5 16.5 7.5H14.5C14.2239 7.5 14 7.72386 14 8V9H16.5C17.3284 9 18 9.67157 18 10.5L17.25 12.75C17.0074 13.4748 16.3358 14 15.5695 14H14V19.5C14 20.3284 13.3284 21 12.5 21H13.5Z" fill="currentColor" />
+        <a href="https://www.facebook.com/profile.php?id=61583091388035" target="_blank" rel="noopener" class="social-btn focus-ring" aria-label="Facebook">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M13.5 21h-3C9.67 21 9 20.33 9 19.5v-6H7.5C6.67 13.5 6 12.83 6 12v-1.5C6 9.67 6.67 9 7.5 9H9V7c0-2.21 1.79-4 4-4h3.5C17.33 3 18 3.67 18 4.5V6c0 .83-.67 1.5-1.5 1.5H14.5c-.28 0-.5.22-.5.5V9H16.5C17.33 9 18 9.67 18 10.5l-.75 2.25c-.24.72-.91 1.25-1.68 1.25H14v5.5c0 .83-.67 1.5-1.5 1.5z" fill="currentColor"/>
           </svg>
         </a>
-        <a href="https://www.tiktok.com/@lionfitnesszit" target="_blank" rel="noopener" class="focus-neon text-black/60 transition hover:text-black">
-          <span class="sr-only">TikTok</span>
-          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M14.75 4.25C15.5373 5.37445 16.723 6.15339 18.046 6.42175V8.92925C16.9583 8.82629 15.8951 8.4715 14.95 7.8985V14.25C14.95 16.9025 12.8025 19.05 10.15 19.05C7.49751 19.05 5.34998 16.9025 5.34998 14.25C5.34998 11.5975 7.49751 9.44995 10.15 9.44995C10.4227 9.44995 10.6908 9.47404 10.9523 9.52035V12.1354C10.6984 12.0581 10.4318 12.0166 10.15 12.0166C8.99809 12.0166 8.06498 12.9497 8.06498 14.1016C8.06498 15.2535 8.99809 16.1866 10.15 16.1866C11.3018 16.1866 12.235 15.2535 12.235 14.1016V4.25H14.75Z" fill="currentColor" />
+        <a href="https://www.tiktok.com/@lionfitnesszit" target="_blank" rel="noopener" class="social-btn focus-ring" aria-label="TikTok">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M14.75 4.25c.79 1.12 1.97 1.9 3.3 2.17v2.51c-1.09-.1-2.15-.46-3.1-1.03v6.35c0 2.65-2.15 4.8-4.8 4.8s-4.8-2.15-4.8-4.8 2.15-4.8 4.8-4.8c.27 0 .54.02.8.07v2.61c-.25-.08-.52-.12-.8-.12-1.15 0-2.08.93-2.08 2.08s.93 2.08 2.08 2.08 2.09-.93 2.09-2.08V4.25h2.51z" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="quejas.html" class="social-btn focus-ring" aria-label="Buzón de quejas">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/>
           </svg>
         </a>
       </div>
-      <p class="text-[0.7rem] uppercase tracking-[0.4em] font-medium text-black/50">&copy; <span id="year"></span> Lion Fitness. Todos los rugidos reservados.</p>
+
+      <!-- Copyright -->
+      <p style="font-size:.65rem;text-transform:uppercase;letter-spacing:.4em;color:var(--text-dim);">
+        &copy; <span id="year"></span> Lion Fitness. Todos los rugidos reservados.
+      </p>
     </div>
   </footer>
 
-  <a class="whatsapp-bubble focus-neon" href="https://wa.me/527151249436" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <!-- ===== WHATSAPP ===== -->
+  <a class="whatsapp-btn focus-ring" href="https://wa.me/527151249436" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
     <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M27.5 16.5C27.5 22.5751 22.5751 27.5 16.5 27.5C14.4132 27.5 12.4452 26.9396 10.7375 25.9531L6.5 27.5L8.13281 23.3711C7.00938 21.5875 6.375 19.4948 6.375 17.25C6.375 11.1749 11.2999 6.25 17.375 6.25C23.4501 6.25 27.5 11.1749 27.5 16.5Z" stroke="currentColor" stroke-width="1.6" fill="currentColor" />
-      <path d="M13.8438 11.9375C13.6406 11.4625 13.1781 11.125 12.6313 11.125C12.0844 11.125 11.575 11.2313 11.2313 11.6813C10.8875 12.1313 9.9375 13.0875 9.9375 15.0375C9.9375 16.9875 11.3687 18.8438 11.575 19.1C11.7812 19.3562 13.9906 22.475 17.1188 23.5313C17.9156 23.7938 18.6156 24.0313 19.2938 24.0313C19.9719 24.0313 20.5469 23.8813 20.9625 23.4438C21.3781 23.0063 21.9125 22.2031 22.0531 21.6625C22.1938 21.1219 22.1938 20.7719 22.1188 20.6438C22.0438 20.5156 21.7313 20.3875 21.2188 20.1594C20.7062 19.9313 18.9219 19.0531 18.4719 18.8906C18.0219 18.7281 17.7125 18.6375 17.4125 19.0875C17.1125 19.5375 16.4688 20.3813 16.2375 20.6313C16.0062 20.8813 15.775 20.8813 15.4625 20.7531C15.15 20.625 14.1656 20.2813 13.0344 19.3375C11.9031 18.3938 11.1656 17.1656 10.9344 16.8531C10.7031 16.5406 10.8687 16.3625 10.9969 16.2344C11.1094 16.1219 11.2688 15.9156 11.3969 15.7781C11.525 15.6406 11.575 15.5563 11.6625 15.3813C11.75 15.2062 11.7062 15.0469 11.6469 14.9187C11.5875 14.7906 10.9781 13.2906 10.6594 12.5938Z" fill="#FFFFFF" />
+      <path d="M27.5 16.5C27.5 22.58 22.58 27.5 16.5 27.5C14.41 27.5 12.45 26.94 10.74 25.95L6.5 27.5L8.13 23.37C7.01 21.59 6.38 19.49 6.38 17.25C6.38 11.17 11.3 6.25 17.38 6.25C23.45 6.25 27.5 11.17 27.5 16.5Z" stroke="currentColor" stroke-width="1.6" fill="currentColor"/>
+      <path d="M13.84 11.94c-.2-.48-.66-.82-1.21-.82-.55 0-1.06.11-1.4.56-.34.45-1.29 1.4-1.29 3.35s1.43 3.86 1.64 4.11c.2.26 2.41 3.38 5.54 4.44.8.26 1.5.5 2.18.5.68 0 1.25-.15 1.67-.58.42-.44.95-1.24 1.09-1.78.14-.54.14-.89.06-1.02-.07-.13-.38-.26-.9-.5-.52-.23-2.31-1.11-2.76-1.27-.44-.16-.75-.07-1 .34-.25.41-.89 1.24-1.12 1.49-.23.25-.46.25-.77.09-.3-.12-1.28-.45-2.4-1.39-1.13-.93-1.87-2.16-2.1-2.47-.22-.32-.02-.5.14-.66.13-.13.3-.33.45-.5.13-.16.18-.27.27-.44.1-.18.04-.34-.03-.48z" fill="#0B0B0B"/>
     </svg>
   </a>
 
+  <!-- ===== SCRIPTS ===== -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.6/bundled/lenis.min.js" defer></script>
   <script defer>
     window.addEventListener('DOMContentLoaded', () => {
+      // Year
       const yearEl = document.getElementById('year');
-      if (yearEl) {
-        yearEl.textContent = new Date().getFullYear();
-      }
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-      // Navigation bar scroll behavior and active section highlighting
-      const nav = document.getElementById('mainNav');
-      const sections = document.querySelectorAll('section[id]');
-      const navLinks = document.querySelectorAll('.nav-link');
-      
-      // Configuration constants
-      const NAV_SCROLL_THRESHOLD = 100; // px to scroll before showing nav
-      const SECTION_OFFSET = 100; // px offset for section detection
+      // ── Navigation scroll + active section ──────────────────────────────────
+      const nav        = document.getElementById('mainNav');
+      const sections   = document.querySelectorAll('section[id]');
+      const navLinks   = document.querySelectorAll('.nav-link');
+      const SCROLL_THRESHOLD = 80;
+      const SECTION_OFFSET   = 110;
+      let sectionPositions   = [];
 
-      // Cache section positions for better performance
-      let sectionPositions = [];
-      
       function cacheSectionPositions() {
-        sectionPositions = Array.from(sections).map(section => ({
-          id: section.getAttribute('id'),
-          top: section.offsetTop - SECTION_OFFSET,
-          bottom: section.offsetTop + section.offsetHeight - SECTION_OFFSET
+        sectionPositions = Array.from(sections).map(s => ({
+          id:     s.getAttribute('id'),
+          top:    s.offsetTop - SECTION_OFFSET,
+          bottom: s.offsetTop + s.offsetHeight - SECTION_OFFSET
         }));
       }
 
-      function handleScroll() {
-        const currentScroll = window.pageYOffset;
-        
-        // Show/hide nav after scrolling down threshold
-        if (currentScroll > NAV_SCROLL_THRESHOLD) {
-          nav.classList.add('visible');
-        } else {
-          nav.classList.remove('visible');
-        }
-        
-        // Highlight active section
-        highlightActiveSection(currentScroll);
-      }
-
       function highlightActiveSection(scrollY) {
-        // Remove active class from all links first
-        navLinks.forEach(link => link.classList.remove('active'));
-        
-        // Find the currently visible section using cached positions
-        for (const sectionPos of sectionPositions) {
-          if (scrollY >= sectionPos.top && scrollY < sectionPos.bottom) {
-            // Find and activate the corresponding nav link
-            const activeLink = Array.from(navLinks).find(
-              link => link.getAttribute('href') === `#${sectionPos.id}`
-            );
-            if (activeLink) {
-              activeLink.classList.add('active');
-            }
-            break; // Exit once we find the active section
+        navLinks.forEach(l => l.classList.remove('active'));
+        for (const sp of sectionPositions) {
+          if (scrollY >= sp.top && scrollY < sp.bottom) {
+            const link = Array.from(navLinks).find(l => l.getAttribute('href') === `#${sp.id}`);
+            if (link) link.classList.add('active');
+            break;
           }
         }
       }
 
-      // Throttle scroll events for better performance
       let scrollTimeout;
       window.addEventListener('scroll', () => {
         if (!scrollTimeout) {
           scrollTimeout = setTimeout(() => {
-            handleScroll();
+            const y = window.pageYOffset;
+            nav.classList.toggle('visible', y > SCROLL_THRESHOLD);
+            highlightActiveSection(y);
             scrollTimeout = null;
-          }, 100);
+          }, 80);
         }
-      });
-      
-      // Recalculate positions on resize
+      }, { passive: true });
+
       window.addEventListener('resize', cacheSectionPositions);
-      
-      // Initial setup
       cacheSectionPositions();
       highlightActiveSection(window.pageYOffset);
 
-      // Live Gym Status Update
+      // ── Gym status ────────────────────────────────────────────────────────────
       function updateGymStatus() {
-        const now = new Date();
-        const day = now.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
-        const hours = now.getHours();
-        const minutes = now.getMinutes();
-        const currentTime = hours * 60 + minutes; // Convert to minutes for easier comparison
-        
-        const statusIndicator = document.getElementById('status-indicator');
-        const statusText = document.getElementById('status-text');
-        const statusTime = document.getElementById('status-time');
-        
-        if (!statusIndicator || !statusText || !statusTime) return;
-        
-        let isOpen = false;
-        let message = '';
-        
-        // Monday to Friday (day 1-5): 5:00 AM - 10:00 PM
+        const now        = new Date();
+        const day        = now.getDay();
+        const totalMins  = now.getHours() * 60 + now.getMinutes();
+        let isOpen       = false;
+        let message      = '';
+
         if (day >= 1 && day <= 5) {
-          const openTime = 5 * 60; // 5:00 AM in minutes
-          const closeTime = 22 * 60; // 10:00 PM in minutes
-          
-          if (currentTime >= openTime && currentTime < closeTime) {
+          const open = 5 * 60, close = 22 * 60;
+          if (totalMins >= open && totalMins < close) {
             isOpen = true;
-            const hoursLeft = Math.floor((closeTime - currentTime) / 60);
-            const minutesLeft = (closeTime - currentTime) % 60;
-            message = minutesLeft > 0 
-              ? `Cerramos en ${hoursLeft}h ${minutesLeft}m`
-              : `Cerramos en ${hoursLeft}h`;
-          } else if (currentTime < openTime) {
-            const minutesUntilOpen = openTime - currentTime;
-            const hoursUntil = Math.floor(minutesUntilOpen / 60);
-            const minsUntil = minutesUntilOpen % 60;
-            message = minsUntil > 0
-              ? `Abrimos en ${hoursUntil}h ${minsUntil}m`
-              : `Abrimos en ${hoursUntil}h`;
+            const diff = close - totalMins;
+            message = diff % 60 ? `Cerramos en ${Math.floor(diff/60)}h ${diff%60}m` : `Cerramos en ${Math.floor(diff/60)}h`;
+          } else if (totalMins < open) {
+            const diff = open - totalMins;
+            message = diff % 60 ? `Abrimos en ${Math.floor(diff/60)}h ${diff%60}m` : `Abrimos en ${Math.floor(diff/60)}h`;
           } else {
             message = 'Abrimos mañana a las 5:00 AM';
           }
-        }
-        // Saturday and Sunday (day 0 and 6): 7:00 AM - 2:00 PM
-        else if (day === 0 || day === 6) {
-          const openTime = 7 * 60; // 7:00 AM in minutes
-          const closeTime = 14 * 60; // 2:00 PM in minutes
-          
-          if (currentTime >= openTime && currentTime < closeTime) {
+        } else {
+          const open = 7 * 60, close = 14 * 60;
+          if (totalMins >= open && totalMins < close) {
             isOpen = true;
-            const hoursLeft = Math.floor((closeTime - currentTime) / 60);
-            const minutesLeft = (closeTime - currentTime) % 60;
-            message = minutesLeft > 0
-              ? `Cerramos en ${hoursLeft}h ${minutesLeft}m`
-              : `Cerramos en ${hoursLeft}h`;
-          } else if (currentTime < openTime) {
-            const minutesUntilOpen = openTime - currentTime;
-            const hoursUntil = Math.floor(minutesUntilOpen / 60);
-            const minsUntil = minutesUntilOpen % 60;
-            message = minsUntil > 0
-              ? `Abrimos en ${hoursUntil}h ${minsUntil}m`
-              : `Abrimos en ${hoursUntil}h`;
+            const diff = close - totalMins;
+            message = diff % 60 ? `Cerramos en ${Math.floor(diff/60)}h ${diff%60}m` : `Cerramos en ${Math.floor(diff/60)}h`;
+          } else if (totalMins < open) {
+            const diff = open - totalMins;
+            message = diff % 60 ? `Abrimos en ${Math.floor(diff/60)}h ${diff%60}m` : `Abrimos en ${Math.floor(diff/60)}h`;
           } else {
-            // Saturday closed -> opens Sunday at 7 AM
-            // Sunday closed -> opens Monday at 5 AM
-            if (day === 6) {
-              message = 'Abrimos domingo a las 7:00 AM';
-            } else {
-              message = 'Abrimos lunes a las 5:00 AM';
-            }
+            message = day === 6 ? 'Abrimos domingo a las 7:00 AM' : 'Abrimos lunes a las 5:00 AM';
           }
         }
-        
-        // Update UI
-        if (isOpen) {
-          statusIndicator.style.backgroundColor = '#10b981'; // Green
-          statusIndicator.style.boxShadow = '0 0 10px rgba(16, 185, 129, 0.5)';
-          statusText.textContent = 'Abierto Ahora';
-          statusText.style.color = '#10b981';
-        } else {
-          statusIndicator.style.backgroundColor = '#ef4444'; // Red
-          statusIndicator.style.boxShadow = '0 0 10px rgba(239, 68, 68, 0.5)';
-          statusText.textContent = 'Cerrado';
-          statusText.style.color = '#ef4444';
+
+        const green = '#10b981', red = '#ef4444';
+        const color = isOpen ? green : red;
+        const label = isOpen ? 'Abierto Ahora' : 'Cerrado';
+        const glow  = isOpen ? 'rgba(16,185,129,0.5)' : 'rgba(239,68,68,0.5)';
+
+        ['status-dot', 'footer-status-dot'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) { el.style.backgroundColor = color; el.style.boxShadow = `0 0 8px ${glow}`; }
+        });
+        ['status-text', 'footer-status-text'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) { el.textContent = label; el.style.color = color; }
+        });
+
+        const statusPill = document.getElementById('status-pill');
+        if (statusPill) {
+          const bg  = isOpen ? 'rgba(16,185,129,.1)'  : 'rgba(239,68,68,.1)';
+          const bdr = isOpen ? 'rgba(16,185,129,.3)'  : 'rgba(239,68,68,.3)';
+          statusPill.style.background    = bg;
+          statusPill.style.borderColor   = bdr;
+          statusPill.style.color         = color;
         }
-        
-        statusTime.textContent = message;
+
+        const st = document.getElementById('status-time');
+        if (st) st.textContent = message;
       }
-      
-      // Update immediately and then every minute
       updateGymStatus();
-      setInterval(updateGymStatus, 60000); // Update every 60 seconds
+      setInterval(updateGymStatus, 60000);
 
+      // ── Cursor halo ───────────────────────────────────────────────────────────
       const halo = document.querySelector('.cursor-halo');
-      const cards = document.querySelectorAll('.experience-card');
-      const ctas = document.querySelectorAll('.neon-btn');
-
-      // Ensure only the horizontal testimonial rail stays on the page
-      document.querySelectorAll('section').forEach((section) => {
-        const heading = section.querySelector('.section-title');
-        if (!heading) return;
-
-        if (heading.textContent.trim().toLowerCase() === 'voces de la manada' && section.id !== 'testimonios') {
-          section.remove();
-        }
-      });
-
-      // // LUXURY EFFECT: Cursor halo follow
-      document.addEventListener('pointermove', (e) => {
-        halo.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-        document.documentElement.style.setProperty('--grad-x', `${e.clientX / window.innerWidth * 100}%`);
-        document.documentElement.style.setProperty('--grad-y', `${e.clientY / window.innerHeight * 100}%`);
-      });
-
-      cards.forEach((card) => {
-        card.addEventListener('mouseenter', () => halo.classList.add('is-card'));
-        card.addEventListener('mouseleave', () => halo.classList.remove('is-card'));
-      });
-
-      ctas.forEach((cta) => {
-        cta.addEventListener('mouseenter', () => halo.classList.add('is-cta'));
-        cta.addEventListener('mouseleave', () => halo.classList.remove('is-cta'));
-      });
-
-      window.addEventListener('load', () => {
-        setTimeout(() => {
-          // Cards loaded
-        }, 250);
-      });
-
-      window.addEventListener('resize', () => {
-        // Handle resize
-      });
-
-      // // LUXURY EFFECT: Lenis smooth scroll
-      const lenis = new Lenis({
-        duration: 1.2,
-        smoothWheel: true,
-        smoothTouch: false
-      });
-
-      function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
+      if (halo) {
+        document.addEventListener('pointermove', e => {
+          halo.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+        });
+        document.querySelectorAll('.service-card, .testimonial-card, .lion-btn, .btn-outline, .social-btn').forEach(el => {
+          el.addEventListener('mouseenter', () => halo.classList.add('is-hover'));
+          el.addEventListener('mouseleave', () => halo.classList.remove('is-hover'));
+        });
       }
+
+      // ── Scroll animations (IntersectionObserver) ──────────────────────────────
+      const animEls = document.querySelectorAll('[data-animate]');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      animEls.forEach(el => observer.observe(el));
+
+      // Animate hero elements immediately
+      document.querySelectorAll('#hero [data-animate]').forEach(el => el.classList.add('animated'));
+
+      // ── Lenis smooth scroll ───────────────────────────────────────────────────
+      const lenis = new Lenis({ duration: 1.2, smoothWheel: true, smoothTouch: false });
+      function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
       requestAnimationFrame(raf);
 
-      const scrollToLinks = document.querySelectorAll('a[href^="#"]');
-      scrollToLinks.forEach((link) => {
-        link.addEventListener('click', (e) => {
-          const targetId = link.getAttribute('href');
-          if (targetId.length > 1) {
+      document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', e => {
+          const id = link.getAttribute('href');
+          if (id.length > 1) {
             e.preventDefault();
-            const targetEl = document.querySelector(targetId);
-            if (targetEl) {
-              lenis.scrollTo(targetEl, { offset: -80 });
-            }
+            const target = document.querySelector(id);
+            if (target) lenis.scrollTo(target, { offset: -80 });
           }
         });
       });
 
-      // // LUXURY EFFECT: GSAP entrance animations
-      const gsapInit = () => {
+      // ── GSAP animations ────────────────────────────────────────────────────────
+      function initGSAP() {
         gsap.registerPlugin(ScrollTrigger);
-
-        gsap.from('.hero-title', {
-          opacity: 0,
-          y: 40,
-          duration: 1.4,
-          ease: 'power3.out'
-        });
-
-        gsap.from('#hero p', {
-          opacity: 0,
-          y: 50,
-          duration: 1.4,
-          delay: 0.3,
-          ease: 'power3.out'
-        });
-
-        gsap.utils.toArray('.experience-card').forEach((card, index) => {
-          const color = card.dataset.color || 'cyan';
-          const glow = {
-            cyan: '0 8px 30px rgba(0,0,0,0.15)',
-            magenta: '0 8px 30px rgba(0,0,0,0.15)',
-            lime: '0 8px 30px rgba(0,0,0,0.15)'
-          }[color];
-
-          // Card materialization
-          gsap.fromTo(card, {
-            opacity: 0,
-            y: 60,
-            filter: 'blur(10px)'
-          }, {
-            opacity: 1,
-            y: 0,
-            filter: 'blur(0px)',
-            duration: 1,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: card,
-              start: 'top 85%',
-              toggleActions: 'play none none reverse'
-            },
-            onUpdate: (anim) => {
-              const progress = anim.progress();
-              card.style.boxShadow = progress > 0.4 ? `0 20px 60px ${glow}` : '';
+        gsap.utils.toArray('.service-card').forEach((card, i) => {
+          gsap.fromTo(card,
+            { opacity: 0, y: 50 },
+            {
+              opacity: 1, y: 0, duration: .9,
+              ease: 'power3.out',
+              delay: (i % 3) * .1,
+              scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none reverse' }
             }
-          });
+          );
         });
-
-      };
-
-      if (window.gsap) {
-        gsapInit();
-      } else {
-        window.addEventListener('load', gsapInit);
+        gsap.utils.toArray('.testimonial-card').forEach((card, i) => {
+          gsap.fromTo(card,
+            { opacity: 0, y: 40 },
+            {
+              opacity: 1, y: 0, duration: .8,
+              ease: 'power2.out',
+              delay: (i % 4) * .08,
+              scrollTrigger: { trigger: card, start: 'top 90%', toggleActions: 'play none none reverse' }
+            }
+          );
+        });
       }
+      if (window.gsap) initGSAP();
+      else window.addEventListener('load', initGSAP);
     });
   </script>
 </body>
