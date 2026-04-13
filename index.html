@@ -1110,34 +1110,38 @@
       highlightActiveSection(window.pageYOffset);
 
       // ── Gym status ────────────────────────────────────────────────────────────
+      const WEEKDAY_OPEN  = 5  * 60; // 5:00 AM
+      const WEEKDAY_CLOSE = 22 * 60; // 10:00 PM
+      const WEEKEND_OPEN  = 7  * 60; // 7:00 AM
+      const WEEKEND_CLOSE = 14 * 60; // 2:00 PM
+
+      function formatTimeLeft(diff) {
+        const h = Math.floor(diff / 60), m = diff % 60;
+        return m ? `${h}h ${m}m` : `${h}h`;
+      }
+
       function updateGymStatus() {
-        const now        = new Date();
-        const day        = now.getDay();
-        const totalMins  = now.getHours() * 60 + now.getMinutes();
-        let isOpen       = false;
-        let message      = '';
+        const now       = new Date();
+        const day       = now.getDay();
+        const totalMins = now.getHours() * 60 + now.getMinutes();
+        let isOpen      = false;
+        let message     = '';
 
         if (day >= 1 && day <= 5) {
-          const open = 5 * 60, close = 22 * 60;
-          if (totalMins >= open && totalMins < close) {
-            isOpen = true;
-            const diff = close - totalMins;
-            message = diff % 60 ? `Cerramos en ${Math.floor(diff/60)}h ${diff%60}m` : `Cerramos en ${Math.floor(diff/60)}h`;
-          } else if (totalMins < open) {
-            const diff = open - totalMins;
-            message = diff % 60 ? `Abrimos en ${Math.floor(diff/60)}h ${diff%60}m` : `Abrimos en ${Math.floor(diff/60)}h`;
+          if (totalMins >= WEEKDAY_OPEN && totalMins < WEEKDAY_CLOSE) {
+            isOpen  = true;
+            message = `Cerramos en ${formatTimeLeft(WEEKDAY_CLOSE - totalMins)}`;
+          } else if (totalMins < WEEKDAY_OPEN) {
+            message = `Abrimos en ${formatTimeLeft(WEEKDAY_OPEN - totalMins)}`;
           } else {
             message = 'Abrimos mañana a las 5:00 AM';
           }
         } else {
-          const open = 7 * 60, close = 14 * 60;
-          if (totalMins >= open && totalMins < close) {
-            isOpen = true;
-            const diff = close - totalMins;
-            message = diff % 60 ? `Cerramos en ${Math.floor(diff/60)}h ${diff%60}m` : `Cerramos en ${Math.floor(diff/60)}h`;
-          } else if (totalMins < open) {
-            const diff = open - totalMins;
-            message = diff % 60 ? `Abrimos en ${Math.floor(diff/60)}h ${diff%60}m` : `Abrimos en ${Math.floor(diff/60)}h`;
+          if (totalMins >= WEEKEND_OPEN && totalMins < WEEKEND_CLOSE) {
+            isOpen  = true;
+            message = `Cerramos en ${formatTimeLeft(WEEKEND_CLOSE - totalMins)}`;
+          } else if (totalMins < WEEKEND_OPEN) {
+            message = `Abrimos en ${formatTimeLeft(WEEKEND_OPEN - totalMins)}`;
           } else {
             message = day === 6 ? 'Abrimos domingo a las 7:00 AM' : 'Abrimos lunes a las 5:00 AM';
           }
