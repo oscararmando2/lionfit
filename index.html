@@ -541,6 +541,7 @@
       <div class="nav-links">
         <a href="#hero"        class="nav-link focus-ring">Inicio</a>
         <a href="#servicios"   class="nav-link focus-ring">Servicios</a>
+        <a href="#precios"     class="nav-link focus-ring">Precios</a>
         <a href="#testimonios" class="nav-link focus-ring">Testimonios</a>
         <a href="#ubicacion"   class="nav-link focus-ring">Ubicación</a>
       </div>
@@ -633,8 +634,8 @@
         <span class="stat-label">Miembros Activos</span>
       </div>
       <div class="stat-item">
-        <span class="stat-number">6</span>
-        <span class="stat-label">Áreas Exclusivas</span>
+        <span class="stat-number">5+</span>
+        <span class="stat-label">Clases Incluidas</span>
       </div>
       <div class="stat-item">
         <span class="stat-number">17h</span>
@@ -650,7 +651,7 @@
         <div style="text-align:center;margin-bottom:4rem;display:flex;flex-direction:column;align-items:center;gap:1rem;" data-animate>
           <span class="section-label">Lo que ofrecemos</span>
           <h2 class="section-title" style="font-size:clamp(2.5rem,7vw,4.5rem);color:#fff;">Nuestros Servicios</h2>
-          <p style="color:var(--text-muted);max-width:480px;font-size:1rem;">Descubre todo lo que Lion Fitness tiene para ti</p>
+          <p style="color:var(--text-muted);max-width:480px;font-size:1rem;">Descubre todo lo que Lion Fitness tiene para ti — clases incluidas en tu membresía 🎶</p>
         </div>
 
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem;">
@@ -707,7 +708,74 @@
               <div class="service-card-bar" aria-hidden="true"></div>
             </div>
           </div>
+
+          <div class="service-card" data-animate data-delay="1">
+            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80" alt="Kangoo y Jumping" loading="lazy" />
+            <div class="service-card-overlay" aria-hidden="true"></div>
+            <div class="service-card-content">
+              <p class="service-card-title">Kangoo &amp; Jumping</p>
+              <div class="service-card-bar" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <div class="service-card" data-animate data-delay="2">
+            <img src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?auto=format&fit=crop&w=600&q=80" alt="Clases de Baile" loading="lazy" />
+            <div class="service-card-overlay" aria-hidden="true"></div>
+            <div class="service-card-content">
+              <p class="service-card-title">Clases de Baile</p>
+              <div class="service-card-bar" aria-hidden="true"></div>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ===== PRICING ===== -->
+    <section id="precios" style="padding:5rem 1.5rem;background:var(--dark-3);" class="sm:py-28 sm:px-12">
+      <div style="max-width:900px;margin:0 auto;">
+        <div style="text-align:center;margin-bottom:3.5rem;display:flex;flex-direction:column;align-items:center;gap:1rem;" data-animate>
+          <span class="section-label">Accede hoy</span>
+          <h2 class="section-title" style="font-size:clamp(2.5rem,7vw,4.5rem);color:#fff;">Precios</h2>
+          <p style="color:var(--text-muted);max-width:460px;font-size:1rem;">Sin contratos, sin pretextos. Elige la opción que mejor se adapte a ti.</p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;">
+
+          <!-- Day pass -->
+          <div style="background:var(--dark-4);border:1px solid var(--border);border-radius:20px;padding:2.25rem;display:flex;flex-direction:column;gap:1.25rem;transition:all .35s ease;" onmouseover="this.style.borderColor='rgba(240,165,0,.4)';this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 50px rgba(240,165,0,.1)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.boxShadow='none'" data-animate data-delay="1">
+            <div style="display:flex;align-items:center;gap:.75rem;">
+              <div style="width:44px;height:44px;border-radius:10px;background:rgba(240,165,0,.1);border:1px solid rgba(240,165,0,.2);display:flex;align-items:center;justify-content:center;font-size:1.3rem;">🎟️</div>
+              <p style="font-family:'Anton',sans-serif;font-size:1.1rem;letter-spacing:.06em;color:#fff;text-transform:uppercase;">Visita del Día</p>
+            </div>
+            <p style="font-family:'Anton',sans-serif;font-size:3.2rem;letter-spacing:.02em;color:var(--gold);line-height:1;">$40 <span style="font-size:1rem;color:var(--text-muted);font-family:'Inter',sans-serif;font-weight:500;">MXN</span></p>
+            <ul style="display:flex;flex-direction:column;gap:.6rem;list-style:none;padding:0;margin:0;font-size:.875rem;color:var(--text-muted);line-height:1.5;">
+              <li style="display:flex;gap:.5rem;align-items:flex-start;"><span style="color:var(--gold);flex-shrink:0;">✓</span> Acceso a todas las instalaciones</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start;"><span style="color:var(--gold);flex-shrink:0;">✓</span> Uso de regaderas y baños</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start;"><span style="color:var(--gold);flex-shrink:0;">✓</span> Estacionamiento incluido</li>
+            </ul>
+            <a href="https://wa.me/527151249436" target="_blank" rel="noopener" class="btn-outline focus-ring" style="width:100%;margin-top:auto;height:46px;min-width:unset;font-size:.78rem;" aria-label="Preguntar por visita del día">Comenzar hoy</a>
+          </div>
+
+          <!-- Monthly membership -->
+          <div style="background:var(--gold);border:1px solid var(--gold);border-radius:20px;padding:2.25rem;display:flex;flex-direction:column;gap:1.25rem;position:relative;overflow:hidden;transition:all .35s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 50px rgba(240,165,0,.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'" data-animate data-delay="2">
+            <div style="position:absolute;top:16px;right:16px;background:#0B0B0B;color:var(--gold);font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.2em;padding:5px 12px;border-radius:999px;">Recomendado</div>
+            <div style="display:flex;align-items:center;gap:.75rem;">
+              <div style="width:44px;height:44px;border-radius:10px;background:rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;font-size:1.3rem;">🦁</div>
+              <p style="font-family:'Anton',sans-serif;font-size:1.1rem;letter-spacing:.06em;color:#0B0B0B;text-transform:uppercase;">Mensualidad</p>
+            </div>
+            <p style="font-family:'Anton',sans-serif;font-size:3.2rem;letter-spacing:.02em;color:#0B0B0B;line-height:1;">$450 <span style="font-size:1rem;color:rgba(0,0,0,.55);font-family:'Inter',sans-serif;font-weight:500;">MXN / mes</span></p>
+            <ul style="display:flex;flex-direction:column;gap:.6rem;list-style:none;padding:0;margin:0;font-size:.875rem;color:rgba(0,0,0,.7);line-height:1.5;">
+              <li style="display:flex;gap:.5rem;align-items:flex-start;"><span style="color:#0B0B0B;font-weight:700;flex-shrink:0;">✓</span> Acceso ilimitado al gimnasio</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start;"><span style="color:#0B0B0B;font-weight:700;flex-shrink:0;">✓</span> Clases incluidas: Cycling, Kangoo, Jumping, Zumba, Baile</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start;"><span style="color:#0B0B0B;font-weight:700;flex-shrink:0;">✓</span> Regaderas, baños y estacionamiento</li>
+              <li style="display:flex;gap:.5rem;align-items:flex-start;"><span style="color:#0B0B0B;font-weight:700;flex-shrink:0;">✓</span> Cafetería y comedor disponibles</li>
+            </ul>
+            <a href="https://wa.me/527151249436" target="_blank" rel="noopener" class="focus-ring" style="display:inline-flex;align-items:center;justify-content:center;width:100%;margin-top:auto;height:46px;background:#0B0B0B;color:var(--gold);font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.18em;border-radius:8px;transition:all .3s ease;" onmouseover="this.style.background='#1a1a1a'" onmouseout="this.style.background='#0B0B0B'" aria-label="Inscribirse con mensualidad">¡Únete ahora!</a>
+          </div>
+
+        </div>
+
+        <p style="text-align:center;margin-top:2rem;font-size:.78rem;color:var(--text-dim);letter-spacing:.1em;" data-animate data-delay="3">* Las clases están sujetas a disponibilidad de espacios y horarios.</p>
       </div>
     </section>
 
@@ -898,6 +966,19 @@
                   </span>
                   <span id="status-time" style="font-size:.75rem;color:var(--text-muted);"></span>
                 </div>
+              </div>
+            </div>
+
+            <!-- Parking -->
+            <div class="info-row">
+              <div class="info-icon-wrap">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M5 3h8a4 4 0 0 1 0 8H9v6H7V3H5zm4 2v4h4a2 2 0 0 0 0-4H9z"/>
+                </svg>
+              </div>
+              <div>
+                <p style="font-weight:600;font-size:.85rem;color:#fff;margin-bottom:4px;">Estacionamiento</p>
+                <p style="font-size:.85rem;color:var(--text-muted);">Estacionamiento gratuito disponible para todos los miembros y visitas.</p>
               </div>
             </div>
 
