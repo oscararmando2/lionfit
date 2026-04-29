@@ -504,6 +504,117 @@
       0%,100% { transform: translateY(0); }
       50%      { transform: translateY(5px); }
     }
+
+    /* ===== HORARIOS SECTION ===== */
+    .schedule-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 12px;
+      border: 1px solid rgba(240,165,0,.15);
+    }
+    .schedule-table {
+      width: 100%;
+      min-width: 540px;
+      border-collapse: collapse;
+    }
+    .schedule-table thead th {
+      background: var(--dark-4);
+      color: var(--gold);
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(.7rem, 2vw, .95rem);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      padding: 14px 10px;
+      text-align: center;
+      border-bottom: 2px solid rgba(240,165,0,.25);
+      white-space: nowrap;
+    }
+    .schedule-table thead th:first-child {
+      text-align: left;
+      padding-left: 16px;
+      color: rgba(255,255,255,.45);
+      font-size: .7rem;
+    }
+    .schedule-table tbody tr:nth-child(odd) { background: rgba(255,255,255,.02); }
+    .schedule-table tbody tr:nth-child(even) { background: var(--dark-2); }
+    .schedule-table tbody tr:hover { background: rgba(240,165,0,.06); transition: background .25s ease; }
+    .schedule-table td {
+      padding: 10px 8px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,.05);
+      vertical-align: middle;
+    }
+    .schedule-table td:first-child {
+      text-align: left;
+      padding-left: 16px;
+      font-size: clamp(.62rem, 1.8vw, .78rem);
+      font-weight: 700;
+      letter-spacing: .12em;
+      color: var(--text-muted);
+      white-space: nowrap;
+      background: rgba(240,165,0,.05);
+      border-right: 2px solid rgba(240,165,0,.15);
+    }
+    .sched-cell {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      min-width: 80px;
+      font-size: clamp(.58rem, 1.6vw, .72rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      line-height: 1.2;
+      transition: transform .25s ease, box-shadow .25s ease;
+      cursor: default;
+    }
+    .sched-cell:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 8px 24px rgba(0,0,0,.4); }
+    .sched-cell .cell-emoji { font-size: 1.1rem; line-height: 1; }
+    .sched-cell.zumba {
+      background: linear-gradient(135deg, rgba(233,30,99,.25) 0%, rgba(233,30,99,.12) 100%);
+      color: #FF4D94;
+      border: 1px solid rgba(233,30,99,.35);
+    }
+    .sched-cell.jumping {
+      background: linear-gradient(135deg, rgba(0,230,118,.2) 0%, rgba(0,230,118,.08) 100%);
+      color: #00E676;
+      border: 1px solid rgba(0,230,118,.3);
+    }
+    .sched-cell.cycling {
+      background: linear-gradient(135deg, rgba(33,150,243,.25) 0%, rgba(33,150,243,.1) 100%);
+      color: #42A5F5;
+      border: 1px solid rgba(33,150,243,.35);
+    }
+    .sched-empty {
+      display: inline-block;
+      width: 32px; height: 6px;
+      border-radius: 3px;
+      background: rgba(255,255,255,.08);
+    }
+    .schedule-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+    }
+    .legend-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -542,6 +653,7 @@
         <a href="#hero"        class="nav-link focus-ring">Inicio</a>
         <a href="#servicios"   class="nav-link focus-ring">Servicios</a>
         <a href="#precios"     class="nav-link focus-ring">Precios</a>
+        <a href="#horarios"    class="nav-link focus-ring">Horarios</a>
         <a href="#testimonios" class="nav-link focus-ring">Testimonios</a>
         <a href="#ubicacion"   class="nav-link focus-ring">Ubicación</a>
       </div>
@@ -800,6 +912,98 @@
         </div>
 
         <p style="text-align:center;margin-top:2rem;font-size:.78rem;color:var(--text-dim);letter-spacing:.1em;" data-animate data-delay="3">* Las clases están sujetas a disponibilidad de espacios y horarios.</p>
+      </div>
+    </section>
+
+    <!-- ===== HORARIOS ===== -->
+    <section id="horarios" style="padding:5rem 1.5rem;background:var(--dark);" class="sm:py-28 sm:px-12">
+      <div style="max-width:1100px;margin:0 auto;">
+        <div style="text-align:center;margin-bottom:3rem;display:flex;flex-direction:column;align-items:center;gap:1rem;" data-animate>
+          <span class="section-label">Disciplinas</span>
+          <h2 class="section-title" style="font-size:clamp(2.5rem,7vw,4.5rem);color:#fff;">Horario de Disciplinas</h2>
+          <p style="color:var(--text-muted);max-width:480px;font-size:1rem;">Encuentra tu clase favorita y entrena con la energía de un león cada día.</p>
+        </div>
+
+        <div class="schedule-wrapper" data-animate data-delay="1">
+          <table class="schedule-table" role="table" aria-label="Horario de disciplinas">
+            <thead>
+              <tr>
+                <th scope="col">Hora</th>
+                <th scope="col">Lunes</th>
+                <th scope="col">Martes</th>
+                <th scope="col">Miércoles</th>
+                <th scope="col">Jueves</th>
+                <th scope="col">Viernes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>7 – 8 AM</td>
+                <td><span class="sched-empty" aria-label="Sin clase"></span></td>
+                <td><span class="sched-cell cycling"><span class="cell-emoji">🚴</span>Indoor Cycling</span></td>
+                <td><span class="sched-empty" aria-label="Sin clase"></span></td>
+                <td><span class="sched-cell cycling"><span class="cell-emoji">🚴</span>Indoor Cycling</span></td>
+                <td><span class="sched-empty" aria-label="Sin clase"></span></td>
+              </tr>
+              <tr>
+                <td>8 – 9 AM</td>
+                <td><span class="sched-cell zumba"><span class="cell-emoji">💃</span>Zumba</span></td>
+                <td><span class="sched-empty" aria-label="Sin clase"></span></td>
+                <td><span class="sched-cell zumba"><span class="cell-emoji">💃</span>Zumba</span></td>
+                <td><span class="sched-empty" aria-label="Sin clase"></span></td>
+                <td><span class="sched-empty" aria-label="Sin clase"></span></td>
+              </tr>
+              <tr>
+                <td>6:30 – 7:10 PM</td>
+                <td><span class="sched-cell jumping"><span class="cell-emoji">🦘</span>Jumping</span></td>
+                <td><span class="sched-empty" aria-label="Sin clase"></span></td>
+                <td><span class="sched-cell jumping"><span class="cell-emoji">🦘</span>Jumping</span></td>
+                <td><span class="sched-empty" aria-label="Sin clase"></span></td>
+                <td><span class="sched-empty" aria-label="Sin clase"></span></td>
+              </tr>
+              <tr>
+                <td>7 – 8 PM</td>
+                <td><span class="sched-cell zumba"><span class="cell-emoji">💃</span>Zumba</span></td>
+                <td><span class="sched-cell jumping"><span class="cell-emoji">🦘</span>Jumping</span></td>
+                <td><span class="sched-cell zumba"><span class="cell-emoji">💃</span>Zumba</span></td>
+                <td><span class="sched-cell jumping"><span class="cell-emoji">🦘</span>Jumping</span></td>
+                <td><span class="sched-cell zumba"><span class="cell-emoji">💃</span>Zumba</span></td>
+              </tr>
+              <tr>
+                <td>8 – 9 PM</td>
+                <td><span class="sched-empty" aria-label="Sin clase"></span></td>
+                <td><span class="sched-cell cycling"><span class="cell-emoji">🚴</span>Indoor Cycling</span></td>
+                <td><span class="sched-empty" aria-label="Sin clase"></span></td>
+                <td><span class="sched-cell cycling"><span class="cell-emoji">🚴</span>Indoor Cycling</span></td>
+                <td><span class="sched-empty" aria-label="Sin clase"></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Legend -->
+        <div class="schedule-legend" data-animate data-delay="2">
+          <div class="legend-item" style="color:#FF4D94;">
+            <span class="legend-dot" style="background:#FF4D94;box-shadow:0 0 8px rgba(233,30,99,.5);"></span>
+            💃 Zumba
+          </div>
+          <div class="legend-item" style="color:#00E676;">
+            <span class="legend-dot" style="background:#00E676;box-shadow:0 0 8px rgba(0,230,118,.5);"></span>
+            🦘 Jumping
+          </div>
+          <div class="legend-item" style="color:#42A5F5;">
+            <span class="legend-dot" style="background:#42A5F5;box-shadow:0 0 8px rgba(33,150,243,.5);"></span>
+            🚴 Indoor Cycling
+          </div>
+        </div>
+
+        <p style="text-align:center;margin-top:1.5rem;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.25em;color:var(--text-dim);" data-animate data-delay="3">
+          * Horarios sujetos a modificaciones
+        </p>
+
+        <p style="text-align:center;margin-top:1rem;font-family:'Anton',sans-serif;font-size:clamp(1.2rem,4vw,1.8rem);letter-spacing:.3em;color:var(--gold);text-transform:uppercase;" data-animate data-delay="4">
+          BE STRONG – BE A LION
+        </p>
       </div>
     </section>
 
