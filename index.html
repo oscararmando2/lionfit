@@ -615,6 +615,69 @@
       border-radius: 50%;
       flex-shrink: 0;
     }
+
+    /* ===== PREMIUM ANIMATIONS ===== */
+
+    /* Floating stats */
+    @keyframes float-stat {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-5px); }
+    }
+    .stat-item { animation: float-stat 3s ease-in-out infinite; }
+    .stat-item:nth-child(2) { animation-delay: .6s; }
+    .stat-item:nth-child(3) { animation-delay: 1.2s; }
+
+    /* Service cards — 3D tilt (perspective set via JS) */
+    .service-card { will-change: transform; }
+
+    /* Pricing cards — staggered fade-up via IntersectionObserver */
+    .precio-card {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1);
+    }
+    .precio-card.animated { opacity: 1; transform: translateY(0); }
+    .precio-card:nth-child(1) { transition-delay: 0s; }
+    .precio-card:nth-child(2) { transition-delay: .15s; }
+    .precio-card:nth-child(3) { transition-delay: .3s; }
+
+    /* Pulsing glow on recommended (gold) pricing card */
+    @keyframes pulse-glow-gold {
+      0%, 100% { box-shadow: 0 0 18px rgba(240,165,0,.3), 0 8px 30px rgba(240,165,0,.18); }
+      50%      { box-shadow: 0 0 44px rgba(240,165,0,.65), 0 8px 50px rgba(240,165,0,.38); }
+    }
+    .precio-recomendado { animation: pulse-glow-gold 2.5s ease-in-out infinite; }
+
+    /* Ripple effect */
+    .ripple {
+      position: absolute; border-radius: 50%;
+      background: rgba(255,255,255,.22);
+      pointer-events: none;
+      transform: scale(0);
+      animation: ripple-anim .7s ease-out forwards;
+    }
+    @keyframes ripple-anim {
+      to { transform: scale(5); opacity: 0; }
+    }
+    /* btn-outline needs overflow:hidden for ripple */
+    .btn-outline { position: relative; overflow: hidden; }
+
+    /* prefers-reduced-motion — disable all custom motion */
+    @media (prefers-reduced-motion: reduce) {
+      .stat-item { animation: none !important; }
+      .precio-recomendado { animation: none !important; }
+      [data-animate] {
+        transition: none !important;
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+      }
+      .precio-card {
+        transition: none !important;
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+      }
+      .ripple { display: none !important; }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -854,7 +917,7 @@
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.5rem;">
 
           <!-- Day pass -->
-          <div style="background:var(--dark-4);border:1px solid var(--border);border-radius:20px;padding:2.25rem;display:flex;flex-direction:column;gap:1.25rem;transition:all .35s ease;" onmouseover="this.style.borderColor='rgba(240,165,0,.4)';this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 50px rgba(240,165,0,.1)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.boxShadow='none'" data-animate data-delay="1">
+          <div class="precio-card" style="background:var(--dark-4);border:1px solid var(--border);border-radius:20px;padding:2.25rem;display:flex;flex-direction:column;gap:1.25rem;transition:all .35s ease;" onmouseover="this.style.borderColor='rgba(240,165,0,.4)';this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 50px rgba(240,165,0,.1)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.boxShadow='none'" data-animate data-delay="1">
             <div style="display:flex;align-items:center;gap:.75rem;">
               <div style="width:44px;height:44px;border-radius:10px;background:rgba(240,165,0,.1);border:1px solid rgba(240,165,0,.2);display:flex;align-items:center;justify-content:center;font-size:1.3rem;">🎟️</div>
               <p style="font-family:'Anton',sans-serif;font-size:1.1rem;letter-spacing:.06em;color:#fff;text-transform:uppercase;">Visita del Día</p>
@@ -869,7 +932,7 @@
           </div>
 
           <!-- Monthly membership -->
-          <div style="background:var(--gold);border:1px solid var(--gold);border-radius:20px;padding:2.25rem;display:flex;flex-direction:column;gap:1.25rem;position:relative;overflow:hidden;transition:all .35s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 50px rgba(240,165,0,.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'" data-animate data-delay="2">
+          <div class="precio-card precio-recomendado" style="background:var(--gold);border:1px solid var(--gold);border-radius:20px;padding:2.25rem;display:flex;flex-direction:column;gap:1.25rem;position:relative;overflow:hidden;transition:all .35s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 50px rgba(240,165,0,.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'" data-animate data-delay="2">
             <div style="position:absolute;top:16px;right:16px;background:#0B0B0B;color:var(--gold);font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.2em;padding:5px 12px;border-radius:999px;">Recomendado</div>
             <div style="display:flex;align-items:center;gap:.75rem;">
               <div style="width:44px;height:44px;border-radius:10px;background:rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;font-size:1.3rem;">🦁</div>
@@ -886,7 +949,7 @@
           </div>
 
           <!-- Student membership -->
-          <div style="background:var(--dark-4);border:1px solid rgba(240,165,0,.35);border-radius:20px;padding:2.25rem;display:flex;flex-direction:column;gap:1.25rem;position:relative;transition:all .35s ease;" onmouseover="this.style.borderColor='rgba(240,165,0,.65)';this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 50px rgba(240,165,0,.12)'" onmouseout="this.style.borderColor='rgba(240,165,0,.35)';this.style.transform='translateY(0)';this.style.boxShadow='none'" data-animate data-delay="3">
+          <div class="precio-card" style="background:var(--dark-4);border:1px solid rgba(240,165,0,.35);border-radius:20px;padding:2.25rem;display:flex;flex-direction:column;gap:1.25rem;position:relative;transition:all .35s ease;" onmouseover="this.style.borderColor='rgba(240,165,0,.65)';this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 50px rgba(240,165,0,.12)'" onmouseout="this.style.borderColor='rgba(240,165,0,.35)';this.style.transform='translateY(0)';this.style.boxShadow='none'" data-animate data-delay="3">
             <div style="position:absolute;top:16px;right:16px;background:rgba(240,165,0,.15);color:var(--gold);font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.2em;padding:5px 12px;border-radius:999px;border:1px solid rgba(240,165,0,.35);">Promoción</div>
             <div style="display:flex;align-items:center;gap:.75rem;">
               <div style="width:44px;height:44px;border-radius:10px;background:rgba(240,165,0,.1);border:1px solid rgba(240,165,0,.2);display:flex;align-items:center;justify-content:center;font-size:1.3rem;">🎓</div>
@@ -1538,24 +1601,150 @@
               opacity: 1, y: 0, duration: .9,
               ease: 'power3.out',
               delay: (i % 3) * .1,
-              scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none reverse' }
+              scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none none' }
             }
           );
         });
-        gsap.utils.toArray('.testimonial-card').forEach((card, i) => {
-          gsap.fromTo(card,
-            { opacity: 0, y: 40 },
-            {
-              opacity: 1, y: 0, duration: .8,
-              ease: 'power2.out',
-              delay: (i % 4) * .08,
-              scrollTrigger: { trigger: card, start: 'top 90%', toggleActions: 'play none none reverse' }
-            }
-          );
-        });
+        // Testimonial cards are handled by the alternating-slide IntersectionObserver below
       }
       if (window.gsap) initGSAP();
       else window.addEventListener('load', initGSAP);
+
+      // ── prefers-reduced-motion check ──────────────────────────────────────
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // ── Hero parallax (bg image moves at 0.12× scroll speed) ─────────────
+      const heroBg = document.querySelector('.hero-bg');
+      if (heroBg && !prefersReducedMotion) {
+        heroBg.style.transform = 'scale(1.18) translateY(0px)';
+        let heroRaf = null;
+        window.addEventListener('scroll', () => {
+          if (!heroRaf) {
+            heroRaf = requestAnimationFrame(() => {
+              heroBg.style.transform = `scale(1.18) translateY(${window.pageYOffset * 0.12}px)`;
+              heroRaf = null;
+            });
+          }
+        }, { passive: true });
+      }
+
+      // ── Service cards — 3D tilt on mouse-move ─────────────────────────────
+      if (!prefersReducedMotion) {
+        document.querySelectorAll('.service-card').forEach(card => {
+          card.addEventListener('mouseenter', () => {
+            card.style.transition = 'box-shadow .45s ease, border-color .45s ease, filter .45s ease';
+          });
+          card.addEventListener('mousemove', e => {
+            const r   = card.getBoundingClientRect();
+            const dx  = (e.clientX - (r.left + r.width  / 2)) / (r.width  / 2);
+            const dy  = (e.clientY - (r.top  + r.height / 2)) / (r.height / 2);
+            const rx  = -dy * 10;
+            const ry  =  dx * 10;
+            card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-10px) scale(1.02)`;
+          });
+          card.addEventListener('mouseleave', () => {
+            card.style.transition = 'all .45s ease';
+            card.style.transform  = '';
+          });
+        });
+      }
+
+      // ── Pricing cards — staggered reveal + 3D lift on hover ───────────────
+      const precioCards = document.querySelectorAll('.precio-card');
+      if (precioCards.length) {
+        const precioObs = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const idx = Array.from(precioCards).indexOf(entry.target);
+              setTimeout(() => entry.target.classList.add('animated'), idx * 150);
+              precioObs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        precioCards.forEach(c => precioObs.observe(c));
+
+        if (!prefersReducedMotion) {
+          precioCards.forEach(card => {
+            card.addEventListener('mousemove', e => {
+              const r  = card.getBoundingClientRect();
+              const dx = (e.clientX - (r.left + r.width  / 2)) / (r.width  / 2);
+              const dy = (e.clientY - (r.top  + r.height / 2)) / (r.height / 2);
+              const rx = -dy * 7;
+              const ry =  dx * 7;
+              const shadow = card.classList.contains('precio-recomendado')
+                ? '0 32px 64px rgba(240,165,0,.4)'
+                : '0 24px 52px rgba(240,165,0,.13)';
+              card.style.transform  = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-8px) scale(1.02)`;
+              card.style.boxShadow  = shadow;
+              card.style.transition = 'box-shadow .2s ease';
+            });
+            card.addEventListener('mouseleave', () => {
+              card.style.transform  = '';
+              card.style.boxShadow  = '';
+              card.style.transition = 'all .35s ease';
+            });
+          });
+        }
+      }
+
+      // ── Testimonial cards — slide in from alternating sides ───────────────
+      if (!prefersReducedMotion) {
+        const testimCards = document.querySelectorAll('.testimonial-card');
+        testimCards.forEach((card, i) => {
+          card.style.opacity   = '0';
+          card.style.transform = `translateX(${i % 2 === 0 ? -30 : 30}px)`;
+          card.style.transition = 'opacity .7s ease, transform .7s ease';
+        });
+        const testimObs = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const idx = Array.from(testimCards).indexOf(entry.target);
+              setTimeout(() => {
+                entry.target.style.opacity   = '1';
+                entry.target.style.transform = 'translateX(0)';
+              }, (idx % 4) * 80);
+              testimObs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        testimCards.forEach(c => testimObs.observe(c));
+      }
+
+      // ── CTA section — parallax zoom in on scroll ──────────────────────────
+      const ctaSection = document.getElementById('cta');
+      const ctaInner   = ctaSection ? ctaSection.querySelector('div') : null;
+      if (ctaInner && !prefersReducedMotion) {
+        let ctaRaf = null;
+        function updateCta() {
+          const rect  = ctaSection.getBoundingClientRect();
+          const vh    = window.innerHeight;
+          const prog  = Math.max(0, Math.min(1, (vh - rect.top) / (vh + rect.height * 0.5)));
+          const scale = 0.94 + prog * 0.06;
+          ctaInner.style.transform = `scale(${scale})`;
+        }
+        window.addEventListener('scroll', () => {
+          if (!ctaRaf) {
+            ctaRaf = requestAnimationFrame(() => { updateCta(); ctaRaf = null; });
+          }
+        }, { passive: true });
+        updateCta();
+      }
+
+      // ── Ripple effect on CTA / hero buttons ───────────────────────────────
+      document.querySelectorAll('.lion-btn, .btn-outline').forEach(btn => {
+        btn.addEventListener('click', e => {
+          if (prefersReducedMotion) return;
+          const r    = btn.getBoundingClientRect();
+          const size = Math.max(r.width, r.height);
+          const x    = e.clientX - r.left - size / 2;
+          const y    = e.clientY - r.top  - size / 2;
+          const rpl  = document.createElement('span');
+          rpl.className  = 'ripple';
+          rpl.style.cssText = `width:${size}px;height:${size}px;left:${x}px;top:${y}px`;
+          btn.appendChild(rpl);
+          rpl.addEventListener('animationend', () => rpl.remove());
+        });
+      });
     });
   </script>
 </body>
