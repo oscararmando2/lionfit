@@ -13,6 +13,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         users: resolve(__dirname, 'users.html'),
         clases: resolve(__dirname, 'clases/index.html'),
+        menu: resolve(__dirname, 'menu/index.html'),
       },
     },
   },
