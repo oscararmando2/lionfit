@@ -12,7 +12,15 @@
   <meta property="og:description" content="Fuerza en el gimnasio, nutrición en tu día. Conoce el menú de Lion Fitness." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.lionfit.pro/menu" />
-  <meta property="og:image" content="https://www.lionfit.pro/lionlogo.png" />
+  <meta property="og:image" content="https://www.lionfit.pro/lion-og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Lion Fitness — Be Strong, Be a Lion" />
+  <meta property="og:site_name" content="Lion Fitness" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Menú | Lion Fitness" />
+  <meta name="twitter:description" content="Fuerza en el gimnasio, nutrición en tu día. Conoce el menú de Lion Fitness." />
+  <meta name="twitter:image" content="https://www.lionfit.pro/lion-og.jpg" />
   <meta name="theme-color" content="#0B0B0B" />
   <link rel="icon" type="image/png" href="../lionlogo.png" />
   <script src="https://cdn.tailwindcss.com"></script>
@@ -385,22 +393,27 @@
     .item-price small { font-size: .72rem; vertical-align: top; margin-right: 1px; }
     .item:hover .item-price { transform: scale(1.06); box-shadow: 0 7px 20px rgba(240,165,0,0.4); }
 
-    /* recommended ribbon */
-    .tag-reco {
-      position: absolute;
-      top: 10px; right: -30px;
-      transform: rotate(45deg);
-      background: linear-gradient(135deg, var(--gold-light), var(--gold));
-      color: #0B0B0B;
-      font-size: .52rem;
+    /* recommended badge (clean inline pill) */
+    .reco {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: .56rem;
       font-weight: 800;
-      letter-spacing: .18em;
+      letter-spacing: .16em;
       text-transform: uppercase;
-      padding: 3px 34px;
-      box-shadow: 0 3px 10px rgba(0,0,0,.35);
-      z-index: 2;
+      color: var(--gold);
+      background: rgba(240,165,0,0.12);
+      border: 1px solid rgba(240,165,0,0.35);
+      padding: 3px 9px 3px 7px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+      line-height: 1;
     }
-    .item:has(.tag-reco) { border-color: rgba(240,165,0,.28); }
+    .item:has(.reco) {
+      border-color: rgba(240,165,0,.3);
+      background: linear-gradient(150deg, rgba(240,165,0,0.06), var(--dark-2));
+    }
 
     /* ===== NOTE BADGE ===== */
     .note-badge {
@@ -552,8 +565,10 @@
           <div class="item"><div class="item-body"><p class="item-name">Chilaquiles con huevo</p></div><div class="item-price"><small>$</small>80</div></div>
           <div class="item"><div class="item-body"><p class="item-name">Chilaquiles con pollo</p></div><div class="item-price"><small>$</small>100</div></div>
           <div class="item">
-            <span class="tag-reco">Recomendado</span>
-            <div class="item-body"><p class="item-name">Chilaquiles con arrachera</p></div>
+            <div class="item-body">
+              <span class="reco">★ Recomendado</span>
+              <p class="item-name">Chilaquiles con arrachera</p>
+            </div>
             <div class="item-price"><small>$</small>120</div>
           </div>
         </div>
@@ -571,8 +586,10 @@
         <div class="item-grid">
           <div class="item"><div class="item-body"><p class="item-name">Yakimeshi de pollo</p></div><div class="item-price"><small>$</small>90</div></div>
           <div class="item">
-            <span class="tag-reco">Recomendado</span>
-            <div class="item-body"><p class="item-name">Yakimeshi de camarón</p></div>
+            <div class="item-body">
+              <span class="reco">★ Recomendado</span>
+              <p class="item-name">Yakimeshi de camarón</p>
+            </div>
             <div class="item-price"><small>$</small>100</div>
           </div>
           <div class="item"><div class="item-body"><p class="item-name">Yakimeshi de cerdo</p></div><div class="item-price"><small>$</small>90</div></div>
