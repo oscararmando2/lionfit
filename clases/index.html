@@ -9,10 +9,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <meta property="og:title" content="Clases | Lion Fitness" />
-  <meta property="og:description" content="Horario de clases de Lion Fitness en Zitácuaro." />
+  <meta property="og:description" content="Horario de disciplinas de Lion Fitness: Zumba, Jumping, Indoor Cycling y Funcional en Zitácuaro." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.lionfit.pro/clases" />
-  <meta property="og:image" content="https://www.lionfit.pro/lionlogo.png" />
+  <meta property="og:image" content="https://www.lionfit.pro/lion-og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Lion Fitness — Be Strong, Be a Lion" />
+  <meta property="og:site_name" content="Lion Fitness" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Clases | Lion Fitness" />
+  <meta name="twitter:description" content="Horario de disciplinas de Lion Fitness: Zumba, Jumping, Indoor Cycling y Funcional en Zitácuaro." />
+  <meta name="twitter:image" content="https://www.lionfit.pro/lion-og.jpg" />
   <meta name="theme-color" content="#0B0B0B" />
   <link rel="icon" type="image/png" href="../lionlogo.png" />
   <script src="https://cdn.tailwindcss.com"></script>
@@ -197,35 +205,45 @@
       white-space: nowrap;
     }
 
-    /* Class colors */
-    .pill-zumba {
+    /* Class colors (según la imagen de disciplinas) */
+    .pill-cycling {
       background: rgba(240,165,0,0.12);
       border: 1px solid rgba(240,165,0,0.3);
       color: var(--gold);
     }
-    .pill-zumba:hover {
+    .pill-cycling:hover {
       box-shadow: 0 4px 16px rgba(240,165,0,0.2);
       border-color: var(--gold);
     }
 
     .pill-jumping {
-      background: rgba(255,90,50,0.1);
-      border: 1px solid rgba(255,90,50,0.3);
-      color: #FF7A50;
+      background: rgba(79,184,74,0.1);
+      border: 1px solid rgba(79,184,74,0.3);
+      color: #5FCB59;
     }
     .pill-jumping:hover {
-      box-shadow: 0 4px 16px rgba(255,90,50,0.2);
-      border-color: #FF7A50;
+      box-shadow: 0 4px 16px rgba(79,184,74,0.2);
+      border-color: #5FCB59;
     }
 
-    .pill-cycling {
-      background: rgba(100,180,255,0.1);
-      border: 1px solid rgba(100,180,255,0.3);
-      color: #80C4FF;
+    .pill-zumba {
+      background: rgba(232,71,107,0.1);
+      border: 1px solid rgba(232,71,107,0.3);
+      color: #F0698A;
     }
-    .pill-cycling:hover {
-      box-shadow: 0 4px 16px rgba(100,180,255,0.2);
-      border-color: #80C4FF;
+    .pill-zumba:hover {
+      box-shadow: 0 4px 16px rgba(232,71,107,0.2);
+      border-color: #F0698A;
+    }
+
+    .pill-funcional {
+      background: rgba(90,169,230,0.1);
+      border: 1px solid rgba(90,169,230,0.3);
+      color: #7FBEEE;
+    }
+    .pill-funcional:hover {
+      box-shadow: 0 4px 16px rgba(90,169,230,0.2);
+      border-color: #7FBEEE;
     }
 
     /* Empty slot */
@@ -399,16 +417,20 @@
       <!-- LEGEND -->
       <section class="fade-up fade-up-2" style="margin-bottom: 28px; display: flex; flex-wrap: wrap; gap: 16px;">
         <div class="legend-item">
-          <span class="legend-dot" style="background: var(--gold);"></span>
+          <span class="legend-dot" style="background: #F0698A;"></span>
           <span style="color: var(--text-muted);">💃 Zumba</span>
         </div>
         <div class="legend-item">
-          <span class="legend-dot" style="background: #FF7A50;"></span>
+          <span class="legend-dot" style="background: #5FCB59;"></span>
           <span style="color: var(--text-muted);">🦘 Jumping</span>
         </div>
         <div class="legend-item">
-          <span class="legend-dot" style="background: #80C4FF;"></span>
+          <span class="legend-dot" style="background: var(--gold);"></span>
           <span style="color: var(--text-muted);">🚴 Indoor Cycling</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-dot" style="background: #7FBEEE;"></span>
+          <span style="color: var(--text-muted);">🏋️ Funcional</span>
         </div>
       </section>
 
@@ -437,9 +459,9 @@
               </thead>
               <tbody>
 
-                <!-- 7–8 AM -->
+                <!-- 7:00 – 8:00 AM -->
                 <tr>
-                  <td class="time-cell">7 – 8 AM</td>
+                  <td class="time-cell">7:00 – 8:00 AM</td>
                   <td><div class="slot-empty" aria-label="Sin clase"></div></td>
                   <td>
                     <div class="class-pill pill-cycling">
@@ -457,42 +479,27 @@
                   <td><div class="slot-empty" aria-label="Sin clase"></div></td>
                 </tr>
 
-                <!-- 8–9 AM -->
+                <!-- 8:00 – 9:00 AM -->
                 <tr>
-                  <td class="time-cell">8 – 9 AM</td>
-                  <td>
-                    <div class="class-pill pill-zumba">
-                      <span class="pill-icon" aria-hidden="true">💃</span>
-                      <span class="pill-name">Zumba</span>
-                    </div>
-                  </td>
+                  <td class="time-cell">8:00 – 9:00 AM</td>
                   <td><div class="slot-empty" aria-label="Sin clase"></div></td>
-                  <td>
-                    <div class="class-pill pill-zumba">
-                      <span class="pill-icon" aria-hidden="true">💃</span>
-                      <span class="pill-name">Zumba</span>
-                    </div>
-                  </td>
+                  <td><div class="slot-empty" aria-label="Sin clase"></div></td>
+                  <td><div class="slot-empty" aria-label="Sin clase"></div></td>
                   <td><div class="slot-empty" aria-label="Sin clase"></div></td>
                   <td><div class="slot-empty" aria-label="Sin clase"></div></td>
                 </tr>
 
-                <!-- 5:00–6:00 PM -->
+                <!-- 5:00 – 6:00 PM -->
                 <tr>
                   <td class="time-cell">5:00 – 6:00 PM</td>
                   <td><div class="slot-empty" aria-label="Sin clase"></div></td>
                   <td><div class="slot-empty" aria-label="Sin clase"></div></td>
                   <td><div class="slot-empty" aria-label="Sin clase"></div></td>
                   <td><div class="slot-empty" aria-label="Sin clase"></div></td>
-                  <td>
-                    <div class="class-pill pill-zumba">
-                      <span class="pill-icon" aria-hidden="true">💃</span>
-                      <span class="pill-name">Zumba Funcional</span>
-                    </div>
-                  </td>
+                  <td><div class="slot-empty" aria-label="Sin clase"></div></td>
                 </tr>
 
-                <!-- 6:00–7:00 PM -->
+                <!-- 6:00 – 7:00 PM -->
                 <tr>
                   <td class="time-cell">6:00 – 7:00 PM</td>
                   <td>
@@ -519,55 +526,70 @@
                       <span class="pill-name">Jumping</span>
                     </div>
                   </td>
-                  <td><div class="slot-empty" aria-label="Sin clase"></div></td>
-                </tr>
-
-                <!-- 7–8 PM -->
-                <tr>
-                  <td class="time-cell">7 – 8 PM</td>
                   <td>
-                    <div class="class-pill pill-zumba">
-                      <span class="pill-icon" aria-hidden="true">💃</span>
-                      <span class="pill-name">Zumba</span>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="class-pill pill-jumping">
-                      <span class="pill-icon" aria-hidden="true">🦘</span>
-                      <span class="pill-name">Jumping</span>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="class-pill pill-zumba">
-                      <span class="pill-icon" aria-hidden="true">💃</span>
-                      <span class="pill-name">Zumba</span>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="class-pill pill-jumping">
-                      <span class="pill-icon" aria-hidden="true">🦘</span>
-                      <span class="pill-name">Jumping</span>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="class-pill pill-zumba">
-                      <span class="pill-icon" aria-hidden="true">💃</span>
-                      <span class="pill-name">Zumba</span>
+                    <div class="class-pill pill-funcional">
+                      <span class="pill-icon" aria-hidden="true">🏋️</span>
+                      <span class="pill-name">Funcional</span>
                     </div>
                   </td>
                 </tr>
 
-                <!-- 8–9 PM -->
+                <!-- 7:00 – 8:00 PM -->
                 <tr>
-                  <td class="time-cell">8 – 9 PM</td>
-                  <td><div class="slot-empty" aria-label="Sin clase"></div></td>
+                  <td class="time-cell">7:00 – 8:00 PM</td>
+                  <td>
+                    <div class="class-pill pill-zumba">
+                      <span class="pill-icon" aria-hidden="true">💃</span>
+                      <span class="pill-name">Zumba</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="class-pill pill-funcional">
+                      <span class="pill-icon" aria-hidden="true">🏋️</span>
+                      <span class="pill-name">Funcional</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="class-pill pill-zumba">
+                      <span class="pill-icon" aria-hidden="true">💃</span>
+                      <span class="pill-name">Zumba</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="class-pill pill-funcional">
+                      <span class="pill-icon" aria-hidden="true">🏋️</span>
+                      <span class="pill-name">Funcional</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="class-pill pill-zumba">
+                      <span class="pill-icon" aria-hidden="true">💃</span>
+                      <span class="pill-name">Zumba</span>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- 8:00 – 9:00 PM -->
+                <tr>
+                  <td class="time-cell">8:00 – 9:00 PM</td>
+                  <td>
+                    <div class="class-pill pill-zumba">
+                      <span class="pill-icon" aria-hidden="true">💃</span>
+                      <span class="pill-name">Zumba</span>
+                    </div>
+                  </td>
                   <td>
                     <div class="class-pill pill-cycling">
                       <span class="pill-icon" aria-hidden="true">🚴</span>
                       <span class="pill-name">Indoor<br/>Cycling</span>
                     </div>
                   </td>
-                  <td><div class="slot-empty" aria-label="Sin clase"></div></td>
+                  <td>
+                    <div class="class-pill pill-cycling">
+                      <span class="pill-icon" aria-hidden="true">🚴</span>
+                      <span class="pill-name">Indoor<br/>Cycling</span>
+                    </div>
+                  </td>
                   <td>
                     <div class="class-pill pill-cycling">
                       <span class="pill-icon" aria-hidden="true">🚴</span>
